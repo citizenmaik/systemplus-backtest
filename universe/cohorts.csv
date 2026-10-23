@@ -1,0 +1,3 @@
+# Herkunft der Ticker für getrennte Auswertung. Nicht gelistete Ticker gelten als 'neu'.
+# handverlesen = die ursprünglichen Tech/Momentum-Titel, zufall = Zufallsziehung (Seed 20261017)
+ticker,cohort
