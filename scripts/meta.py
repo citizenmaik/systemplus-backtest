@@ -11,7 +11,7 @@ from datetime import date, timedelta
 import pandas as pd
 import yfinance as yf
 
-from common import BENCHMARKS, META, load_universe
+from common import BENCHMARKS, META, load_universe, read_csv
 
 FIELDS = ["sector", "industry", "quoteType", "marketCap", "sharesOutstanding", "floatShares"]
 MAX_AGE_DAYS = 30
@@ -19,7 +19,7 @@ MAX_AGE_DAYS = 30
 
 def main(max_n: int, pause: float) -> None:
     uni = load_universe()
-    meta = pd.read_csv(META, dtype={"ticker": str}) if META.exists() else pd.DataFrame(columns=["ticker", "fetched"] + FIELDS)
+    meta = read_csv(META) if META.exists() else pd.DataFrame(columns=["ticker", "fetched"] + FIELDS)
     meta = meta.set_index("ticker")
     cutoff = (date.today() - timedelta(days=MAX_AGE_DAYS)).isoformat()
     todo = [t for t in uni["ticker"] if t not in BENCHMARKS

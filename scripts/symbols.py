@@ -16,7 +16,8 @@ OTHER_EXCHANGES = {"N": "NYSE"}
 # Keine Optionsscheine, Units, Rechte, Vorzugsaktien, Anleihen
 BAD_NAME = re.compile(
     r"warrant|\bunits?\b|\brights?\b|preferred|\bpfd\b|\bnotes? due\b|debenture|"
-    r"\d+(\.\d+)?\s*%|subordinated|when issued",
+    r"\d+(\.\d+)?\s*%|subordinated|when issued|\bfund\b|\bETN\b|exchange.traded|municipal|"
+    r"closed.end|\bSPAC\b|acquisition corp",
     re.I,
 )
 BAD_SUFFIX = ("-U", "-WS", "-W", "-WT", "-R", "-RT", "-WI")

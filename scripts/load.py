@@ -22,7 +22,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from common import BENCHMARKS, COHORTS, META, QUALITY, read_splits, read_store, to_adjusted
+from common import BENCHMARKS, COHORTS, META, QUALITY, read_csv, read_splits, read_store, to_adjusted
 
 MIN_BARS = 200
 ATR_BAND = (2.5, 10.0)
@@ -55,21 +55,21 @@ def load(start: str | None = None, tickers: list[str] | None = None,
     df["atr_pct"] = g[["high", "low", "close"]].apply(_wilder_atr_pct).reset_index(level=0, drop=True)
 
     # Kohorten
-    coh = pd.read_csv(COHORTS, dtype=str, comment="#") if COHORTS.exists() else pd.DataFrame(columns=["ticker", "cohort"])
+    coh = read_csv(COHORTS, dtype=str) if COHORTS.exists() else pd.DataFrame(columns=["ticker", "cohort"])
     df = df.merge(coh[["ticker", "cohort"]].drop_duplicates("ticker"), on="ticker", how="left")
     df["cohort"] = df["cohort"].fillna("neu")
     df.loc[df["ticker"].isin(BENCHMARKS), "cohort"] = "benchmark"
 
     # Datenqualität
     if QUALITY.exists():
-        q = pd.read_csv(QUALITY, dtype={"ticker": str})[["ticker", "status"]]
+        q = read_csv(QUALITY)[["ticker", "status"]]
         df = df.merge(q.rename(columns={"status": "quality"}), on="ticker", how="left")
     else:
         df["quality"] = "ok"
 
     # Metadaten (Stand heute)
     if META.exists():
-        m = pd.read_csv(META, dtype={"ticker": str})
+        m = read_csv(META)
         m["float_pct"] = (100 * m["floatShares"] / m["sharesOutstanding"]).round(1)
         df = df.merge(m[["ticker", "sector", "industry", "float_pct"]], on="ticker", how="left")
 

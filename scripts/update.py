@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 import pandas as pd
 
 from common import (AVGVOL_WIN, BENCHMARKS, COHORTS, DATA, MIN_AVGVOL, MIN_ELIGIBLE_DAYS, MIN_PRICE,
-                    START, load_universe, read_splits, read_store, save_universe, splits_from_download,
+                    START, load_universe, read_csv, read_splits, read_store, save_universe, splits_from_download,
                     to_raw, upsert, write_splits, write_store)
 from download import fetch
 
@@ -24,7 +24,7 @@ MISMATCH_TOL = 0.005  # Abweichung Rohkurs alt/neu, ab der die Historie neu gela
 def cohort_tickers() -> set[str]:
     if not COHORTS.exists():
         return set()
-    c = pd.read_csv(COHORTS, dtype=str, comment="#")
+    c = read_csv(COHORTS, dtype=str)
     return set(c["ticker"].dropna().str.strip())
 
 
@@ -38,7 +38,7 @@ def eligible_days(raw: pd.DataFrame) -> pd.Series:
 
 
 def full() -> dict:
-    from symbols import fetch_candidates
+    from symbols import BAD_NAME, fetch_candidates
 
     today = datetime.now(timezone.utc).date().isoformat()
     cand = fetch_candidates()
@@ -61,6 +61,12 @@ def full() -> dict:
     # Kohorten-Titel immer behalten, damit der Vergleich handverlesen/zufall vollständig ist
     keep = (set(elig[elig >= MIN_ELIGIBLE_DAYS].index) | set(uni["ticker"]) | set(BENCHMARKS)
             | (cohort & set(raw["ticker"])))
+    # Fonds, SPACs usw. auch rückwirkend entfernen, falls der Namensfilter verschärft wurde
+    excluded = {t for t, n in zip(uni["ticker"], uni["name"].fillna(""))
+                if BAD_NAME.search(n)} - cohort - set(BENCHMARKS)
+    keep -= excluded
+    uni = uni[~uni["ticker"].isin(excluded)]
+    old = old[~old["ticker"].isin(excluded)]
     raw = raw[raw["ticker"].isin(keep)]
     splits = splits[splits["ticker"].isin(keep)]
     # Ticker ohne neue Daten (z. B. delistet) behalten ihre alte Historie
@@ -78,6 +84,8 @@ def full() -> dict:
             uni.loc[t, "last_listed"] = today
         elif t in BENCHMARKS:
             uni.loc[t, ["name", "exchange", "last_listed"]] = [t, "ETF", today]
+        elif t in cohort and pd.isna(uni.at[t, "exchange"]):
+            uni.loc[t, "exchange"] = "Kohorte"
         if t in elig.index:
             uni.loc[t, "eligible_days"] = int(elig[t])
     uni.index.name = "ticker"
@@ -86,7 +94,7 @@ def full() -> dict:
 
     res = write_store(store)
     res.update(mode="full", candidates=len(cand), universe=len(uni), new_in_universe=len(added),
-               no_data=len(missing), splits=len(splits))
+               no_data=len(missing), splits=len(splits), excluded=len(excluded))
     return res
 
 

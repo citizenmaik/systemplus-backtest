@@ -36,6 +36,12 @@ COLS = ["date", "ticker", "open", "high", "low", "close", "volume"]
 UNI_COLS = ["ticker", "name", "exchange", "added", "last_listed", "eligible_days"]
 
 
+def read_csv(path, **kw) -> pd.DataFrame:
+    """CSV lesen, ohne dass Ticker wie NA, NAN oder NULL zu fehlenden Werten werden."""
+    kw.setdefault("dtype", {"ticker": str})
+    return pd.read_csv(path, keep_default_na=False, na_values=[""], comment="#", **kw)
+
+
 def empty_store() -> pd.DataFrame:
     df = pd.DataFrame({c: pd.Series(dtype="float64") for c in COLS})
     df["date"] = pd.to_datetime(df["date"])
@@ -106,7 +112,7 @@ def upsert(old: pd.DataFrame, new: pd.DataFrame, replace_tickers: set[str] | Non
 
 def read_splits() -> pd.DataFrame:
     if SPLITS.exists():
-        s = pd.read_csv(SPLITS, dtype={"ticker": str}, parse_dates=["date"])
+        s = read_csv(SPLITS, parse_dates=["date"])
         return s[["ticker", "date", "ratio"]]
     return pd.DataFrame({"ticker": pd.Series(dtype=str), "date": pd.Series(dtype="datetime64[ns]"),
                          "ratio": pd.Series(dtype="float64")})
@@ -167,7 +173,7 @@ def to_adjusted(raw: pd.DataFrame, splits: pd.DataFrame) -> pd.DataFrame:
 
 def load_universe() -> pd.DataFrame:
     if UNIVERSE.exists():
-        uni = pd.read_csv(UNIVERSE, dtype={"ticker": str})
+        uni = read_csv(UNIVERSE)
         for c in UNI_COLS:
             if c not in uni.columns:
                 uni[c] = pd.NA
