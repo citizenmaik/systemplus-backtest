@@ -22,7 +22,9 @@ SPLITS = DATA / "splits.csv"
 START = "2018-01-01"
 
 # Immer mitladen (ETFs fallen sonst aus der Kandidatenliste)
-BENCHMARKS = ["SPY", "QQQ", "QQQE", "RSP", "IWM"]
+BENCHMARKS = ["SPY", "QQQ", "QQQE", "RSP", "IWM",
+              # SPDR-Sektoren für den Sektor-Rang (Führungs-Gate)
+              "XLK", "XLC", "XLY", "XLP", "XLE", "XLF", "XLV", "XLI", "XLB", "XLU"]
 
 # Aufnahme ins Universum: an mindestens MIN_ELIGIBLE_DAYS Tagen seit START
 # Kurs > MIN_PRICE und Ø-Volumen(30) >= MIN_AVGVOL. Ein Titel, der einmal

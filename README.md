@@ -21,7 +21,7 @@ Ist noch kein Datensatz da, macht auch der tägliche Lauf einen Vollaufbau (Kurs
 3. **Wer einmal drin ist, bleibt drin** – auch nach Delisting. Ab dem ersten Lauf
    wächst so ein Datensatz ohne Survivorship-Lücke heran.
 
-Plus Benchmarks (SPY, QQQ, QQQE, RSP, IWM) und alle Titel aus `cohorts.csv`, auch wenn sie die Filter nicht erfüllen.
+Plus Benchmarks (SPY, QQQ, QQQE, RSP, IWM, die 10 SPDR-Sektor-ETFs) und alle Titel aus `cohorts.csv`, auch wenn sie die Filter nicht erfüllen.
 
 ## Dateien
 
