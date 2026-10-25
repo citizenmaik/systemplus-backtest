@@ -8,26 +8,26 @@ die Grundfilter erfüllt haben – automatisch per GitHub Actions und yfinance.
 | Lauf | Zeit (UTC) | Inhalt |
 |---|---|---|
 | Mo–Fr | 22:17 | letzter Monat für alle Universum-Titel, anhängen |
-| Sonntag | 06:43 | Vollaufbau: Kandidaten neu, Historie ab 2018, neue Titel aufnehmen, Sektor/Float |
+| Sonntag | 06:43 | Vollaufbau: anhängen wie Mo–Fr, dazu Kandidatenliste neu, neue Titel mit Historie ab 2018 aufnehmen, Sektor/Float |
 | manuell | – | Actions → update-data → Run workflow → `full` oder `incremental` |
 
-Ist noch kein Datensatz da, macht auch der tägliche Lauf einen Vollaufbau (Dauer ca. 1–2 Std.).
+Ist noch kein Datensatz da, macht auch der tägliche Lauf einen Vollaufbau (Kurse ca. 10 Min., Metadaten ca. 30 Min.).
 
 ## Universum
 
 1. Kandidaten: alle Stammaktien aus den Nasdaq-Trader-Symbolverzeichnissen (Nasdaq + NYSE),
-   ohne ETFs, Optionsscheine, Units, Rechte, Vorzugsaktien.
+   ohne ETFs, Fonds, SPACs, Optionsscheine, Units, Rechte, Vorzugsaktien.
 2. Aufnahme: an mindestens 20 Tagen seit 2018 Rohkurs > 5 USD und Ø-Volumen(30) ≥ 1 Mio.
 3. **Wer einmal drin ist, bleibt drin** – auch nach Delisting. Ab dem ersten Lauf
    wächst so ein Datensatz ohne Survivorship-Lücke heran.
 
-Plus Benchmarks: SPY, QQQ, QQQE, RSP, IWM.
+Plus Benchmarks (SPY, QQQ, QQQE, RSP, IWM) und alle Titel aus `cohorts.csv`, auch wenn sie die Filter nicht erfüllen.
 
 ## Dateien
 
 | Datei | Inhalt |
 |---|---|
-| `data/ohlcv/YYYY-MM.parquet` | **Rohkurse** wie damals gehandelt: date, ticker, open, high, low, close, volume |
+| `data/ohlcv/<Aufnahmedatum>/YYYY-MM.parquet` | **Rohkurse** wie damals gehandelt: date, ticker, open, high, low, close, volume |
 | `data/splits.csv` | Splits (ticker, date, ratio) – Bereinigung passiert erst beim Laden |
 | `universe/universe.csv` | Ticker, Name, Börse, aufgenommen am, zuletzt gelistet, Tage mit erfüllten Grundfiltern |
 | `universe/cohorts.csv` | Herkunft: `handverlesen`, `zufall`, sonst `neu` |
@@ -35,8 +35,12 @@ Plus Benchmarks: SPY, QQQ, QQQE, RSP, IWM.
 | `data/quality.csv` | Prüfung je Ticker, `status` ok / warn / bad |
 | `data/last_run.json` | Ergebnis des letzten Laufs |
 
-Warum Rohkurse: Ein Split ändert dann nur `splits.csv`, nicht die gespeicherte Historie –
-die Git-Historie bleibt klein. Und der Filter „Kurs > 5“ prüft den echten damaligen Kurs.
+Warum Rohkurse: Ein Split ändert dann nur `splits.csv`, nicht die gespeicherte Historie.
+Und der Filter „Kurs > 5“ prüft den echten damaligen Kurs.
+
+Warum Ordner je Aufnahmedatum: Neue Titel landen in einem eigenen kleinen Ordner, statt
+alle bestehenden Monatsdateien zu verändern. Täglich ändert sich nur der laufende Monat –
+die Git-Historie wächst so um wenige MB pro Woche statt um den ganzen Datensatz.
 
 ## Laden im Backtest
 

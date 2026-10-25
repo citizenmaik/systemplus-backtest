@@ -51,12 +51,19 @@ def empty_store() -> pd.DataFrame:
 
 
 def read_store() -> pd.DataFrame:
-    files = sorted(OHLCV.glob("*.parquet"))
+    files = sorted(OHLCV.glob("**/*.parquet"))
     if not files:
         return empty_store()
     df = pd.concat((pd.read_parquet(f) for f in files), ignore_index=True)
     df["date"] = pd.to_datetime(df["date"])
     return df[COLS]
+
+
+def batch_map() -> dict[str, str]:
+    """Ticker -> Speicherordner (= Aufnahmedatum ins Universum). Neue Titel landen so in
+    einem eigenen kleinen Ordner, statt alle bestehenden Monatsdateien zu verändern."""
+    uni = load_universe()
+    return dict(zip(uni["ticker"], uni["added"].fillna("unbekannt").astype(str)))
 
 
 def normalize(df: pd.DataFrame) -> pd.DataFrame:
@@ -74,27 +81,39 @@ def normalize(df: pd.DataFrame) -> pd.DataFrame:
     return df.sort_values(["ticker", "date"], kind="mergesort").reset_index(drop=True)
 
 
-def write_store(df: pd.DataFrame) -> dict:
-    """Schreibt Monatsdateien data/ohlcv/YYYY-MM.parquet. Unveränderte Monate werden
-    nicht angefasst, damit die Git-Historie klein bleibt."""
+def write_store(df: pd.DataFrame, batches: dict[str, str] | None = None) -> dict:
+    """Schreibt data/ohlcv/<Aufnahmedatum>/YYYY-MM.parquet. Unveränderte Dateien werden
+    nicht angefasst, verwaiste gelöscht – so bleibt die Git-Historie klein."""
     OHLCV.mkdir(parents=True, exist_ok=True)
     df = normalize(df)
+    batches = batches if batches is not None else batch_map()
+    batch = df["ticker"].map(batches).fillna("unbekannt")
     months = df["date"].dt.strftime("%Y-%m")
-    written, unchanged = 0, 0
-    for month, part in df.groupby(months, sort=True):
+    written, unchanged, produced = 0, 0, set()
+    for (b, month), part in df.groupby([batch, months], sort=True):
         table = pa.Table.from_pandas(part.reset_index(drop=True), preserve_index=False)
         table = table.replace_schema_metadata(None)  # keine Versions-Metadaten -> stabile Bytes
         buf = io.BytesIO()
         pq.write_table(table, buf, compression="zstd", compression_level=9)
         data = buf.getvalue()
-        path = OHLCV / f"{month}.parquet"
+        path = OHLCV / b / f"{month}.parquet"
+        produced.add(path)
         if path.exists() and path.read_bytes() == data:
             unchanged += 1
             continue
+        path.parent.mkdir(parents=True, exist_ok=True)
         path.write_bytes(data)
         written += 1
-    return {"months_written": written, "months_unchanged": unchanged, "rows": len(df),
-            "tickers": int(df["ticker"].nunique())}
+    removed = 0
+    for f in OHLCV.glob("**/*.parquet"):
+        if f not in produced:
+            f.unlink()
+            removed += 1
+    for d in sorted(OHLCV.glob("*/"), reverse=True):
+        if d.is_dir() and not any(d.iterdir()):
+            d.rmdir()
+    return {"files_written": written, "files_unchanged": unchanged, "files_removed": removed,
+            "rows": len(df), "tickers": int(df["ticker"].nunique())}
 
 
 def upsert(old: pd.DataFrame, new: pd.DataFrame, replace_tickers: set[str] | None = None) -> pd.DataFrame:
