@@ -1,0 +1,516 @@
+ticker,tv_sector,tv_industry
+A,Health technology,Medical specialties
+AAL,Transportation,Airlines
+AAOI,Electronic technology,Semiconductors
+AAON,Producer manufacturing,Industrial machinery
+ABNB,Consumer services,Hotels/Resorts/Cruise lines
+ACHC,Health services,Medical/Nursing services
+ACMR,Producer manufacturing,Industrial machinery
+ACN,Technology services,Information technology services
+ADAM,Finance,Real estate investment trusts
+ADI,Electronic technology,Semiconductors
+ADMA,Health technology,Biotechnology
+AEHR,Electronic technology,Electronic production equipment
+AEM,Non-energy minerals,Precious metals
+AFRM,Finance,Finance/Rental/Leasing
+AGI,Non-energy minerals,Precious metals
+AHRT,Finance,Real estate investment trusts
+AI,Technology services,Packaged software
+AJG,Finance,Insurance brokers/Services
+AKAM,Technology services,Data processing services
+ALAB,Electronic technology,Semiconductors
+ALB,Process industries,Chemicals: specialty
+ALHC,Health services,Managed health care
+ALK,Transportation,Airlines
+ALKS,Health technology,Pharmaceuticals: major
+ALNY,Health technology,Pharmaceuticals: major
+AMAT,Producer manufacturing,Industrial machinery
+AMD,Electronic technology,Semiconductors
+AMKR,Electronic technology,Semiconductors
+AMLX,Health technology,Pharmaceuticals: major
+AMRZ,Non-energy minerals,Construction materials
+AMZN,Retail trade,Internet retail
+ANET,Electronic technology,Computer peripherals
+ANF,Retail trade,Apparel/Footwear retail
+APA,Energy minerals,Integrated oil
+APAM,Finance,Investment managers
+APH,Electronic technology,Electronic components
+APLD,Technology services,Data processing services
+APP,Technology services,Packaged software
+APTV,Producer manufacturing,Electrical products
+AR,Energy minerals,Oil & gas production
+ARCO,Consumer services,Restaurants
+ARHS,Consumer durables,Home furnishings
+ARM,Electronic technology,Semiconductors
+ASML,Electronic technology,Semiconductors
+ASST,Finance,Financial conglomerates
+ASTS,Communications,Specialty telecommunications
+ASX,Electronic technology,Semiconductors
+AVAV,Electronic technology,Aerospace & defense
+AVGO,Electronic technology,Semiconductors
+AVT,Distribution services,Electronics distributors
+AVTR,Health technology,Medical specialties
+AXON,Electronic technology,Aerospace & defense
+AXTI,Electronic technology,Electronic production equipment
+BA,Electronic technology,Aerospace & defense
+BAX,Health technology,Medical specialties
+BB,Technology services,Packaged software
+BBAI,Technology services,Packaged software
+BBWI,Retail trade,Specialty stores
+BBY,Retail trade,Electronics/Appliance stores
+BE,Electronic technology,Electronic production equipment
+BEP,Utilities,Electric utilities
+BEPC,Utilities,Electric utilities
+BFLY,Health technology,Medical specialties
+BGC,Finance,Investment banks/Brokers
+BILL,Technology services,Packaged software
+BKD,Health services,Hospital/Nursing management
+BKH,Utilities,Gas distributors
+BMNR,Finance,Financial conglomerates
+BOX,Technology services,Information technology services
+BRBR,Consumer non-durables,Beverages: non-alcoholic
+BRKR,Health technology,Medical specialties
+BRO,Finance,Insurance brokers/Services
+BSX,Health technology,Medical specialties
+BTE,Energy minerals,Integrated oil
+BTU,Energy minerals,Coal
+BWXT,Electronic technology,Aerospace & defense
+BXDC,Finance,Real estate investment trusts
+CAG,Consumer non-durables,Food: major diversified
+CAKE,Consumer services,Restaurants
+CB,Finance,Property/Casualty insurance
+CBOE,Finance,Investment banks/Brokers
+CBRL,Consumer services,Restaurants
+CBRS,Technology services,Packaged software
+CCC,Technology services,Packaged software
+CDE,Non-energy minerals,Precious metals
+CEG,Utilities,Electric utilities
+CELH,Consumer non-durables,Beverages: non-alcoholic
+CGEM,Health technology,Pharmaceuticals: major
+CHKP,Technology services,Internet software/Services
+CIEN,Electronic technology,Telecommunications equipment
+CIFR,Technology services,Data processing services
+CLMT,Energy minerals,Oil refining/Marketing
+CLS,Electronic technology,Electronic components
+CLSK,Technology services,Data processing services
+CMCSA,Consumer services,Cable/Satellite TV
+CMG,Consumer services,Restaurants
+CNM,Distribution services,Wholesale distributors
+CNX,Energy minerals,Oil & gas production
+COCO,Consumer non-durables,Food: specialty/candy
+COHR,Electronic technology,Semiconductors
+COHU,Electronic technology,Semiconductors
+COIN,Finance,Investment banks/Brokers
+CORT,Health technology,Pharmaceuticals: major
+CORZ,Technology services,Packaged software
+CPNG,Retail trade,Internet retail
+CRCL,Technology services,Packaged software
+CRDO,Technology services,Information technology services
+CRGY,Energy minerals,Integrated oil
+CRH,Non-energy minerals,Construction materials
+CRM,Technology services,Packaged software
+CROX,Consumer non-durables,Apparel/Footwear
+CRWD,Technology services,Packaged software
+CRWV,Technology services,Packaged software
+CSCO,Electronic technology,Telecommunications equipment
+CTRI,Utilities,Gas distributors
+CTSH,Technology services,Information technology services
+CVE,Energy minerals,Integrated oil
+CVNA,Retail trade,Specialty stores
+CWEN,Utilities,Alternative power generation
+CX,Non-energy minerals,Construction materials
+CXM,Technology services,Packaged software
+CXW,Commercial services,Miscellaneous commercial services
+CYTK,Health technology,Pharmaceuticals: major
+DAL,Transportation,Airlines
+DAN,Producer manufacturing,Auto parts: OEM
+DAR,Consumer non-durables,Food: specialty/candy
+DASH,Transportation,Air freight/Couriers
+DAVE,Finance,Major banks
+DBX,Technology services,Packaged software
+DDOG,Technology services,Packaged software
+DE,Producer manufacturing,Trucks/Construction/Farm machinery
+DECK,Consumer non-durables,Apparel/Footwear
+DELL,Electronic technology,Computer processing hardware
+DFH,Consumer durables,Homebuilding
+DHR,Health technology,Medical specialties
+DINO,Energy minerals,Oil refining/Marketing
+DKNG,Consumer services,Movies/Entertainment
+DKS,Retail trade,Specialty stores
+DOCN,Technology services,Packaged software
+DOCS,Technology services,Packaged software
+DT,Technology services,Packaged software
+DUOL,Technology services,Packaged software
+DVN,Energy minerals,Integrated oil
+EAT,Consumer services,Restaurants
+EBAY,Retail trade,Internet retail
+EC,Energy minerals,Integrated oil
+ECHO,Communications,Specialty telecommunications
+ECVT,Process industries,Chemicals: specialty
+EGY,Energy minerals,Oil & gas production
+EIX,Utilities,Electric utilities
+EL,Consumer non-durables,Household/Personal care
+ELF,Consumer non-durables,Household/Personal care
+EMN,Process industries,Chemicals: specialty
+ENOV,Health technology,Medical specialties
+EOSE,Producer manufacturing,Electrical products
+EQNR,Energy minerals,Integrated oil
+EQT,Energy minerals,Integrated oil
+EQX,Non-energy minerals,Precious metals
+ETN,Producer manufacturing,Electrical products
+ETSY,Retail trade,Internet retail
+EVC,Consumer services,Broadcasting
+EXEL,Health technology,Pharmaceuticals: major
+EXK,Non-energy minerals,Precious metals
+EXPE,Consumer services,Other consumer services
+EXTR,Electronic technology,Computer peripherals
+F,Consumer durables,Motor vehicles
+FANG,Energy minerals,Oil & gas production
+FBRT,Finance,Real estate investment trusts
+FCEL,Electronic technology,Electronic equipment/Instruments
+FCX,Non-energy minerals,Other metals/Minerals
+FIGS,Consumer non-durables,Apparel/Footwear
+FIVN,Technology services,Packaged software
+FIX,Industrial services,Engineering & construction
+FLEX,Electronic technology,Electronic production equipment
+FLG,Finance,Major banks
+FLNC,Producer manufacturing,Electrical products
+FLO,Consumer non-durables,Food: specialty/candy
+FORM,Electronic technology,Semiconductors
+FROG,Technology services,Packaged software
+FRPT,Consumer non-durables,Food: specialty/candy
+FRSH,Technology services,Packaged software
+FSLR,Electronic technology,Semiconductors
+FSLY,Technology services,Information technology services
+FTNT,Technology services,Information technology services
+FUTU,Finance,Investment banks/Brokers
+FWONK,Technology services,Internet software/Services
+GE,Electronic technology,Aerospace & defense
+GFI,Non-energy minerals,Precious metals
+GH,Health technology,Medical specialties
+GIL,Consumer non-durables,Apparel/Footwear
+GIS,Consumer non-durables,Food: major diversified
+GLW,Electronic technology,Electronic components
+GM,Consumer durables,Motor vehicles
+GME,Retail trade,Electronics/Appliance stores
+GNRC,Producer manufacturing,Electrical products
+GNW,Finance,Multi-line insurance
+GO,Retail trade,Food retail
+GRAB,Transportation,Air freight/Couriers
+GRAL,Health technology,Medical specialties
+GRMN,Electronic technology,Telecommunications equipment
+GRPN,Retail trade,Internet retail
+GTES,Producer manufacturing,Electrical products
+GTLB,Technology services,Packaged software
+HAPN,Finance,Major banks
+HBM,Non-energy minerals,Other metals/Minerals
+HE,Utilities,Electric utilities
+HESM,Energy minerals,Integrated oil
+HGV,Finance,Real estate development
+HIMS,Health services,Medical/Nursing services
+HIMX,Electronic technology,Semiconductors
+HLF,Consumer non-durables,Food: major diversified
+HMY,Non-energy minerals,Precious metals
+HNGE,Technology services,Packaged software
+HNST,Retail trade,Specialty stores
+HOG,Consumer durables,Motor vehicles
+HONA,Electronic technology,Aerospace & defense
+HOOD,Finance,Investment banks/Brokers
+HP,Industrial services,Contract drilling
+HPE,Electronic technology,Computer processing hardware
+HRB,Consumer services,Other consumer services
+HUBS,Technology services,Packaged software
+HUM,Health services,Managed health care
+HUN,Process industries,Chemicals: major diversified
+HUT,Technology services,Data processing services
+IBKR,Finance,Investment banks/Brokers
+IE,Non-energy minerals,Other metals/Minerals
+INCY,Health technology,Pharmaceuticals: major
+INDV,Health technology,Pharmaceuticals: major
+INFQ,Electronic technology,Computer processing hardware
+INOD,Technology services,Data processing services
+INSM,Health technology,Pharmaceuticals: major
+INTU,Technology services,Packaged software
+IONQ,Electronic technology,Computer processing hardware
+IOT,Technology services,Packaged software
+IREN,Technology services,Data processing services
+ISRG,Health technology,Medical specialties
+JBGS,Finance,Real estate investment trusts
+JBHT,Transportation,Trucking
+JEF,Finance,Investment banks/Brokers
+JHX,Non-energy minerals,Construction materials
+JMIA,Technology services,Internet software/Services
+JMKE,Consumer services,Restaurants
+JNJ,Health technology,Pharmaceuticals: major
+KBR,Technology services,Information technology services
+KC,Technology services,Data processing services
+KGC,Non-energy minerals,Precious metals
+KKR,Finance,Investment managers
+KLAC,Electronic technology,Semiconductors
+KMT,Producer manufacturing,Industrial machinery
+KNTK,Industrial services,Oil & gas pipelines
+KRMN,Electronic technology,Aerospace & defense
+KTOS,Electronic technology,Aerospace & defense
+LASR,Electronic technology,Semiconductors
+LBTYA,Communications,Major telecommunications
+LBTYK,Communications,Major telecommunications
+LDOS,Technology services,Packaged software
+LEN,Consumer durables,Homebuilding
+LEVI,Consumer non-durables,Apparel/Footwear
+LI,Consumer durables,Motor vehicles
+LILAK,Communications,Major telecommunications
+LITE,Producer manufacturing,Electrical products
+LKNCY,Consumer non-durables,Food: specialty/candy
+LKQ,Consumer durables,Automotive aftermarket
+LLY,Health technology,Pharmaceuticals: major
+LMND,Finance,Multi-line insurance
+LNG,Industrial services,Oil & gas pipelines
+LRCX,Producer manufacturing,Industrial machinery
+LSCC,Electronic technology,Semiconductors
+LULU,Consumer non-durables,Apparel/Footwear
+LUMN,Communications,Major telecommunications
+LUNR,Electronic technology,Aerospace & defense
+LW,Consumer non-durables,Food: specialty/candy
+MAN,Commercial services,Personnel services
+MARA,Technology services,Data processing services
+MBC,Consumer durables,Home furnishings
+MCHP,Electronic technology,Semiconductors
+MDB,Technology services,Packaged software
+MELI,Retail trade,Internet retail
+META,Technology services,Internet software/Services
+MFA,Finance,Real estate investment trusts
+MGY,Energy minerals,Oil & gas production
+MHK,Producer manufacturing,Building products
+MIAX,Finance,Investment banks/Brokers
+MKC,Consumer non-durables,Food: specialty/candy
+MMYT,Technology services,Internet software/Services
+MNSO,Retail trade,Specialty stores
+MOD,Producer manufacturing,Industrial machinery
+MOS,Process industries,Chemicals: agricultural
+MP,Non-energy minerals,Other metals/Minerals
+MPC,Energy minerals,Oil refining/Marketing
+MPWR,Electronic technology,Semiconductors
+MRK,Health technology,Pharmaceuticals: major
+MRNA,Health technology,Biotechnology
+MRVL,Electronic technology,Semiconductors
+MS,Finance,Investment managers
+MSFT,Technology services,Packaged software
+MSTR,Finance,Financial conglomerates
+MT,Non-energy minerals,Steel
+MTDR,Energy minerals,Integrated oil
+MTSI,Electronic technology,Semiconductors
+MTZ,Industrial services,Engineering & construction
+MU,Electronic technology,Semiconductors
+MUR,Energy minerals,Oil & gas production
+NBIS,Technology services,Packaged software
+NCLH,Consumer services,Hotels/Resorts/Cruise lines
+NCNO,Technology services,Packaged software
+NEE,Utilities,Electric utilities
+NET,Technology services,Information technology services
+NFLX,Technology services,Internet software/Services
+NKE,Consumer non-durables,Apparel/Footwear
+NLST,Electronic technology,Semiconductors
+NMAX,Consumer services,Broadcasting
+NOG,Energy minerals,Oil & gas production
+NOK,Electronic technology,Telecommunications equipment
+NOMD,Consumer non-durables,Food: specialty/candy
+NOV,Industrial services,Oilfield services/Equipment
+NOW,Technology services,Packaged software
+NRG,Utilities,Electric utilities
+NTAP,Electronic technology,Computer peripherals
+NTNX,Technology services,Data processing services
+NTRA,Health technology,Biotechnology
+NU,Finance,Regional banks
+NUE,Non-energy minerals,Steel
+NVCR,Health technology,Medical specialties
+NVDA,Electronic technology,Semiconductors
+NVST,Health technology,Medical specialties
+NVT,Electronic technology,Electronic components
+NVTS,Electronic technology,Semiconductors
+OC,Process industries,Containers/Packaging
+OKE,Utilities,Gas distributors
+OKLO,Producer manufacturing,Industrial machinery
+OKTA,Technology services,Packaged software
+OLLI,Retail trade,Department stores
+ON,Electronic technology,Semiconductors
+ONDS,Electronic technology,Telecommunications equipment
+ONON,Consumer non-durables,Apparel/Footwear
+ONTO,Electronic technology,Electronic equipment/Instruments
+ORA,Utilities,Electric utilities
+ORCL,Technology services,Packaged software
+OTF,Finance,Finance/Rental/Leasing
+OUST,Electronic technology,Semiconductors
+OVV,Energy minerals,Integrated oil
+OXY,Energy minerals,Integrated oil
+P,Electronic technology,Computer peripherals
+PANW,Technology services,Packaged software
+PATH,Technology services,Packaged software
+PAX,Finance,Investment managers
+PBF,Energy minerals,Oil refining/Marketing
+PBI,Technology services,Packaged software
+PBR,Energy minerals,Integrated oil
+PCG,Utilities,Electric utilities
+PCRX,Health technology,Pharmaceuticals: major
+PD,Technology services,Packaged software
+PENG,Electronic technology,Semiconductors
+PGY,Technology services,Packaged software
+PINS,Technology services,Internet software/Services
+PK,Finance,Real estate investment trusts
+PL,Technology services,Packaged software
+PLTR,Technology services,Packaged software
+PNR,Producer manufacturing,Industrial machinery
+POWL,Producer manufacturing,Electrical products
+PR,Energy minerals,Integrated oil
+PRIM,Industrial services,Engineering & construction
+PRMB,Consumer non-durables,Beverages: non-alcoholic
+PRVA,Finance,Life/Health insurance
+PSX,Energy minerals,Oil refining/Marketing
+PTCT,Health technology,Pharmaceuticals: major
+PTEN,Energy minerals,Oil & gas production
+PTON,Consumer services,Other consumer services
+PUMP,Industrial services,Oilfield services/Equipment
+PURR,Finance,Financial conglomerates
+PZZA,Consumer services,Restaurants
+Q,Electronic technology,Electronic equipment/Instruments
+QBTS,Electronic technology,Computer processing hardware
+QCOM,Electronic technology,Semiconductors
+QDEL,Health technology,Medical specialties
+QFIN,Finance,Finance/Rental/Leasing
+QNT,Electronic technology,Computer processing hardware
+QUBT,Technology services,Information technology services
+RBA,Technology services,Internet software/Services
+RBLX,Technology services,Packaged software
+RBRK,Technology services,Information technology services
+RCL,Consumer services,Hotels/Resorts/Cruise lines
+RDDT,Technology services,Internet software/Services
+RDN,Finance,Specialty insurance
+RDW,Electronic technology,Aerospace & defense
+RGEN,Health technology,Pharmaceuticals: major
+RKLB,Electronic technology,Aerospace & defense
+RMBS,Electronic technology,Semiconductors
+ROKU,Technology services,Packaged software
+RPD,Technology services,Information technology services
+RRC,Energy minerals,Oil & gas production
+RRR,Consumer services,Hotels/Resorts/Cruise lines
+RUN,Electronic technology,Semiconductors
+RXO,Technology services,Packaged software
+S,Technology services,Packaged software
+SBH,Retail trade,Specialty stores
+SBS,Utilities,Water utilities
+SBSW,Non-energy minerals,Precious metals
+SEI,Industrial services,Oilfield services/Equipment
+SEZL,Technology services,Packaged software
+SGML,Non-energy minerals,Other metals/Minerals
+SHEN,Communications,Major telecommunications
+SHOO,Consumer non-durables,Apparel/Footwear
+SHOP,Commercial services,Miscellaneous commercial services
+SKM,Communications,Wireless telecommunications
+SM,Energy minerals,Integrated oil
+SMCI,Electronic technology,Computer processing hardware
+SMPL,Consumer non-durables,Food: major diversified
+SMR,Producer manufacturing,Electrical products
+SMTC,Electronic technology,Semiconductors
+SN,Consumer durables,Electronics/Appliances
+SNDK,Electronic technology,Computer peripherals
+SNOW,Technology services,Packaged software
+SNPS,Technology services,Packaged software
+SOFI,Finance,Finance/Rental/Leasing
+SON,Process industries,Containers/Packaging
+SONO,Consumer durables,Electronics/Appliances
+SPOT,Technology services,Internet software/Services
+SSRM,Non-energy minerals,Precious metals
+ST,Electronic technology,Electronic equipment/Instruments
+STNG,Transportation,Marine shipping
+STRL,Industrial services,Engineering & construction
+STX,Electronic technology,Computer peripherals
+STZ,Consumer non-durables,Beverages: alcoholic
+SVC,Finance,Real estate investment trusts
+SWKS,Electronic technology,Semiconductors
+SYNA,Electronic technology,Semiconductors
+T,Communications,Wireless telecommunications
+TAC,Utilities,Electric utilities
+TAL,Commercial services,Miscellaneous commercial services
+TALO,Energy minerals,Oil & gas production
+TAP,Consumer non-durables,Beverages: alcoholic
+TDS,Communications,Wireless telecommunications
+TEAM,Technology services,Packaged software
+TEM,Technology services,Packaged software
+TENB,Technology services,Packaged software
+TER,Electronic technology,Electronic production equipment
+TEVA,Health technology,Pharmaceuticals: generic
+TEX,Producer manufacturing,Trucks/Construction/Farm machinery
+TGTX,Health technology,Pharmaceuticals: major
+THRM,Producer manufacturing,Auto parts: OEM
+TKO,Consumer services,Movies/Entertainment
+TLK,Communications,Wireless telecommunications
+TLN,Utilities,Alternative power generation
+TMO,Health technology,Medical specialties
+TOST,Technology services,Packaged software
+TRGP,Utilities,Gas distributors
+TRU,Commercial services,Financial publishing/Services
+TSEM,Electronic technology,Semiconductors
+TSLA,Consumer durables,Motor vehicles
+TSM,Electronic technology,Semiconductors
+TT,Producer manufacturing,Industrial machinery
+TTD,Technology services,Packaged software
+TTMI,Electronic technology,Electronic components
+TTWO,Technology services,Packaged software
+TU,Communications,Wireless telecommunications
+TVTX,Health technology,Pharmaceuticals: major
+TW,Finance,Investment banks/Brokers
+TWLO,Technology services,Packaged software
+TXN,Electronic technology,Semiconductors
+U,Technology services,Packaged software
+UAL,Transportation,Airlines
+UBER,Transportation,Other transportation
+UGP,Retail trade,Specialty stores
+ULTA,Retail trade,Specialty stores
+UNH,Health services,Managed health care
+UNIT,Communications,Major telecommunications
+USAR,Producer manufacturing,Metal fabrication
+UTI,Commercial services,Miscellaneous commercial services
+VALE,Non-energy minerals,Steel
+VECO,Electronic technology,Electronic production equipment
+VEEV,Technology services,Packaged software
+VERX,Technology services,Packaged software
+VET,Energy minerals,Oil & gas production
+VFC,Consumer non-durables,Apparel/Footwear
+VIAV,Technology services,Information technology services
+VIST,Energy minerals,Oil & gas production
+VIV,Communications,Wireless telecommunications
+VKTX,Health technology,Pharmaceuticals: major
+VLO,Energy minerals,Oil refining/Marketing
+VMC,Non-energy minerals,Construction materials
+VRDN,Health technology,Pharmaceuticals: major
+VRSK,Technology services,Data processing services
+VRT,Electronic technology,Electronic production equipment
+VRTX,Health technology,Pharmaceuticals: major
+VSAT,Electronic technology,Telecommunications equipment
+VSNT,Consumer services,Cable/Satellite TV
+VST,Utilities,Electric utilities
+VSTS,Consumer non-durables,Apparel/Footwear
+VSXY,Retail trade,Apparel/Footwear retail
+VTRS,Health technology,Pharmaceuticals: major
+VYX,Technology services,Packaged software
+VZ,Communications,Wireless telecommunications
+WDAY,Technology services,Information technology services
+WDC,Electronic technology,Computer peripherals
+WHR,Consumer durables,Electronics/Appliances
+WING,Consumer services,Restaurants
+WK,Technology services,Information technology services
+WOLF,Electronic technology,Semiconductors
+WPM,Non-energy minerals,Precious metals
+WRBY,Retail trade,Specialty stores
+WSC,Finance,Finance/Rental/Leasing
+WSE,Commercial services,Miscellaneous commercial services
+WTTR,Energy minerals,Oil & gas production
+WULF,Technology services,Data processing services
+XXI,Finance,Regional banks
+XYZ,Commercial services,Miscellaneous commercial services
+YEXT,Technology services,Data processing services
+YPF,Energy minerals,Integrated oil
+ZETA,Technology services,Packaged software
+ZG,Technology services,Internet software/Services
+ZM,Technology services,Packaged software
+ZS,Technology services,Packaged software
+ZTS,Health technology,Pharmaceuticals: major

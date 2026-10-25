@@ -23,7 +23,8 @@ def main(max_n: int, pause: float) -> None:
     meta = meta.set_index("ticker")
     cutoff = (date.today() - timedelta(days=MAX_AGE_DAYS)).isoformat()
     todo = [t for t in uni["ticker"] if t not in BENCHMARKS
-            and (t not in meta.index or str(meta.at[t, "fetched"]) < cutoff)][:max_n]
+            and (t not in meta.index or str(meta.at[t, "fetched"]) < cutoff
+                 or pd.isna(meta.at[t, "quoteType"]))][:max_n]  # leere Antworten erneut holen
     print(f"Metadaten für {len(todo)} Ticker")
     fails = 0
     for i, t in enumerate(todo, 1):

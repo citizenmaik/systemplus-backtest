@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
+backtest/out/trades.csv
+backtest/out/equity_*.csv

@@ -1,0 +1,8 @@
+Szenario,Trades,Gewinnquote,ØR,Band90,MedianR,PF,SL,Gewinn,Verlust
+518 Titel · alle Gates (wie alter Backtest),1265,0.304,0.42,+0.22 bis +0.62,-0.62,1.76,4.9,15.7,-3.8
+518 Titel · alle Gates + Screener am Entry-Tag,806,0.299,0.37,+0.13 bis +0.63,-0.62,1.66,5.3,16.2,-4.1
+Zufall (291) · alle Gates,594,0.311,0.38,+0.14 bis +0.62,-0.61,1.7,4.6,13.9,-3.5
+Handverlesen (231) · alle Gates,671,0.297,0.46,+0.19 bis +0.73,-0.62,1.81,5.2,17.3,-4.0
+Übriger Markt · alle Gates + Screener,848,0.25,-0.11,-0.24 bis +0.03,-0.66,0.82,5.4,10.4,-4.2
+Gesamtmarkt · alle Gates + Screener,1654,0.274,0.13,-0.02 bis +0.27,-0.64,1.22,5.3,13.5,-4.1
+Gesamtmarkt · ohne Führung + Screener,5590,0.294,0.05,-0.04 bis +0.14,-0.61,1.08,4.6,9.6,-3.6
