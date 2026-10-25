@@ -13,12 +13,19 @@ from datetime import datetime, timezone
 
 import pandas as pd
 
-from common import (AVGVOL_WIN, BENCHMARKS, DATA, MIN_AVGVOL, MIN_ELIGIBLE_DAYS, MIN_PRICE,
+from common import (AVGVOL_WIN, BENCHMARKS, COHORTS, DATA, MIN_AVGVOL, MIN_ELIGIBLE_DAYS, MIN_PRICE,
                     START, load_universe, read_splits, read_store, save_universe, splits_from_download,
                     to_raw, upsert, write_splits, write_store)
 from download import fetch
 
 MISMATCH_TOL = 0.005  # Abweichung Rohkurs alt/neu, ab der die Historie neu geladen wird
+
+
+def cohort_tickers() -> set[str]:
+    if not COHORTS.exists():
+        return set()
+    c = pd.read_csv(COHORTS, dtype=str, comment="#")
+    return set(c["ticker"].dropna().str.strip())
 
 
 def eligible_days(raw: pd.DataFrame) -> pd.Series:
@@ -40,7 +47,8 @@ def full() -> dict:
     old_splits = read_splits()
     print(f"Kandidaten: {len(cand)}, Universum bisher: {len(uni)}")
 
-    tickers = sorted(set(cand["ticker"]) | set(uni["ticker"]) | set(BENCHMARKS))
+    cohort = cohort_tickers()
+    tickers = sorted(set(cand["ticker"]) | set(uni["ticker"]) | set(BENCHMARKS) | cohort)
     adj, missing = fetch(tickers, start=START)
     got = set(adj["ticker"])
 
@@ -50,7 +58,9 @@ def full() -> dict:
     raw = to_raw(adj, splits)
 
     elig = eligible_days(raw)
-    keep = set(elig[elig >= MIN_ELIGIBLE_DAYS].index) | set(uni["ticker"]) | set(BENCHMARKS)
+    # Kohorten-Titel immer behalten, damit der Vergleich handverlesen/zufall vollständig ist
+    keep = (set(elig[elig >= MIN_ELIGIBLE_DAYS].index) | set(uni["ticker"]) | set(BENCHMARKS)
+            | (cohort & set(raw["ticker"])))
     raw = raw[raw["ticker"].isin(keep)]
     splits = splits[splits["ticker"].isin(keep)]
     # Ticker ohne neue Daten (z. B. delistet) behalten ihre alte Historie
