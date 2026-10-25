@@ -1,13 +1,14 @@
 {
   "months_written": 106,
   "months_unchanged": 0,
-  "rows": 5398737,
-  "tickers": 2866,
+  "rows": 5359836,
+  "tickers": 2848,
   "mode": "full",
-  "candidates": 5617,
-  "universe": 2866,
-  "new_in_universe": 2866,
-  "no_data": 2,
-  "splits": 1255,
-  "run_utc": "2026-10-25T14:44:26+00:00"
+  "candidates": 5133,
+  "universe": 2848,
+  "new_in_universe": 13,
+  "no_data": 3,
+  "splits": 1251,
+  "excluded": 31,
+  "run_utc": "2026-10-25T15:39:33+00:00"
 }
