@@ -1,12 +1,17 @@
 {
-  "files_written": 0,
-  "files_unchanged": 106,
+  "files_written": 106,
+  "files_unchanged": 0,
   "files_removed": 0,
-  "rows": 5359836,
-  "tickers": 2848,
-  "mode": "incremental",
+  "rows": 5381870,
+  "tickers": 2858,
+  "mode": "full",
+  "candidates": 5133,
+  "universe": 2858,
+  "new_in_universe": 10,
+  "excluded": 0,
   "refetched": [],
   "no_data": 0,
+  "splits": 1256,
   "last_date": "2026-10-23",
-  "run_utc": "2026-10-25T16:07:59+00:00"
+  "run_utc": "2026-10-25T16:32:12+00:00"
 }
