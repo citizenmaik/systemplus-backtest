@@ -16,7 +16,7 @@ import requests
 
 from common import BENCHMARKS, DATA, load_universe
 
-UA = {"User-Agent": "systemplus-backtest research (github.com/citizenmaik/systemplus-backtest)",
+UA = {"User-Agent": "systemplus-backtest research citizenmaik@gmail.com",
       "Accept-Encoding": "gzip, deflate"}
 OUT = DATA / "fundamentals.parquet"
 
