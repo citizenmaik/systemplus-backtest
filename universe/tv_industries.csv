@@ -1,0 +1,4352 @@
+ticker,tv_sector,tv_industry
+A,Health technology,Medical specialties
+AA,Non-energy minerals,Aluminum
+AAC,Finance,Financial conglomerates
+AACI,Finance,Financial conglomerates
+AACO,Finance,Financial conglomerates
+AACP,Finance,Financial conglomerates
+AADX,Electronic technology,Aerospace & defense
+AAL,Transportation,Airlines
+AALNS,Finance,Real estate development
+AAMI,Finance,Investment managers
+AAOI,Electronic technology,Semiconductors
+AAON,Producer manufacturing,Industrial machinery
+AAP,Retail trade,Specialty stores
+AAPL,Electronic technology,Telecommunications equipment
+AASP,Finance,Financial conglomerates
+AAT,Finance,Real estate investment trusts
+AATC,Technology services,Packaged software
+AB,Finance,Investment managers
+ABBB,Finance,Savings banks
+ABBV,Health technology,Pharmaceuticals: major
+ABCB,Finance,Regional banks
+ABCL,Health technology,Biotechnology
+ABG,Retail trade,Specialty stores
+ABM,Commercial services,Miscellaneous commercial services
+ABNB,Consumer services,Hotels/Resorts/Cruise lines
+ABSI,Health technology,Biotechnology
+ABT,Health technology,Medical specialties
+ABTC,Technology services,Data processing services
+ABX,Finance,Investment managers
+ACAA,Finance,Financial conglomerates
+ACAD,Health technology,Pharmaceuticals: major
+ACCV,Producer manufacturing,Electrical products
+ACEL,Consumer services,Movies/Entertainment
+ACFN,Electronic technology,Electronic equipment/Instruments
+ACGC,Finance,Financial conglomerates
+ACGL,Finance,Multi-line insurance
+ACGP,Finance,Investment managers
+ACHC,Health services,Medical/Nursing services
+ACHV,Health technology,Pharmaceuticals: major
+ACI,Retail trade,Food retail
+ACIC,Finance,Property/Casualty insurance
+ACIW,Technology services,Packaged software
+ACLS,Producer manufacturing,Industrial machinery
+ACM,Industrial services,Engineering & construction
+ACMR,Producer manufacturing,Industrial machinery
+ACN,Technology services,Information technology services
+ACNB,Finance,Regional banks
+ACNT,Process industries,Chemicals: specialty
+ACOG,Finance,Financial conglomerates
+ACR,Finance,Real estate investment trusts
+ACRG,Non-energy minerals,Precious metals
+ACT,Finance,Multi-line insurance
+ACU,Distribution services,Wholesale distributors
+ACV,Miscellaneous,Investment trusts
+AD,Communications,Wireless telecommunications
+ADAC,Finance,Financial conglomerates
+ADAM,Finance,Real estate investment trusts
+ADBE,Technology services,Packaged software
+ADC,Finance,Real estate investment trusts
+ADEA,Technology services,Packaged software
+ADI,Electronic technology,Semiconductors
+ADIG,Distribution services,Wholesale distributors
+ADKT,Finance,Regional banks
+ADM,Process industries,Agricultural commodities/Milling
+ADMA,Health technology,Biotechnology
+ADNT,Producer manufacturing,Auto parts: OEM
+ADP,Technology services,Packaged software
+ADPT,Health technology,Biotechnology
+ADRX,Health technology,Biotechnology
+ADSE,Producer manufacturing,Electrical products
+ADSK,Technology services,Packaged software
+ADT,Commercial services,Miscellaneous commercial services
+ADTN,Electronic technology,Computer peripherals
+ADUS,Health services,Medical/Nursing services
+ADV,Commercial services,Advertising/Marketing services
+ADX,Miscellaneous,Investment trusts
+AEAQ,Finance,Financial conglomerates
+AEBI,Consumer durables,Motor vehicles
+AEE,Utilities,Electric utilities
+AEF,Miscellaneous,Investment trusts
+AEHL,Producer manufacturing,Building products
+AEHR,Electronic technology,Electronic production equipment
+AEIS,Electronic technology,Electronic production equipment
+AEMD,Health technology,Medical specialties
+AEO,Retail trade,Apparel/Footwear retail
+AEP,Utilities,Electric utilities
+AER,Finance,Finance/Rental/Leasing
+AERT,Technology services,Information technology services
+AES,Utilities,Electric utilities
+AESI,Industrial services,Oilfield services/Equipment
+AESP,Finance,Financial conglomerates
+AEVA,Electronic technology,Semiconductors
+AEXA,Finance,Financial conglomerates
+AEYE,Technology services,Internet software/Services
+AFB,Miscellaneous,Investment trusts
+AFFS,Finance,Property/Casualty insurance
+AFG,Finance,Property/Casualty insurance
+AFJK,Finance,Financial conglomerates
+AFL,Finance,Multi-line insurance
+AFRI,Process industries,Agricultural commodities/Milling
+AFRM,Finance,Finance/Rental/Leasing
+AFYA,Consumer services,Other consumer services
+AGBK,Finance,Regional banks
+AGCC,Distribution services,Food distributors
+AGCO,Producer manufacturing,Trucks/Construction/Farm machinery
+AGD,Miscellaneous,Investment trusts
+AGEN,Health technology,Biotechnology
+AGIO,Health technology,Pharmaceuticals: major
+AGL,Health services,Medical/Nursing services
+AGM,Finance,Finance/Rental/Leasing
+AGMB,Health technology,Biotechnology
+AGNC,Finance,Real estate investment trusts
+AGO,Finance,Specialty insurance
+AGPU,Health technology,Medical specialties
+AGRO,Process industries,Agricultural commodities/Milling
+AGX,Industrial services,Engineering & construction
+AGYS,Technology services,Packaged software
+AHCO,Health services,Medical/Nursing services
+AHL/PE,Finance,Multi-line insurance
+AHLAS,Retail trade,Specialty stores
+AHR,Finance,Real estate investment trusts
+AHRT,Finance,Real estate investment trusts
+AI,Technology services,Packaged software
+AIFU,Finance,Multi-line insurance
+AIG,Finance,Multi-line insurance
+AII,Finance,Property/Casualty insurance
+AIIA,Finance,Financial conglomerates
+AIIR,Producer manufacturing,Industrial conglomerates
+AILLP,Utilities,Gas distributors
+AIN,Process industries,Textiles
+AIO,Miscellaneous,Investment trusts
+AIOK,Transportation,Marine shipping
+AIOS,Producer manufacturing,Industrial machinery
+AIP,Electronic technology,Semiconductors
+AIR,Electronic technology,Aerospace & defense
+AIRT,Transportation,Air freight/Couriers
+AIRTP,Transportation,Air freight/Couriers
+AIT,Distribution services,Wholesale distributors
+AIZ,Finance,Property/Casualty insurance
+AJG,Finance,Insurance brokers/Services
+AKA,Retail trade,Internet retail
+AKAM,Technology services,Data processing services
+AKR,Finance,Real estate investment trusts
+AKTS,Health technology,Pharmaceuticals: major
+AKTX,Health technology,Biotechnology
+ALAB,Electronic technology,Semiconductors
+ALB,Process industries,Chemicals: specialty
+ALBY,Finance,Regional banks
+ALCO,Process industries,Agricultural commodities/Milling
+ALCYF,Finance,Financial conglomerates
+ALDF,Finance,Financial conglomerates
+ALF,Finance,Financial conglomerates
+ALG,Producer manufacturing,Trucks/Construction/Farm machinery
+ALGM,Electronic technology,Semiconductors
+ALGN,Health technology,Medical specialties
+ALGT,Transportation,Airlines
+ALH,Producer manufacturing,Industrial machinery
+ALHC,Health services,Managed health care
+ALIS,Finance,Financial conglomerates
+ALIT,Technology services,Information technology services
+ALK,Transportation,Airlines
+ALKS,Health technology,Pharmaceuticals: major
+ALKT,Technology services,Packaged software
+ALL,Finance,Multi-line insurance
+ALLDF,Finance,Finance/Rental/Leasing
+ALLE,Consumer durables,Tools & hardware
+ALLT,Electronic technology,Computer communications
+ALLY,Finance,Finance/Rental/Leasing
+ALM,Non-energy minerals,Other metals/Minerals
+ALMR,Health technology,Biotechnology
+ALMS,Health technology,Pharmaceuticals: major
+ALMU,Commercial services,Miscellaneous commercial services
+ALNT,Producer manufacturing,Electrical products
+ALNY,Health technology,Pharmaceuticals: major
+ALOV,Finance,Financial conglomerates
+ALOY,Non-energy minerals,Other metals/Minerals
+ALPIB,Finance,Savings banks
+ALPX,Finance,Financial conglomerates
+ALRM,Technology services,Packaged software
+ALRS,Finance,Major banks
+ALSN,Producer manufacturing,Auto parts: OEM
+ALTG,Distribution services,Wholesale distributors
+ALUB,Finance,Financial conglomerates
+ALV,Producer manufacturing,Auto parts: OEM
+ALX,Finance,Real estate investment trusts
+AM,Industrial services,Oil & gas pipelines
+AMAC,Finance,Financial conglomerates
+AMAL,Finance,Regional banks
+AMAN,Finance,Financial conglomerates
+AMAT,Producer manufacturing,Industrial machinery
+AMBA,Electronic technology,Semiconductors
+AMBK,Finance,Regional banks
+AMBQ,Electronic technology,Semiconductors
+AMBZ,Finance,Regional banks
+AMCR,Process industries,Containers/Packaging
+AMCX,Consumer services,Cable/Satellite TV
+AMD,Electronic technology,Semiconductors
+AME,Producer manufacturing,Electrical products
+AMEN,Miscellaneous,Investment trusts
+AMFC,Finance,Regional banks
+AMG,Finance,Investment managers
+AMGN,Health technology,Biotechnology
+AMH,Finance,Real estate investment trusts
+AMKR,Electronic technology,Semiconductors
+AMLX,Health technology,Pharmaceuticals: major
+AMN,Commercial services,Personnel services
+AMNF,Consumer non-durables,Food: specialty/candy
+AMP,Finance,Investment managers
+AMPH,Health technology,Pharmaceuticals: major
+AMPL,Technology services,Packaged software
+AMPX,Producer manufacturing,Electrical products
+AMR,Energy minerals,Coal
+AMRC,Industrial services,Engineering & construction
+AMRN,Health technology,Pharmaceuticals: major
+AMRO,Producer manufacturing,Metal fabrication
+AMRX,Health technology,Pharmaceuticals: major
+AMRZ,Non-energy minerals,Construction materials
+AMSC,Producer manufacturing,Electrical products
+AMSF,Finance,Property/Casualty insurance
+AMT,Finance,Real estate investment trusts
+AMTB,Finance,Major banks
+AMTD,Finance,Investment banks/Brokers
+AMTM,Electronic technology,Aerospace & defense
+AMWL,Technology services,Packaged software
+AMZN,Retail trade,Internet retail
+AN,Retail trade,Specialty stores
+ANAB,Health technology,Biotechnology
+ANDC,Finance,Regional banks
+ANDE,Commercial services,Miscellaneous commercial services
+ANDG,Consumer services,Other consumer services
+ANET,Electronic technology,Computer peripherals
+ANF,Retail trade,Apparel/Footwear retail
+ANG/PD,Finance,Multi-line insurance
+ANGI,Technology services,Internet software/Services
+ANGO,Health technology,Medical specialties
+ANIK,Health technology,Medical specialties
+ANIP,Health technology,Biotechnology
+ANL,Commercial services,Miscellaneous commercial services
+ANRO,Health technology,Biotechnology
+AOD,Miscellaneous,Investment trusts
+AOMR,Finance,Real estate investment trusts
+AON,Finance,Insurance brokers/Services
+AONC,Health services,Medical/Nursing services
+AORT,Health technology,Medical specialties
+AOS,Producer manufacturing,Building products
+AOSL,Electronic technology,Semiconductors
+AOUT,Consumer durables,Recreational products
+AP,Non-energy minerals,Steel
+APA,Energy minerals,Integrated oil
+APAC,Finance,Financial conglomerates
+APAM,Finance,Investment managers
+APC,Distribution services,Wholesale distributors
+APD,Process industries,Chemicals: specialty
+APEI,Consumer services,Other consumer services
+APG,Industrial services,Engineering & construction
+APH,Electronic technology,Electronic components
+APLD,Technology services,Data processing services
+APLE,Finance,Real estate investment trusts
+APLM,Finance,Financial conglomerates
+APLO,Finance,Regional banks
+APMC,Finance,Financial conglomerates
+APMD,Health technology,Biotechnology
+APO,Finance,Investment managers
+APOG,Producer manufacturing,Building products
+APP,Technology services,Packaged software
+APPF,Technology services,Information technology services
+APPN,Technology services,Packaged software
+APPS,Technology services,Packaged software
+APT,Process industries,Industrial specialties
+APTL,Utilities,Alternative power generation
+APTV,Producer manufacturing,Electrical products
+APUR,Finance,Financial conglomerates
+APXT,Finance,Financial conglomerates
+AR,Energy minerals,Oil & gas production
+ARBV,Finance,Regional banks
+ARCB,Transportation,Trucking
+ARCC,Finance,Financial conglomerates
+ARCI,Finance,Financial conglomerates
+ARCL,Finance,Financial conglomerates
+ARCO,Consumer services,Restaurants
+ARCT,Health technology,Pharmaceuticals: major
+ARDC,Miscellaneous,Investment trusts
+ARDT,Health services,Hospital/Nursing management
+ARE,Finance,Real estate investment trusts
+ARES,Finance,Investment managers
+ARHS,Consumer durables,Home furnishings
+ARI,Finance,Real estate investment trusts
+ARL,Finance,Real estate development
+ARLO,Electronic technology,Telecommunications equipment
+ARLP,Energy minerals,Coal
+ARM,Electronic technology,Semiconductors
+ARMK,Consumer services,Restaurants
+AROC,Industrial services,Oilfield services/Equipment
+AROW,Finance,Major banks
+ARQQ,Technology services,Packaged software
+ARQT,Health technology,Pharmaceuticals: major
+ARR,Finance,Real estate investment trusts
+ARTC,Finance,Financial conglomerates
+ARTNA,Utilities,Water utilities
+ARTV,Health technology,Pharmaceuticals: other
+ARVN,Health technology,Biotechnology
+ARW,Distribution services,Electronics distributors
+ARWR,Health technology,Biotechnology
+ARX,Finance,Property/Casualty insurance
+ARXS,Electronic technology,Aerospace & defense
+AS,Consumer durables,Recreational products
+ASA,Miscellaneous,Investment trusts
+ASAN,Technology services,Packaged software
+ASB,Finance,Major banks
+ASBH,Finance,Major banks
+ASBP,Health technology,Pharmaceuticals: other
+ASC,Transportation,Marine shipping
+ASGI,Miscellaneous,Investment trusts
+ASH,Consumer non-durables,Food: specialty/candy
+ASIC,Finance,Property/Casualty insurance
+ASIX,Process industries,Chemicals: specialty
+ASMB,Health technology,Pharmaceuticals: major
+ASND,Health technology,Pharmaceuticals: major
+ASO,Retail trade,Specialty stores
+ASPC,Finance,Financial conglomerates
+ASPN,Process industries,Industrial specialties
+ASPS,Finance,Finance/Rental/Leasing
+ASST,Finance,Financial conglomerates
+ASTC,Electronic technology,Aerospace & defense
+ASTE,Producer manufacturing,Trucks/Construction/Farm machinery
+ASTH,Health services,Services to the health industry
+ASTS,Communications,Specialty telecommunications
+ASUR,Technology services,Packaged software
+ASYS,Producer manufacturing,Industrial machinery
+ATAT,Consumer services,Hotels/Resorts/Cruise lines
+ATEC,Health technology,Medical specialties
+ATEN,Technology services,Information technology services
+ATEX,Communications,Wireless telecommunications
+ATGL,Technology services,Packaged software
+ATH/PA,Finance,Life/Health insurance
+ATHM,Technology services,Internet software/Services
+ATI,Non-energy minerals,Other metals/Minerals
+ATLC,Finance,Finance/Rental/Leasing
+ATLO,Finance,Regional banks
+ATLQ,Finance,Financial conglomerates
+ATMU,Producer manufacturing,Auto parts: OEM
+ATNI,Communications,Major telecommunications
+ATO,Utilities,Gas distributors
+ATR,Process industries,Containers/Packaging
+ATRA,Health technology,Pharmaceuticals: major
+ATRC,Health technology,Medical specialties
+ATRO,Electronic technology,Aerospace & defense
+ATTO,Health technology,Biotechnology
+AU,Non-energy minerals,Precious metals
+AUB,Finance,Regional banks
+AUBN,Finance,Regional banks
+AUC,Finance,Investment managers
+AUDC,Electronic technology,Telecommunications equipment
+AUGO,Non-energy minerals,Other metals/Minerals
+AUNA,Health services,Medical/Nursing services
+AUPH,Health technology,Biotechnology
+AURA,Health technology,Biotechnology
+AVA,Utilities,Electric utilities
+AVAH,Health services,Medical/Nursing services
+AVAV,Electronic technology,Aerospace & defense
+AVBC,Finance,Savings banks
+AVBH,Finance,Regional banks
+AVBP,Health technology,Pharmaceuticals: other
+AVEX,Electronic technology,Aerospace & defense
+AVGO,Electronic technology,Semiconductors
+AVK,Miscellaneous,Investment trusts
+AVLN,Health technology,Pharmaceuticals: major
+AVNT,Process industries,Chemicals: major diversified
+AVNW,Electronic technology,Telecommunications equipment
+AVO,Process industries,Agricultural commodities/Milling
+AVPT,Technology services,Packaged software
+AVR,Health technology,Medical specialties
+AVT,Distribution services,Electronics distributors
+AVTR,Health technology,Medical specialties
+AVTX,Health technology,Pharmaceuticals: major
+AVY,Process industries,Pulp & paper
+AWF,Miscellaneous,Investment trusts
+AWI,Producer manufacturing,Miscellaneous manufacturing
+AWK,Utilities,Water utilities
+AWP,Miscellaneous,Investment trusts
+AWR,Utilities,Water utilities
+AX,Finance,Major banks
+AXGN,Health technology,Medical specialties
+AXIL,Consumer non-durables,Household/Personal care
+AXIN,Finance,Financial conglomerates
+AXON,Electronic technology,Aerospace & defense
+AXP,Finance,Finance/Rental/Leasing
+AXR,Finance,Real estate development
+AXS,Finance,Multi-line insurance
+AXSM,Health technology,Biotechnology
+AXTA,Process industries,Industrial specialties
+AXTI,Electronic technology,Electronic production equipment
+AYI,Producer manufacturing,Electrical products
+AZ,Finance,Financial conglomerates
+AZLCZ,Distribution services,Wholesale distributors
+AZO,Retail trade,Specialty stores
+AZTA,Health services,Medical/Nursing services
+AZZ,Process industries,Industrial specialties
+BA,Electronic technology,Aerospace & defense
+BABA,Retail trade,Internet retail
+BAC,Finance,Major banks
+BACC,Finance,Financial conglomerates
+BAFN,Finance,Regional banks
+BAH,Commercial services,Miscellaneous commercial services
+BALL,Process industries,Containers/Packaging
+BALY,Consumer services,Casinos/Gaming
+BAM,Finance,Investment managers
+BANC,Finance,Regional banks
+BAND,Technology services,Packaged software
+BANF,Finance,Regional banks
+BANFP,Finance,Finance/Rental/Leasing
+BANR,Finance,Regional banks
+BANX,Miscellaneous,Investment trusts
+BAOB,Finance,Regional banks
+BAP,Finance,Major banks
+BARK,Process industries,Agricultural commodities/Milling
+BATRA,Consumer services,Movies/Entertainment
+BAX,Health technology,Medical specialties
+BBBK,Finance,Regional banks
+BBCP,Industrial services,Engineering & construction
+BBDC,Miscellaneous,Investment trusts
+BBGI,Consumer services,Broadcasting
+BBIO,Health technology,Biotechnology
+BBN,Miscellaneous,Investment trusts
+BBNX,Health technology,Medical specialties
+BBSI,Commercial services,Personnel services
+BBT,Finance,Regional banks
+BBW,Retail trade,Specialty stores
+BBWI,Retail trade,Specialty stores
+BBY,Retail trade,Electronics/Appliance stores
+BC,Producer manufacturing,Trucks/Construction/Farm machinery
+BCAL,Finance,Regional banks
+BCAT,Miscellaneous,Investment trusts
+BCAX,Health technology,Pharmaceuticals: major
+BCBP,Finance,Regional banks
+BCC,Distribution services,Wholesale distributors
+BCCB,Finance,Regional banks
+BCCQ,Finance,Financial conglomerates
+BCIC,Miscellaneous,Investment trusts
+BCML,Finance,Regional banks
+BCO,Commercial services,Miscellaneous commercial services
+BCOW,Finance,Savings banks
+BCPC,Consumer non-durables,Food: specialty/candy
+BCRD,Commercial services,Miscellaneous commercial services
+BCRX,Health technology,Biotechnology
+BCSF,Finance,Financial conglomerates
+BCSO,Finance,Regional banks
+BCSS,Finance,Financial conglomerates
+BCTF,Finance,Savings banks
+BCV,Miscellaneous,Investment trusts
+BCX,Miscellaneous,Investment trusts
+BDC,Producer manufacturing,Electrical products
+BDCI,Finance,Financial conglomerates
+BDCO,Energy minerals,Oil refining/Marketing
+BDJ,Miscellaneous,Investment trusts
+BDL,Consumer services,Restaurants
+BDSX,Health services,Medical/Nursing services
+BDX,Health technology,Medical specialties
+BE,Electronic technology,Electronic production equipment
+BEAG,Finance,Financial conglomerates
+BEAM,Health technology,Biotechnology
+BEBE,Finance,Financial conglomerates
+BELFA,Electronic technology,Electronic components
+BEN,Finance,Investment managers
+BEOB,Finance,Regional banks
+BEPC,Utilities,Electric utilities
+BEPH,Finance,Real estate development
+BETA,Electronic technology,Aerospace & defense
+BETR,Finance,Finance/Rental/Leasing
+BF-A,Consumer non-durables,Beverages: alcoholic
+BFAM,Commercial services,Miscellaneous commercial services
+BFC,Finance,Regional banks
+BFCC,Finance,Regional banks
+BFH,Finance,Finance/Rental/Leasing
+BFLY,Health technology,Medical specialties
+BFNH,Health technology,Pharmaceuticals: other
+BFS,Finance,Real estate investment trusts
+BFST,Finance,Regional banks
+BG,Process industries,Agricultural commodities/Milling
+BGB,Miscellaneous,Investment trusts
+BGC,Finance,Investment banks/Brokers
+BGH,Miscellaneous,Investment trusts
+BGM,Health technology,Pharmaceuticals: major
+BGR,Miscellaneous,Investment trusts
+BGT,Miscellaneous,Investment trusts
+BGX,Miscellaneous,Investment trusts
+BGY,Miscellaneous,Investment trusts
+BH,Consumer services,Restaurants
+BHAV,Finance,Financial conglomerates
+BHB,Finance,Regional banks
+BHDB,Finance,Regional banks
+BHE,Electronic technology,Electronic production equipment
+BHF,Finance,Life/Health insurance
+BHIC,Retail trade,Drugstore chains
+BHK,Miscellaneous,Investment trusts
+BHM,Finance,Real estate investment trusts
+BHRB,Finance,Regional banks
+BHV,Miscellaneous,Investment trusts
+BHVN,Health technology,Pharmaceuticals: major
+BID,Finance,Financial conglomerates
+BIDU,Technology services,Internet software/Services
+BIIB,Health technology,Pharmaceuticals: major
+BIII,Finance,Financial conglomerates
+BILI,Technology services,Packaged software
+BILL,Technology services,Packaged software
+BIO,Health technology,Medical specialties
+BIOA,Health technology,Biotechnology
+BIOQ,Finance,Insurance brokers/Services
+BIP,Utilities,Alternative power generation
+BIRK,Consumer non-durables,Apparel/Footwear
+BIT,Miscellaneous,Investment trusts
+BIXI,Finance,Financial conglomerates
+BJ,Retail trade,Specialty stores
+BJRI,Consumer services,Restaurants
+BKD,Health services,Hospital/Nursing management
+BKE,Retail trade,Apparel/Footwear retail
+BKFL,Finance,Regional banks
+BKH,Utilities,Gas distributors
+BKHA,Finance,Financial conglomerates
+BKKT,Commercial services,Miscellaneous commercial services
+BKNG,Consumer services,Other consumer services
+BKOR,Finance,Regional banks
+BKR,Industrial services,Contract drilling
+BKSC,Finance,Regional banks
+BKSY,Technology services,Packaged software
+BKT,Miscellaneous,Investment trusts
+BKTI,Electronic technology,Telecommunications equipment
+BKU,Finance,Major banks
+BKUT,Finance,Regional banks
+BKV,Energy minerals,Integrated oil
+BL,Technology services,Packaged software
+BLBD,Consumer durables,Motor vehicles
+BLCO,Health technology,Medical specialties
+BLDR,Retail trade,Home improvement chains
+BLHK,Finance,Regional banks
+BLK,Finance,Investment managers
+BLKB,Technology services,Packaged software
+BLLN,Health services,Medical/Nursing services
+BLMN,Consumer services,Restaurants
+BLRK,Finance,Financial conglomerates
+BLSH,Technology services,Packaged software
+BLSM,Health technology,Pharmaceuticals: major
+BLTE,Health technology,Pharmaceuticals: major
+BLUW,Finance,Financial conglomerates
+BLW,Miscellaneous,Investment trusts
+BLX,Finance,Major banks
+BLZE,Electronic technology,Computer peripherals
+BLZR,Finance,Financial conglomerates
+BMBL,Technology services,Packaged software
+BMBN,Finance,Regional banks
+BME,Miscellaneous,Investment trusts
+BMEZ,Miscellaneous,Investment trusts
+BMI,Producer manufacturing,Industrial machinery
+BMN,Miscellaneous,Investment trusts
+BMNR,Finance,Financial conglomerates
+BMRC,Finance,Regional banks
+BMRN,Health technology,Biotechnology
+BMXMF,Health technology,Medical specialties
+BMXXY,Health technology,Medical specialties
+BMY,Health technology,Pharmaceuticals: major
+BN,Finance,Investment managers
+BNC,Producer manufacturing,Trucks/Construction/Farm machinery
+BNCC,Finance,Major banks
+BNED,Retail trade,Specialty stores
+BNL,Finance,Real estate investment trusts
+BNR,Health services,Medical/Nursing services
+BNTC,Health technology,Biotechnology
+BNTX,Health technology,Biotechnology
+BNY,Finance,Investment banks/Brokers
+BOBS,Retail trade,Specialty stores
+BOC,Commercial services,Advertising/Marketing services
+BOE,Miscellaneous,Investment trusts
+BOH,Finance,Regional banks
+BOKF,Finance,Major banks
+BOLT,Health technology,Pharmaceuticals: major
+BOOM,Industrial services,Oilfield services/Equipment
+BOOT,Retail trade,Apparel/Footwear retail
+BORT,Finance,Regional banks
+BOT,Miscellaneous,Investment trusts
+BOTJ,Finance,Regional banks
+BOW,Finance,Multi-line insurance
+BOX,Technology services,Information technology services
+BPAC,Finance,Financial conglomerates
+BPOP,Finance,Regional banks
+BPOPM,Finance,Finance/Rental/Leasing
+BPRE,Miscellaneous,Investment trusts
+BPRN,Finance,Regional banks
+BPYPM,Finance,Real estate development
+BPYPN,Finance,Real estate development
+BR,Technology services,Information technology services
+BRBR,Consumer non-durables,Beverages: non-alcoholic
+BRC,Producer manufacturing,Miscellaneous manufacturing
+BRCB,Consumer services,Restaurants
+BRCC,Consumer non-durables,Food: specialty/candy
+BREZ,Finance,Financial conglomerates
+BRID,Consumer non-durables,Food: specialty/candy
+BRK-A,Finance,Property/Casualty insurance
+BRKH,Finance,Financial conglomerates
+BRKR,Health technology,Medical specialties
+BRO,Finance,Insurance brokers/Services
+BROS,Consumer services,Restaurants
+BRRE,Finance,Real estate development
+BRRKU,Finance,Financial conglomerates
+BRSL,Consumer services,Casinos/Gaming
+BRT,Finance,Real estate investment trusts
+BRTM,Finance,Financial conglomerates
+BRUN,Technology services,Packaged software
+BRVE,Health technology,Pharmaceuticals: major
+BRW,Miscellaneous,Investment trusts
+BRX,Finance,Real estate investment trusts
+BRZE,Technology services,Internet software/Services
+BSAA,Finance,Financial conglomerates
+BSAI,Non-energy minerals,Precious metals
+BSBK,Finance,Savings banks
+BSCL,Energy minerals,Oil & gas production
+BSET,Consumer durables,Home furnishings
+BSFO,Finance,Regional banks
+BSHI,Distribution services,Wholesale distributors
+BSL,Miscellaneous,Investment trusts
+BSM,Miscellaneous,Investment trusts
+BSP,Technology services,Packaged software
+BSPA,Finance,Major banks
+BSRR,Finance,Regional banks
+BST,Miscellaneous,Investment trusts
+BSTZ,Miscellaneous,Investment trusts
+BSVN,Finance,Regional banks
+BSX,Health technology,Medical specialties
+BSY,Technology services,Information technology services
+BTDR,Technology services,Data processing services
+BTGO,Technology services,Data processing services
+BTO,Miscellaneous,Investment trusts
+BTSG,Health services,Medical/Nursing services
+BTT,Miscellaneous,Investment trusts
+BTU,Energy minerals,Coal
+BTX,Miscellaneous,Investment trusts
+BTZ,Miscellaneous,Investment trusts
+BUDA,Consumer non-durables,Food: specialty/candy
+BUI,Miscellaneous,Investment trusts
+BULL,Finance,Investment banks/Brokers
+BURCA,Producer manufacturing,Industrial machinery
+BURL,Retail trade,Apparel/Footwear retail
+BUSE,Finance,Regional banks
+BUUU,Commercial services,Miscellaneous commercial services
+BV,Commercial services,Miscellaneous commercial services
+BVC,Finance,Investment managers
+BVERS,Finance,Real estate development
+BVFL,Finance,Savings banks
+BVS,Health technology,Medical specialties
+BWA,Producer manufacturing,Trucks/Construction/Farm machinery
+BWB,Finance,Regional banks
+BWEL,Process industries,Textiles
+BWFG,Finance,Regional banks
+BWG,Miscellaneous,Investment trusts
+BWIN,Finance,Insurance brokers/Services
+BWIV,Finance,Financial conglomerates
+BWMN,Industrial services,Engineering & construction
+BWMX,Retail trade,Specialty stores
+BWXT,Electronic technology,Aerospace & defense
+BX,Finance,Investment managers
+BXC,Distribution services,Wholesale distributors
+BXDC,Finance,Real estate investment trusts
+BXMT,Finance,Real estate investment trusts
+BXP,Finance,Real estate investment trusts
+BXSL,Miscellaneous,Investment trusts
+BXSY,Miscellaneous,Investment trusts
+BY,Finance,Regional banks
+BYD,Consumer services,Casinos/Gaming
+BYFC,Finance,Savings banks
+BYLB,Finance,Major banks
+BYND,Consumer non-durables,Food: major diversified
+BZ,Commercial services,Commercial printing/Forms
+C,Finance,Major banks
+C/PN,Finance,Finance/Rental/Leasing
+CAAP,Transportation,Other transportation
+CAC,Finance,Major banks
+CACC,Finance,Finance/Rental/Leasing
+CACI,Technology services,Information technology services
+CADL,Health technology,Biotechnology
+CAES,Finance,Financial conglomerates
+CAF,Miscellaneous,Investment trusts
+CAG,Consumer non-durables,Food: major diversified
+CAH,Distribution services,Medical distributors
+CAI,Health technology,Biotechnology
+CAII,Finance,Financial conglomerates
+CAKE,Consumer services,Restaurants
+CAL,Retail trade,Apparel/Footwear retail
+CALM,Process industries,Agricultural commodities/Milling
+CALX,Electronic technology,Telecommunications equipment
+CALY,Consumer durables,Recreational products
+CAMT,Electronic technology,Electronic components
+CAPL,Distribution services,Wholesale distributors
+CAPN,Finance,Financial conglomerates
+CAPR,Health technology,Pharmaceuticals: major
+CAQ,Finance,Financial conglomerates
+CAR,Finance,Finance/Rental/Leasing
+CARE,Finance,Regional banks
+CARG,Technology services,Internet software/Services
+CARL,Technology services,Information technology services
+CARR,Producer manufacturing,Industrial machinery
+CARS,Technology services,Internet software/Services
+CART,Transportation,Air freight/Couriers
+CASH,Finance,Major banks
+CASS,Commercial services,Miscellaneous commercial services
+CASY,Retail trade,Specialty stores
+CAT,Producer manufacturing,Trucks/Construction/Farm machinery
+CATL,Finance,Financial conglomerates
+CATY,Finance,Regional banks
+CAVA,Consumer services,Restaurants
+CB,Finance,Property/Casualty insurance
+CBAF,Finance,Regional banks
+CBAN,Finance,Regional banks
+CBBI,Finance,Regional banks
+CBC,Finance,Regional banks
+CBFV,Finance,Regional banks
+CBIO,Health technology,Biotechnology
+CBK,Finance,Regional banks
+CBKM,Finance,Major banks
+CBL,Finance,Real estate investment trusts
+CBLL,Health technology,Medical specialties
+CBNA,Finance,Major banks
+CBNK,Finance,Major banks
+CBOE,Finance,Investment banks/Brokers
+CBRE,Finance,Real estate development
+CBRL,Consumer services,Restaurants
+CBRS,Technology services,Packaged software
+CBSH,Finance,Regional banks
+CBT,Process industries,Chemicals: specialty
+CBTN,Finance,Regional banks
+CBU,Finance,Major banks
+CBWA,Finance,Regional banks
+CBZ,Commercial services,Miscellaneous commercial services
+CC,Process industries,Chemicals: specialty
+CCAP,Finance,Finance/Rental/Leasing
+CCAQ,Finance,Financial conglomerates
+CCB,Finance,Regional banks
+CCBC,Finance,Major banks
+CCBG,Finance,Regional banks
+CCC,Technology services,Packaged software
+CCD,Miscellaneous,Investment trusts
+CCEC,Transportation,Marine shipping
+CCEP,Consumer non-durables,Beverages: non-alcoholic
+CCFN,Finance,Regional banks
+CCG,Technology services,Packaged software
+CCI,Finance,Real estate investment trusts
+CCII,Finance,Financial conglomerates
+CCK,Process industries,Containers/Packaging
+CCL,Consumer services,Hotels/Resorts/Cruise lines
+CCNB,Finance,Major banks
+CCNE,Finance,Regional banks
+CCOI,Communications,Major telecommunications
+CCS,Consumer durables,Homebuilding
+CCSI,Technology services,Packaged software
+CCUR,Finance,Finance/Rental/Leasing
+CCXI,Finance,Financial conglomerates
+CD,Technology services,Information technology services
+CDAB,Finance,Regional banks
+CDE,Non-energy minerals,Precious metals
+CDNA,Health technology,Medical specialties
+CDNL,Industrial services,Engineering & construction
+CDNS,Technology services,Packaged software
+CDP,Finance,Real estate investment trusts
+CDR/PB,Finance,Real estate investment trusts
+CDRE,Electronic technology,Aerospace & defense
+CDRO,Consumer services,Movies/Entertainment
+CDW,Technology services,Information technology services
+CE,Process industries,Chemicals: specialty
+CECO,Producer manufacturing,Industrial machinery
+CEE,Miscellaneous,Investment trusts
+CEF,Miscellaneous,Investment trusts
+CEFC,Finance,Regional banks
+CEG,Utilities,Electric utilities
+CELC,Health technology,Medical specialties
+CELH,Consumer non-durables,Beverages: non-alcoholic
+CENT,Consumer non-durables,Consumer sundries
+CENX,Non-energy minerals,Aluminum
+CEPF,Finance,Financial conglomerates
+CEPO,Finance,Financial conglomerates
+CEPS,Finance,Financial conglomerates
+CEPV,Finance,Financial conglomerates
+CERT,Technology services,Packaged software
+CET,Miscellaneous,Investment trusts
+CEV,Miscellaneous,Investment trusts
+CEVA,Electronic technology,Semiconductors
+CF,Process industries,Chemicals: agricultural
+CFBK,Finance,Savings banks
+CFFI,Finance,Regional banks
+CFFN,Finance,Savings banks
+CFG,Finance,Major banks
+CFNB,Finance,Major banks
+CFR,Finance,Regional banks
+CFTR/PA,Miscellaneous,Investment trusts
+CG,Finance,Investment managers
+CGBD,Miscellaneous,Investment trusts
+CGCF,Finance,Financial conglomerates
+CGEM,Health technology,Pharmaceuticals: major
+CGNT,Technology services,Packaged software
+CGNX,Electronic technology,Electronic equipment/Instruments
+CGO,Miscellaneous,Investment trusts
+CGON,Health technology,Biotechnology
+CHA,Consumer non-durables,Food: major diversified
+CHAR,Finance,Financial conglomerates
+CHBH,Finance,Regional banks
+CHCI,Consumer durables,Homebuilding
+CHCO,Finance,Major banks
+CHCT,Finance,Real estate investment trusts
+CHD,Consumer non-durables,Household/Personal care
+CHDN,Consumer services,Movies/Entertainment
+CHE,Health services,Hospital/Nursing management
+CHEC,Finance,Financial conglomerates
+CHEF,Distribution services,Food distributors
+CHH,Consumer services,Hotels/Resorts/Cruise lines
+CHI,Miscellaneous,Investment trusts
+CHKP,Technology services,Internet software/Services
+CHMG,Finance,Regional banks
+CHPG,Finance,Financial conglomerates
+CHPT,Producer manufacturing,Electrical products
+CHRD,Energy minerals,Integrated oil
+CHRN,Technology services,Data processing services
+CHRW,Transportation,Air freight/Couriers
+CHSCP,Distribution services,Wholesale distributors
+CHTR,Consumer services,Cable/Satellite TV
+CHW,Miscellaneous,Investment trusts
+CHWY,Retail trade,Internet retail
+CHY,Miscellaneous,Investment trusts
+CHYM,Technology services,Packaged software
+CI,Health services,Managed health care
+CIBH,Finance,Regional banks
+CIBY,Communications,Specialty telecommunications
+CIEN,Electronic technology,Telecommunications equipment
+CIFR,Technology services,Data processing services
+CII,Miscellaneous,Investment trusts
+CIM,Finance,Real estate investment trusts
+CINF,Finance,Multi-line insurance
+CION,Miscellaneous,Investment trusts
+CITZ,Finance,Regional banks
+CIVB,Finance,Regional banks
+CIWV,Finance,Regional banks
+CIX,Producer manufacturing,Metal fabrication
+CIZN,Finance,Regional banks
+CKX,Miscellaneous,Investment trusts
+CL,Consumer non-durables,Household/Personal care
+CLB,Energy minerals,Oil & gas production
+CLBK,Finance,Savings banks
+CLBR,Finance,Financial conglomerates
+CLBT,Technology services,Packaged software
+CLDT,Finance,Real estate investment trusts
+CLDX,Health technology,Biotechnology
+CLF,Non-energy minerals,Steel
+CLFD,Electronic technology,Telecommunications equipment
+CLH,Industrial services,Environmental services
+CLM,Miscellaneous,Investment trusts
+CLMB,Distribution services,Electronics distributors
+CLMT,Energy minerals,Oil refining/Marketing
+CLPT,Health technology,Medical specialties
+CLSK,Technology services,Data processing services
+CLST,Finance,Savings banks
+CLW,Process industries,Pulp & paper
+CLX,Consumer non-durables,Household/Personal care
+CLYM,Health technology,Biotechnology
+CMC,Non-energy minerals,Steel
+CMCAF,Finance,Financial conglomerates
+CMCL,Non-energy minerals,Precious metals
+CMCO,Producer manufacturing,Trucks/Construction/Farm machinery
+CMCSA,Consumer services,Cable/Satellite TV
+CMDB,Transportation,Marine shipping
+CME,Finance,Investment banks/Brokers
+CMG,Consumer services,Restaurants
+CMHF,Finance,Regional banks
+CMI,Producer manufacturing,Auto parts: OEM
+CMND,Non-energy minerals,Other metals/Minerals
+CMP,Process industries,Chemicals: specialty
+CMPD,Health services,Medical/Nursing services
+CMPR,Commercial services,Commercial printing/Forms
+CMPS,Health technology,Biotechnology
+CMRB,Finance,Regional banks
+CMRE,Transportation,Marine shipping
+CMS,Utilities,Electric utilities
+CMS/PB,Utilities,Alternative power generation
+CMSG,Technology services,Data processing services
+CMT,Producer manufacturing,Industrial machinery
+CMTV,Finance,Major banks
+CNA,Finance,Multi-line insurance
+CNAF,Finance,Regional banks
+CNBW,Finance,Major banks
+CNBZ,Finance,Major banks
+CNC,Health services,Managed health care
+CNH,Producer manufacturing,Trucks/Construction/Farm machinery
+CNK,Consumer services,Movies/Entertainment
+CNLPL,Utilities,Electric utilities
+CNM,Distribution services,Wholesale distributors
+CNMD,Health technology,Medical specialties
+CNNE,Consumer services,Restaurants
+CNO,Finance,Multi-line insurance
+CNOB,Finance,Regional banks
+CNP,Utilities,Electric utilities
+CNR,Energy minerals,Coal
+CNRD,Industrial services,Oilfield services/Equipment
+CNS,Finance,Investment managers
+CNUN,Finance,Major banks
+CNX,Energy minerals,Oil & gas production
+CNXC,Technology services,Information technology services
+CNXN,Technology services,Information technology services
+CNXX,Finance,Financial conglomerates
+COAG,Health technology,Biotechnology
+COCH,Health technology,Medical specialties
+COCO,Consumer non-durables,Food: specialty/candy
+CODA,Electronic technology,Aerospace & defense
+CODI,Finance,Investment managers
+COE,Technology services,Internet software/Services
+COF,Finance,Major banks
+COFS,Finance,Regional banks
+COGT,Health technology,Biotechnology
+COHN,Finance,Investment banks/Brokers
+COHR,Electronic technology,Semiconductors
+COHU,Electronic technology,Semiconductors
+COIN,Finance,Investment banks/Brokers
+COKE,Consumer non-durables,Beverages: non-alcoholic
+COLB,Finance,Regional banks
+COLD,Finance,Real estate investment trusts
+COLL,Health technology,Pharmaceuticals: major
+COLM,Consumer non-durables,Apparel/Footwear
+COMP,Finance,Real estate development
+CON,Health services,Medical/Nursing services
+COO,Health technology,Medical specialties
+COOK,Consumer durables,Electronics/Appliances
+COP,Energy minerals,Oil & gas production
+COPL,Finance,Financial conglomerates
+COR,Distribution services,Medical distributors
+CORT,Health technology,Pharmaceuticals: major
+CORZ,Technology services,Packaged software
+COSO,Finance,Regional banks
+COST,Retail trade,Specialty stores
+COUR,Commercial services,Miscellaneous commercial services
+CPA,Transportation,Airlines
+CPAY,Commercial services,Miscellaneous commercial services
+CPB,Consumer non-durables,Food: specialty/candy
+CPBI,Finance,Investment banks/Brokers
+CPF,Finance,Regional banks
+CPHC,Consumer services,Movies/Entertainment
+CPIX,Health technology,Pharmaceuticals: major
+CPK,Utilities,Gas distributors
+CPKF,Finance,Regional banks
+CPNG,Retail trade,Internet retail
+CPPTL,Miscellaneous,Investment trusts
+CPRI,Retail trade,Apparel/Footwear retail
+CPRT,Retail trade,Specialty stores
+CPS,Producer manufacturing,Auto parts: OEM
+CPSS,Finance,Finance/Rental/Leasing
+CPT,Finance,Real estate investment trusts
+CPZ,Miscellaneous,Investment trusts
+CQP,Utilities,Gas distributors
+CR,Electronic technology,Aerospace & defense
+CRAC,Finance,Financial conglomerates
+CRAI,Commercial services,Miscellaneous commercial services
+CRAN,Finance,Financial conglomerates
+CRAQ,Finance,Financial conglomerates
+CRBG,Finance,Life/Health insurance
+CRC,Energy minerals,Integrated oil
+CRCL,Technology services,Packaged software
+CRCT,Distribution services,Wholesale distributors
+CRD-A,Finance,Insurance brokers/Services
+CRDO,Technology services,Information technology services
+CRF,Miscellaneous,Investment trusts
+CRGY,Energy minerals,Integrated oil
+CRH,Non-energy minerals,Construction materials
+CRI,Retail trade,Apparel/Footwear retail
+CRK,Energy minerals,Oil & gas production
+CRL,Commercial services,Miscellaneous commercial services
+CRM,Technology services,Packaged software
+CRMD,Health technology,Biotechnology
+CRML,Non-energy minerals,Precious metals
+CRNC,Technology services,Packaged software
+CROX,Consumer non-durables,Apparel/Footwear
+CRS,Non-energy minerals,Other metals/Minerals
+CRSP,Health technology,Biotechnology
+CRSR,Technology services,Packaged software
+CRT,Miscellaneous,Investment trusts
+CRTO,Commercial services,Advertising/Marketing services
+CRUS,Electronic technology,Semiconductors
+CRVL,Finance,Insurance brokers/Services
+CRVS,Health technology,Pharmaceuticals: major
+CRWD,Technology services,Packaged software
+CRWV,Technology services,Packaged software
+CRZY,Finance,Savings banks
+CSBA,Finance,Savings banks
+CSBB,Finance,Regional banks
+CSCO,Electronic technology,Telecommunications equipment
+CSGP,Technology services,Internet software/Services
+CSHX,Finance,Regional banks
+CSIQ,Electronic technology,Semiconductors
+CSL,Producer manufacturing,Building products
+CSPI,Technology services,Information technology services
+CSQ,Miscellaneous,Investment trusts
+CSQR,Technology services,Data processing services
+CSR,Finance,Real estate investment trusts
+CSTL,Health technology,Medical specialties
+CSTM,Non-energy minerals,Aluminum
+CSV,Consumer services,Other consumer services
+CSW,Process industries,Industrial specialties
+CSWC,Miscellaneous,Investment trusts
+CSX,Transportation,Railroads
+CTA/PA,Process industries,Chemicals: agricultural
+CTAA,Finance,Financial conglomerates
+CTAS,Commercial services,Miscellaneous commercial services
+CTBI,Finance,Regional banks
+CTEV,Technology services,Data processing services
+CTGO,Non-energy minerals,Precious metals
+CTKB,Health technology,Medical specialties
+CTNM,Health technology,Biotechnology
+CTO,Finance,Real estate investment trusts
+CTOS,Finance,Finance/Rental/Leasing
+CTRE,Finance,Real estate investment trusts
+CTRI,Utilities,Gas distributors
+CTRN,Retail trade,Apparel/Footwear retail
+CTS,Electronic technology,Electronic production equipment
+CTSH,Technology services,Information technology services
+CTSO,Health technology,Medical specialties
+CTUY,Finance,Savings banks
+CTVA,Process industries,Agricultural commodities/Milling
+CTY,Health technology,Biotechnology
+CTYP,Finance,Regional banks
+CUAI,Non-energy minerals,Other metals/Minerals
+CUB,Finance,Financial conglomerates
+CUBE,Finance,Real estate investment trusts
+CUBI,Finance,Regional banks
+CUE,Health technology,Biotechnology
+CULL,Finance,Savings banks
+CURB,Finance,Real estate investment trusts
+CUSI,Consumer non-durables,Food: specialty/candy
+CUZ,Finance,Real estate investment trusts
+CV,Health technology,Medical specialties
+CVBF,Finance,Regional banks
+CVCO,Consumer durables,Homebuilding
+CVEO,Consumer services,Hotels/Resorts/Cruise lines
+CVI,Energy minerals,Oil refining/Marketing
+CVLG,Transportation,Trucking
+CVLT,Technology services,Packaged software
+CVNA,Retail trade,Specialty stores
+CVR,Producer manufacturing,Metal fabrication
+CVS,Retail trade,Drugstore chains
+CVSA,Consumer services,Other consumer services
+CVX,Energy minerals,Integrated oil
+CW,Electronic technology,Aerospace & defense
+CWBC,Finance,Regional banks
+CWCO,Utilities,Water utilities
+CWEN,Utilities,Alternative power generation
+CWID,Finance,Property/Casualty insurance
+CWK,Finance,Real estate development
+CWPS,Miscellaneous,Investment trusts
+CWST,Industrial services,Environmental services
+CWT,Utilities,Water utilities
+CXDO,Technology services,Internet software/Services
+CXII,Finance,Financial conglomerates
+CXM,Technology services,Packaged software
+CXT,Producer manufacturing,Industrial machinery
+CXW,Commercial services,Miscellaneous commercial services
+CYD,Producer manufacturing,Auto parts: OEM
+CYFL,Finance,Regional banks
+CYRX,Transportation,Air freight/Couriers
+CYSM,Finance,Regional banks
+CYTK,Health technology,Pharmaceuticals: major
+CZBC,Finance,Regional banks
+CZBS,Finance,Regional banks
+CZBT,Finance,Regional banks
+CZFS,Finance,Regional banks
+CZNC,Finance,Regional banks
+CZR,Consumer services,Casinos/Gaming
+CZWI,Finance,Regional banks
+D,Utilities,Electric utilities
+DAAQ,Finance,Financial conglomerates
+DAC,Transportation,Marine shipping
+DAKT,Producer manufacturing,Miscellaneous manufacturing
+DAL,Transportation,Airlines
+DAN,Producer manufacturing,Auto parts: OEM
+DAO,Technology services,Internet software/Services
+DAR,Consumer non-durables,Food: specialty/candy
+DASH,Transportation,Air freight/Couriers
+DAVE,Finance,Major banks
+DAVI,Health technology,Medical specialties
+DBCA,Finance,Financial conglomerates
+DBD,Electronic technology,Electronic equipment/Instruments
+DBI,Retail trade,Apparel/Footwear retail
+DBIN,Finance,Regional banks
+DBL,Miscellaneous,Investment trusts
+DBRHP,Finance,Investment managers
+DBRIP,Finance,Investment managers
+DBRJP,Finance,Investment managers
+DBX,Technology services,Packaged software
+DC,Non-energy minerals,Precious metals
+DCI,Producer manufacturing,Auto parts: OEM
+DCO,Electronic technology,Aerospace & defense
+DCOM,Finance,Regional banks
+DCTH,Health technology,Medical specialties
+DD,Process industries,Chemicals: major diversified
+DDI,Technology services,Packaged software
+DDOG,Technology services,Packaged software
+DDS,Retail trade,Department stores
+DDT,Finance,Finance/Rental/Leasing
+DE,Producer manufacturing,Trucks/Construction/Farm machinery
+DEA,Finance,Real estate investment trusts
+DEC,Energy minerals,Oil & gas production
+DECK,Consumer non-durables,Apparel/Footwear
+DEFG,Miscellaneous,Investment trusts
+DEI,Finance,Real estate investment trusts
+DELL,Electronic technology,Computer processing hardware
+DENI,Finance,Regional banks
+DERM,Health technology,Pharmaceuticals: major
+DFH,Consumer durables,Homebuilding
+DFIN,Technology services,Packaged software
+DFP,Miscellaneous,Investment trusts
+DFTX,Health technology,Pharmaceuticals: major
+DG,Retail trade,Discount stores
+DGAC,Finance,Finance/Rental/Leasing
+DGICA,Finance,Multi-line insurance
+DGII,Electronic technology,Telecommunications equipment
+DGX,Health services,Services to the health industry
+DHC,Finance,Real estate investment trusts
+DHI,Consumer durables,Homebuilding
+DHR,Health technology,Medical specialties
+DHT,Transportation,Marine shipping
+DHY,Miscellaneous,Investment trusts
+DIMC,Finance,Regional banks
+DIN,Consumer services,Restaurants
+DINO,Energy minerals,Oil refining/Marketing
+DIOD,Electronic technology,Semiconductors
+DIS,Consumer services,Movies/Entertainment
+DIT,Distribution services,Wholesale distributors
+DJCO,Consumer services,Publishing: newspapers
+DJT,Commercial services,Advertising/Marketing services
+DK,Energy minerals,Oil refining/Marketing
+DKL,Industrial services,Oil & gas pipelines
+DKNG,Consumer services,Movies/Entertainment
+DKS,Retail trade,Specialty stores
+DLB,Technology services,Packaged software
+DLO,Technology services,Packaged software
+DLR,Finance,Real estate investment trusts
+DLTR,Retail trade,Discount stores
+DLX,Commercial services,Commercial printing/Forms
+DLY,Miscellaneous,Investment trusts
+DMA,Miscellaneous,Investment trusts
+DMAA,Finance,Financial conglomerates
+DMAC,Health technology,Biotechnology
+DMB,Miscellaneous,Investment trusts
+DMC,Process industries,Agricultural commodities/Milling
+DMII,Finance,Financial conglomerates
+DMLP,Miscellaneous,Investment trusts
+DMO,Miscellaneous,Investment trusts
+DMRA,Health technology,Pharmaceuticals: major
+DMRC,Technology services,Packaged software
+DNA,Health services,Medical/Nursing services
+DNLI,Health technology,Biotechnology
+DNMX,Finance,Financial conglomerates
+DNOW,Distribution services,Wholesale distributors
+DNP,Miscellaneous,Investment trusts
+DNTH,Health technology,Biotechnology
+DOC,Finance,Real estate investment trusts
+DOCN,Technology services,Packaged software
+DOCS,Technology services,Packaged software
+DOCU,Technology services,Packaged software
+DOLE,Distribution services,Food distributors
+DORM,Consumer durables,Automotive aftermarket
+DOV,Producer manufacturing,Industrial machinery
+DOW,Process industries,Chemicals: specialty
+DOX,Technology services,Information technology services
+DPC,Producer manufacturing,Electrical products
+DPG,Miscellaneous,Investment trusts
+DPZ,Consumer services,Restaurants
+DQ,Process industries,Chemicals: specialty
+DRDB,Finance,Financial conglomerates
+DRH,Finance,Real estate investment trusts
+DRI,Consumer services,Restaurants
+DRS,Electronic technology,Aerospace & defense
+DRVN,Consumer services,Other consumer services
+DSAC,Finance,Financial conglomerates
+DSGN,Health technology,Biotechnology
+DSGR,Distribution services,Wholesale distributors
+DSL,Miscellaneous,Investment trusts
+DSM,Miscellaneous,Investment trusts
+DSP,Technology services,Packaged software
+DSU,Miscellaneous,Investment trusts
+DT,Technology services,Packaged software
+DTE,Utilities,Electric utilities
+DTF,Miscellaneous,Investment trusts
+DTIL,Health technology,Biotechnology
+DTM,Industrial services,Oil & gas pipelines
+DTRL,Consumer services,Publishing: newspapers
+DTSQ,Finance,Financial conglomerates
+DUK,Utilities,Electric utilities
+DUOL,Technology services,Packaged software
+DUOT,Technology services,Packaged software
+DV,Technology services,Packaged software
+DVA,Health services,Medical/Nursing services
+DVLN,Finance,Finance/Rental/Leasing
+DVN,Energy minerals,Integrated oil
+DWNX,Finance,Major banks
+DX,Finance,Real estate investment trusts
+DXC,Technology services,Data processing services
+DXCM,Health technology,Medical specialties
+DXPE,Distribution services,Wholesale distributors
+DXR,Miscellaneous,Investment trusts
+DXYZ,Miscellaneous,Investment trusts
+DY,Industrial services,Engineering & construction
+DYN,Health technology,Biotechnology
+DYNC,Finance,Financial conglomerates
+DYOR,Finance,Financial conglomerates
+EACO,Distribution services,Electronics distributors
+EAD,Miscellaneous,Investment trusts
+EAF,Producer manufacturing,Electrical products
+EAT,Consumer services,Restaurants
+EBAY,Retail trade,Internet retail
+EBC,Finance,Regional banks
+EBF,Commercial services,Commercial printing/Forms
+EBMT,Finance,Regional banks
+EBS,Health technology,Pharmaceuticals: major
+ECAT,Miscellaneous,Investment trusts
+ECBK,Finance,Regional banks
+ECF,Miscellaneous,Investment trusts
+ECG,Industrial services,Engineering & construction
+ECHO,Communications,Specialty telecommunications
+ECL,Process industries,Chemicals: specialty
+ECLP,Finance,Regional banks
+ECO,Transportation,Marine shipping
+ECOR,Health technology,Medical specialties
+ECPG,Finance,Finance/Rental/Leasing
+ECVT,Process industries,Chemicals: specialty
+ED,Utilities,Electric utilities
+EDD,Miscellaneous,Investment trusts
+EDHL,Commercial services,Advertising/Marketing services
+EDRY,Transportation,Marine shipping
+EDU,Consumer services,Other consumer services
+EDVR,Finance,Regional banks
+EE,Utilities,Gas distributors
+EEA,Miscellaneous,Investment trusts
+EEFT,Commercial services,Miscellaneous commercial services
+EFC,Finance,Real estate investment trusts
+EFOR,Technology services,Information technology services
+EFR,Miscellaneous,Investment trusts
+EFSC,Finance,Regional banks
+EFSI,Finance,Regional banks
+EFT,Miscellaneous,Investment trusts
+EFX,Commercial services,Financial publishing/Services
+EG,Finance,Property/Casualty insurance
+EGAN,Technology services,Internet software/Services
+EGBN,Finance,Regional banks
+EGG,Commercial services,Miscellaneous commercial services
+EGHA,Finance,Financial conglomerates
+EGP,Finance,Real estate investment trusts
+EGY,Energy minerals,Oil & gas production
+EHC,Health services,Medical/Nursing services
+EHI,Miscellaneous,Investment trusts
+EHLD,Transportation,Marine shipping
+EIC,Miscellaneous,Investment trusts
+EIG,Finance,Property/Casualty insurance
+EIIA,Miscellaneous,Investment trusts
+EIKN,Health technology,Pharmaceuticals: major
+EIM,Miscellaneous,Investment trusts
+EIX,Utilities,Electric utilities
+EL,Consumer non-durables,Household/Personal care
+ELA,Retail trade,Specialty stores
+ELAN,Health technology,Biotechnology
+ELC,Utilities,Electric utilities
+ELF,Consumer non-durables,Household/Personal care
+ELLH,Finance,Financial conglomerates
+ELLO,Utilities,Electric utilities
+ELMD,Health technology,Medical specialties
+ELMT,Producer manufacturing,Metal fabrication
+ELOX,Health technology,Biotechnology
+ELS,Finance,Real estate investment trusts
+ELTK,Electronic technology,Electronic components
+ELV,Health services,Managed health care
+ELVG,Commercial services,Miscellaneous commercial services
+ELVN,Health technology,Biotechnology
+ELWT,Technology services,Information technology services
+EMBC,Health technology,Medical specialties
+EMD,Miscellaneous,Investment trusts
+EME,Industrial services,Engineering & construction
+EMF,Miscellaneous,Investment trusts
+EMIS,Finance,Finance/Rental/Leasing
+EML,Consumer durables,Tools & hardware
+EMN,Process industries,Chemicals: specialty
+EMO,Miscellaneous,Investment trusts
+EMR,Electronic technology,Electronic equipment/Instruments
+EMYB,Finance,Regional banks
+ENBP,Finance,Major banks
+ENDI,Finance,Investment managers
+ENJ,Utilities,Gas distributors
+ENOV,Health technology,Medical specialties
+ENPH,Producer manufacturing,Electrical products
+ENR,Consumer non-durables,Household/Personal care
+ENS,Producer manufacturing,Electrical products
+ENSG,Health services,Medical/Nursing services
+ENTA,Health technology,Pharmaceuticals: major
+ENTG,Producer manufacturing,Industrial machinery
+ENVA,Finance,Finance/Rental/Leasing
+EOD,Miscellaneous,Investment trusts
+EOG,Energy minerals,Integrated oil
+EOI,Miscellaneous,Investment trusts
+EOLS,Health technology,Pharmaceuticals: major
+EOS,Miscellaneous,Investment trusts
+EOT,Miscellaneous,Investment trusts
+EP/PC,Finance,Finance/Rental/Leasing
+EPAC,Producer manufacturing,Industrial machinery
+EPAM,Technology services,Information technology services
+EPC,Consumer non-durables,Household/Personal care
+EPD,Industrial services,Oil & gas pipelines
+EPR,Finance,Real estate investment trusts
+EPRT,Finance,Real estate investment trusts
+EPSN,Energy minerals,Integrated oil
+EQBK,Finance,Regional banks
+EQFN,Finance,Savings banks
+EQH,Finance,Life/Health insurance
+EQIX,Finance,Real estate investment trusts
+EQPT,Technology services,Internet software/Services
+EQT,Energy minerals,Integrated oil
+EQX,Non-energy minerals,Precious metals
+ERAS,Health technology,Pharmaceuticals: major
+ERC,Miscellaneous,Investment trusts
+ERH,Miscellaneous,Investment trusts
+ERIE,Finance,Property/Casualty insurance
+ERII,Producer manufacturing,Industrial machinery
+ERKH,Finance,Savings banks
+EROC,Producer manufacturing,Electrical products
+EROK,Finance,Real estate development
+ES,Utilities,Electric utilities
+ESAB,Producer manufacturing,Industrial machinery
+ESBS,Finance,Regional banks
+ESCA,Consumer durables,Recreational products
+ESE,Electronic technology,Electronic equipment/Instruments
+ESEA,Transportation,Marine shipping
+ESGOF,Finance,Multi-line insurance
+ESGRF,Finance,Multi-line insurance
+ESI,Process industries,Chemicals: major diversified
+ESNT,Finance,Specialty insurance
+ESOA,Industrial services,Engineering & construction
+ESP,Electronic technology,Electronic components
+ESQ,Finance,Major banks
+ESRT,Finance,Real estate investment trusts
+ESS,Finance,Real estate investment trusts
+ESTA,Health technology,Medical specialties
+ESTC,Technology services,Packaged software
+ET,Industrial services,Oil & gas pipelines
+ETB,Miscellaneous,Investment trusts
+ETD,Consumer durables,Home furnishings
+ETG,Miscellaneous,Investment trusts
+ETI/P,Utilities,Electric utilities
+ETJ,Miscellaneous,Investment trusts
+ETN,Producer manufacturing,Electrical products
+ETO,Miscellaneous,Investment trusts
+ETON,Health technology,Pharmaceuticals: major
+ETOR,Technology services,Packaged software
+ETR,Utilities,Electric utilities
+ETRA,Health technology,Pharmaceuticals: major
+ETSS,Finance,Finance/Rental/Leasing
+ETSY,Retail trade,Internet retail
+ETV,Miscellaneous,Investment trusts
+ETW,Miscellaneous,Investment trusts
+ETX,Miscellaneous,Investment trusts
+ETY,Miscellaneous,Investment trusts
+EUDA,Health services,Medical/Nursing services
+EURK,Finance,Financial conglomerates
+EVAC,Finance,Financial conglomerates
+EVC,Consumer services,Broadcasting
+EVCM,Technology services,Packaged software
+EVER,Technology services,Internet software/Services
+EVG,Miscellaneous,Investment trusts
+EVI,Distribution services,Wholesale distributors
+EVMN,Health technology,Pharmaceuticals: major
+EVN,Miscellaneous,Investment trusts
+EVOX,Finance,Financial conglomerates
+EVR,Finance,Investment banks/Brokers
+EVRG,Utilities,Electric utilities
+EVT,Miscellaneous,Investment trusts
+EVTC,Commercial services,Miscellaneous commercial services
+EVV,Miscellaneous,Investment trusts
+EW,Health technology,Medical specialties
+EWAV,Finance,Financial conglomerates
+EWBC,Finance,Regional banks
+EWSB,Finance,Savings banks
+EWTX,Health technology,Biotechnology
+EXC,Utilities,Electric utilities
+EXCE,Energy minerals,Oil & gas production
+EXCH,Finance,Regional banks
+EXE,Energy minerals,Integrated oil
+EXEL,Health technology,Pharmaceuticals: major
+EXG,Miscellaneous,Investment trusts
+EXLS,Technology services,Data processing services
+EXOD,Technology services,Packaged software
+EXP,Non-energy minerals,Construction materials
+EXPD,Transportation,Air freight/Couriers
+EXPE,Consumer services,Other consumer services
+EXPO,Industrial services,Engineering & construction
+EXR,Finance,Real estate investment trusts
+EXSR,Finance,Regional banks
+EXTR,Electronic technology,Computer peripherals
+EYE,Retail trade,Specialty stores
+EZPW,Finance,Finance/Rental/Leasing
+F,Consumer durables,Motor vehicles
+FA,Technology services,Packaged software
+FACO,Finance,Property/Casualty insurance
+FACT,Finance,Financial conglomerates
+FAF,Finance,Specialty insurance
+FANG,Energy minerals,Oil & gas production
+FAST,Distribution services,Wholesale distributors
+FATN,Technology services,Packaged software
+FAX,Miscellaneous,Investment trusts
+FBAK,Finance,Major banks
+FBIN,Producer manufacturing,Building products
+FBIP,Finance,Major banks
+FBIZ,Finance,Regional banks
+FBK,Finance,Major banks
+FBLA,Finance,Regional banks
+FBNC,Finance,Regional banks
+FBP,Finance,Regional banks
+FBPA,Finance,Regional banks
+FBPI,Finance,Savings banks
+FBRT,Finance,Real estate investment trusts
+FBSI,Finance,Savings banks
+FBTT,Finance,Regional banks
+FBVI,Finance,Major banks
+FBYD,Industrial services,Engineering & construction
+FC,Commercial services,Miscellaneous commercial services
+FCAP,Finance,Savings banks
+FCBC,Finance,Regional banks
+FCBM,Finance,Regional banks
+FCCO,Finance,Regional banks
+FCEL,Electronic technology,Electronic equipment/Instruments
+FCF,Finance,Regional banks
+FCFS,Finance,Finance/Rental/Leasing
+FCN,Commercial services,Miscellaneous commercial services
+FCNCA,Finance,Regional banks
+FCPB,Finance,Regional banks
+FCPT,Finance,Real estate investment trusts
+FCRS,Finance,Financial conglomerates
+FCX,Non-energy minerals,Other metals/Minerals
+FDBC,Finance,Regional banks
+FDMM,Finance,Financial conglomerates
+FDMT,Health technology,Biotechnology
+FDS,Commercial services,Financial publishing/Services
+FDSB,Finance,Savings banks
+FDUS,Miscellaneous,Investment trusts
+FDVA,Finance,Regional banks
+FDX,Transportation,Air freight/Couriers
+FDXF,Transportation,Trucking
+FE,Utilities,Electric utilities
+FEDU,Consumer services,Other consumer services
+FEIM,Electronic technology,Telecommunications equipment
+FELE,Producer manufacturing,Industrial machinery
+FENC,Health technology,Biotechnology
+FERA,Finance,Financial conglomerates
+FERG,Distribution services,Wholesale distributors
+FET,Industrial services,Oilfield services/Equipment
+FF,Process industries,Chemicals: specialty
+FFA,Miscellaneous,Investment trusts
+FFBB,Finance,Regional banks
+FFBC,Finance,Regional banks
+FFBW,Finance,Savings banks
+FFC,Miscellaneous,Investment trusts
+FFDF,Finance,Savings banks
+FFIN,Finance,Major banks
+FFIV,Technology services,Packaged software
+FFMH,Finance,Regional banks
+FFMR,Finance,Regional banks
+FFWC,Finance,Regional banks
+FG,Finance,Multi-line insurance
+FGBI,Finance,Regional banks
+FGC,Finance,Investment managers
+FGFH,Finance,Regional banks
+FGFI,Finance,Regional banks
+FGI,Producer manufacturing,Building products
+FGII,Finance,Financial conglomerates
+FGPR,Distribution services,Wholesale distributors
+FHB,Finance,Regional banks
+FHI,Finance,Investment managers
+FHN,Finance,Regional banks
+FHRT,Finance,Real estate development
+FIBK,Finance,Regional banks
+FICO,Commercial services,Financial publishing/Services
+FIDS,Finance,Major banks
+FIG,Technology services,Packaged software
+FIGP,Finance,Property/Casualty insurance
+FIGR,Finance,Finance/Rental/Leasing
+FIGS,Consumer non-durables,Apparel/Footwear
+FIGX,Finance,Financial conglomerates
+FINN,Finance,Major banks
+FINS,Miscellaneous,Investment trusts
+FINW,Finance,Regional banks
+FIRY,Technology services,Data processing services
+FIS,Technology services,Packaged software
+FISI,Finance,Regional banks
+FISV,Commercial services,Miscellaneous commercial services
+FITB,Finance,Regional banks
+FIVE,Retail trade,Discount stores
+FIVN,Technology services,Packaged software
+FIX,Industrial services,Engineering & construction
+FIZZ,Consumer non-durables,Beverages: non-alcoholic
+FJDI,Finance,Financial conglomerates
+FKYS,Finance,Regional banks
+FLC,Miscellaneous,Investment trusts
+FLEW,Finance,Regional banks
+FLEX,Electronic technology,Electronic production equipment
+FLG,Finance,Major banks
+FLG/PU,Finance,Major banks
+FLGT,Health services,Medical/Nursing services
+FLNC,Producer manufacturing,Electrical products
+FLNG,Transportation,Marine shipping
+FLO,Consumer non-durables,Food: specialty/candy
+FLOC,Industrial services,Oilfield services/Equipment
+FLR,Industrial services,Engineering & construction
+FLS,Producer manufacturing,Industrial machinery
+FLSC,Finance,Financial conglomerates
+FLUT,Consumer services,Casinos/Gaming
+FLXS,Consumer durables,Home furnishings
+FLY,Electronic technology,Aerospace & defense
+FLYW,Commercial services,Miscellaneous commercial services
+FMAC,Finance,Financial conglomerates
+FMAO,Finance,Regional banks
+FMBH,Finance,Regional banks
+FMBL,Finance,Regional banks
+FMBM,Finance,Regional banks
+FMBN,Finance,Regional banks
+FMC,Process industries,Chemicals: agricultural
+FMCB,Finance,Regional banks
+FMFG,Finance,Regional banks
+FMFP,Finance,Regional banks
+FMN,Miscellaneous,Investment trusts
+FMNB,Finance,Major banks
+FMY,Miscellaneous,Investment trusts
+FN,Electronic technology,Semiconductors
+FNB,Finance,Major banks
+FND,Retail trade,Home improvement chains
+FNF,Finance,Specialty insurance
+FNFI,Finance,Savings banks
+FNKO,Consumer durables,Recreational products
+FNLC,Finance,Major banks
+FNRN,Finance,Regional banks
+FNWB,Finance,Savings banks
+FNWD,Finance,Savings banks
+FOA,Finance,Finance/Rental/Leasing
+FOF,Miscellaneous,Investment trusts
+FOIL,Non-energy minerals,Other metals/Minerals
+FOR,Finance,Real estate development
+FORM,Electronic technology,Semiconductors
+FORR,Commercial services,Miscellaneous commercial services
+FOSL,Consumer durables,Other consumer specialties
+FOTB,Finance,Major banks
+FOUR,Commercial services,Miscellaneous commercial services
+FOX,Consumer services,Broadcasting
+FOXF,Producer manufacturing,Auto parts: OEM
+FPBC,Finance,Regional banks
+FPF,Miscellaneous,Investment trusts
+FPI,Finance,Real estate investment trusts
+FPS,Producer manufacturing,Electrical products
+FR,Finance,Real estate investment trusts
+FRA,Miscellaneous,Investment trusts
+FRAF,Finance,Regional banks
+FRBA,Finance,Regional banks
+FRBP,Finance,Financial conglomerates
+FRBT,Finance,Regional banks
+FRD,Non-energy minerals,Steel
+FREVS,Finance,Real estate investment trusts
+FRFC,Finance,Savings banks
+FRHC,Finance,Investment banks/Brokers
+FRME,Finance,Major banks
+FRMO,Finance,Investment managers
+FRNM,Health technology,Medical specialties
+FRO,Transportation,Marine shipping
+FROG,Technology services,Packaged software
+FRPH,Finance,Real estate development
+FRPT,Consumer non-durables,Food: specialty/candy
+FRSB,Finance,Regional banks
+FRSH,Technology services,Packaged software
+FRST,Finance,Regional banks
+FRT,Finance,Real estate investment trusts
+FRVO,Utilities,Alternative power generation
+FSBC,Finance,Regional banks
+FSBW,Finance,Savings banks
+FSCO,Miscellaneous,Investment trusts
+FSHP,Finance,Financial conglomerates
+FSI,Process industries,Chemicals: major diversified
+FSK,Miscellaneous,Investment trusts
+FSLR,Electronic technology,Semiconductors
+FSLY,Technology services,Information technology services
+FSMK,Finance,Regional banks
+FSRL,Finance,Regional banks
+FSS,Consumer durables,Motor vehicles
+FSSL,Miscellaneous,Investment trusts
+FSTR,Producer manufacturing,Trucks/Construction/Farm machinery
+FSUN,Finance,Major banks
+FT,Miscellaneous,Investment trusts
+FTAI,Electronic technology,Aerospace & defense
+FTDR,Consumer durables,Homebuilding
+FTF,Miscellaneous,Investment trusts
+FTFI,Finance,Regional banks
+FTH,Health technology,Biotechnology
+FTHA,Finance,Financial conglomerates
+FTHY,Miscellaneous,Investment trusts
+FTI,Industrial services,Oilfield services/Equipment
+FTK,Industrial services,Oilfield services/Equipment
+FTLF,Health technology,Pharmaceuticals: other
+FTNT,Technology services,Information technology services
+FTRA,Finance,Financial conglomerates
+FTRE,Commercial services,Miscellaneous commercial services
+FTV,Electronic technology,Electronic equipment/Instruments
+FTW,Energy minerals,Integrated oil
+FUBO,Technology services,Internet software/Services
+FUL,Process industries,Industrial specialties
+FULT,Finance,Major banks
+FUN,Consumer services,Movies/Entertainment
+FUNC,Finance,Regional banks
+FUND,Miscellaneous,Investment trusts
+FUSB,Finance,Regional banks
+FUTU,Finance,Investment banks/Brokers
+FUXA,Technology services,Internet software/Services
+FVAV,Finance,Financial conglomerates
+FVCB,Finance,Regional banks
+FVN,Finance,Financial conglomerates
+FVR,Finance,Real estate investment trusts
+FVRR,Technology services,Data processing services
+FWAC,Finance,Financial conglomerates
+FWDI,Finance,Financial conglomerates
+FWONA,Technology services,Internet software/Services
+FWRD,Transportation,Trucking
+FWRG,Consumer services,Restaurants
+FXAC,Finance,Financial conglomerates
+FXBY,Miscellaneous,Investment trusts
+FXHO,Electronic technology,Telecommunications equipment
+FXLG,Finance,Regional banks
+FXNC,Finance,Regional banks
+G,Commercial services,Miscellaneous commercial services
+GAB,Miscellaneous,Investment trusts
+GABC,Finance,Regional banks
+GAIN,Miscellaneous,Investment trusts
+GAM,Miscellaneous,Investment trusts
+GAMI,Finance,Investment managers
+GAP,Retail trade,Apparel/Footwear retail
+GASS,Transportation,Marine shipping
+GATX,Transportation,Railroads
+GAUZ,Process industries,Industrial specialties
+GBAB,Miscellaneous,Investment trusts
+GBCI,Finance,Regional banks
+GBDC,Finance,Financial conglomerates
+GBFH,Finance,Regional banks
+GBLI,Finance,Property/Casualty insurance
+GBX,Producer manufacturing,Trucks/Construction/Farm machinery
+GCBC,Finance,Savings banks
+GCCO,Finance,Real estate development
+GCGR,Finance,Financial conglomerates
+GCMG,Finance,Investment managers
+GCO,Retail trade,Apparel/Footwear retail
+GCT,Distribution services,Wholesale distributors
+GD,Electronic technology,Aerospace & defense
+GDDY,Technology services,Data processing services
+GDEV,Technology services,Packaged software
+GDL,Miscellaneous,Investment trusts
+GDO,Miscellaneous,Investment trusts
+GDOT,Finance,Finance/Rental/Leasing
+GDV,Miscellaneous,Investment trusts
+GDYN,Technology services,Information technology services
+GE,Electronic technology,Aerospace & defense
+GEF,Process industries,Containers/Packaging
+GEHC,Health technology,Medical specialties
+GEL,Process industries,Chemicals: specialty
+GEN,Technology services,Packaged software
+GENB,Health technology,Biotechnology
+GENC,Producer manufacturing,Trucks/Construction/Farm machinery
+GENI,Technology services,Internet software/Services
+GEO,Commercial services,Miscellaneous commercial services
+GEV,Producer manufacturing,Electrical products
+GF,Miscellaneous,Investment trusts
+GFF,Producer manufacturing,Building products
+GFL,Industrial services,Environmental services
+GFLT,Commercial services,Miscellaneous commercial services
+GFS,Electronic technology,Semiconductors
+GFUZ,Producer manufacturing,Electrical products
+GGG,Producer manufacturing,Industrial machinery
+GGN,Miscellaneous,Investment trusts
+GGZ,Miscellaneous,Investment trusts
+GH,Health technology,Medical specialties
+GHC,Consumer services,Other consumer services
+GHM,Producer manufacturing,Industrial machinery
+GHRS,Health technology,Pharmaceuticals: major
+GHXI,Finance,Financial conglomerates
+GHY,Miscellaneous,Investment trusts
+GIBO,Technology services,Internet software/Services
+GIC,Retail trade,Internet retail
+GIII,Consumer non-durables,Apparel/Footwear
+GILD,Health technology,Biotechnology
+GILT,Electronic technology,Telecommunications equipment
+GIS,Consumer non-durables,Food: major diversified
+GIW,Finance,Financial conglomerates
+GIX,Finance,Financial conglomerates
+GJH,Finance,Finance/Rental/Leasing
+GJO,Finance,Finance/Rental/Leasing
+GJP,Finance,Finance/Rental/Leasing
+GJR,Finance,Finance/Rental/Leasing
+GJS,Finance,Finance/Rental/Leasing
+GJT,Finance,Finance/Rental/Leasing
+GKOS,Health technology,Medical specialties
+GL,Finance,Multi-line insurance
+GLAD,Miscellaneous,Investment trusts
+GLBE,Retail trade,Internet retail
+GLED,Finance,Financial conglomerates
+GLFE,Consumer services,Movies/Entertainment
+GLIBA,Technology services,Data processing services
+GLNG,Industrial services,Oil & gas pipelines
+GLO,Miscellaneous,Investment trusts
+GLOB,Technology services,Information technology services
+GLOP/PA,Industrial services,Oil & gas pipelines
+GLP,Distribution services,Wholesale distributors
+GLPI,Finance,Real estate investment trusts
+GLQ,Miscellaneous,Investment trusts
+GLRE,Finance,Property/Casualty insurance
+GLSI,Health technology,Biotechnology
+GLU,Miscellaneous,Investment trusts
+GLUE,Health technology,Biotechnology
+GLV,Miscellaneous,Investment trusts
+GLW,Electronic technology,Electronic components
+GLXY,Finance,Investment banks/Brokers
+GM,Consumer durables,Motor vehicles
+GME,Retail trade,Electronics/Appliance stores
+GMED,Health technology,Medical specialties
+GMRS,Health services,Medical/Nursing services
+GNE,Utilities,Electric utilities
+GNK,Transportation,Marine shipping
+GNL,Finance,Real estate investment trusts
+GNRC,Producer manufacturing,Electrical products
+GNRV,Finance,Regional banks
+GNT,Miscellaneous,Investment trusts
+GNTX,Producer manufacturing,Auto parts: OEM
+GNW,Finance,Multi-line insurance
+GO,Retail trade,Food retail
+GOF,Miscellaneous,Investment trusts
+GOGY,Consumer non-durables,Beverages: non-alcoholic
+GOLD,Finance,Investment banks/Brokers
+GOLF,Consumer durables,Recreational products
+GOOD,Finance,Real estate investment trusts
+GOOG,Technology services,Internet software/Services
+GOSS,Health technology,Pharmaceuticals: major
+GOVB,Finance,Savings banks
+GPAC,Finance,Financial conglomerates
+GPAT,Finance,Financial conglomerates
+GPC,Distribution services,Wholesale distributors
+GPCR,Health technology,Pharmaceuticals: major
+GPGI,Producer manufacturing,Industrial machinery
+GPI,Retail trade,Specialty stores
+GPK,Process industries,Containers/Packaging
+GPN,Finance,Finance/Rental/Leasing
+GPOR,Energy minerals,Oil & gas production
+GPRE,Process industries,Chemicals: specialty
+GPRK,Energy minerals,Oil & gas production
+GRAL,Health technology,Medical specialties
+GRBK,Consumer durables,Homebuilding
+GRC,Producer manufacturing,Industrial machinery
+GRDN,Retail trade,Drugstore chains
+GRDX,Health technology,Biotechnology
+GRF,Miscellaneous,Investment trusts
+GRML,Commercial services,Miscellaneous commercial services
+GRMN,Electronic technology,Telecommunications equipment
+GRND,Technology services,Internet software/Services
+GRNQ,Finance,Investment managers
+GRNT,Energy minerals,Oil & gas production
+GRPN,Retail trade,Internet retail
+GRRR,Technology services,Packaged software
+GRVY,Technology services,Packaged software
+GRX,Miscellaneous,Investment trusts
+GS,Finance,Investment banks/Brokers
+GSAT,Communications,Wireless telecommunications
+GSBC,Finance,Regional banks
+GSBD,Miscellaneous,Investment trusts
+GSBX,Finance,Regional banks
+GSHD,Finance,Insurance brokers/Services
+GSHR,Finance,Financial conglomerates
+GSIW,Finance,Investment banks/Brokers
+GSL,Transportation,Marine shipping
+GSNR,Miscellaneous,Investment trusts
+GSRF,Finance,Financial conglomerates
+GSRV,Finance,Financial conglomerates
+GTAO,Miscellaneous,Investment trusts
+GTBP,Health technology,Pharmaceuticals: major
+GTE,Energy minerals,Oil & gas production
+GTEN,Finance,Financial conglomerates
+GTERA,Finance,Financial conglomerates
+GTES,Producer manufacturing,Electrical products
+GTLB,Technology services,Packaged software
+GTPS,Finance,Savings banks
+GTX,Producer manufacturing,Auto parts: OEM
+GTY,Finance,Real estate investment trusts
+GUAC,Finance,Financial conglomerates
+GUG,Miscellaneous,Investment trusts
+GUT,Miscellaneous,Investment trusts
+GVA,Industrial services,Engineering & construction
+GVYB,Finance,Regional banks
+GWOX,Consumer services,Publishing: books/magazines
+GWRE,Technology services,Information technology services
+GWRS,Utilities,Water utilities
+GWW,Distribution services,Wholesale distributors
+GXLM,Miscellaneous,Investment trusts
+GXO,Transportation,Air freight/Couriers
+GYRE,Health technology,Pharmaceuticals: major
+H,Consumer services,Hotels/Resorts/Cruise lines
+HACQ,Finance,Financial conglomerates
+HAE,Health technology,Medical specialties
+HAFC,Finance,Regional banks
+HAL,Industrial services,Oilfield services/Equipment
+HALO,Health technology,Biotechnology
+HAPN,Finance,Major banks
+HARL,Finance,Savings banks
+HAS,Consumer durables,Recreational products
+HASI,Finance,Investment managers
+HAVA,Finance,Financial conglomerates
+HAWK,Technology services,Data processing services
+HAYW,Consumer durables,Recreational products
+HBAN,Finance,Major banks
+HBB,Consumer durables,Electronics/Appliances
+HBCP,Finance,Regional banks
+HBIA,Finance,Regional banks
+HBIO,Health technology,Medical specialties
+HBNC,Finance,Regional banks
+HBSI,Finance,Regional banks
+HBT,Finance,Regional banks
+HCA,Health services,Hospital/Nursing management
+HCAC,Finance,Financial conglomerates
+HCBC,Finance,Regional banks
+HCC,Energy minerals,Coal
+HCI,Finance,Property/Casualty insurance
+HCIC,Finance,Financial conglomerates
+HCKG,Finance,Regional banks
+HCKT,Commercial services,Miscellaneous commercial services
+HCMA,Finance,Financial conglomerates
+HCSG,Commercial services,Miscellaneous commercial services
+HCTI,Technology services,Information technology services
+HD,Retail trade,Home improvement chains
+HDSN,Distribution services,Wholesale distributors
+HE,Utilities,Electric utilities
+HEI,Electronic technology,Aerospace & defense
+HELE,Consumer durables,Home furnishings
+HEQ,Miscellaneous,Investment trusts
+HERZ,Miscellaneous,Investment trusts
+HESM,Energy minerals,Integrated oil
+HFBA,Finance,Savings banks
+HFBL,Finance,Savings banks
+HFRO,Miscellaneous,Investment trusts
+HFWA,Finance,Regional banks
+HG,Finance,Multi-line insurance
+HGLB,Miscellaneous,Investment trusts
+HGTY,Finance,Property/Casualty insurance
+HGV,Finance,Real estate development
+HHH,Finance,Real estate development
+HIFS,Finance,Savings banks
+HIG,Finance,Property/Casualty insurance
+HII,Electronic technology,Aerospace & defense
+HIMS,Health services,Medical/Nursing services
+HIMX,Electronic technology,Semiconductors
+HIPO,Finance,Property/Casualty insurance
+HIW,Finance,Real estate investment trusts
+HKHC,Finance,Investment managers
+HL,Non-energy minerals,Precious metals
+HLF,Consumer non-durables,Food: major diversified
+HLFN,Finance,Savings banks
+HLI,Finance,Investment banks/Brokers
+HLIO,Producer manufacturing,Industrial machinery
+HLIT,Electronic technology,Telecommunications equipment
+HLMN,Distribution services,Wholesale distributors
+HLNE,Finance,Investment managers
+HLT,Consumer services,Hotels/Resorts/Cruise lines
+HLXC,Finance,Financial conglomerates
+HMH,Industrial services,Oilfield services/Equipment
+HMLN,Finance,Regional banks
+HMLPF,Transportation,Marine shipping
+HMN,Finance,Property/Casualty insurance
+HNFSA,Consumer non-durables,Food: major diversified
+HNGE,Technology services,Packaged software
+HNI,Producer manufacturing,Office equipment/Supplies
+HNNA,Finance,Investment managers
+HNRG,Utilities,Electric utilities
+HNVR,Finance,Regional banks
+HOFT,Consumer durables,Home furnishings
+HOG,Consumer durables,Motor vehicles
+HOMB,Finance,Regional banks
+HON,Producer manufacturing,Industrial machinery
+HONA,Electronic technology,Aerospace & defense
+HONT,Finance,Regional banks
+HOOD,Finance,Investment banks/Brokers
+HOPE,Finance,Major banks
+HOS,Industrial services,Oilfield services/Equipment
+HOV,Consumer durables,Homebuilding
+HP,Industrial services,Contract drilling
+HPE,Electronic technology,Computer processing hardware
+HPF,Miscellaneous,Investment trusts
+HPI,Miscellaneous,Investment trusts
+HPK,Energy minerals,Oil & gas production
+HPP,Finance,Real estate investment trusts
+HPQ,Technology services,Information technology services
+HPS,Miscellaneous,Investment trusts
+HQ,Technology services,Packaged software
+HQH,Miscellaneous,Investment trusts
+HQI,Commercial services,Personnel services
+HQL,Miscellaneous,Investment trusts
+HQY,Finance,Investment managers
+HR,Finance,Real estate investment trusts
+HRB,Consumer services,Other consumer services
+HRBK,Finance,Regional banks
+HRI,Finance,Finance/Rental/Leasing
+HRL,Consumer non-durables,Food: meat/fish/dairy
+HRMY,Health technology,Pharmaceuticals: major
+HROW,Health technology,Pharmaceuticals: major
+HRTG,Finance,Property/Casualty insurance
+HSIC,Distribution services,Medical distributors
+HST,Finance,Real estate investment trusts
+HSTM,Technology services,Packaged software
+HSY,Consumer non-durables,Food: specialty/candy
+HTB,Finance,Regional banks
+HTD,Miscellaneous,Investment trusts
+HTFL,Technology services,Packaged software
+HTGC,Finance,Finance/Rental/Leasing
+HTH,Finance,Regional banks
+HTLD,Transportation,Trucking
+HTO,Utilities,Water utilities
+HUBB,Producer manufacturing,Electrical products
+HUBG,Transportation,Air freight/Couriers
+HUBS,Technology services,Packaged software
+HUM,Health services,Managed health care
+HUN,Process industries,Chemicals: major diversified
+HURC,Producer manufacturing,Industrial machinery
+HURN,Commercial services,Miscellaneous commercial services
+HUT,Technology services,Data processing services
+HVMC,Finance,Financial conglomerates
+HVT,Retail trade,Specialty stores
+HWBK,Finance,Regional banks
+HWC,Finance,Regional banks
+HWKN,Process industries,Chemicals: specialty
+HWM,Electronic technology,Aerospace & defense
+HXL,Electronic technology,Aerospace & defense
+HY,Producer manufacturing,Industrial machinery
+HYAC-U,Finance,Financial conglomerates
+HYI,Miscellaneous,Investment trusts
+HYMC,Non-energy minerals,Precious metals
+HYNE,Finance,Savings banks
+HYT,Miscellaneous,Investment trusts
+HZO,Retail trade,Specialty stores
+IA,Electronic technology,Aerospace & defense
+IACO,Finance,Finance/Rental/Leasing
+IACQ,Finance,Financial conglomerates
+IAF,Miscellaneous,Investment trusts
+IAM,Health technology,Biotechnology
+IART,Health technology,Medical specialties
+IBAC,Finance,Financial conglomerates
+IBCP,Finance,Regional banks
+IBEX,Commercial services,Miscellaneous commercial services
+IBKR,Finance,Investment banks/Brokers
+IBM,Technology services,Information technology services
+IBOC,Finance,Regional banks
+IBP,Industrial services,Engineering & construction
+IBRX,Health technology,Pharmaceuticals: major
+IBTA,Technology services,Packaged software
+IBTN,Finance,Regional banks
+IBWC,Finance,Major banks
+ICCC,Health technology,Biotechnology
+ICE,Finance,Investment banks/Brokers
+ICFI,Commercial services,Miscellaneous commercial services
+ICHR,Producer manufacturing,Industrial machinery
+ICLR,Commercial services,Miscellaneous commercial services
+ICR/PA,Miscellaneous,Investment trusts
+ICTSF,Transportation,Other transportation
+ICUI,Health technology,Medical specialties
+IDA,Utilities,Electric utilities
+IDAC,Finance,Financial conglomerates
+IDCC,Technology services,Packaged software
+IDE,Miscellaneous,Investment trusts
+IDR,Non-energy minerals,Precious metals
+IDT,Communications,Major telecommunications
+IDWM,Consumer services,Publishing: books/magazines
+IDXG,Health technology,Medical specialties
+IDXX,Health technology,Medical specialties
+IDYA,Health technology,Pharmaceuticals: major
+IE,Non-energy minerals,Other metals/Minerals
+IEAG,Finance,Financial conglomerates
+IEHC,Electronic technology,Electronic components
+IEP,Energy minerals,Oil refining/Marketing
+IESC,Industrial services,Engineering & construction
+IEX,Producer manufacturing,Industrial machinery
+IFF,Consumer non-durables,Food: specialty/candy
+IFN,Miscellaneous,Investment trusts
+IFS,Finance,Regional banks
+IGA,Miscellaneous,Investment trusts
+IGAC,Finance,Financial conglomerates
+IGD,Miscellaneous,Investment trusts
+IGI,Miscellaneous,Investment trusts
+IGIC,Finance,Financial conglomerates
+IGR,Miscellaneous,Investment trusts
+IHS,Industrial services,Engineering & construction
+IIF,Miscellaneous,Investment trusts
+III,Commercial services,Miscellaneous commercial services
+IIIN,Producer manufacturing,Metal fabrication
+IIIV,Technology services,Packaged software
+IIM,Miscellaneous,Investment trusts
+IIPR,Finance,Real estate investment trusts
+ILLU,Finance,Financial conglomerates
+ILMN,Health technology,Medical specialties
+ILPT,Finance,Real estate investment trusts
+IMAQ,Finance,Financial conglomerates
+IMAX,Consumer durables,Electronics/Appliances
+IMC,Non-energy minerals,Other metals/Minerals
+IMCR,Health technology,Biotechnology
+IMKTA,Retail trade,Food retail
+IMMR,Electronic technology,Computer peripherals
+IMMX,Health technology,Pharmaceuticals: major
+IMNM,Health technology,Biotechnology
+IMTX,Health technology,Pharmaceuticals: major
+IMUX,Health technology,Pharmaceuticals: major
+IMVT,Health technology,Biotechnology
+IMXI,Commercial services,Miscellaneous commercial services
+INAC,Finance,Financial conglomerates
+INBC,Finance,Regional banks
+INBK,Finance,Regional banks
+INBX,Health technology,Biotechnology
+INCY,Health technology,Pharmaceuticals: major
+INDB,Finance,Regional banks
+INDV,Health technology,Pharmaceuticals: major
+INFQ,Electronic technology,Computer processing hardware
+INFT,Finance,Regional banks
+INFU,Commercial services,Miscellaneous commercial services
+INGM,Technology services,Information technology services
+INGN,Health technology,Medical specialties
+INGR,Consumer non-durables,Food: specialty/candy
+INIO,Producer manufacturing,Electrical products
+INKT,Health technology,Biotechnology
+INMD,Health technology,Medical specialties
+INN,Finance,Real estate investment trusts
+INNID,Commercial services,Miscellaneous commercial services
+INNV,Technology services,Packaged software
+INOD,Technology services,Data processing services
+INR,Energy minerals,Integrated oil
+INRE,Finance,Real estate investment trusts
+INSM,Health technology,Pharmaceuticals: major
+INSP,Health technology,Medical specialties
+INSW,Transportation,Marine shipping
+INTA,Technology services,Packaged software
+INTC,Electronic technology,Semiconductors
+INTG,Consumer services,Hotels/Resorts/Cruise lines
+INTR,Finance,Major banks
+INTT,Electronic technology,Electronic equipment/Instruments
+INTU,Technology services,Packaged software
+INVA,Health technology,Pharmaceuticals: major
+INVH,Finance,Real estate investment trusts
+INVX,Industrial services,Oilfield services/Equipment
+IOND,Technology services,Data processing services
+IONQ,Electronic technology,Computer processing hardware
+IONS,Health technology,Pharmaceuticals: major
+IOR,Finance,Real estate investment trusts
+IOSP,Process industries,Chemicals: major diversified
+IOT,Technology services,Packaged software
+IOVA,Health technology,Biotechnology
+IP,Process industries,Pulp & paper
+IPAR,Consumer non-durables,Household/Personal care
+IPB,Finance,Finance/Rental/Leasing
+IPFX,Finance,Finance/Rental/Leasing
+IPGP,Electronic technology,Semiconductors
+IPHX,Finance,Financial conglomerates
+IPI,Non-energy minerals,Other metals/Minerals
+IPVV,Finance,Financial conglomerates
+IPXG,Finance,Financial conglomerates
+IQI,Miscellaneous,Investment trusts
+IQV,Health technology,Biotechnology
+IR,Producer manufacturing,Industrial machinery
+IRAB,Finance,Financial conglomerates
+IRDM,Communications,Specialty telecommunications
+IREN,Technology services,Data processing services
+IRHO,Finance,Financial conglomerates
+IRLA,Health technology,Biotechnology
+IRM,Finance,Real estate investment trusts
+IRMD,Health technology,Medical specialties
+IRON,Health technology,Biotechnology
+IRT,Finance,Real estate investment trusts
+IRTC,Health technology,Medical specialties
+ISBA,Finance,Regional banks
+ISD,Miscellaneous,Investment trusts
+ISNR,Finance,Financial conglomerates
+ISRG,Health technology,Medical specialties
+ISRLF,Finance,Financial conglomerates
+ISTR,Finance,Regional banks
+IT,Technology services,Internet software/Services
+ITG,Industrial services,Engineering & construction
+ITGR,Health technology,Medical specialties
+ITHA,Finance,Financial conglomerates
+ITIC,Finance,Specialty insurance
+ITRI,Electronic technology,Electronic equipment/Instruments
+ITRN,Communications,Specialty telecommunications
+ITT,Producer manufacturing,Auto parts: OEM
+ITW,Producer manufacturing,Auto parts: OEM
+IVAI,Miscellaneous,Investment trusts
+IVR,Finance,Real estate investment trusts
+IVT,Finance,Real estate investment trusts
+IVZ,Finance,Investment managers
+J,Technology services,Data processing services
+JACK,Consumer services,Restaurants
+JACS,Finance,Financial conglomerates
+JAKK,Consumer durables,Recreational products
+JAN,Finance,Real estate investment trusts
+JANL,Transportation,Air freight/Couriers
+JANX,Health technology,Biotechnology
+JATT,Finance,Financial conglomerates
+JAZZ,Health technology,Pharmaceuticals: major
+JBGS,Finance,Real estate investment trusts
+JBHT,Transportation,Trucking
+JBIO,Health technology,Biotechnology
+JBL,Producer manufacturing,Industrial machinery
+JBS,Consumer non-durables,Food: meat/fish/dairy
+JBSS,Consumer non-durables,Food: specialty/candy
+JBTC,Finance,Regional banks
+JBTM,Producer manufacturing,Industrial machinery
+JCAP,Finance,Financial conglomerates
+JCE,Miscellaneous,Investment trusts
+JCI,Producer manufacturing,Industrial machinery
+JD,Retail trade,Internet retail
+JDEPY,Consumer non-durables,Food: specialty/candy
+JDVB,Finance,Regional banks
+JDZG,Commercial services,Miscellaneous commercial services
+JEF,Finance,Investment banks/Brokers
+JENA,Finance,Financial conglomerates
+JFBC,Finance,Regional banks
+JFR,Miscellaneous,Investment trusts
+JG,Technology services,Data processing services
+JGH,Miscellaneous,Investment trusts
+JHI,Miscellaneous,Investment trusts
+JHS,Miscellaneous,Investment trusts
+JHX,Non-energy minerals,Construction materials
+JILL,Retail trade,Apparel/Footwear retail
+JJSF,Consumer non-durables,Food: specialty/candy
+JKHY,Technology services,Packaged software
+JKS,Electronic technology,Semiconductors
+JLL,Finance,Real estate development
+JLS,Miscellaneous,Investment trusts
+JMIA,Technology services,Internet software/Services
+JMKE,Consumer services,Restaurants
+JMM,Miscellaneous,Investment trusts
+JMSB,Finance,Regional banks
+JNJ,Health technology,Pharmaceuticals: major
+JOE,Finance,Real estate development
+JOF,Miscellaneous,Investment trusts
+JONE,Finance,Financial conglomerates
+JOUT,Consumer durables,Recreational products
+JOYY,Technology services,Data processing services
+JPC,Miscellaneous,Investment trusts
+JPM,Finance,Major banks
+JRI,Miscellaneous,Investment trusts
+JRS,Miscellaneous,Investment trusts
+JRSH,Consumer non-durables,Apparel/Footwear
+JTNB,Finance,Regional banks
+JTTT,Finance,Financial conglomerates
+JUVF,Finance,Regional banks
+JXG,Consumer non-durables,Apparel/Footwear
+JXN,Finance,Life/Health insurance
+JYNT,Health services,Medical/Nursing services
+KAI,Producer manufacturing,Industrial machinery
+KALU,Non-energy minerals,Aluminum
+KARD,Health technology,Biotechnology
+KARO,Technology services,Packaged software
+KBDC,Finance,Investment managers
+KBH,Consumer durables,Homebuilding
+KBON,Finance,Financial conglomerates
+KBR,Technology services,Information technology services
+KC,Technology services,Data processing services
+KCA-U,Finance,Financial conglomerates
+KCHV,Finance,Financial conglomerates
+KCLI,Finance,Life/Health insurance
+KD,Technology services,Data processing services
+KDP,Consumer non-durables,Beverages: non-alcoholic
+KE,Electronic technology,Electronic production equipment
+KELYA,Commercial services,Personnel services
+KEN,Utilities,Electric utilities
+KEQU,Health technology,Medical specialties
+KEWL,Non-energy minerals,Forest products
+KEX,Transportation,Marine shipping
+KEY,Finance,Major banks
+KEYS,Electronic technology,Electronic equipment/Instruments
+KEYY,Finance,Financial conglomerates
+KF,Miscellaneous,Investment trusts
+KFFB,Finance,Savings banks
+KFII,Finance,Financial conglomerates
+KFRC,Commercial services,Personnel services
+KFY,Commercial services,Personnel services
+KGS,Industrial services,Oilfield services/Equipment
+KHC,Consumer non-durables,Food: major diversified
+KIDS,Health technology,Medical specialties
+KIM,Finance,Real estate investment trusts
+KINS,Finance,Insurance brokers/Services
+KIO,Miscellaneous,Investment trusts
+KISB,Finance,Regional banks
+KKR,Finance,Investment managers
+KLAC,Electronic technology,Semiconductors
+KLAR,Commercial services,Miscellaneous commercial services
+KLIB,Finance,Regional banks
+KLIC,Producer manufacturing,Industrial machinery
+KLRA,Health technology,Biotechnology
+KMB,Consumer non-durables,Household/Personal care
+KMDA,Health technology,Biotechnology
+KMI,Industrial services,Oil & gas pipelines
+KMPR,Finance,Property/Casualty insurance
+KMT,Producer manufacturing,Industrial machinery
+KMTS,Health technology,Medical specialties
+KMX,Retail trade,Specialty stores
+KN,Electronic technology,Electronic components
+KNF,Non-energy minerals,Construction materials
+KNOP,Transportation,Marine shipping
+KNSA,Health technology,Pharmaceuticals: major
+KNSL,Finance,Multi-line insurance
+KNTK,Industrial services,Oil & gas pipelines
+KNX,Transportation,Trucking
+KO,Consumer non-durables,Beverages: non-alcoholic
+KOD,Health technology,Biotechnology
+KODK,Producer manufacturing,Industrial machinery
+KOP,Process industries,Chemicals: specialty
+KOYN,Finance,Financial conglomerates
+KPET,Finance,Financial conglomerates
+KPLT,Commercial services,Miscellaneous commercial services
+KR,Retail trade,Food retail
+KRAQ,Finance,Finance/Rental/Leasing
+KRC,Finance,Real estate investment trusts
+KREF,Finance,Real estate investment trusts
+KRG,Finance,Real estate investment trusts
+KRMN,Electronic technology,Aerospace & defense
+KRNT,Process industries,Chemicals: specialty
+KRNY,Finance,Savings banks
+KRO,Process industries,Chemicals: specialty
+KROS,Health technology,Pharmaceuticals: major
+KRP,Miscellaneous,Investment trusts
+KRRO,Health technology,Pharmaceuticals: major
+KRSA,Health technology,Biotechnology
+KRSP,Finance,Financial conglomerates
+KRT,Process industries,Containers/Packaging
+KRUS,Consumer services,Restaurants
+KRYS,Health technology,Biotechnology
+KSS,Retail trade,Department stores
+KTB,Consumer non-durables,Apparel/Footwear
+KTF,Miscellaneous,Investment trusts
+KTH,Finance,Finance/Rental/Leasing
+KTHN,Finance,Regional banks
+KTN,Finance,Finance/Rental/Leasing
+KTOS,Electronic technology,Aerospace & defense
+KTWO,Finance,Financial conglomerates
+KURA,Health technology,Biotechnology
+KVACF,Finance,Financial conglomerates
+KVHI,Electronic technology,Telecommunications equipment
+KVUE,Consumer non-durables,Household/Personal care
+KVYO,Technology services,Packaged software
+KWR,Process industries,Chemicals: specialty
+KWY,Finance,Multi-line insurance
+KYIV,Finance,Financial conglomerates
+KYMR,Health technology,Biotechnology
+KYN,Miscellaneous,Investment trusts
+KYTX,Health technology,Biotechnology
+KZIA,Health technology,Biotechnology
+L,Finance,Property/Casualty insurance
+LAD,Retail trade,Specialty stores
+LADR,Finance,Real estate investment trusts
+LAFA,Finance,Financial conglomerates
+LAKE,Consumer non-durables,Apparel/Footwear
+LAMR,Finance,Real estate investment trusts
+LAND,Finance,Real estate investment trusts
+LARK,Finance,Major banks
+LASR,Electronic technology,Semiconductors
+LATA,Finance,Financial conglomerates
+LAUR,Commercial services,Miscellaneous commercial services
+LAW,Technology services,Packaged software
+LAZ,Finance,Investment banks/Brokers
+LB,Commercial services,Miscellaneous commercial services
+LBNW,Finance,Regional banks
+LBRT,Industrial services,Oilfield services/Equipment
+LBRX,Health technology,Pharmaceuticals: major
+LBTYA,Communications,Major telecommunications
+LCCC,Finance,Financial conglomerates
+LCII,Producer manufacturing,Miscellaneous manufacturing
+LCLN,Finance,Investment banks/Brokers
+LCNB,Finance,Major banks
+LCUT,Consumer durables,Home furnishings
+LDOS,Technology services,Packaged software
+LDP,Miscellaneous,Investment trusts
+LE,Retail trade,Apparel/Footwear retail
+LEA,Producer manufacturing,Auto parts: OEM
+LEAT,Consumer durables,Other consumer specialties
+LECO,Producer manufacturing,Industrial machinery
+LEDRU,Finance,Financial conglomerates
+LEE,Consumer services,Publishing: newspapers
+LEGH,Consumer durables,Homebuilding
+LEGN,Health technology,Pharmaceuticals: major
+LEGO,Finance,Financial conglomerates
+LEN,Consumer durables,Homebuilding
+LEO,Miscellaneous,Investment trusts
+LEU,Non-energy minerals,Other metals/Minerals
+LEVI,Consumer non-durables,Apparel/Footwear
+LFAC,Finance,Financial conglomerates
+LFCR,Health technology,Pharmaceuticals: major
+LFGP,Finance,Major banks
+LFST,Health services,Medical/Nursing services
+LFTO,Technology services,Packaged software
+LFUS,Electronic technology,Electronic production equipment
+LFVN,Health technology,Pharmaceuticals: other
+LFWD,Health technology,Medical specialties
+LGCY,Consumer services,Other consumer services
+LGI,Miscellaneous,Investment trusts
+LGIH,Consumer durables,Homebuilding
+LGL,Electronic technology,Electronic production equipment
+LGN,Industrial services,Engineering & construction
+LGND,Health technology,Pharmaceuticals: major
+LH,Health services,Medical/Nursing services
+LHX,Electronic technology,Aerospace & defense
+LICT,Communications,Major telecommunications
+LIEN,Finance,Financial conglomerates
+LIF,Technology services,Packaged software
+LIFE,Technology services,Packaged software
+LII,Producer manufacturing,Industrial machinery
+LILA,Communications,Major telecommunications
+LIME,Consumer durables,Motor vehicles
+LIN,Process industries,Chemicals: specialty
+LINC,Commercial services,Miscellaneous commercial services
+LIND,Consumer services,Hotels/Resorts/Cruise lines
+LINE,Finance,Real estate investment trusts
+LINS,Finance,Life/Health insurance
+LION,Consumer services,Movies/Entertainment
+LITE,Producer manufacturing,Electrical products
+LIVE,Consumer durables,Home furnishings
+LIVN,Health technology,Medical specialties
+LKFN,Finance,Regional banks
+LKNCY,Consumer non-durables,Food: specialty/candy
+LKQ,Consumer durables,Automotive aftermarket
+LKSP,Finance,Financial conglomerates
+LLY,Health technology,Pharmaceuticals: major
+LLYVA,Consumer services,Movies/Entertainment
+LMAT,Health technology,Medical specialties
+LMB,Industrial services,Engineering & construction
+LMND,Finance,Multi-line insurance
+LMNR,Process industries,Agricultural commodities/Milling
+LMRI,Health services,Medical/Nursing services
+LMT,Electronic technology,Aerospace & defense
+LNC,Finance,Multi-line insurance
+LNG,Industrial services,Oil & gas pipelines
+LNN,Producer manufacturing,Trucks/Construction/Farm machinery
+LNSR,Health technology,Medical specialties
+LNT,Utilities,Electric utilities
+LNTH,Health technology,Medical specialties
+LOAR,Electronic technology,Aerospace & defense
+LOB,Finance,Regional banks
+LOCO,Consumer services,Restaurants
+LOGC,Process industries,Chemicals: major diversified
+LOGN,Finance,Savings banks
+LOPE,Commercial services,Miscellaneous commercial services
+LOVE,Consumer durables,Home furnishings
+LOVIU,Finance,Financial conglomerates
+LOW,Retail trade,Home improvement chains
+LPAA,Finance,Financial conglomerates
+LPBB,Finance,Financial conglomerates
+LPCV,Finance,Financial conglomerates
+LPG,Transportation,Marine shipping
+LPLA,Finance,Investment banks/Brokers
+LPTH,Electronic technology,Electronic components
+LPX,Non-energy minerals,Forest products
+LQDA,Health technology,Pharmaceuticals: major
+LQDT,Retail trade,Internet retail
+LRBI,Finance,Regional banks
+LRCX,Producer manufacturing,Industrial machinery
+LRN,Consumer services,Other consumer services
+LSBK,Finance,Savings banks
+LSCC,Electronic technology,Semiconductors
+LSFG,Finance,Regional banks
+LSTR,Transportation,Trucking
+LTBR,Process industries,Chemicals: specialty
+LTC,Finance,Real estate investment trusts
+LTGO,Health technology,Pharmaceuticals: major
+LTH,Consumer services,Other consumer services
+LTRX,Electronic technology,Computer peripherals
+LTSAP,Finance,Investment banks/Brokers
+LU,Finance,Finance/Rental/Leasing
+LULU,Consumer non-durables,Apparel/Footwear
+LUMB,Finance,Regional banks
+LUNR,Electronic technology,Aerospace & defense
+LUV,Transportation,Airlines
+LUXE,Retail trade,Internet retail
+LVLU,Retail trade,Internet retail
+LVS,Consumer services,Casinos/Gaming
+LW,Consumer non-durables,Food: specialty/candy
+LWAC,Finance,Financial conglomerates
+LWAY,Consumer non-durables,Food: meat/fish/dairy
+LXFR,Non-energy minerals,Other metals/Minerals
+LXP,Finance,Real estate investment trusts
+LXU,Process industries,Chemicals: agricultural
+LYB,Process industries,Chemicals: specialty
+LYBC,Finance,Major banks
+LYCA,Health technology,Biotechnology
+LYEL,Health technology,Biotechnology
+LYFT,Transportation,Other transportation
+LYNX,Technology services,Packaged software
+LYTS,Producer manufacturing,Building products
+LYV,Consumer services,Movies/Entertainment
+LYXX,Producer manufacturing,Industrial machinery
+LZ,Technology services,Internet software/Services
+LZB,Consumer durables,Home furnishings
+M,Retail trade,Department stores
+MA,Finance,Finance/Rental/Leasing
+MAA,Finance,Real estate investment trusts
+MAAS,Technology services,Packaged software
+MAC,Finance,Real estate investment trusts
+MACI,Finance,Financial conglomerates
+MACT,Finance,Financial conglomerates
+MAGN,Process industries,Textiles
+MAIN,Finance,Financial conglomerates
+MAIR,Producer manufacturing,Industrial machinery
+MAJJ,Consumer durables,Other consumer specialties
+MAMA,Consumer non-durables,Food: meat/fish/dairy
+MAN,Commercial services,Personnel services
+MANE,Health technology,Pharmaceuticals: major
+MANH,Technology services,Packaged software
+MANU,Consumer services,Movies/Entertainment
+MAR,Consumer services,Hotels/Resorts/Cruise lines
+MARA,Technology services,Data processing services
+MAS,Producer manufacturing,Building products
+MASBS,Finance,Financial conglomerates
+MASS,Health technology,Medical specialties
+MAT,Consumer durables,Recreational products
+MATV,Process industries,Industrial specialties
+MATW,Producer manufacturing,Miscellaneous manufacturing
+MATX,Transportation,Marine shipping
+MAX,Technology services,Information technology services
+MAYS,Finance,Real estate development
+MAZE,Health technology,Pharmaceuticals: major
+MBBC,Finance,Regional banks
+MBC,Consumer durables,Home furnishings
+MBGL,Technology services,Internet software/Services
+MBIN,Finance,Regional banks
+MBKL,Finance,Regional banks
+MBLY,Technology services,Packaged software
+MBNKO,Finance,Regional banks
+MBRX,Health technology,Pharmaceuticals: major
+MBUU,Consumer durables,Recreational products
+MBVI,Finance,Financial conglomerates
+MBWM,Finance,Regional banks
+MBX,Health technology,Biotechnology
+MC,Finance,Investment banks/Brokers
+MCAH,Finance,Financial conglomerates
+MCAP,Finance,Investment banks/Brokers
+MCB,Finance,Regional banks
+MCBK,Finance,Savings banks
+MCBS,Finance,Regional banks
+MCCK,Producer manufacturing,Industrial machinery
+MCD,Consumer services,Restaurants
+MCEM,Non-energy minerals,Construction materials
+MCFT,Consumer durables,Recreational products
+MCGA,Finance,Financial conglomerates
+MCHB,Finance,Regional banks
+MCHP,Electronic technology,Semiconductors
+MCHT,Finance,Regional banks
+MCI,Finance,Investment managers
+MCK,Distribution services,Medical distributors
+MCN,Miscellaneous,Investment trusts
+MCO,Commercial services,Financial publishing/Services
+MCRAA,Consumer non-durables,Apparel/Footwear
+MCRI,Consumer services,Hotels/Resorts/Cruise lines
+MCS,Consumer services,Movies/Entertainment
+MCY,Finance,Property/Casualty insurance
+MD,Health services,Medical/Nursing services
+MDB,Technology services,Packaged software
+MDGL,Health technology,Pharmaceuticals: major
+MDLN,Health technology,Medical specialties
+MDLZ,Consumer non-durables,Food: specialty/candy
+MDRR,Finance,Real estate investment trusts
+MDT,Health technology,Medical specialties
+MDU,Utilities,Gas distributors
+MDVT,Finance,Regional banks
+MDWD,Health technology,Pharmaceuticals: major
+MEC,Producer manufacturing,Industrial machinery
+MED,Commercial services,Miscellaneous commercial services
+MEDP,Commercial services,Miscellaneous commercial services
+MEGI,Miscellaneous,Investment trusts
+MEI,Electronic technology,Electronic components
+MELI,Retail trade,Internet retail
+MESH,Finance,Financial conglomerates
+MET,Finance,Multi-line insurance
+META,Technology services,Internet software/Services
+METC,Energy minerals,Coal
+MEVO,Finance,Financial conglomerates
+MF,Commercial services,Advertising/Marketing services
+MFA,Finance,Real estate investment trusts
+MFBI,Finance,Finance/Rental/Leasing
+MFBP,Finance,Savings banks
+MFGI,Finance,Regional banks
+MFI,Technology services,Packaged software
+MFIC,Finance,Financial conglomerates
+MFIN,Finance,Finance/Rental/Leasing
+MFM,Miscellaneous,Investment trusts
+MFP,Producer manufacturing,Industrial machinery
+MG,Industrial services,Engineering & construction
+MGAG,Finance,Finance/Rental/Leasing
+MGEE,Utilities,Electric utilities
+MGF,Miscellaneous,Investment trusts
+MGM,Consumer services,Casinos/Gaming
+MGNI,Technology services,Packaged software
+MGNO,Finance,Regional banks
+MGPI,Process industries,Agricultural commodities/Milling
+MGRC,Finance,Finance/Rental/Leasing
+MGRT,Technology services,Information technology services
+MGTX,Health technology,Biotechnology
+MGY,Energy minerals,Oil & gas production
+MGYR,Finance,Savings banks
+MH,Commercial services,Miscellaneous commercial services
+MHD,Miscellaneous,Investment trusts
+MHF,Miscellaneous,Investment trusts
+MHH,Commercial services,Personnel services
+MHK,Producer manufacturing,Building products
+MHNC,Finance,Life/Health insurance
+MHO,Consumer durables,Homebuilding
+MHUAF,Health technology,Medical specialties
+MIAC,Finance,Financial conglomerates
+MIAX,Finance,Investment banks/Brokers
+MIDD,Producer manufacturing,Industrial machinery
+MIN,Miscellaneous,Investment trusts
+MIR,Electronic technology,Aerospace & defense
+MIRM,Health technology,Pharmaceuticals: major
+MITK,Technology services,Information technology services
+MITT,Finance,Real estate investment trusts
+MIY,Miscellaneous,Investment trusts
+MKC,Consumer non-durables,Food: specialty/candy
+MKIN,Finance,Regional banks
+MKL,Finance,Property/Casualty insurance
+MKLY,Finance,Financial conglomerates
+MKSI,Producer manufacturing,Industrial machinery
+MKTW,Technology services,Data processing services
+MKTX,Finance,Investment banks/Brokers
+MLAA,Finance,Financial conglomerates
+MLAB,Health technology,Medical specialties
+MLGF,Finance,Savings banks
+MLI,Producer manufacturing,Metal fabrication
+MLKN,Producer manufacturing,Office equipment/Supplies
+MLM,Non-energy minerals,Construction materials
+MLP,Finance,Real estate development
+MLR,Consumer durables,Motor vehicles
+MLTX,Health technology,Pharmaceuticals: major
+MLYS,Health technology,Biotechnology
+MMAZ,Consumer non-durables,Apparel/Footwear
+MMD,Miscellaneous,Investment trusts
+MMED,Health technology,Medical specialties
+MMI,Finance,Real estate development
+MMM,Producer manufacturing,Industrial conglomerates
+MMS,Commercial services,Miscellaneous commercial services
+MMSI,Health technology,Medical specialties
+MMTRS,Commercial services,Miscellaneous commercial services
+MMTX,Finance,Financial conglomerates
+MMU,Miscellaneous,Investment trusts
+MMXSS,Finance,Financial conglomerates
+MMYT,Technology services,Internet software/Services
+MNAT,Finance,Regional banks
+MNDY,Technology services,Packaged software
+MNMB,Finance,Regional banks
+MNPR,Health technology,Biotechnology
+MNR,Energy minerals,Integrated oil
+MNRO,Retail trade,Specialty stores
+MNSB,Finance,Regional banks
+MNST,Consumer non-durables,Beverages: non-alcoholic
+MNTN,Technology services,Packaged software
+MO,Consumer non-durables,Tobacco
+MOBI,Health technology,Medical specialties
+MOD,Producer manufacturing,Industrial machinery
+MOG-A,Electronic technology,Aerospace & defense
+MOH,Health services,Managed health care
+MORN,Commercial services,Financial publishing/Services
+MOS,Process industries,Chemicals: agricultural
+MOV,Consumer durables,Other consumer specialties
+MOVE,Technology services,Data processing services
+MP,Non-energy minerals,Other metals/Minerals
+MPA,Miscellaneous,Investment trusts
+MPAA,Producer manufacturing,Auto parts: OEM
+MPB,Finance,Regional banks
+MPC,Energy minerals,Oil refining/Marketing
+MPCB,Finance,Regional banks
+MPLT,Health technology,Pharmaceuticals: major
+MPLX,Industrial services,Oil & gas pipelines
+MPTI,Electronic technology,Electronic production equipment
+MPV,Miscellaneous,Investment trusts
+MPWR,Electronic technology,Semiconductors
+MQ,Commercial services,Miscellaneous commercial services
+MQY,Miscellaneous,Investment trusts
+MRAM,Electronic technology,Semiconductors
+MRBK,Finance,Regional banks
+MRCO,Finance,Financial conglomerates
+MRCY,Electronic technology,Aerospace & defense
+MRDN,Consumer services,Casinos/Gaming
+MRK,Health technology,Pharmaceuticals: major
+MRNA,Health technology,Biotechnology
+MRP,Finance,Real estate development
+MRSH,Finance,Insurance brokers/Services
+MRTI,Finance,Real estate investment trusts
+MRTN,Transportation,Trucking
+MRVI,Health technology,Biotechnology
+MRVL,Electronic technology,Semiconductors
+MRWXS,Finance,Financial conglomerates
+MRX,Technology services,Internet software/Services
+MS,Finance,Investment managers
+MSA,Electronic technology,Electronic equipment/Instruments
+MSB,Non-energy minerals,Steel
+MSBB,Finance,Regional banks
+MSBC,Finance,Regional banks
+MSBI,Finance,Regional banks
+MSCI,Commercial services,Financial publishing/Services
+MSD,Miscellaneous,Investment trusts
+MSDL,Finance,Financial conglomerates
+MSEX,Utilities,Water utilities
+MSFT,Technology services,Packaged software
+MSGE,Consumer services,Movies/Entertainment
+MSGK/I,Consumer services,Movies/Entertainment
+MSGR/I,,
+MSI,Electronic technology,Telecommunications equipment
+MSIF,Miscellaneous,Investment trusts
+MSM,Distribution services,Wholesale distributors
+MSSEL,Utilities,Electric utilities
+MSTR,Finance,Financial conglomerates
+MSWV,Finance,Regional banks
+MTAK,Finance,Financial conglomerates
+MTAL,Finance,Financial conglomerates
+MTB,Finance,Regional banks
+MTC,Technology services,Information technology services
+MTCH,Technology services,Internet software/Services
+MTD,Health technology,Medical specialties
+MTDR,Energy minerals,Integrated oil
+MTEX,Health technology,Pharmaceuticals: other
+MTFC,Finance,Regional banks
+MTG,Finance,Property/Casualty insurance
+MTH,Finance,Real estate development
+MTN,Consumer services,Hotels/Resorts/Cruise lines
+MTNE,Finance,Financial conglomerates
+MTRN,Electronic technology,Electronic equipment/Instruments
+MTRX,Industrial services,Engineering & construction
+MTSI,Electronic technology,Semiconductors
+MTUS,Non-energy minerals,Steel
+MTW,Producer manufacturing,Trucks/Construction/Farm machinery
+MTWTS,Retail trade,Specialty stores
+MTX,Process industries,Chemicals: specialty
+MTZ,Industrial services,Engineering & construction
+MU,Electronic technology,Semiconductors
+MUA,Miscellaneous,Investment trusts
+MUC,Miscellaneous,Investment trusts
+MUEL,Producer manufacturing,Industrial machinery
+MUJ,Miscellaneous,Investment trusts
+MUR,Energy minerals,Oil & gas production
+MUSA,Retail trade,Specialty stores
+MUX,Non-energy minerals,Precious metals
+MUZE,Finance,Financial conglomerates
+MVBF,Finance,Regional banks
+MVLY,Finance,Regional banks
+MWA,Producer manufacturing,Industrial machinery
+MWH,Industrial services,Engineering & construction
+MWKKS,Retail trade,Specialty stores
+MWKXS,Finance,Finance/Rental/Leasing
+MWRJS,Retail trade,Specialty stores
+MXC,Energy minerals,Oil & gas production
+MXE,Miscellaneous,Investment trusts
+MXF,Miscellaneous,Investment trusts
+MXL,Electronic technology,Semiconductors
+MYE,Producer manufacturing,Miscellaneous manufacturing
+MYFW,Finance,Investment managers
+MYGN,Health technology,Medical specialties
+MYI,Miscellaneous,Investment trusts
+MYN,Miscellaneous,Investment trusts
+MYRG,Industrial services,Engineering & construction
+MYX,Finance,Financial conglomerates
+MZTI,Consumer non-durables,Food: specialty/candy
+MZYX,Finance,Financial conglomerates
+NABL,Technology services,Packaged software
+NAC,Miscellaneous,Investment trusts
+NACB,Finance,Major banks
+NAD,Miscellaneous,Investment trusts
+NAKA,Technology services,Internet software/Services
+NAMS,Health technology,Pharmaceuticals: major
+NAN,Miscellaneous,Investment trusts
+NANO,Producer manufacturing,Industrial machinery
+NASB,Finance,Savings banks
+NAT,Transportation,Marine shipping
+NATH,Consumer services,Restaurants
+NATL,Electronic technology,Computer processing hardware
+NATR,Health technology,Pharmaceuticals: other
+NAVI,Finance,Finance/Rental/Leasing
+NAVN,Technology services,Packaged software
+NAZ,Miscellaneous,Investment trusts
+NBB,Miscellaneous,Investment trusts
+NBBK,Finance,Regional banks
+NBH,Miscellaneous,Investment trusts
+NBHC,Finance,Regional banks
+NBIS,Technology services,Packaged software
+NBIX,Health technology,Biotechnology
+NBN,Finance,Regional banks
+NBR,Industrial services,Contract drilling
+NBRG,Finance,Financial conglomerates
+NBTB,Finance,Major banks
+NBXG,Miscellaneous,Investment trusts
+NC,Energy minerals,Coal
+NCA,Miscellaneous,Investment trusts
+NCDL,Miscellaneous,Investment trusts
+NCEW,Transportation,Airlines
+NCLH,Consumer services,Hotels/Resorts/Cruise lines
+NCNO,Technology services,Packaged software
+NCO,Finance,Financial conglomerates
+NCV,Miscellaneous,Investment trusts
+NCZ,Miscellaneous,Investment trusts
+NDAQ,Finance,Investment banks/Brokers
+NDLS,Consumer services,Restaurants
+NDMO,Miscellaneous,Investment trusts
+NDSN,Producer manufacturing,Industrial machinery
+NE,Industrial services,Contract drilling
+NEA,Miscellaneous,Investment trusts
+NECB,Finance,Major banks
+NEE,Utilities,Electric utilities
+NEE/PW,Finance,Finance/Rental/Leasing
+NEFB,Finance,Major banks
+NEGG,Retail trade,Internet retail
+NEM,Non-energy minerals,Precious metals
+NEN,Finance,Real estate development
+NEO,Health services,Medical/Nursing services
+NEOG,Health technology,Medical specialties
+NESR,Industrial services,Oilfield services/Equipment
+NET,Technology services,Information technology services
+NEU,Process industries,Chemicals: specialty
+NEWT,Finance,Finance/Rental/Leasing
+NEXA,Non-energy minerals,Other metals/Minerals
+NEXN,Technology services,Packaged software
+NEXT,Energy minerals,Oil & gas production
+NFG,Energy minerals,Integrated oil
+NFJ,Miscellaneous,Investment trusts
+NFLX,Technology services,Internet software/Services
+NG,Non-energy minerals,Precious metals
+NGL,Industrial services,Oil & gas pipelines
+NGNE,Health technology,Biotechnology
+NGS,Producer manufacturing,Industrial machinery
+NGVC,Retail trade,Food retail
+NGVT,Process industries,Chemicals: major diversified
+NHC,Health services,Hospital/Nursing management
+NHI,Finance,Real estate investment trusts
+NHIV,Finance,Financial conglomerates
+NHP,Finance,Real estate investment trusts
+NHS,Miscellaneous,Investment trusts
+NI,Utilities,Gas distributors
+NIC,Finance,Major banks
+NIDB,Finance,Regional banks
+NIE,Miscellaneous,Investment trusts
+NIM,Miscellaneous,Investment trusts
+NIMU,Finance,Financial conglomerates
+NINE,Industrial services,Oilfield services/Equipment
+NIQ,Technology services,Packaged software
+NJR,Utilities,Gas distributors
+NKE,Consumer non-durables,Apparel/Footwear
+NKSH,Finance,Major banks
+NKTR,Health technology,Pharmaceuticals: major
+NKX,Miscellaneous,Investment trusts
+NL,Producer manufacturing,Metal fabrication
+NLCP,Finance,Real estate investment trusts
+NLOP,Finance,Real estate investment trusts
+NLST,Electronic technology,Semiconductors
+NLY,Finance,Real estate investment trusts
+NMAI,Miscellaneous,Investment trusts
+NMAX,Consumer services,Broadcasting
+NMCO,Miscellaneous,Investment trusts
+NMFC,Miscellaneous,Investment trusts
+NMI,Miscellaneous,Investment trusts
+NMIH,Finance,Property/Casualty insurance
+NMKBP,Utilities,Electric utilities
+NML,Miscellaneous,Investment trusts
+NMM,Transportation,Marine shipping
+NMP,Finance,Financial conglomerates
+NMPGY,Transportation,Marine shipping
+NMRK,Finance,Real estate development
+NMS,Miscellaneous,Investment trusts
+NMT,Miscellaneous,Investment trusts
+NMZ,Miscellaneous,Investment trusts
+NN,Technology services,Packaged software
+NNE,Producer manufacturing,Electrical products
+NNI,Finance,Finance/Rental/Leasing
+NNN,Finance,Real estate investment trusts
+NNY,Miscellaneous,Investment trusts
+NOAH,Finance,Investment managers
+NOBH,Consumer durables,Homebuilding
+NOC,Electronic technology,Aerospace & defense
+NODB,Finance,Regional banks
+NODK,Finance,Multi-line insurance
+NOEM,Finance,Financial conglomerates
+NOG,Energy minerals,Oil & gas production
+NOMD,Consumer non-durables,Food: specialty/candy
+NOV,Industrial services,Oilfield services/Equipment
+NOVT,Electronic technology,Electronic equipment/Instruments
+NOW,Technology services,Packaged software
+NP,Finance,Insurance brokers/Services
+NPAC,Finance,Financial conglomerates
+NPB,Finance,Regional banks
+NPCE,Health technology,Medical specialties
+NPCT,Miscellaneous,Investment trusts
+NPFD,Miscellaneous,Investment trusts
+NPK,Electronic technology,Aerospace & defense
+NPKI,Producer manufacturing,Building products
+NPO,Producer manufacturing,Industrial machinery
+NPV,Miscellaneous,Investment trusts
+NRC,Health services,Services to the health industry
+NRDS,Technology services,Packaged software
+NRDY,Technology services,Packaged software
+NREF,Finance,Real estate investment trusts
+NRG,Utilities,Electric utilities
+NRIM,Finance,Regional banks
+NRIX,Health technology,Biotechnology
+NRK,Miscellaneous,Investment trusts
+NRP,Energy minerals,Coal
+NRT,Miscellaneous,Investment trusts
+NRXS,Health technology,Medical specialties
+NSAI,Finance,Financial conglomerates
+NSARO,Utilities,Alternative power generation
+NSC,Transportation,Railroads
+NSIT,Technology services,Information technology services
+NSLR,Miscellaneous,Investment trusts
+NSP,Commercial services,Miscellaneous commercial services
+NSSC,Commercial services,Miscellaneous commercial services
+NSYC,Commercial services,Miscellaneous commercial services
+NSYS,Health technology,Medical specialties
+NTAP,Electronic technology,Computer peripherals
+NTB,Finance,Regional banks
+NTBP,Finance,Regional banks
+NTCT,Technology services,Packaged software
+NTES,Technology services,Packaged software
+NTGR,Technology services,Information technology services
+NTIC,Process industries,Industrial specialties
+NTLA,Health technology,Biotechnology
+NTNX,Technology services,Data processing services
+NTRA,Health technology,Biotechnology
+NTRB,Health technology,Medical specialties
+NTRS,Finance,Investment managers
+NTSK,Technology services,Packaged software
+NTST,Finance,Real estate investment trusts
+NTWK,Technology services,Information technology services
+NTWO,Finance,Financial conglomerates
+NU,Finance,Regional banks
+NUE,Non-energy minerals,Steel
+NUTX,Health services,Medical/Nursing services
+NUV,Miscellaneous,Investment trusts
+NUVR,Communications,Major telecommunications
+NUW,Miscellaneous,Investment trusts
+NVAX,Health technology,Biotechnology
+NVCR,Health technology,Medical specialties
+NVCT,Health technology,Pharmaceuticals: major
+NVDA,Electronic technology,Semiconductors
+NVEC,Electronic technology,Semiconductors
+NVG,Miscellaneous,Investment trusts
+NVGS,Transportation,Marine shipping
+NVMI,Electronic technology,Electronic equipment/Instruments
+NVNO,Health technology,Medical specialties
+NVR,Consumer durables,Homebuilding
+NVRI,Non-energy minerals,Other metals/Minerals
+NVST,Health technology,Medical specialties
+NVT,Electronic technology,Electronic components
+NVTS,Electronic technology,Semiconductors
+NWAX,Finance,Financial conglomerates
+NWBI,Finance,Savings banks
+NWE,Utilities,Electric utilities
+NWFL,Finance,Regional banks
+NWL,Producer manufacturing,Industrial machinery
+NWN,Utilities,Gas distributors
+NWPX,Non-energy minerals,Construction materials
+NWS,Consumer services,Publishing: newspapers
+NX,Producer manufacturing,Building products
+NXG,Miscellaneous,Investment trusts
+NXGL,Process industries,Chemicals: specialty
+NXP,Miscellaneous,Investment trusts
+NXPI,Electronic technology,Semiconductors
+NXPL,Non-energy minerals,Precious metals
+NXRT,Finance,Real estate investment trusts
+NXST,Consumer services,Broadcasting
+NXT,Electronic technology,Electronic equipment/Instruments
+NXTT,Technology services,Packaged software
+NYC,Finance,Real estate investment trusts
+NYT,Consumer services,Publishing: newspapers
+NZF,Miscellaneous,Investment trusts
+O,Finance,Real estate investment trusts
+OACC,Finance,Financial conglomerates
+OAK/PA,Finance,Investment managers
+OAKC,Finance,Investment managers
+OAKV,Finance,Major banks
+OBA,Finance,Financial conglomerates
+OBDC,Finance,Financial conglomerates
+OBIO,Health technology,Medical specialties
+OBK,Finance,Regional banks
+OBT,Finance,Regional banks
+OBX,Health technology,Pharmaceuticals: major
+OC,Process industries,Containers/Packaging
+OCAC,Finance,Financial conglomerates
+OCC,Electronic technology,Telecommunications equipment
+OCFC,Finance,Savings banks
+OCLT,Finance,Financial conglomerates
+OCS,Commercial services,Miscellaneous commercial services
+OCSL,Miscellaneous,Investment trusts
+OCTV,Technology services,Packaged software
+OCUL,Health technology,Pharmaceuticals: major
+ODC,Process industries,Chemicals: agricultural
+ODD,Technology services,Packaged software
+ODFL,Transportation,Trucking
+ODTX,Health technology,Biotechnology
+OEC,Process industries,Chemicals: specialty
+OESX,Electronic technology,Semiconductors
+OFED,Finance,Savings banks
+OFG,Finance,Major banks
+OFIX,Health technology,Medical specialties
+OFLX,Producer manufacturing,Miscellaneous manufacturing
+OFRM,Consumer non-durables,Food: specialty/candy
+OGE,Utilities,Electric utilities
+OGN,Health technology,Pharmaceuticals: major
+OGS,Utilities,Gas distributors
+OHAC,Finance,Financial conglomerates
+OHI,Finance,Real estate investment trusts
+OI,Process industries,Containers/Packaging
+OIA,Miscellaneous,Investment trusts
+OICT,Finance,Life/Health insurance
+OIG,Finance,Property/Casualty insurance
+OII,Producer manufacturing,Industrial machinery
+OIM,Finance,Financial conglomerates
+OIS,Industrial services,Oilfield services/Equipment
+OKE,Utilities,Gas distributors
+OKLO,Producer manufacturing,Industrial machinery
+OKTA,Technology services,Packaged software
+OLED,Electronic technology,Electronic production equipment
+OLLI,Retail trade,Department stores
+OLMA,Health technology,Pharmaceuticals: major
+OLN,Process industries,Industrial specialties
+OLP,Finance,Real estate investment trusts
+OMC,Commercial services,Advertising/Marketing services
+OMCL,Technology services,Information technology services
+OMDA,Technology services,Internet software/Services
+OMER,Health technology,Pharmaceuticals: major
+OMF,Finance,Finance/Rental/Leasing
+ON,Electronic technology,Semiconductors
+ONB,Finance,Major banks
+ONCH,Finance,Financial conglomerates
+ONDS,Electronic technology,Telecommunications equipment
+ONEW,Retail trade,Specialty stores
+ONIT,Finance,Finance/Rental/Leasing
+ONON,Consumer non-durables,Apparel/Footwear
+ONT,Industrial services,Environmental services
+ONTO,Electronic technology,Electronic equipment/Instruments
+OOMA,Communications,Major telecommunications
+OPBK,Finance,Regional banks
+OPCH,Health services,Medical/Nursing services
+OPFI,Finance,Finance/Rental/Leasing
+OPHC,Finance,Regional banks
+OPI,Finance,Real estate investment trusts
+OPLN,Technology services,Packaged software
+OPP,Miscellaneous,Investment trusts
+OPRA,Technology services,Packaged software
+OPRT,Finance,Finance/Rental/Leasing
+OPRX,Technology services,Packaged software
+OPTX,Electronic technology,Electronic components
+OPXS,Electronic technology,Electronic components
+OPY,Finance,Investment banks/Brokers
+ORA,Utilities,Electric utilities
+ORBN,Finance,Regional banks
+ORC,Finance,Real estate investment trusts
+ORCL,Technology services,Packaged software
+ORI,Finance,Specialty insurance
+ORIB,Consumer non-durables,Household/Personal care
+ORIC,Health technology,Pharmaceuticals: major
+ORIQ,Finance,Financial conglomerates
+ORKA,Health technology,Pharmaceuticals: major
+ORLY,Retail trade,Specialty stores
+ORN,Industrial services,Engineering & construction
+ORPB,Finance,Regional banks
+ORRF,Finance,Regional banks
+OSBC,Finance,Major banks
+OSCR,Health services,Managed health care
+OSIS,Electronic technology,Aerospace & defense
+OSK,Consumer durables,Motor vehicles
+OSPN,Technology services,Information technology services
+OSPR,Finance,Financial conglomerates
+OSS,Electronic technology,Computer processing hardware
+OSW,Consumer services,Other consumer services
+OTAI,Finance,Financial conglomerates
+OTCM,Finance,Investment banks/Brokers
+OTF,Finance,Finance/Rental/Leasing
+OTGA,Finance,Financial conglomerates
+OTIS,Industrial services,Engineering & construction
+OTKNP,Commercial services,Miscellaneous commercial services
+OTLY,Consumer non-durables,Food: major diversified
+OTTR,Utilities,Electric utilities
+OTTW,Finance,Savings banks
+OUST,Electronic technology,Semiconductors
+OUT,Finance,Real estate investment trusts
+OVBC,Finance,Regional banks
+OVLY,Finance,Regional banks
+OVV,Energy minerals,Integrated oil
+OWL,Finance,Investment managers
+OXBC,Finance,Regional banks
+OXLC,Finance,Financial conglomerates
+OXM,Consumer non-durables,Apparel/Footwear
+OXY,Energy minerals,Integrated oil
+OYSE,Finance,Financial conglomerates
+OZ,Finance,Real estate development
+OZK,Finance,Regional banks
+P,Electronic technology,Computer peripherals
+PAA,Industrial services,Oil & gas pipelines
+PAAC,Finance,Financial conglomerates
+PACH,Finance,Financial conglomerates
+PACS,Health services,Hospital/Nursing management
+PAG,Retail trade,Specialty stores
+PAGP,Industrial services,Oil & gas pipelines
+PAGS,Commercial services,Miscellaneous commercial services
+PAHC,Health technology,Pharmaceuticals: major
+PAI,Miscellaneous,Investment trusts
+PAII,Finance,Financial conglomerates
+PALO,Finance,Financial conglomerates
+PALX,Electronic technology,Semiconductors
+PAMT,Transportation,Trucking
+PANL,Transportation,Marine shipping
+PANW,Technology services,Packaged software
+PAR,Technology services,Packaged software
+PARK,Health services,Medical/Nursing services
+PARR,Energy minerals,Oil refining/Marketing
+PATH,Technology services,Packaged software
+PATK,Consumer durables,Home furnishings
+PAX,Finance,Investment managers
+PAXG,Finance,Financial conglomerates
+PAXS,Miscellaneous,Investment trusts
+PAY,Commercial services,Miscellaneous commercial services
+PAYC,Technology services,Packaged software
+PAYO,Commercial services,Miscellaneous commercial services
+PAYP,Commercial services,Miscellaneous commercial services
+PAYS,Commercial services,Miscellaneous commercial services
+PAYX,Technology services,Data processing services
+PB,Finance,Regional banks
+PBAM,Finance,Regional banks
+PBCO,Finance,Regional banks
+PBF,Energy minerals,Oil refining/Marketing
+PBFS,Finance,Regional banks
+PBH,Health technology,Pharmaceuticals: major
+PBHC,Finance,Regional banks
+PBI,Technology services,Packaged software
+PBKC,Finance,Regional banks
+PBKX,Finance,Regional banks
+PBLS,Health technology,Pharmaceuticals: major
+PBNC,Finance,Regional banks
+PBNK,Finance,Regional banks
+PBT,Miscellaneous,Investment trusts
+PBYI,Health technology,Pharmaceuticals: major
+PCAP,Finance,Financial conglomerates
+PCAR,Producer manufacturing,Trucks/Construction/Farm machinery
+PCB,Finance,Regional banks
+PCG,Utilities,Electric utilities
+PCG/PA,Utilities,Electric utilities
+PCLA,Electronic technology,Computer communications
+PCLB,Finance,Regional banks
+PCN,Miscellaneous,Investment trusts
+PCOR,Technology services,Packaged software
+PCQ,Miscellaneous,Investment trusts
+PCRX,Health technology,Pharmaceuticals: major
+PCTY,Technology services,Packaged software
+PCVX,Health technology,Biotechnology
+PCYO,Utilities,Water utilities
+PD,Technology services,Packaged software
+PDCC,Miscellaneous,Investment trusts
+PDD,Retail trade,Department stores
+PDER,Energy minerals,Coal
+PDEX,Health technology,Medical specialties
+PDFS,Technology services,Information technology services
+PDI,Miscellaneous,Investment trusts
+PDLB,Finance,Savings banks
+PDM,Finance,Real estate investment trusts
+PDO,Miscellaneous,Investment trusts
+PDT,Miscellaneous,Investment trusts
+PDX,Miscellaneous,Investment trusts
+PEB,Finance,Real estate investment trusts
+PEBA,Finance,Major banks
+PEBK,Finance,Regional banks
+PEBO,Finance,Regional banks
+PECE,Finance,Financial conglomerates
+PECO,Finance,Real estate investment trusts
+PED,Energy minerals,Oil & gas production
+PEG,Utilities,Electric utilities
+PEGA,Technology services,Information technology services
+PEN,Health technology,Medical specialties
+PENG,Electronic technology,Semiconductors
+PENN,Consumer services,Casinos/Gaming
+PEO,Miscellaneous,Investment trusts
+PEP,Consumer non-durables,Food: specialty/candy
+PERI,Technology services,Internet software/Services
+PESI,Industrial services,Environmental services
+PFBC,Finance,Regional banks
+PFBN,Finance,Regional banks
+PFBX,Finance,Regional banks
+PFD,Miscellaneous,Investment trusts
+PFE,Health technology,Pharmaceuticals: major
+PFG,Finance,Investment managers
+PFGC,Transportation,Other transportation
+PFIS,Finance,Regional banks
+PFL,Miscellaneous,Investment trusts
+PFLT,Miscellaneous,Investment trusts
+PFN,Miscellaneous,Investment trusts
+PFO,Miscellaneous,Investment trusts
+PFS,Finance,Savings banks
+PFSB,Finance,Savings banks
+PFSI,Finance,Finance/Rental/Leasing
+PFX,Miscellaneous,Investment trusts
+PG,Consumer non-durables,Household/Personal care
+PGAC,Finance,Financial conglomerates
+PGC,Finance,Regional banks
+PGEN,Health technology,Biotechnology
+PGNN,Finance,Regional banks
+PGNY,Commercial services,Miscellaneous commercial services
+PGP,Miscellaneous,Investment trusts
+PGR,Finance,Multi-line insurance
+PGY,Technology services,Packaged software
+PGZ,Miscellaneous,Investment trusts
+PH,Producer manufacturing,Industrial machinery
+PHAT,Health technology,Pharmaceuticals: major
+PHIG,Transportation,Airlines
+PHIN,Producer manufacturing,Auto parts: OEM
+PHM,Consumer durables,Homebuilding
+PHOE,Industrial services,Engineering & construction
+PHR,Technology services,Packaged software
+PHVS,Health technology,Biotechnology
+PHXE/P,Industrial services,Contract drilling
+PHYS,Miscellaneous,Investment trusts
+PI,Electronic technology,Semiconductors
+PICS,Commercial services,Miscellaneous commercial services
+PII,Consumer durables,Recreational products
+PINE,Finance,Real estate investment trusts
+PINS,Technology services,Internet software/Services
+PIPR,Finance,Investment banks/Brokers
+PJT,Finance,Investment banks/Brokers
+PK,Finance,Real estate investment trusts
+PKBK,Finance,Regional banks
+PKE,Electronic technology,Aerospace & defense
+PKG,Process industries,Containers/Packaging
+PKIN,Finance,Life/Health insurance
+PKOH,Producer manufacturing,Metal fabrication
+PL,Technology services,Packaged software
+PLAB,Electronic technology,Electronic production equipment
+PLAY,Consumer services,Movies/Entertainment
+PLBC,Finance,Regional banks
+PLBL,Retail trade,Electronics/Appliance stores
+PLCI,Finance,Financial conglomerates
+PLD,Finance,Real estate investment trusts
+PLGO,Finance,Multi-line insurance
+PLMK,Finance,Financial conglomerates
+PLMR,Finance,Property/Casualty insurance
+PLNT,Consumer services,Other consumer services
+PLOW,Producer manufacturing,Trucks/Construction/Farm machinery
+PLPC,Producer manufacturing,Building products
+PLQC,Finance,Regional banks
+PLRZ,Health technology,Biotechnology
+PLSE,Health technology,Medical specialties
+PLTR,Technology services,Packaged software
+PLUN,Finance,Financial conglomerates
+PLUS,Technology services,Packaged software
+PLWN,Consumer services,Other consumer services
+PLXS,Electronic technology,Electronic production equipment
+PM,Consumer non-durables,Tobacco
+PMI,Health technology,Medical specialties
+PML,Miscellaneous,Investment trusts
+PMM,Miscellaneous,Investment trusts
+PMN,Health technology,Biotechnology
+PMO,Miscellaneous,Investment trusts
+PMT,Finance,Real estate investment trusts
+PMTR,Finance,Financial conglomerates
+PMTS,Finance,Finance/Rental/Leasing
+PNAQ,Finance,Financial conglomerates
+PNBI,Finance,Regional banks
+PNC,Finance,Major banks
+PNFP,Finance,Regional banks
+PNI,Miscellaneous,Investment trusts
+PNMXO,Utilities,Electric utilities
+PNR,Producer manufacturing,Industrial machinery
+PNRG,Energy minerals,Oil & gas production
+PNSB,Finance,Financial conglomerates
+PNTG,Health services,Medical/Nursing services
+PNW,Utilities,Electric utilities
+PODD,Health technology,Medical specialties
+POET,Producer manufacturing,Electrical products
+POLE,Finance,Financial conglomerates
+PONO,Finance,Financial conglomerates
+PONT,Finance,Regional banks
+POOL,Distribution services,Wholesale distributors
+POR,Utilities,Electric utilities
+PORT-U,Finance,Financial conglomerates
+POST,Consumer non-durables,Food: specialty/candy
+POWI,Electronic technology,Semiconductors
+POWL,Producer manufacturing,Electrical products
+PPBN,Finance,Major banks
+PPC,Process industries,Agricultural commodities/Milling
+PPG,Process industries,Industrial specialties
+PPIH,Producer manufacturing,Industrial machinery
+PPL,Utilities,Electric utilities
+PPLI,Technology services,Internet software/Services
+PPLL,Finance,Regional banks
+PPTA,Non-energy minerals,Precious metals
+PR,Energy minerals,Integrated oil
+PRAA,Commercial services,Miscellaneous commercial services
+PRAX,Health technology,Pharmaceuticals: major
+PRCH,Finance,Property/Casualty insurance
+PRCT,Health technology,Medical specialties
+PRDO,Consumer services,Other consumer services
+PRE,Finance,Financial conglomerates
+PREJF,Finance,Specialty insurance
+PRG,Finance,Finance/Rental/Leasing
+PRGO,Health technology,Pharmaceuticals: major
+PRGS,Technology services,Packaged software
+PRHI,Finance,Property/Casualty insurance
+PRI,Finance,Life/Health insurance
+PRIF/PD,Miscellaneous,Investment trusts
+PRIM,Industrial services,Engineering & construction
+PRK,Finance,Major banks
+PRKA,Consumer services,Movies/Entertainment
+PRKS,Consumer services,Movies/Entertainment
+PRLB,Process industries,Chemicals: specialty
+PRM,Process industries,Chemicals: major diversified
+PRMB,Consumer non-durables,Beverages: non-alcoholic
+PRMY,Finance,Major banks
+PROV,Finance,Savings banks
+PRPO,Health services,Medical/Nursing services
+PRSI,Consumer services,Hotels/Resorts/Cruise lines
+PRSU,Consumer services,Hotels/Resorts/Cruise lines
+PRTA,Health technology,Biotechnology
+PRTH,Technology services,Packaged software
+PRTS,Retail trade,Specialty stores
+PRU,Finance,Life/Health insurance
+PRVA,Finance,Life/Health insurance
+PS,Finance,Investment managers
+PSA,Finance,Real estate investment trusts
+PSBD,Miscellaneous,Investment trusts
+PSBQ,Finance,Major banks
+PSBXP,Finance,Real estate investment trusts
+PSBYP,Finance,Real estate investment trusts
+PSBZP,Finance,Real estate investment trusts
+PSF,Miscellaneous,Investment trusts
+PSFE,Commercial services,Miscellaneous commercial services
+PSIX,Producer manufacturing,Auto parts: OEM
+PSLV,Miscellaneous,Investment trusts
+PSMT,Retail trade,Specialty stores
+PSN,Technology services,Information technology services
+PSNL,Health services,Medical/Nursing services
+PSQL,Electronic technology,Computer processing hardware
+PSTL,Finance,Real estate investment trusts
+PSUS,Miscellaneous,Investment trusts
+PSX,Energy minerals,Oil refining/Marketing
+PTA,Miscellaneous,Investment trusts
+PTAC,Finance,Financial conglomerates
+PTBS,Finance,Regional banks
+PTC,Technology services,Packaged software
+PTCT,Health technology,Pharmaceuticals: major
+PTEN,Energy minerals,Oil & gas production
+PTGX,Health technology,Pharmaceuticals: major
+PTHS,Health technology,Pharmaceuticals: major
+PTLE,Transportation,Other transportation
+PTN,Health technology,Pharmaceuticals: major
+PTON,Consumer services,Other consumer services
+PTOR,Finance,Financial conglomerates
+PTRN,Commercial services,Advertising/Marketing services
+PTY,Miscellaneous,Investment trusts
+PUBM,Technology services,Internet software/Services
+PUMP,Industrial services,Oilfield services/Equipment
+PURR,Finance,Financial conglomerates
+PVBK,Finance,Regional banks
+PVH,Consumer non-durables,Apparel/Footwear
+PVLA,Health technology,Biotechnology
+PW,Finance,Real estate investment trusts
+PWP,Finance,Investment managers
+PWR,Industrial services,Engineering & construction
+PWRL,Miscellaneous,Investment trusts
+PXED,Technology services,Internet software/Services
+PXLW,Electronic technology,Semiconductors
+PXS,Transportation,Marine shipping
+PYPD,Health technology,Pharmaceuticals: major
+PYPL,Commercial services,Miscellaneous commercial services
+PYT,Finance,Finance/Rental/Leasing
+PZZA,Consumer services,Restaurants
+Q,Electronic technology,Electronic equipment/Instruments
+QADR,Finance,Financial conglomerates
+QBAK,Electronic technology,Computer peripherals
+QBTS,Electronic technology,Computer processing hardware
+QCOM,Electronic technology,Semiconductors
+QCRH,Finance,Major banks
+QDEL,Health technology,Medical specialties
+QDMI,Finance,Life/Health insurance
+QEPC,Consumer durables,Tools & hardware
+QETA,Finance,Financial conglomerates
+QFIN,Finance,Finance/Rental/Leasing
+QGEN,Health technology,Medical specialties
+QLEP,Finance,Financial conglomerates
+QLYS,Technology services,Packaged software
+QMCO,Electronic technology,Computer peripherals
+QNBC,Finance,Regional banks
+QNST,Commercial services,Advertising/Marketing services
+QNT,Electronic technology,Computer processing hardware
+QNTO,Finance,Savings banks
+QQQX,Miscellaneous,Investment trusts
+QRED,Finance,Financial conglomerates
+QSEA,Finance,Financial conglomerates
+QSR,Consumer services,Restaurants
+QTTB,Health technology,Biotechnology
+QTWO,Technology services,Information technology services
+QUAD,Commercial services,Commercial printing/Forms
+QUBT,Technology services,Information technology services
+QUCT,Finance,Investment managers
+QUIK,Electronic technology,Semiconductors
+QUMS,Finance,Financial conglomerates
+QURE,Health technology,Biotechnology
+QVCG,Retail trade,Electronics/Appliance stores
+QXO,Distribution services,Wholesale distributors
+R,Transportation,Air freight/Couriers
+RA,Miscellaneous,Investment trusts
+RAC,Finance,Financial conglomerates
+RACC,Finance,Financial conglomerates
+RACD,Finance,Financial conglomerates
+RAL,Electronic technology,Electronic equipment/Instruments
+RAMP,Technology services,Packaged software
+RAND,Miscellaneous,Investment trusts
+RANG,Finance,Financial conglomerates
+RAPP,Health technology,Biotechnology
+RARE,Health technology,Pharmaceuticals: major
+RBB,Finance,Regional banks
+RBC,Producer manufacturing,Metal fabrication
+RBCAA,Finance,Regional banks
+RBCN,Non-energy minerals,Other metals/Minerals
+RBKB,Finance,Regional banks
+RBLX,Technology services,Packaged software
+RBNK,Finance,Regional banks
+RBRK,Technology services,Information technology services
+RCBC,Finance,Regional banks
+RCCB,Consumer services,Movies/Entertainment
+RCEL,Health technology,Medical specialties
+RCKY,Consumer non-durables,Apparel/Footwear
+RCL,Consumer services,Hotels/Resorts/Cruise lines
+RCMT,Commercial services,Personnel services
+RCUS,Health technology,Biotechnology
+RDAG,Finance,Financial conglomerates
+RDCM,Technology services,Packaged software
+RDDT,Technology services,Internet software/Services
+RDN,Finance,Specialty insurance
+RDNT,Health services,Medical/Nursing services
+RDNW,Retail trade,Specialty stores
+RDVT,Technology services,Packaged software
+RDW,Electronic technology,Aerospace & defense
+RDWR,Electronic technology,Computer communications
+REA,Non-energy minerals,Other metals/Minerals
+REAL,Retail trade,Internet retail
+REAX,Finance,Real estate development
+REDW,Finance,Savings banks
+REF,Retail trade,Apparel/Footwear retail
+REFI,Finance,Real estate investment trusts
+REG,Finance,Real estate investment trusts
+REGN,Health technology,Pharmaceuticals: major
+RELL,Electronic technology,Electronic production equipment
+RELY,Commercial services,Miscellaneous commercial services
+REOP,Producer manufacturing,Miscellaneous manufacturing
+REPL,Health technology,Biotechnology
+REPX,Energy minerals,Integrated oil
+RES,Industrial services,Oilfield services/Equipment
+REX,Process industries,Chemicals: specialty
+REXR,Finance,Real estate investment trusts
+REYN,Consumer non-durables,Household/Personal care
+REZI,Distribution services,Electronics distributors
+RF,Finance,Major banks
+RFAI,Finance,Financial conglomerates
+RFAM,Finance,Financial conglomerates
+RFI,Miscellaneous,Investment trusts
+RFIL,Electronic technology,Electronic components
+RFM,Miscellaneous,Investment trusts
+RFMZ,Miscellaneous,Investment trusts
+RGA,Finance,Life/Health insurance
+RGC,Health technology,Pharmaceuticals: major
+RGCO,Utilities,Gas distributors
+RGEN,Health technology,Pharmaceuticals: major
+RGLD,Non-energy minerals,Precious metals
+RGNX,Health technology,Pharmaceuticals: major
+RGR,Consumer durables,Recreational products
+RGS,Consumer services,Other consumer services
+RGT,Miscellaneous,Investment trusts
+RGTI,Electronic technology,Computer processing hardware
+RH,Retail trade,Specialty stores
+RHI,Commercial services,Personnel services
+RHLD,Commercial services,Miscellaneous commercial services
+RHNO,Commercial services,Miscellaneous commercial services
+RHP,Finance,Real estate investment trusts
+RIBB,Finance,Financial conglomerates
+RICK,Consumer services,Restaurants
+RIG,Industrial services,Contract drilling
+RIGL,Health technology,Pharmaceuticals: major
+RIOT,Technology services,Information technology services
+RITM,Finance,Real estate investment trusts
+RIV,Miscellaneous,Investment trusts
+RIVN,Consumer durables,Motor vehicles
+RJET,Transportation,Airlines
+RJF,Finance,Investment managers
+RKLB,Electronic technology,Aerospace & defense
+RKT,Finance,Finance/Rental/Leasing
+RL,Consumer non-durables,Apparel/Footwear
+RLAY,Health technology,Biotechnology
+RLGT,Transportation,Air freight/Couriers
+RLI,Finance,Multi-line insurance
+RLJ,Finance,Real estate investment trusts
+RLTY,Miscellaneous,Investment trusts
+RLYB,Health technology,Biotechnology
+RM,Finance,Finance/Rental/Leasing
+RMBI,Finance,Major banks
+RMBS,Electronic technology,Semiconductors
+RMD,Health technology,Medical specialties
+RMI,Miscellaneous,Investment trusts
+RMIX,Non-energy minerals,Construction materials
+RMM,Miscellaneous,Investment trusts
+RMMZ,Miscellaneous,Investment trusts
+RMR,Finance,Financial conglomerates
+RMT,Miscellaneous,Investment trusts
+RMTI,Health technology,Medical specialties
+RNA,Health technology,Biotechnology
+RNAC,Health technology,Biotechnology
+RNAQ,Finance,Financial conglomerates
+RNG,Technology services,Packaged software
+RNGR,Industrial services,Oilfield services/Equipment
+RNGT,Finance,Financial conglomerates
+RNP,Miscellaneous,Investment trusts
+RNR,Finance,Property/Casualty insurance
+RNST,Finance,Regional banks
+RNW,Utilities,Alternative power generation
+ROAD,Industrial services,Engineering & construction
+ROCK,Producer manufacturing,Metal fabrication
+ROG,Process industries,Chemicals: specialty
+ROIV,Health technology,Pharmaceuticals: major
+ROK,Producer manufacturing,Electrical products
+ROKU,Technology services,Packaged software
+ROL,Commercial services,Miscellaneous commercial services
+ROLR,Technology services,Packaged software
+ROMA,Commercial services,Miscellaneous commercial services
+ROOT,Finance,Insurance brokers/Services
+ROP,Technology services,Packaged software
+ROST,Retail trade,Apparel/Footwear retail
+RPC,Finance,Investment managers
+RPD,Technology services,Information technology services
+RPGL,Technology services,Information technology services
+RPM,Process industries,Industrial specialties
+RPRX,Health technology,Pharmaceuticals: major
+RPT,Finance,Real estate investment trusts
+RQI,Miscellaneous,Investment trusts
+RRBI,Finance,Regional banks
+RRC,Energy minerals,Oil & gas production
+RREV,Finance,Financial conglomerates
+RRGB,Consumer services,Restaurants
+RRR,Consumer services,Hotels/Resorts/Cruise lines
+RRX,Producer manufacturing,Electrical products
+RS,Non-energy minerals,Steel
+RSG,Industrial services,Environmental services
+RSI,Consumer services,Casinos/Gaming
+RSKD,Technology services,Packaged software
+RSKIA,Electronic technology,Computer peripherals
+RSRV,Energy minerals,Oil & gas production
+RSVR,Commercial services,Miscellaneous commercial services
+RTAC,Finance,Financial conglomerates
+RTB,Technology services,Packaged software
+RTSN,Health technology,Pharmaceuticals: major
+RTX,Electronic technology,Aerospace & defense
+RUM,Technology services,Internet software/Services
+RUN,Electronic technology,Semiconductors
+RUSHA,Retail trade,Specialty stores
+RVCB,Finance,Regional banks
+RVI,Miscellaneous,Investment trusts
+RVII,Miscellaneous,Investment trusts
+RVLV,Retail trade,Internet retail
+RVMD,Health technology,Pharmaceuticals: other
+RVRF,Finance,Regional banks
+RVSB,Finance,Savings banks
+RVT,Miscellaneous,Investment trusts
+RVTY,Health technology,Medical specialties
+RWAY,Finance,Finance/Rental/Leasing
+RWCB,Finance,Regional banks
+RWWI,Technology services,Packaged software
+RXO,Technology services,Packaged software
+RXST,Electronic technology,Electronic components
+RYAM,Process industries,Chemicals: specialty
+RYAN,Finance,Insurance brokers/Services
+RYM,Producer manufacturing,Trucks/Construction/Farm machinery
+RYN,Finance,Real estate investment trusts
+RYTM,Health technology,Pharmaceuticals: major
+RYZ,Non-energy minerals,Steel
+RZAI,Technology services,Packaged software
+S,Technology services,Packaged software
+SAAQ,Finance,Financial conglomerates
+SABA,Miscellaneous,Investment trusts
+SABK,Finance,Regional banks
+SAC,Finance,Financial conglomerates
+SAFE,Finance,Real estate investment trusts
+SAFT,Finance,Property/Casualty insurance
+SAGU,Finance,Financial conglomerates
+SAH,Retail trade,Specialty stores
+SAIA,Transportation,Trucking
+SAIC,Technology services,Information technology services
+SAIH,Technology services,Data processing services
+SAIL,Technology services,Packaged software
+SAIQ,Finance,Financial conglomerates
+SAM,Consumer non-durables,Beverages: alcoholic
+SAMG,Finance,Investment managers
+SAMO,Finance,Financial conglomerates
+SANM,Electronic technology,Electronic production equipment
+SAR,Miscellaneous,Investment trusts
+SARO,Transportation,Other transportation
+SB,Transportation,Marine shipping
+SBAC,Finance,Real estate investment trusts
+SBC,Commercial services,Miscellaneous commercial services
+SBCF,Finance,Regional banks
+SBET,Commercial services,Advertising/Marketing services
+SBFG,Finance,Regional banks
+SBGI,Consumer services,Broadcasting
+SBH,Retail trade,Specialty stores
+SBI,Miscellaneous,Investment trusts
+SBKO,Finance,Regional banks
+SBLK,Transportation,Marine shipping
+SBMT,Non-energy minerals,Precious metals
+SBMW,Finance,Regional banks
+SBNC,Finance,Regional banks
+SBR,Miscellaneous,Investment trusts
+SBRA,Finance,Real estate investment trusts
+SBSI,Finance,Regional banks
+SBUX,Consumer services,Restaurants
+SBXDF,Finance,Financial conglomerates
+SBXE,Finance,Financial conglomerates
+SCAT,Finance,Financial conglomerates
+SCCO,Non-energy minerals,Other metals/Minerals
+SCD,Miscellaneous,Investment trusts
+SCE/PG,Finance,Finance/Rental/Leasing
+SCE/PL,Finance,Finance/Rental/Leasing
+SCE/PM,Finance,Finance/Rental/Leasing
+SCE/PN,Finance,Finance/Rental/Leasing
+SCHL,Consumer services,Publishing: books/magazines
+SCHW,Finance,Investment banks/Brokers
+SCI,Consumer services,Other consumer services
+SCIA,Producer manufacturing,Metal fabrication
+SCII,Finance,Financial conglomerates
+SCL,Process industries,Chemicals: specialty
+SCM,Miscellaneous,Investment trusts
+SCPQ,Finance,Financial conglomerates
+SCSC,Distribution services,Electronics distributors
+SCTH,Electronic technology,Computer communications
+SCTX,Health technology,Biotechnology
+SD,Energy minerals,Oil & gas production
+SDGR,Technology services,Packaged software
+SDHC,Consumer durables,Homebuilding
+SDHI,Finance,Financial conglomerates
+SDHY,Miscellaneous,Investment trusts
+SDOT,Consumer services,Restaurants
+SDRL,Industrial services,Contract drilling
+SE,Retail trade,Internet retail
+SEAL/PB,Industrial services,Oil & gas pipelines
+SEB,Process industries,Agricultural commodities/Milling
+SEBC,Finance,Regional banks
+SECZ,Technology services,Packaged software
+SEDG,Producer manufacturing,Electrical products
+SEG,Consumer services,Movies/Entertainment
+SEI,Industrial services,Oilfield services/Equipment
+SEIC,Finance,Investment managers
+SENEA,Consumer non-durables,Food: specialty/candy
+SENS,Electronic technology,Electronic components
+SEPN,Health technology,Biotechnology
+SEVN,Finance,Real estate investment trusts
+SEZL,Technology services,Packaged software
+SF,Finance,Investment managers
+SFBC,Finance,Regional banks
+SFBS,Finance,Regional banks
+SFD,Consumer non-durables,Food: meat/fish/dairy
+SFDL,Finance,Regional banks
+SFIGA,Finance,Regional banks
+SFL,Transportation,Marine shipping
+SFM,Retail trade,Food retail
+SFNC,Finance,Major banks
+SFST,Finance,Regional banks
+SFWL,Transportation,Air freight/Couriers
+SG,Consumer services,Restaurants
+SGA,Consumer services,Broadcasting
+SGC,Consumer non-durables,Apparel/Footwear
+SGHC,Consumer services,Casinos/Gaming
+SGHT,Health technology,Medical specialties
+SGI,Consumer durables,Home furnishings
+SGML,Non-energy minerals,Other metals/Minerals
+SGMT,Health technology,Pharmaceuticals: major
+SGP,Health technology,Biotechnology
+SGRY,Health services,Hospital/Nursing management
+SGU,Energy minerals,Oil refining/Marketing
+SHAK,Consumer services,Restaurants
+SHAZ,Technology services,Data processing services
+SHBI,Finance,Regional banks
+SHC,Health technology,Medical specialties
+SHEN,Communications,Major telecommunications
+SHIP,Transportation,Marine shipping
+SHLS,Electronic technology,Semiconductors
+SHO,Finance,Real estate investment trusts
+SHOE,Retail trade,Apparel/Footwear retail
+SHOO,Consumer non-durables,Apparel/Footwear
+SHOP,Commercial services,Miscellaneous commercial services
+SHOT,Finance,Financial conglomerates
+SHW,Process industries,Industrial specialties
+SI,Health technology,Medical specialties
+SIBN,Health technology,Medical specialties
+SIF,Electronic technology,Aerospace & defense
+SIFY,Technology services,Internet software/Services
+SIG,Retail trade,Specialty stores
+SIGI,Finance,Property/Casualty insurance
+SILC,Electronic technology,Computer communications
+SIMA,Finance,Financial conglomerates
+SIMO,Electronic technology,Semiconductors
+SIND,Non-energy minerals,Precious metals
+SIRI,Consumer services,Broadcasting
+SITE,Distribution services,Wholesale distributors
+SITM,Electronic technology,Semiconductors
+SJM,Consumer non-durables,Food: specialty/candy
+SKAS,Transportation,Other transportation
+SKIL,Technology services,Packaged software
+SKIN,Health technology,Medical specialties
+SKT,Finance,Real estate investment trusts
+SKWD,Finance,Multi-line insurance
+SKY,Consumer durables,Homebuilding
+SKYD,Consumer services,Cable/Satellite TV
+SKYH,Finance,Real estate development
+SKYW,Transportation,Airlines
+SLAB,Electronic technology,Semiconductors
+SLB,Industrial services,Contract drilling
+SLBK,Finance,Major banks
+SLDB,Health technology,Biotechnology
+SLDE,Finance,Property/Casualty insurance
+SLE,Technology services,Internet software/Services
+SLG,Finance,Real estate investment trusts
+SLGL,Health technology,Pharmaceuticals: major
+SLGN,Process industries,Containers/Packaging
+SLM,Finance,Finance/Rental/Leasing
+SLMNP,Process industries,Chemicals: specialty
+SLN,Commercial services,Miscellaneous commercial services
+SLRC,Miscellaneous,Investment trusts
+SLRK,Finance,Major banks
+SLS,Health technology,Pharmaceuticals: major
+SLVM,Process industries,Pulp & paper
+SM,Energy minerals,Integrated oil
+SMA,Finance,Real estate investment trusts
+SMAL,Finance,Regional banks
+SMBC,Finance,Savings banks
+SMBK,Finance,Regional banks
+SMC,Industrial services,Oil & gas pipelines
+SMCI,Electronic technology,Computer processing hardware
+SMG,Process industries,Chemicals: agricultural
+SMHI,Transportation,Marine shipping
+SMID,Non-energy minerals,Construction materials
+SMMT,Health technology,Biotechnology
+SMP,Consumer durables,Automotive aftermarket
+SMPL,Consumer non-durables,Food: major diversified
+SMR,Producer manufacturing,Electrical products
+SMTC,Electronic technology,Semiconductors
+SMTI,Health technology,Medical specialties
+SMWB,Technology services,Packaged software
+SN,Consumer durables,Electronics/Appliances
+SNA,Consumer durables,Tools & hardware
+SNAP,Technology services,Packaged software
+SNDA,Health services,Medical/Nursing services
+SNDK,Electronic technology,Computer peripherals
+SNDR,Transportation,Trucking
+SNDX,Health technology,Biotechnology
+SNEX,Finance,Investment banks/Brokers
+SNFCA,Finance,Finance/Rental/Leasing
+SNLC,Finance,Major banks
+SNNF,Finance,Major banks
+SNOW,Technology services,Packaged software
+SNPS,Technology services,Packaged software
+SNUS/PH,Finance,Major banks
+SNWV,Health technology,Medical specialties
+SNX,Distribution services,Electronics distributors
+SO,Utilities,Electric utilities
+SOBS,Finance,Regional banks
+SOCA,Finance,Financial conglomerates
+SODI,Electronic technology,Semiconductors
+SOFI,Finance,Finance/Rental/Leasing
+SOGP,Technology services,Packaged software
+SOHU,Technology services,Internet software/Services
+SOLS,Process industries,Chemicals: major diversified
+SOLV,Health services,Medical/Nursing services
+SOMC,Finance,Regional banks
+SOME,Finance,Regional banks
+SON,Process industries,Containers/Packaging
+SONO,Consumer durables,Electronics/Appliances
+SOPH,Technology services,Packaged software
+SOR,Miscellaneous,Investment trusts
+SORN,Finance,Financial conglomerates
+SOTK,Producer manufacturing,Industrial machinery
+SOUB,Finance,Regional banks
+SOUL,Finance,Financial conglomerates
+SPB,Consumer durables,Electronics/Appliances
+SPCB,Electronic technology,Computer communications
+SPCX,Communications,Specialty telecommunications
+SPE,Miscellaneous,Investment trusts
+SPEG,Finance,Financial conglomerates
+SPFI,Finance,Regional banks
+SPG,Finance,Real estate investment trusts
+SPGI,Commercial services,Financial publishing/Services
+SPH,Distribution services,Wholesale distributors
+SPHR,Consumer services,Media conglomerates
+SPIR,Technology services,Packaged software
+SPKLF,Finance,Financial conglomerates
+SPMC,Miscellaneous,Investment trusts
+SPNT,Finance,Property/Casualty insurance
+SPOK,Communications,Wireless telecommunications
+SPOT,Technology services,Internet software/Services
+SPRB,Health technology,Biotechnology
+SPSC,Technology services,Packaged software
+SPT,Technology services,Packaged software
+SPTX,Health technology,Pharmaceuticals: major
+SPXC,Producer manufacturing,Building products
+SPXX,Miscellaneous,Investment trusts
+SR,Utilities,Gas distributors
+SRAD,Technology services,Packaged software
+SRBK,Finance,Regional banks
+SRCE,Finance,Regional banks
+SRE,Utilities,Gas distributors
+SRI,Producer manufacturing,Auto parts: OEM
+SRNN,Finance,Regional banks
+SRPT,Health technology,Pharmaceuticals: major
+SRRK,Health technology,Biotechnology
+SRV,Miscellaneous,Investment trusts
+SRZN,Health technology,Biotechnology
+SSAC,Finance,Financial conglomerates
+SSB,Finance,Major banks
+SSBI,Finance,Regional banks
+SSBP,Finance,Savings banks
+SSD,Producer manufacturing,Building products
+SSEA,Finance,Financial conglomerates
+SSMR,Non-energy minerals,Precious metals
+SSNC,Technology services,Packaged software
+SSRM,Non-energy minerals,Precious metals
+SSTI,Technology services,Packaged software
+SSYS,Electronic technology,Computer peripherals
+ST,Electronic technology,Electronic equipment/Instruments
+STAA,Health technology,Medical specialties
+STAG,Finance,Real estate investment trusts
+STBA,Finance,Regional banks
+STBI,Finance,Savings banks
+STBK,Finance,Regional banks
+STC,Finance,Specialty insurance
+STDN,Process industries,Chemicals: specialty
+STE,Health technology,Medical specialties
+STEP,Finance,Investment managers
+STEW,Miscellaneous,Investment trusts
+STGW,Commercial services,Miscellaneous commercial services
+STHO,Finance,Financial conglomerates
+STK,Miscellaneous,Investment trusts
+STLD,Non-energy minerals,Steel
+STLE,Finance,Regional banks
+STLN,Health services,Medical/Nursing services
+STNE,Commercial services,Miscellaneous commercial services
+STNG,Transportation,Marine shipping
+STOK,Health technology,Biotechnology
+STRA,Consumer services,Other consumer services
+STRL,Industrial services,Engineering & construction
+STRO,Health technology,Pharmaceuticals: major
+STRR,Commercial services,Personnel services
+STRRP,Commercial services,Personnel services
+STRS,Finance,Real estate development
+STRT,Producer manufacturing,Auto parts: OEM
+STRW,Finance,Real estate investment trusts
+STRZ,Consumer services,Movies/Entertainment
+STT,Finance,Investment banks/Brokers
+STTK,Health technology,Biotechnology
+STUB,Technology services,Internet software/Services
+STVN,Health technology,Medical specialties
+STWD,Finance,Real estate investment trusts
+STX,Electronic technology,Computer peripherals
+STZ,Consumer non-durables,Beverages: alcoholic
+SUI,Finance,Real estate investment trusts
+SUJA,Consumer non-durables,Beverages: non-alcoholic
+SUMA,Finance,Financial conglomerates
+SUN,Distribution services,Wholesale distributors
+SUNB,Finance,Finance/Rental/Leasing
+SUNC,Distribution services,Wholesale distributors
+SUNS,Finance,Real estate investment trusts
+SUPN,Health technology,Pharmaceuticals: major
+SUPX,Commercial services,Miscellaneous commercial services
+SVAQ,Finance,Financial conglomerates
+SVBT,Finance,Regional banks
+SVC,Finance,Real estate investment trusts
+SVCC,Finance,Financial conglomerates
+SVCO,Technology services,Packaged software
+SVIV,Finance,Financial conglomerates
+SVRN,Finance,Financial conglomerates
+SVV,Retail trade,Specialty stores
+SW,Process industries,Containers/Packaging
+SWBI,Electronic technology,Aerospace & defense
+SWIM,Producer manufacturing,Miscellaneous manufacturing
+SWK,Consumer durables,Tools & hardware
+SWKS,Electronic technology,Semiconductors
+SWMR,Technology services,Packaged software
+SWX,Utilities,Gas distributors
+SWZ,Miscellaneous,Investment trusts
+SXC,Non-energy minerals,Steel
+SXI,Electronic technology,Electronic equipment/Instruments
+SXT,Consumer non-durables,Food: specialty/candy
+SYBT,Finance,Regional banks
+SYF,Finance,Finance/Rental/Leasing
+SYK,Health technology,Medical specialties
+SYM,Producer manufacturing,Industrial machinery
+SYNA,Electronic technology,Semiconductors
+SYRE,Health technology,Pharmaceuticals: major
+SYY,Distribution services,Food distributors
+SZZL,Finance,Financial conglomerates
+T,Communications,Wireless telecommunications
+TACH,Finance,Financial conglomerates
+TACO,Finance,Financial conglomerates
+TACT,Electronic technology,Computer peripherals
+TAL,Commercial services,Miscellaneous commercial services
+TALO,Energy minerals,Oil & gas production
+TANH,Process industries,Chemicals: specialty
+TAP,Consumer non-durables,Beverages: alcoholic
+TARS,Health technology,Pharmaceuticals: major
+TASK,Commercial services,Miscellaneous commercial services
+TATT,Electronic technology,Aerospace & defense
+TAVI,Finance,Financial conglomerates
+TAYD,Producer manufacturing,Industrial machinery
+TBBA,Finance,Regional banks
+TBBB,Retail trade,Food retail
+TBBC,Finance,Regional banks
+TBBK,Finance,Regional banks
+TBCH,Consumer durables,Electronics/Appliances
+TBCV,Finance,Financial conglomerates
+TBI,Commercial services,Personnel services
+TBLD,Miscellaneous,Investment trusts
+TBN,Energy minerals,Integrated oil
+TBTC,Technology services,Packaged software
+TCBI,Finance,Major banks
+TCBK,Finance,Regional banks
+TCBS,Finance,Savings banks
+TCBX,Finance,Savings banks
+TCGLF,Technology services,Packaged software
+TCGX,Finance,Financial conglomerates
+TCI,Finance,Real estate development
+TCMD,Health technology,Medical specialties
+TCNB,Finance,Regional banks
+TCX,Technology services,Data processing services
+TCXB,Finance,Financial conglomerates
+TDAC,Finance,Financial conglomerates
+TDAY,Consumer services,Publishing: newspapers
+TDC,Technology services,Packaged software
+TDCB,Finance,Savings banks
+TDF,Miscellaneous,Investment trusts
+TDG,Electronic technology,Aerospace & defense
+TDOC,Health services,Medical/Nursing services
+TDS,Communications,Wireless telecommunications
+TDW,Transportation,Marine shipping
+TDWD,Finance,Financial conglomerates
+TDY,Electronic technology,Aerospace & defense
+TEAM,Technology services,Packaged software
+TECH,Health technology,Biotechnology
+TECX,Commercial services,Miscellaneous commercial services
+TEI,Miscellaneous,Investment trusts
+TEL,Electronic technology,Semiconductors
+TEM,Technology services,Packaged software
+TEN,Transportation,Marine shipping
+TENB,Technology services,Packaged software
+TER,Electronic technology,Electronic production equipment
+TETAA,Finance,Investment managers
+TEX,Producer manufacturing,Trucks/Construction/Farm machinery
+TFC,Finance,Regional banks
+TFIN,Finance,Savings banks
+TFSL,Finance,Savings banks
+TFX,Health technology,Medical specialties
+TG,Non-energy minerals,Aluminum
+TGLS,Producer manufacturing,Building products
+TGT,Retail trade,Specialty stores
+TGTX,Health technology,Pharmaceuticals: major
+TH,Consumer services,Hotels/Resorts/Cruise lines
+THC,Health services,Hospital/Nursing management
+THEO,Finance,Financial conglomerates
+THFF,Finance,Major banks
+THG,Finance,Property/Casualty insurance
+THO,Consumer durables,Recreational products
+THQ,Miscellaneous,Investment trusts
+THRM,Producer manufacturing,Auto parts: OEM
+THVB,Finance,Regional banks
+THW,Miscellaneous,Investment trusts
+TIC,Commercial services,Miscellaneous commercial services
+TIGO,Communications,Wireless telecommunications
+TIL,Health technology,Biotechnology
+TILE,Producer manufacturing,Building products
+TIPT,Finance,Specialty insurance
+TISI,Commercial services,Miscellaneous commercial services
+TITN,Distribution services,Wholesale distributors
+TJGC,Electronic technology,Electronic equipment/Instruments
+TJX,Retail trade,Apparel/Footwear retail
+TK,Transportation,Marine shipping
+TKNO,Health technology,Pharmaceuticals: major
+TKO,Consumer services,Movies/Entertainment
+TKR,Producer manufacturing,Industrial machinery
+TLAC,Finance,Financial conglomerates
+TLIH,Distribution services,Wholesale distributors
+TLN,Utilities,Alternative power generation
+TLNC,Finance,Financial conglomerates
+TMAK,Finance,Major banks
+TMDX,Health technology,Medical specialties
+TMO,Health technology,Medical specialties
+TMP,Finance,Regional banks
+TMS,Finance,Financial conglomerates
+TMTS,Finance,Financial conglomerates
+TMUS,Communications,Wireless telecommunications
+TNC,Producer manufacturing,Industrial machinery
+TNDM,Health technology,Medical specialties
+TNET,Commercial services,Miscellaneous commercial services
+TNGX,Health technology,Biotechnology
+TNK,Transportation,Marine shipping
+TNL,Consumer services,Hotels/Resorts/Cruise lines
+TNXP,Health technology,Pharmaceuticals: major
+TOL,Consumer durables,Homebuilding
+TONT,Finance,Financial conglomerates
+TOP,Finance,Investment banks/Brokers
+TOST,Technology services,Packaged software
+TOWN,Finance,Regional banks
+TP,Technology services,Internet software/Services
+TPB,Consumer non-durables,Tobacco
+TPC,Industrial services,Engineering & construction
+TPCS,Producer manufacturing,Industrial machinery
+TPG,Finance,Investment managers
+TPGXL,Finance,Investment managers
+TPL,Miscellaneous,Investment trusts
+TPR,Retail trade,Apparel/Footwear retail
+TR,Consumer non-durables,Food: specialty/candy
+TRAD,Finance,Financial conglomerates
+TRAK,Technology services,Packaged software
+TRAX,Health technology,Biotechnology
+TRC,Finance,Real estate development
+TRCY,Finance,Major banks
+TREE,Finance,Finance/Rental/Leasing
+TREX,Non-energy minerals,Forest products
+TRGP,Utilities,Gas distributors
+TRGS,Finance,Financial conglomerates
+TRIB,Health technology,Medical specialties
+TRIN,Miscellaneous,Investment trusts
+TRIP,Consumer services,Other consumer services
+TRLV,Process industries,Agricultural commodities/Milling
+TRMB,Technology services,Packaged software
+TRMK,Finance,Regional banks
+TRN,Producer manufacturing,Trucks/Construction/Farm machinery
+TRNO,Finance,Real estate investment trusts
+TRNS,Electronic technology,Electronic equipment/Instruments
+TROW,Finance,Investment managers
+TRS,Process industries,Containers/Packaging
+TRSB,Finance,Regional banks
+TRST,Finance,Savings banks
+TRT,Producer manufacturing,Industrial machinery
+TRTN/PA,Finance,Finance/Rental/Leasing
+TRTX,Finance,Real estate investment trusts
+TRU,Commercial services,Financial publishing/Services
+TRUP,Finance,Multi-line insurance
+TRUX,Finance,Regional banks
+TRV,Finance,Property/Casualty insurance
+TRVI,Health technology,Biotechnology
+TRXB,Health technology,Pharmaceuticals: major
+TSAT,Communications,Specialty telecommunications
+TSBK,Finance,Savings banks
+TSCO,Retail trade,Specialty stores
+TSEM,Electronic technology,Semiconductors
+TSLA,Consumer durables,Motor vehicles
+TSLX,Miscellaneous,Investment trusts
+TSN,Consumer non-durables,Food: meat/fish/dairy
+TSSI,Technology services,Information technology services
+TT,Producer manufacturing,Industrial machinery
+TTAM,Non-energy minerals,Construction materials
+TTAN,Technology services,Packaged software
+TTC,Producer manufacturing,Trucks/Construction/Farm machinery
+TTD,Technology services,Packaged software
+TTEK,Industrial services,Engineering & construction
+TTI,Process industries,Chemicals: specialty
+TTMI,Electronic technology,Electronic components
+TTRX,Health technology,Pharmaceuticals: major
+TTWO,Technology services,Packaged software
+TTYP,Miscellaneous,Investment trusts
+TVA,Finance,Financial conglomerates
+TVAI,Finance,Financial conglomerates
+TVC,Government,General government
+TVGN,Health technology,Pharmaceuticals: major
+TVIV,Finance,Financial conglomerates
+TVTX,Health technology,Pharmaceuticals: major
+TW,Finance,Investment banks/Brokers
+TWFG,Finance,Insurance brokers/Services
+TWI,Producer manufacturing,Auto parts: OEM
+TWIN,Producer manufacturing,Trucks/Construction/Farm machinery
+TWLO,Technology services,Packaged software
+TWLV,Finance,Financial conglomerates
+TWN,Miscellaneous,Investment trusts
+TWST,Health technology,Biotechnology
+TX,Non-energy minerals,Steel
+TXG,Health technology,Biotechnology
+TXN,Electronic technology,Semiconductors
+TXNM,Utilities,Electric utilities
+TXO,Energy minerals,Integrated oil
+TXRH,Consumer services,Restaurants
+TXT,Electronic technology,Aerospace & defense
+TY,Miscellaneous,Investment trusts
+TYFG,Finance,Regional banks
+TYG,Miscellaneous,Investment trusts
+TYL,Technology services,Data processing services
+TYRA,Health technology,Biotechnology
+TZOO,Commercial services,Commercial printing/Forms
+U,Technology services,Packaged software
+UAC,Finance,Financial conglomerates
+UAL,Transportation,Airlines
+UAN,Process industries,Chemicals: agricultural
+UBAB,Finance,Regional banks
+UBCP,Finance,Regional banks
+UBER,Transportation,Other transportation
+UBOH,Finance,Regional banks
+UBSI,Finance,Regional banks
+UCB,Finance,Regional banks
+UCTT,Producer manufacturing,Industrial machinery
+UDR,Finance,Real estate investment trusts
+UE,Finance,Real estate investment trusts
+UEC,Non-energy minerals,Other metals/Minerals
+UEIC,Consumer durables,Electronics/Appliances
+UFCS,Finance,Property/Casualty insurance
+UFI,Process industries,Textiles
+UFPI,Non-energy minerals,Forest products
+UFPT,Process industries,Industrial specialties
+UG,Process industries,Chemicals: specialty
+UGI,Distribution services,Wholesale distributors
+UHAL,Finance,Finance/Rental/Leasing
+UHS,Health services,Hospital/Nursing management
+UHT,Finance,Real estate investment trusts
+UI,Electronic technology,Telecommunications equipment
+ULBI,Producer manufacturing,Electrical products
+ULH,Transportation,Trucking
+ULS,Commercial services,Miscellaneous commercial services
+ULTA,Retail trade,Specialty stores
+UMAC,Electronic technology,Electronic equipment/Instruments
+UMBF,Finance,Major banks
+UMH,Finance,Real estate investment trusts
+UNB,Finance,Regional banks
+UNF,Consumer services,Other consumer services
+UNFI,Distribution services,Food distributors
+UNH,Health services,Managed health care
+UNIB,Finance,Regional banks
+UNIT,Communications,Major telecommunications
+UNM,Finance,Multi-line insurance
+UNP,Transportation,Railroads
+UNTC,Energy minerals,Oil & gas production
+UNTN,Finance,Savings banks
+UNTY,Finance,Regional banks
+UPBD,Finance,Finance/Rental/Leasing
+UPS,Transportation,Air freight/Couriers
+UPST,Finance,Finance/Rental/Leasing
+UPWK,Commercial services,Personnel services
+URBN,Retail trade,Apparel/Footwear retail
+URGN,Health technology,Biotechnology
+URI,Finance,Finance/Rental/Leasing
+URSB,Finance,Regional banks
+USA,Miscellaneous,Investment trusts
+USAC,Industrial services,Oilfield services/Equipment
+USAR,Producer manufacturing,Metal fabrication
+USAU,Non-energy minerals,Precious metals
+USB,Finance,Major banks
+USCB,Finance,Regional banks
+USDE,Technology services,Packaged software
+USFD,Distribution services,Food distributors
+USLM,Non-energy minerals,Construction materials
+USMT,Finance,Regional banks
+USNA,Health technology,Pharmaceuticals: other
+USPH,Health services,Medical/Nursing services
+UTF,Miscellaneous,Investment trusts
+UTG,Miscellaneous,Investment trusts
+UTGN,Finance,Life/Health insurance
+UTHR,Health technology,Biotechnology
+UTI,Commercial services,Miscellaneous commercial services
+UTL,Utilities,Electric utilities
+UTMD,Health technology,Medical specialties
+UTZ,Consumer non-durables,Food: specialty/candy
+UVE,Finance,Property/Casualty insurance
+UVSP,Finance,Regional banks
+UVV,Distribution services,Wholesale distributors
+UWHR,Finance,Regional banks
+UYSC,Finance,Financial conglomerates
+V,Finance,Finance/Rental/Leasing
+VABK,Finance,Regional banks
+VAC,Consumer services,Other consumer services
+VAL,Industrial services,Contract drilling
+VALU,Consumer services,Publishing: books/magazines
+VATE,Industrial services,Engineering & construction
+VBF,Miscellaneous,Investment trusts
+VC,Producer manufacturing,Auto parts: OEM
+VCEL,Health technology,Pharmaceuticals: major
+VCTR,Finance,Investment managers
+VCV,Miscellaneous,Investment trusts
+VCX,Miscellaneous,Investment trusts
+VCYT,Health technology,Medical specialties
+VECA,Finance,Financial conglomerates
+VECO,Electronic technology,Electronic production equipment
+VEEE,Consumer durables,Recreational products
+VEEV,Technology services,Packaged software
+VEL,Finance,Finance/Rental/Leasing
+VELO,Producer manufacturing,Industrial machinery
+VEON,Communications,Wireless telecommunications
+VERA,Health technology,Biotechnology
+VERF,Finance,Savings banks
+VERX,Technology services,Packaged software
+VFC,Consumer non-durables,Apparel/Footwear
+VG,Industrial services,Oil & gas pipelines
+VGI,Miscellaneous,Investment trusts
+VGM,Miscellaneous,Investment trusts
+VGNT,Producer manufacturing,Electrical products
+VHC,Technology services,Packaged software
+VHCP,Finance,Financial conglomerates
+VHI,Process industries,Chemicals: specialty
+VIA,Technology services,Packaged software
+VIAV,Technology services,Information technology services
+VICI,Finance,Real estate investment trusts
+VICR,Electronic technology,Electronic components
+VII,Finance,Financial conglomerates
+VIK,Consumer services,Hotels/Resorts/Cruise lines
+VINP,Finance,Investment managers
+VIPS,Retail trade,Internet retail
+VIR,Health technology,Biotechnology
+VIRC,Producer manufacturing,Office equipment/Supplies
+VIRT,Finance,Investment banks/Brokers
+VISN,Electronic technology,Telecommunications equipment
+VITL,Process industries,Agricultural commodities/Milling
+VKI,Miscellaneous,Investment trusts
+VKQ,Miscellaneous,Investment trusts
+VKTX,Health technology,Pharmaceuticals: major
+VLGEA,Retail trade,Food retail
+VLNT,Finance,Regional banks
+VLO,Energy minerals,Oil refining/Marketing
+VLOS,Finance,Financial conglomerates
+VLT,Miscellaneous,Investment trusts
+VLTO,Producer manufacturing,Industrial machinery
+VLY,Finance,Major banks
+VMAR,Consumer durables,Recreational products
+VMC,Non-energy minerals,Construction materials
+VMD,Health services,Hospital/Nursing management
+VMI,Producer manufacturing,Metal fabrication
+VMO,Miscellaneous,Investment trusts
+VMRK,Finance,Real estate investment trusts
+VNCE,Consumer non-durables,Apparel/Footwear
+VNME,Finance,Financial conglomerates
+VNO,Finance,Real estate investment trusts
+VNOM,Miscellaneous,Investment trusts
+VNT,Transportation,Other transportation
+VNTRF,Process industries,Chemicals: specialty
+VOGX,Health technology,Pharmaceuticals: major
+VOR,Health technology,Biotechnology
+VOYA,Finance,Life/Health insurance
+VOYG,Technology services,Information technology services
+VPG,Electronic technology,Electronic components
+VPV,Miscellaneous,Investment trusts
+VRA,Consumer non-durables,Apparel/Footwear
+VRDN,Health technology,Pharmaceuticals: major
+VREX,Health technology,Medical specialties
+VRM,Retail trade,Specialty stores
+VRNS,Technology services,Packaged software
+VRSK,Technology services,Data processing services
+VRSN,Technology services,Internet software/Services
+VRT,Electronic technology,Electronic production equipment
+VRTS,Finance,Investment managers
+VRTX,Health technology,Pharmaceuticals: major
+VSAT,Electronic technology,Telecommunications equipment
+VSEC,Industrial services,Engineering & construction
+VSH,Electronic technology,Electronic production equipment
+VSNT,Consumer services,Cable/Satellite TV
+VST,Utilities,Electric utilities
+VSTM,Health technology,Biotechnology
+VSTS,Consumer non-durables,Apparel/Footwear
+VSXY,Retail trade,Apparel/Footwear retail
+VTN,Miscellaneous,Investment trusts
+VTOL,Transportation,Airlines
+VTR,Finance,Real estate investment trusts
+VTRS,Health technology,Pharmaceuticals: major
+VTS,Energy minerals,Oil & gas production
+VTVT,Health technology,Pharmaceuticals: major
+VVV,Consumer services,Other consumer services
+VVX,Commercial services,Miscellaneous commercial services
+VWFB,Finance,Savings banks
+VYLR,Commercial services,Miscellaneous commercial services
+VYX,Technology services,Packaged software
+VZ,Communications,Wireless telecommunications
+W,Retail trade,Specialty stores
+WAB,Producer manufacturing,Trucks/Construction/Farm machinery
+WABC,Finance,Regional banks
+WAFD,Finance,Major banks
+WAL,Finance,Regional banks
+WASH,Finance,Regional banks
+WAT,Health technology,Medical specialties
+WATT,Electronic technology,Semiconductors
+WAY,Technology services,Packaged software
+WBBW,Finance,Regional banks
+WBI,Industrial services,Oilfield services/Equipment
+WBTN,Technology services,Internet software/Services
+WCC,Distribution services,Wholesale distributors
+WCCB,Finance,Regional banks
+WCFB,Finance,Regional banks
+WCRS,Distribution services,Wholesale distributors
+WD,Finance,Finance/Rental/Leasing
+WDAY,Technology services,Information technology services
+WDC,Electronic technology,Computer peripherals
+WDFC,Process industries,Industrial specialties
+WDFN,Finance,Regional banks
+WDI,Miscellaneous,Investment trusts
+WEA,Miscellaneous,Investment trusts
+WEBC,Non-energy minerals,Steel
+WEC,Utilities,Electric utilities
+WELL,Finance,Real estate investment trusts
+WELPP,Utilities,Electric utilities
+WEN,Consumer services,Restaurants
+WENN,Finance,Financial conglomerates
+WERN,Transportation,Trucking
+WES,Industrial services,Oil & gas pipelines
+WEST,Consumer non-durables,Food: specialty/candy
+WEX,Commercial services,Miscellaneous commercial services
+WEYS,Consumer non-durables,Apparel/Footwear
+WFC,Finance,Major banks
+WFCF,Commercial services,Miscellaneous commercial services
+WFRD,Industrial services,Oilfield services/Equipment
+WGO,Consumer durables,Recreational products
+WGS,Health services,Medical/Nursing services
+WH,Consumer services,Hotels/Resorts/Cruise lines
+WHD,Industrial services,Oilfield services/Equipment
+WHF,Miscellaneous,Investment trusts
+WHG,Finance,Investment managers
+WHK,Miscellaneous,Investment trusts
+WHR,Consumer durables,Electronics/Appliances
+WIA,Miscellaneous,Investment trusts
+WILCF,Distribution services,Food distributors
+WINA,Retail trade,Apparel/Footwear retail
+WING,Consumer services,Restaurants
+WIW,Miscellaneous,Investment trusts
+WIX,Technology services,Packaged software
+WK,Technology services,Information technology services
+WKC,Distribution services,Wholesale distributors
+WLCO,Finance,Financial conglomerates
+WLDN,Commercial services,Miscellaneous commercial services
+WLFC,Finance,Finance/Rental/Leasing
+WLII,Finance,Financial conglomerates
+WLK,Process industries,Chemicals: specialty
+WLKP,Process industries,Chemicals: specialty
+WLTH,Technology services,Packaged software
+WLY,Consumer services,Publishing: books/magazines
+WM,Industrial services,Environmental services
+WMB,Industrial services,Oil & gas pipelines
+WMG,Commercial services,Commercial printing/Forms
+WMK,Retail trade,Food retail
+WMS,Producer manufacturing,Miscellaneous manufacturing
+WMT,Retail trade,Specialty stores
+WNC,Producer manufacturing,Trucks/Construction/Farm machinery
+WNEB,Finance,Savings banks
+WNMLA,Finance,Investment managers
+WOBK,Finance,Regional banks
+WOLF,Electronic technology,Semiconductors
+WOR,Producer manufacturing,Industrial machinery
+WPAC,Finance,Financial conglomerates
+WPC,Finance,Real estate investment trusts
+WRB,Finance,Multi-line insurance
+WRBY,Retail trade,Specialty stores
+WRIV,Finance,Regional banks
+WRLC,Energy minerals,Oil & gas production
+WRLD,Finance,Finance/Rental/Leasing
+WS,Non-energy minerals,Steel
+WSBC,Finance,Regional banks
+WSBF,Finance,Finance/Rental/Leasing
+WSBK,Finance,Regional banks
+WSC,Finance,Finance/Rental/Leasing
+WSE,Commercial services,Miscellaneous commercial services
+WSFS,Finance,Savings banks
+WSM,Retail trade,Specialty stores
+WSO,Producer manufacturing,Building products
+WSSH,Finance,Regional banks
+WST,Health technology,Medical specialties
+WSTL,Electronic technology,Telecommunications equipment
+WSTN,Finance,Financial conglomerates
+WT,Finance,Investment managers
+WTBA,Finance,Regional banks
+WTFC,Finance,Regional banks
+WTG,Finance,Financial conglomerates
+WTM,Finance,Multi-line insurance
+WTRG,Utilities,Water utilities
+WTS,Producer manufacturing,Industrial machinery
+WTTR,Energy minerals,Oil & gas production
+WTW,Finance,Insurance brokers/Services
+WU,Finance,Regional banks
+WULF,Technology services,Data processing services
+WVFC,Finance,Savings banks
+WW,Consumer services,Other consumer services
+WWD,Producer manufacturing,Industrial machinery
+WWW,Consumer non-durables,Apparel/Footwear
+WY,Finance,Real estate investment trusts
+WYFI,Technology services,Data processing services
+WYNN,Consumer services,Casinos/Gaming
+WYY,Technology services,Data processing services
+XCBE,Finance,Financial conglomerates
+XE,Producer manufacturing,Industrial machinery
+XEL,Utilities,Electric utilities
+XENE,Health technology,Pharmaceuticals: major
+XERS,Health technology,Biotechnology
+XFLH,Finance,Financial conglomerates
+XFLT,Miscellaneous,Investment trusts
+XGN,Health services,Medical/Nursing services
+XHR,Finance,Real estate investment trusts
+XIFR,Utilities,Alternative power generation
+XIII,Finance,Financial conglomerates
+XLO,Health technology,Pharmaceuticals: major
+XMAX,Consumer durables,Home furnishings
+XMTR,Technology services,Information technology services
+XNCR,Health technology,Biotechnology
+XOM,Energy minerals,Integrated oil
+XP,Finance,Investment banks/Brokers
+XPEL,Consumer durables,Automotive aftermarket
+XPER,Technology services,Packaged software
+XPO,Transportation,Trucking
+XPRO,Industrial services,Oilfield services/Equipment
+XRAY,Health technology,Medical specialties
+XRN,Finance,Real estate investment trusts
+XRPN,Finance,Financial conglomerates
+XSLL,Finance,Financial conglomerates
+XTER,Finance,Financial conglomerates
+XXI,Finance,Regional banks
+XYL,Producer manufacturing,Industrial machinery
+XYZ,Commercial services,Miscellaneous commercial services
+XZO,Technology services,Packaged software
+YALA,Technology services,Internet software/Services
+YARW,Health technology,Pharmaceuticals: major
+YB,Technology services,Information technology services
+YCY,Finance,Financial conglomerates
+YELP,Technology services,Internet software/Services
+YETI,Producer manufacturing,Miscellaneous manufacturing
+YEXT,Technology services,Data processing services
+YHNA,Finance,Financial conglomerates
+YICC,Finance,Financial conglomerates
+YMM,Technology services,Packaged software
+YORW,Utilities,Water utilities
+YOU,Technology services,Packaged software
+YSS,Electronic technology,Aerospace & defense
+YSWY,Retail trade,Food retail
+YUM,Consumer services,Restaurants
+YUMC,Consumer services,Restaurants
+Z,Technology services,Internet software/Services
+ZBH,Health technology,Medical specialties
+ZBIO,Health technology,Biotechnology
+ZBRA,Electronic technology,Computer processing hardware
+ZD,Technology services,Internet software/Services
+ZETA,Technology services,Packaged software
+ZGN,Consumer non-durables,Apparel/Footwear
+ZIM,Transportation,Marine shipping
+ZIONP,Finance,Major banks
+ZIVO,Health technology,Biotechnology
+ZKP,Finance,Financial conglomerates
+ZM,Technology services,Packaged software
+ZS,Technology services,Packaged software
+ZTR,Miscellaneous,Investment trusts
+ZTS,Health technology,Pharmaceuticals: major
+ZUMZ,Retail trade,Apparel/Footwear retail
+ZVRA,Health technology,Pharmaceuticals: major
+ZWS,Producer manufacturing,Industrial machinery
+ZYME,Health technology,Pharmaceuticals: major
