@@ -37,6 +37,7 @@ string cbMode = input.string("Risiko reduzieren", "Bei aktiver Notbremse",
 float riskPct = input.float(1.0, "Risiko % normal", step = 0.25, group = GG)
 float cbRiskPct = input.float(0.5, "Risiko % bei Notbremse", step = 0.25, group = GG)
 bool useRev = input.bool(true, "Umsatz beschleunigt", group = GG)
+int postEarnMax = input.int(5, "Hinweis: Breakout bis x Tage nach Earnings", minval = 0, group = GG)
 string revMiss = input.string("kein Entry", "Ohne Umsatzdaten",
      options = ["kein Entry", "zulassen"], group = GG)
 
@@ -145,6 +146,13 @@ float slPct = 100 * (close - sma10) / close
 float distTop = inBox ? 100 * (topNow / close - 1) : na
 float accel = revKnown ? yoy0 - yoy1 : na
 float eDays = na(earnings.future_time) ? na : (earnings.future_time - timenow) / 86400000.0
+float eAct = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_on,
+     ignore_invalid_symbol = true)
+var int lastEarnBar = na
+if not na(eAct)
+    lastEarnBar := bar_index
+int sinceEarn = na(lastEarnBar) ? na : bar_index - lastEarnBar
+bool postEarn = not na(sinceEarn) and sinceEarn <= postEarnMax
 
 // ---------- Alarme ----------
 bool touch = boxValid and close[1] <= topNow and high >= topNow and gatesOk
@@ -174,3 +182,5 @@ plot(inBox ? botNow : na, "Box-Unterkante", display = display.data_window)
 plot(distTop, "Abstand Oberkante %", display = display.data_window)
 plot(boxH, "Box-Hoehe ATR", display = display.data_window)
 plot(eDays, "Earnings in Tagen", display = display.data_window)
+plot(sinceEarn, "Tage seit Earnings", display = display.data_window)
+plot(postEarn ? 1 : 0, "Nach Earnings (1/0)", display = display.data_window)

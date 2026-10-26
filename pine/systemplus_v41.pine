@@ -31,6 +31,8 @@ bool useRev = input.bool(true, "Umsatz beschleunigt", group = GG)
 string revMiss = input.string("kein Entry", "Ohne Umsatzdaten",
      options = ["kein Entry", "zulassen"], group = GG)
 bool onePos = input.bool(true, "Nur eine Position je Titel", group = GG)
+int postEarnMax = input.int(5, "Hinweis: Breakout bis x Tage nach Earnings", minval = 0, group = GG,
+     tooltip = "Nur Markierung, kein Gate. Backtest 2019-2026: 0-5 Tage nach Earnings -0.03 R, Rest +0.38 R")
 
 const string GT = "Trade-Management"
 float acct = input.float(10000, "Kontogroesse", step = 1000, group = GT)
@@ -111,6 +113,18 @@ if nq >= 6
 bool revKnown = not na(yoy0) and not na(yoy1)
 bool revAccel = revKnown and yoy0 > yoy1
 bool revOk = not useRev or revAccel or (not revKnown and revMiss == "zulassen")
+
+// ---------- Letzte Earnings (Meldetag) ----------
+float eAct = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_on,
+     ignore_invalid_symbol = true)
+var int lastEarnBar = na
+var int lastEarnTime = na
+if not na(eAct)
+    lastEarnBar := bar_index
+    lastEarnTime := time
+int sinceEarn = na(lastEarnBar) ? na : bar_index - lastEarnBar
+bool postEarn = not na(sinceEarn) and sinceEarn <= postEarnMax
+string postTxt = postEarn ? " | NACH EARNINGS (" + str.tostring(sinceEarn) + " T)" : ""
 
 // ---------- Gates ----------
 bool aboveMa = close > sma10
@@ -241,7 +255,7 @@ if evalBar
             string eTxt = " ENTRY " + str.tostring(close, format.mintick)
             string sTxt = " | SL " + str.tostring(sma10, format.mintick)
             string kTxt = " | Stueck " + str.tostring(tr.shares, "0.0") + " | Risiko " + riskTxt
-            msgs.push(syminfo.ticker + eTxt + sTxt + kTxt)
+            msgs.push(syminfo.ticker + eTxt + sTxt + kTxt + postTxt)
         else if why != ""
             blocked := true
             msgs.push(syminfo.ticker + " BREAKOUT gesperrt: " + why)
@@ -258,7 +272,10 @@ if barstate.islast
         bTop := line.new(pTopBar, pTop, bar_index + 3, pTop, color = bc, style = bs)
         bBot := line.new(pBotBar, pBot, bar_index + 3, pBot, color = bc, style = bs)
 
-plotshape(entryNow, "Entry", shape.triangleup, location.belowbar, color.green, size = size.tiny)
+plotshape(entryNow and not postEarn, "Entry", shape.triangleup, location.belowbar, color.green,
+     size = size.tiny)
+plotshape(entryNow and postEarn, "Entry nach Earnings", shape.triangleup, location.belowbar,
+     color.orange, size = size.tiny)
 plotshape(exitNow, "Exit", shape.triangledown, location.abovebar, color.red, size = size.tiny)
 plotshape(showFails and blocked, "Gesperrt", shape.circle, location.belowbar,
      color.new(color.gray, 30), size = size.tiny)
@@ -374,8 +391,14 @@ if showTable and barstate.islast
         r := f_row(r, "P&L USD", f_sgn(sumUsd, "#"), sumUsd >= 0 ? ok : bad, sz)
 
     float eDays = na(earnings.future_time) ? na : (earnings.future_time - timenow) / 86400000.0
-    string eTxt = na(eDays) ? "-" : "in " + str.tostring(math.max(math.ceil(eDays), 0), "#") + " T"
-    r := f_row(r, "Earnings", eTxt, not na(eDays) and eDays < 5 ? bad : neu, sz)
+    string eTxt = na(sinceEarn) ? "vor ? T" : "vor " + str.tostring(sinceEarn) + " T"
+    if not na(lastEarnTime)
+        eTxt += " (" + str.format_time(lastEarnTime, "dd.MM.", syminfo.timezone) + ")"
+    string nTxt = na(eDays) ? "?" : "in " + str.tostring(math.max(math.ceil(eDays), 0), "#") + " T"
+    eTxt += " | naechste " + nTxt
+    r := f_row(r, "Earnings", eTxt, postEarn ? neu : color.gray, sz)
+    if postEarn and (brk and aboveMa)
+        r := f_row(r, "Hinweis", "Breakout kurz nach Earnings (Backtest schwach)", neu, sz)
 
 // ---------- Alarme ----------
 if msgs.size() > 0
