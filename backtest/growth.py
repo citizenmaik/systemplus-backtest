@@ -18,24 +18,48 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 
 
+# Begriffe, die den Gesamtumsatz meinen und sich gegenseitig ersetzen dürfen (Bezeichnungswechsel).
+# Teilumsätze (nur Waren, nur Mieten, nur Zinsen …) zählen nur, wenn sie der Hauptbegriff der Firma sind.
+TOTAL_REVENUE = {"Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet",
+                 "RevenueFromContractWithCustomerIncludingAssessedTax", "RevenuesNetOfInterestExpense",
+                 "RegulatedAndUnregulatedOperatingRevenue", "Revenue", "RevenueFromContractsWithCustomers"}
+
+
+def _merge_concepts(g: pd.DataFrame, k: str) -> pd.DataFrame:
+    """Je Zeitraum (start, end) ein Wert: Hauptbegriff zuerst, bei Lücken gleichwertige Begriffe."""
+    g = g.sort_values("filed").drop_duplicates(["konzept", "start", "end"], keep="first")
+    q = g[g["dur"].between(80, 100)]
+    order = list((q if len(q) else g)["konzept"].value_counts().index)
+    main = order[0]
+    if k == "revenue":
+        allowed = [c for c in order if c == main or (main in TOTAL_REVENUE and c in TOTAL_REVENUE)]
+    elif k == "eps":
+        allowed = [c for c in order if c == main or {c, main} <= {"EarningsPerShareDiluted", "DilutedEarningsLossPerShare"}]
+    else:
+        allowed = order
+    g = g[g["konzept"].isin(allowed)].copy()
+    g["prio"] = g["konzept"].map({c: i for i, c in enumerate(allowed)})
+    return g.sort_values(["prio", "filed"]).drop_duplicates(["start", "end"], keep="first")
+
+
 def quarterly(f: pd.DataFrame) -> pd.DataFrame:
     f = f.dropna(subset=["end", "filed"]).copy()
     f["dur"] = (f["end"] - f["start"]).dt.days
     out = []
+    near = lambda e, keys: any(abs((e - x).days) <= 10 for x in keys)  # noqa: E731
     for (t, k), g in f.groupby(["ticker", "kennzahl"], sort=False):
-        q = g[g["dur"].between(80, 100)]
-        best = q["konzept"].value_counts().index[0] if len(q) else g["konzept"].value_counts().index[0]
-        g = g[g["konzept"] == best]
+        g = _merge_concepts(g, k)
         q = g[g["dur"].between(80, 100)].sort_values("filed").drop_duplicates("end", keep="first")
-        fy = g[g["dur"].between(350, 380)].sort_values("filed").drop_duplicates("end", keep="first")
         rows = {e: (v, fl) for e, v, fl in zip(q["end"], q["wert"], q["filed"])}
-        if k != "eps":  # Q4 = Geschäftsjahr − Q1..Q3 (EPS ist nicht additiv)
-            for e, v, fl, s in zip(fy["end"], fy["wert"], fy["filed"], fy["start"]):
-                if any(abs((e - x).days) <= 10 for x in rows):
-                    continue
-                three = [rows[x][0] for x in rows if s - pd.Timedelta(days=10) <= x < e - pd.Timedelta(days=20)]
-                if len(three) == 3:
-                    rows[e] = (v - sum(three), fl)
+        if k != "eps":  # EPS ist nicht additiv
+            # Quartal aus kumulierten Werten desselben Geschäftsjahresbeginns: 6M − 3M, 9M − 6M, 12M − 9M
+            cum = g[g["dur"].between(80, 380)].sort_values("filed").drop_duplicates(["start", "end"], keep="first")
+            for s, cg in cum.groupby("start"):
+                cg = cg.sort_values("end")
+                ends, vals, fls, durs = cg["end"].tolist(), cg["wert"].tolist(), cg["filed"].tolist(), cg["dur"].tolist()
+                for i in range(1, len(ends)):
+                    if 80 <= durs[i] - durs[i - 1] <= 100 and not near(ends[i], rows):
+                        rows[ends[i]] = (vals[i] - vals[i - 1], fls[i])
         if not rows:
             continue
         d = pd.DataFrame([(t, k, e, v, fl) for e, (v, fl) in rows.items()],
