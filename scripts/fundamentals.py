@@ -23,7 +23,12 @@ OUT = DATA / "fundamentals.parquet"
 CONCEPTS = {
     "revenue": [("us-gaap", "Revenues"), ("us-gaap", "RevenueFromContractWithCustomerExcludingAssessedTax"),
                 ("us-gaap", "SalesRevenueNet"), ("us-gaap", "RevenueFromContractWithCustomerIncludingAssessedTax"),
-                ("ifrs-full", "Revenue")],
+                ("us-gaap", "SalesRevenueGoodsNet"), ("us-gaap", "SalesRevenueServicesNet"),
+                ("us-gaap", "RevenuesNetOfInterestExpense"), ("us-gaap", "InterestAndDividendIncomeOperating"),
+                ("us-gaap", "OperatingLeasesIncomeStatementLeaseRevenue"), ("us-gaap", "RealEstateRevenueNet"),
+                ("us-gaap", "RevenueFromContractsWithCustomers"), ("us-gaap", "RegulatedAndUnregulatedOperatingRevenue"),
+                ("us-gaap", "ElectricUtilityRevenue"), ("us-gaap", "OilAndGasRevenue"),
+                ("ifrs-full", "Revenue"), ("ifrs-full", "RevenueFromContractsWithCustomers")],
     "eps": [("us-gaap", "EarningsPerShareDiluted"), ("us-gaap", "EarningsPerShareBasic"),
             ("ifrs-full", "DilutedEarningsLossPerShare")],
     "net_income": [("us-gaap", "NetIncomeLoss"), ("ifrs-full", "ProfitLoss")],
