@@ -1,122 +1,143 @@
 //@version=6
-indicator("System+ V4 · Pivot-Breakout + Umsatz", shorttitle = "System+ V4", overlay = true, max_bars_back = 600, max_lines_count = 500, max_labels_count = 500)
+indicator("System+ V4", overlay = true, max_bars_back = 600,
+     max_lines_count = 500, max_labels_count = 500)
 
-// =========================================================================================
-// System+ V4 (Test) = V3 + Umsatz beschleunigt · Stand 26.10.2026
-// Entry EOD, alle Gates Pflicht:
-//   Pivot-Box (Swing-High/-Low je 3 Kerzen, Höhe ≤ 3 × ATR14 Vortag), erster Close über der Oberkante,
-//   Close > SMA10 · ATR14 ÷ Close ≥ 4,5 % · Close 10–30 % unter dem 52W-Hoch · Notbremse QQQE aus ·
-//   Umsatz beschleunigt: Umsatz-YoY des letzten Quartals > Umsatz-YoY des Quartals davor.
-// Gestrichen gegenüber v3.8: Führung (RS/Sektor), ATR-Multiple ≤ 2,5, SL ≤ 10 %.
-// Exits M2: SL = SMA10 vom Entry-Tag (intraday) · vor 1R Close < SMA10 → 100 % · ab 1R Close < SMA10 → 40 %,
-//   Close < SMA20 → Rest. Risiko 1 %, Deckel 10/20 %, max. 3 Neukäufe pro Tag (Konto-Regel, nicht im Chart).
-// Backtest Gesamtmarkt 2019–10/2026 (1 %/20 %, max. 3/Tag): +25 % p. a., Max. DD −19 %, PF 1,48, Gewinnquote 32 %.
-// =========================================================================================
+// System+ V4 (Test) = V3 + Umsatz beschleunigt, Stand 26.10.2026
+// Gates: Pivot-Box 3/3 (Hoehe max 3 ATR), erster Close ueber Oberkante,
+// Close > SMA10, ATR% >= 4.5, 52W 10-30 % unter Hoch, Notbremse QQQE aus,
+// Umsatz-YoY letztes Quartal > Umsatz-YoY Quartal davor.
+// Exits M2: SL = SMA10 Entry-Tag, vor 1R Close < SMA10 alles raus,
+// ab 1R Close < SMA10 40 %, Close < SMA20 Rest.
+// Max. 3 Neukaeufe pro Tag ist eine Konto-Regel (nicht im Chart pruefbar).
 
 // ---------- Eingaben ----------
 const string GB = "Pivot-Box"
-int   pivLen    = input.int(3, "Pivot-Länge (Bars links/rechts)", minval = 1, group = GB)
-float maxBoxAtr = input.float(3.0, "Max. Box-Höhe (× ATR)", step = 0.1, group = GB)
-int   atrLen    = input.int(14, "ATR-Länge", group = GB)
+int pivLen = input.int(3, "Pivot-Laenge", minval = 1, group = GB)
+float maxBoxAtr = input.float(3.0, "Max. Box-Hoehe (x ATR)", step = 0.1, group = GB)
+int atrLen = input.int(14, "ATR-Laenge", group = GB)
 
 const string GG = "Entry-Gates"
-float atrPctMin = input.float(4.5, "Min. ATR % (ATR ÷ Close)", step = 0.1, group = GG)
-float w52Min    = input.float(10.0, "52W: min. % unter Hoch", step = 1, group = GG, inline = "w")
-float w52Max    = input.float(30.0, "max. %", step = 1, group = GG, inline = "w")
-bool  useCB     = input.bool(true, "Notbremse", group = GG, inline = "cb")
-string cbSym    = input.symbol("NASDAQ:QQQE", "", group = GG, inline = "cb", tooltip = "An bei Close < EMA200 ODER ≥ 10 % unter 60-Tage-Hoch ODER SMA200 fällt (gegen 20 Tage vorher).")
-bool  useRev    = input.bool(true, "Umsatz beschleunigt", group = GG, tooltip = "Umsatz-YoY (letztes Quartal gegen Vorjahresquartal) > Umsatz-YoY des Quartals davor. Braucht 6 Quartale Historie.")
-string revMiss  = input.string("kein Entry", "Ohne Umsatzdaten", options = ["kein Entry", "zulassen"], group = GG)
-bool  onePos    = input.bool(true, "Kein neuer Entry, solange Position offen", group = GG)
+float atrPctMin = input.float(4.5, "Min. ATR %", step = 0.1, group = GG)
+float w52Min = input.float(10.0, "52W min. % unter Hoch", step = 1, group = GG)
+float w52Max = input.float(30.0, "52W max. % unter Hoch", step = 1, group = GG)
+bool useCB = input.bool(true, "Notbremse", group = GG)
+string cbSym = input.symbol("NASDAQ:QQQE", "Notbremse-Index", group = GG)
+bool useRev = input.bool(true, "Umsatz beschleunigt", group = GG)
+string revMiss = input.string("kein Entry", "Ohne Umsatzdaten",
+     options = ["kein Entry", "zulassen"], group = GG)
+bool onePos = input.bool(true, "Nur eine Position je Titel", group = GG)
 
 const string GT = "Trade-Management"
-float acct      = input.float(20000, "Kontogröße", step = 1000, group = GT)
-float riskPct   = input.float(1.0, "Risiko % pro Trade", step = 0.25, group = GT, inline = "r")
-float capPct    = input.float(20.0, "Max. Position % Konto", options = [10.0, 20.0], group = GT, inline = "r")
-string stopMode = input.string("Intraday (Low)", "Stop-Auslösung", options = ["Intraday (Low)", "EOD (Close)"], group = GT)
-int   fastLen   = input.int(10, "Fast MA (SL / TP1)", group = GT, inline = "ma")
-int   slowLen   = input.int(20, "Slow MA (TP2)", group = GT, inline = "ma")
-bool  showMAs   = input.bool(false, "MAs zeigen", group = GT)
+float acct = input.float(20000, "Kontogroesse", step = 1000, group = GT)
+float riskPct = input.float(1.0, "Risiko % pro Trade", step = 0.25, group = GT)
+float capPct = input.float(20.0, "Max. Position % Konto", options = [10.0, 20.0], group = GT)
+string stopMode = input.string("Intraday", "Stop-Ausloesung",
+     options = ["Intraday", "EOD"], group = GT)
+int fastLen = input.int(10, "Fast MA (SL/TP1)", group = GT)
+int slowLen = input.int(20, "Slow MA (TP2)", group = GT)
+bool showMAs = input.bool(false, "MAs zeigen", group = GT)
 
 const string GD = "Anzeige"
-bool   showTable = input.bool(true, "Tabelle", group = GD)
-string tblPos    = input.string("Unten rechts", "Position", options = ["Unten rechts", "Oben rechts", "Unten links", "Oben links"], group = GD, inline = "t")
-string tblSize   = input.string("Klein", "Schrift", options = ["Winzig", "Klein", "Normal"], group = GD, inline = "t")
-bool   showStats = input.bool(true, "Statistik dieses Charts", group = GD)
-bool   showFails = input.bool(true, "Gesperrte Breakouts markieren (grau)", group = GD)
+bool showTable = input.bool(true, "Tabelle", group = GD)
+string tblPos = input.string("Unten rechts", "Tabellen-Position",
+     options = ["Unten rechts", "Oben rechts", "Unten links", "Oben links"], group = GD)
+string tblSize = input.string("Klein", "Schrift",
+     options = ["Winzig", "Klein", "Normal"], group = GD)
+bool showStats = input.bool(true, "Statistik dieses Charts", group = GD)
+bool showFails = input.bool(true, "Gesperrte Breakouts markieren", group = GD)
 
-// ---------- Grundgrößen ----------
-float atr    = ta.atr(atrLen)
-float sma10  = ta.sma(close, fastLen)
-float sma20  = ta.sma(close, slowLen)
-float hi252  = ta.highest(high, 252)
-float off52  = 100 * (close / hi252 - 1)
+// ---------- Grundgroessen ----------
+float atr = ta.atr(atrLen)
+float sma10 = ta.sma(close, fastLen)
+float sma20 = ta.sma(close, slowLen)
+float hi252 = ta.highest(high, 252)
+float off52 = 100 * (close / hi252 - 1)
 float atrPct = 100 * atr / close
 
-// ---------- Pivot-Box (1:1 System+ v3.8) ----------
+// ---------- Pivot-Box (wie System+ v3.8) ----------
 float pvH = ta.pivothigh(high, pivLen, pivLen)
 float pvL = ta.pivotlow(low, pivLen, pivLen)
 var float pTop = na
 var float pBot = na
-var int   pTopBar = na
-var int   pBotBar = na
-var int   pUsedBar = na
+var int pTopBar = na
+var int pBotBar = na
+var int pUsedBar = na
 if not na(pvH)
-    pTop    := pvH
+    pTop := pvH
     pTopBar := bar_index - pivLen
 if not na(pvL)
-    pBot    := pvL
+    pBot := pvL
     pBotBar := bar_index - pivLen
-float boxH     = (pTop - pBot) / atr[1]
-bool  hasBox   = not na(pTop) and not na(pBot) and pBot < pTop
-bool  boxUsed  = pTopBar == pUsedBar
-bool  boxValid = hasBox and boxH <= maxBoxAtr and not boxUsed
-bool  brk      = boxValid and close > pTop and close[1] <= pTop
+float boxH = (pTop - pBot) / atr[1]
+bool hasBox = not na(pTop) and not na(pBot) and pBot < pTop
+bool boxUsed = pTopBar == pUsedBar
+bool boxValid = hasBox and boxH <= maxBoxAtr and not boxUsed
+bool brk = boxValid and close > pTop and close[1] <= pTop
 
 // ---------- Notbremse ----------
-[qC, qE200, qHi60, qS200, qS200p] = request.security(cbSym, "D", [close, ta.ema(close, 200), ta.highest(close, 60), ta.sma(close, 200), ta.sma(close, 200)[20]], lookahead = barmerge.lookahead_off)
-float qDD     = 100 * (qC / qHi60 - 1)
-bool  cbOn    = useCB and (qC < qE200 or qDD <= -10 or qS200 < qS200p)
+[qC, qE200, qHi60, qS200, qS200p] = request.security(cbSym, "D",
+     [close, ta.ema(close, 200), ta.highest(close, 60), ta.sma(close, 200),
+     ta.sma(close, 200)[20]], lookahead = barmerge.lookahead_off)
+float qDD = 100 * (qC / qHi60 - 1)
+bool qSlopeDn = qS200 < qS200p
+bool cbOn = useCB and (qC < qE200 or qDD <= -10 or qSlopeDn)
 string cbName = syminfo.ticker(cbSym)
 
 // ---------- Umsatz beschleunigt ----------
-// TOTAL_REVENUE je Quartal; neue Quartale werden beim Wertwechsel gespeichert.
-float rev = request.financial(syminfo.tickerid, "TOTAL_REVENUE", "FQ", barmerge.gaps_off, ignore_invalid_symbol = true)
+float rev = request.financial(syminfo.tickerid, "TOTAL_REVENUE", "FQ",
+     barmerge.gaps_off, ignore_invalid_symbol = true)
 var array<float> rq = array.new<float>()
-if not na(rev) and (rq.size() == 0 or rev != rq.last())
-    rq.push(rev)
+if not na(rev)
+    if rq.size() == 0
+        rq.push(rev)
+    else if rev != rq.last()
+        rq.push(rev)
     if rq.size() > 8
         rq.shift()
-int   nq    = rq.size()
-float yoy0  = nq >= 5 and rq.get(nq - 5) > 0 ? 100 * (rq.get(nq - 1) / rq.get(nq - 5) - 1) : na
-float yoy1  = nq >= 6 and rq.get(nq - 6) > 0 ? 100 * (rq.get(nq - 2) / rq.get(nq - 6) - 1) : na
-bool  revKnown = not na(yoy0) and not na(yoy1)
-bool  revAccel = revKnown and yoy0 > yoy1
-bool  revOk    = not useRev or revAccel or (not revKnown and revMiss == "zulassen")
+int nq = rq.size()
+float yoy0 = na
+float yoy1 = na
+if nq >= 5
+    float b0 = rq.get(nq - 5)
+    yoy0 := b0 > 0 ? 100 * (rq.get(nq - 1) / b0 - 1) : na
+if nq >= 6
+    float b1 = rq.get(nq - 6)
+    yoy1 := b1 > 0 ? 100 * (rq.get(nq - 2) / b1 - 1) : na
+bool revKnown = not na(yoy0) and not na(yoy1)
+bool revAccel = revKnown and yoy0 > yoy1
+bool revOk = not useRev or revAccel or (not revKnown and revMiss == "zulassen")
 
 // ---------- Gates ----------
 bool aboveMa = close > sma10
-bool atrOk   = atrPct >= atrPctMin
-bool w52Ok   = not na(off52) and off52 <= -w52Min and off52 >= -w52Max
-bool cbOk    = not cbOn
+bool atrOk = atrPct >= atrPctMin
+bool w52Ok = not na(off52) and off52 <= -w52Min and off52 >= -w52Max
+bool cbOk = not cbOn
 
 f_why() =>
-    not atrOk ? "ATR % < " + str.tostring(atrPctMin, "#.#") :
-     not w52Ok ? (na(off52) ? "52W (Historie)" : off52 > -w52Min ? "52W < " + str.tostring(w52Min, "#") + " %" : "52W > " + str.tostring(w52Max, "#") + " %") :
-     not cbOk ? "Notbremse" :
-     not revOk ? (revKnown ? "Umsatz nicht beschleunigt" : "keine Umsatzdaten") : ""
+    string w = ""
+    if not atrOk
+        w := "ATR % zu klein"
+    else if not w52Ok
+        w := na(off52) ? "52W Historie" : off52 > -w52Min ? "zu nah am 52W-Hoch" : "zu weit unter 52W-Hoch"
+    else if not cbOk
+        w := "Notbremse"
+    else if not revOk
+        w := revKnown ? "Umsatz nicht beschleunigt" : "keine Umsatzdaten"
+    w
 
 f_shares(float entry, float stop) =>
     float r = entry - stop
-    r > 0 ? math.floor(math.min(acct * riskPct / 100 / r, acct * capPct / 100 / entry) * 10) / 10 : 0.0
+    float byRisk = acct * riskPct / 100 / r
+    float byCap = acct * capPct / 100 / entry
+    r > 0 ? math.floor(math.min(byRisk, byCap) * 10) / 10 : 0.0
 
 f_sgn(float v, string fmt) =>
     (v >= 0 ? "+" : "") + str.tostring(v, fmt)
 
 // ---------- Trade (M2) ----------
 type Trade
-    int   bar
-    int   t
+    int bar
+    int t
     float entry
     float stop
     float risk
@@ -124,43 +145,45 @@ type Trade
     float rem = 1.0
     float rSum = 0.0
     float pSum = 0.0
-    bool  r1 = false
-    bool  tp1 = false
-    line  slLn
-    line  enLn
-    line  r1Ln
+    bool r1 = false
+    bool tp1 = false
+    line slLn
+    line enLn
+    line r1Ln
 
 var Trade tr = na
-var int   nT = 0
-var int   nW = 0
+var int nT = 0
+var int nW = 0
 var float sumR = 0.0
 var float sumP = 0.0
 var float grossW = 0.0
 var float grossL = 0.0
 var float sumUsd = 0.0
 
-bool evalBar  = barstate.ishistory or barstate.isconfirmed
+bool evalBar = barstate.ishistory or barstate.isconfirmed
 bool entryNow = false
-bool exitNow  = false
-bool blocked  = false
-string why    = f_why()
+bool exitNow = false
+bool blocked = false
+string why = f_why()
 array<string> msgs = array.new<string>()
 
 f_fill(Trade t, float frac, float px, string tag) =>
     float f = math.min(frac, t.rem)
     if f > 0
-        t.rem  := t.rem - f
+        t.rem := t.rem - f
         t.rSum := t.rSum + f * (px - t.entry) / t.risk
         t.pSum := t.pSum + f * 100 * (px - t.entry) / t.entry
-        msgs.push(syminfo.ticker + " " + tag + " " + str.tostring(math.round(f * 100)) + " % @ " + str.tostring(px, format.mintick))
+        string pctTxt = str.tostring(math.round(f * 100)) + " %"
+        msgs.push(syminfo.ticker + " " + tag + " " + pctTxt + " @ " + str.tostring(px, format.mintick))
     f
 
 if evalBar
-    // offene Position abarbeiten (ab dem Tag nach dem Entry)
+    // offene Position ab dem Tag nach dem Entry
     if not na(tr) and bar_index > tr.bar
-        bool stopHit = stopMode == "EOD (Close)" ? close < tr.stop : low <= tr.stop
+        bool stopHit = stopMode == "EOD" ? close < tr.stop : low <= tr.stop
         if stopHit
-            f_fill(tr, tr.rem, stopMode == "EOD (Close)" ? close : math.min(open, tr.stop), "SL")
+            float px = stopMode == "EOD" ? close : math.min(open, tr.stop)
+            f_fill(tr, tr.rem, px, "SL")
         else
             if not tr.r1 and high >= tr.entry + tr.risk
                 tr.r1 := true
@@ -181,16 +204,19 @@ if evalBar
             nW += tr.rSum > 0 ? 1 : 0
             sumR += tr.rSum
             sumP += tr.pSum
-            grossW += tr.rSum > 0 ? tr.rSum : 0
-            grossL += tr.rSum < 0 ? -tr.rSum : 0
+            grossW += math.max(tr.rSum, 0)
+            grossL += math.max(-tr.rSum, 0)
             sumUsd += tr.shares * tr.entry * tr.pSum / 100
             line.delete(tr.slLn)
             line.delete(tr.enLn)
             line.delete(tr.r1Ln)
-            label.new(bar_index, high, f_sgn(tr.rSum, "0.0") + "R\n" + f_sgn(tr.pSum, "0.0") + " %", style = label.style_label_down, color = color.new(color.white, 100), textcolor = tr.rSum >= 0 ? color.green : color.red, size = size.tiny)
+            string res = f_sgn(tr.rSum, "0.0") + "R\n" + f_sgn(tr.pSum, "0.0") + " %"
+            color rc = tr.rSum >= 0 ? color.green : color.red
+            label.new(bar_index, high, res, style = label.style_label_down,
+                 color = color.new(color.white, 100), textcolor = rc, size = size.tiny)
             tr := na
 
-    // Breakout: Oberkante gilt als verbraucht, sobald Close > Oberkante und Close > SMA10
+    // Oberkante verbraucht, sobald Close > Oberkante und Close > SMA10
     if brk and aboveMa
         pUsedBar := pTopBar
         bool free = not onePos or na(tr)
@@ -198,13 +224,18 @@ if evalBar
             entryNow := true
             float risk = close - sma10
             tr := Trade.new(bar_index, time, close, sma10, risk, f_shares(close, sma10))
-            tr.slLn := line.new(bar_index, sma10, bar_index, sma10, color = color.red, style = line.style_dashed)
-            tr.enLn := line.new(bar_index, close, bar_index, close, color = color.gray, style = line.style_dashed)
-            tr.r1Ln := line.new(bar_index, close + risk, bar_index, close + risk, color = color.green, style = line.style_dotted)
-            msgs.push(syminfo.ticker + " ENTRY " + str.tostring(close, format.mintick) + " | SL " + str.tostring(sma10, format.mintick) + " | Stück " + str.tostring(tr.shares, "0.0"))
+            tr.slLn := line.new(bar_index, sma10, bar_index, sma10, color = color.red,
+                 style = line.style_dashed)
+            tr.enLn := line.new(bar_index, close, bar_index, close, color = color.gray,
+                 style = line.style_dashed)
+            tr.r1Ln := line.new(bar_index, close + risk, bar_index, close + risk,
+                 color = color.green, style = line.style_dotted)
+            string eTxt = " ENTRY " + str.tostring(close, format.mintick)
+            string sTxt = " | SL " + str.tostring(sma10, format.mintick)
+            msgs.push(syminfo.ticker + eTxt + sTxt + " | Stueck " + str.tostring(tr.shares, "0.0"))
         else if why != ""
             blocked := true
-            msgs.push(syminfo.ticker + " BREAKOUT gesperrt – " + why)
+            msgs.push(syminfo.ticker + " BREAKOUT gesperrt: " + why)
 
 // ---------- Zeichnen ----------
 var line bTop = na
@@ -214,67 +245,130 @@ if barstate.islast
     line.delete(bBot)
     if hasBox
         color bc = boxValid ? color.white : color.new(color.gray, 40)
-        bTop := line.new(pTopBar, pTop, bar_index + 3, pTop, color = bc, style = boxValid ? line.style_solid : line.style_dashed)
-        bBot := line.new(pBotBar, pBot, bar_index + 3, pBot, color = bc, style = boxValid ? line.style_solid : line.style_dashed)
+        string bs = boxValid ? line.style_solid : line.style_dashed
+        bTop := line.new(pTopBar, pTop, bar_index + 3, pTop, color = bc, style = bs)
+        bBot := line.new(pBotBar, pBot, bar_index + 3, pBot, color = bc, style = bs)
 
 plotshape(entryNow, "Entry", shape.triangleup, location.belowbar, color.green, size = size.tiny)
 plotshape(exitNow, "Exit", shape.triangledown, location.abovebar, color.red, size = size.tiny)
-plotshape(showFails and blocked, "Breakout gesperrt", shape.circle, location.belowbar, color.new(color.gray, 30), size = size.tiny)
+plotshape(showFails and blocked, "Gesperrt", shape.circle, location.belowbar,
+     color.new(color.gray, 30), size = size.tiny)
 plot(showMAs ? sma10 : na, "SMA10", color.orange)
 plot(showMAs ? sma20 : na, "SMA20", color.blue)
 
 // ---------- Tabelle ----------
 var table tb = na
 f_row(int r, string k, string v, color c, string sz) =>
-    table.cell(tb, 0, r, k, text_color = color.gray, text_size = sz, text_halign = text.align_left)
+    table.cell(tb, 0, r, k, text_color = color.gray, text_size = sz,
+         text_halign = text.align_left)
     table.cell(tb, 1, r, v, text_color = c, text_size = sz, text_halign = text.align_right)
+    r + 1
+
+f_head(int r, string txt, color c, string sz) =>
+    table.cell(tb, 0, r, txt, text_color = c, text_size = sz, text_halign = text.align_left)
+    table.merge_cells(tb, 0, r, 1, r)
     r + 1
 
 if showTable and barstate.islast
     string sz = tblSize == "Winzig" ? size.tiny : tblSize == "Normal" ? size.normal : size.small
-    string ps = tblPos == "Oben rechts" ? position.top_right : tblPos == "Unten links" ? position.bottom_left : tblPos == "Oben links" ? position.top_left : position.bottom_right
+    string ps = switch tblPos
+        "Oben rechts" => position.top_right
+        "Unten links" => position.bottom_left
+        "Oben links" => position.top_left
+        => position.bottom_right
     table.delete(tb)
     tb := table.new(ps, 2, 24, bgcolor = color.new(color.black, 85))
     color ok = color.lime
     color bad = color.red
     color neu = color.orange
     int r = 0
-    table.cell(tb, 0, r, "System+ V4 · " + cbName + (cbOn ? " NOTBREMSE" : " frei"), text_color = cbOn ? bad : neu, text_size = sz, text_halign = text.align_left)
-    table.merge_cells(tb, 0, r, 1, r)
-    r += 1
-    r := f_row(r, "Pivot-Box", hasBox ? str.tostring(pTop, format.mintick) + " / " + str.tostring(pBot, format.mintick) + " · " + str.tostring(boxH, "0.0") + " ATR" + (boxUsed ? " (verbraucht)" : boxH > maxBoxAtr ? " (zu hoch)" : " ✓") : "–", boxValid ? ok : neu, sz)
-    r := f_row(r, "Über SMA10", aboveMa ? "ja ✓" : "nein ✗", aboveMa ? ok : bad, sz)
-    r := f_row(r, "ATR %", str.tostring(atrPct, "0.0") + " %  ≥ " + str.tostring(atrPctMin, "0.0") + (atrOk ? " ✓" : " ✗"), atrOk ? ok : bad, sz)
-    r := f_row(r, "52W-Hoch", (na(off52) ? "–" : str.tostring(off52, "0") + " %") + "  " + str.tostring(w52Min, "#") + "–" + str.tostring(w52Max, "#") + (w52Ok ? " ✓" : " ✗"), w52Ok ? ok : bad, sz)
-    r := f_row(r, "Notbremse", (cbOn ? "AKTIV " : "aus ") + str.tostring(qDD, "0.0") + " % · " + (qC >= qE200 ? "> EMA" : "< EMA") + " · SMA " + (qS200 < qS200p ? "↓" : "↑"), cbOn ? bad : ok, sz)
-    string revTxt = revKnown ? f_sgn(yoy0, "0") + " % vs. " + f_sgn(yoy1, "0") + " %" + (revAccel ? " ✓" : " ✗") : "keine Daten (" + str.tostring(nq) + " Q)"
+    r := f_head(r, "System+ V4 | " + cbName + (cbOn ? " NOTBREMSE" : " frei"), cbOn ? bad : neu, sz)
+
+    string boxTxt = "-"
+    if hasBox
+        string tops = str.tostring(pTop, format.mintick) + " / " + str.tostring(pBot, format.mintick)
+        string flag = boxUsed ? " verbraucht" : boxH > maxBoxAtr ? " zu hoch" : " ok"
+        boxTxt := tops + " | " + str.tostring(boxH, "0.0") + " ATR" + flag
+    r := f_row(r, "Pivot-Box", boxTxt, boxValid ? ok : neu, sz)
+    r := f_row(r, "Ueber SMA10", aboveMa ? "ja" : "nein", aboveMa ? ok : bad, sz)
+
+    string atrTxt = str.tostring(atrPct, "0.0") + " % (min " + str.tostring(atrPctMin, "0.0") + ")"
+    r := f_row(r, "ATR %", atrTxt, atrOk ? ok : bad, sz)
+
+    string w52Txt = na(off52) ? "-" : str.tostring(off52, "0") + " %"
+    w52Txt += " (" + str.tostring(w52Min, "#") + "-" + str.tostring(w52Max, "#") + ")"
+    r := f_row(r, "52W-Hoch", w52Txt, w52Ok ? ok : bad, sz)
+
+    string cbTxt = (cbOn ? "AKTIV " : "aus ") + str.tostring(qDD, "0.0") + " %"
+    cbTxt += (qC >= qE200 ? " | > EMA" : " | < EMA") + (qSlopeDn ? " | SMA fallend" : " | SMA steigt")
+    r := f_row(r, "Notbremse", cbTxt, cbOn ? bad : ok, sz)
+
+    string revTxt = "keine Daten (" + str.tostring(nq) + " Q)"
+    if revKnown
+        revTxt := f_sgn(yoy0, "0") + " % vs. " + f_sgn(yoy1, "0") + " %"
+        revTxt += revAccel ? " ok" : " nein"
     r := f_row(r, "Umsatz YoY akt./vorher", revTxt, revAccel ? ok : revKnown ? bad : neu, sz)
-    string st = brk and aboveMa ? (why == "" ? "Entry ✓" : "gesperrt: " + why) : brk ? "Breakout unter SMA10" : boxValid ? "Box aktiv, kein Breakout" : not hasBox ? "keine Box" : boxUsed ? "Box verbraucht" : "Box zu hoch"
+
+    string st = "Box aktiv, kein Breakout"
+    if brk and aboveMa
+        st := why == "" ? "ENTRY" : "gesperrt: " + why
+    else if brk
+        st := "Breakout unter SMA10"
+    else if not hasBox
+        st := "keine Box"
+    else if boxUsed
+        st := "Box verbraucht"
+    else if boxH > maxBoxAtr
+        st := "Box zu hoch"
     r := f_row(r, "Status", st, brk and aboveMa and why == "" ? ok : neu, sz)
+
     float shNow = f_shares(close, sma10)
-    r := f_row(r, "Stück / Wert / Risiko", shNow > 0 ? str.tostring(shNow, "0.0") + " / " + str.tostring(shNow * close, "#") + " / " + str.tostring(shNow * (close - sma10), "#") : "–", neu, sz)
+    string posTxt = "-"
+    if shNow > 0
+        posTxt := str.tostring(shNow, "0.0") + " / " + str.tostring(shNow * close, "#")
+        posTxt += " / " + str.tostring(shNow * (close - sma10), "#")
+    r := f_row(r, "Stueck / Wert / Risiko", posTxt, neu, sz)
+
     if not na(tr)
-        r := f_row(r, "Aktiver Trade", str.format_time(tr.t, "dd.MM.yy", syminfo.timezone) + " · " + str.tostring(bar_index - tr.bar) + " T · offen " + str.tostring(math.round(tr.rem * 100)) + " %", neu, sz)
-        r := f_row(r, "1R erreicht", tr.r1 ? "ja" : "nein (" + str.tostring(tr.entry + tr.risk, format.mintick) + ")", tr.r1 ? ok : neu, sz)
-        r := f_row(r, "Nächste Regel", tr.r1 ? (tr.tp1 ? "TP2: Close < SMA20 " + str.tostring(sma20, format.mintick) : "TP1 40 %: Close < SMA10 " + str.tostring(sma10, format.mintick)) : "Fail 100 %: Close < SMA10 " + str.tostring(sma10, format.mintick), neu, sz)
-        r := f_row(r, "Aktuell", f_sgn(100 * (close / tr.entry - 1), "0.0") + " % · " + f_sgn((close - tr.entry) / tr.risk, "0.0") + " R", close >= tr.entry ? ok : bad, sz)
+        string since = str.format_time(tr.t, "dd.MM.yy", syminfo.timezone)
+        string trTxt = since + " | " + str.tostring(bar_index - tr.bar) + " T"
+        trTxt += " | offen " + str.tostring(math.round(tr.rem * 100)) + " %"
+        r := f_row(r, "Aktiver Trade", trTxt, neu, sz)
+        string r1Txt = tr.r1 ? "ja" : "nein (" + str.tostring(tr.entry + tr.risk, format.mintick) + ")"
+        r := f_row(r, "1R erreicht", r1Txt, tr.r1 ? ok : neu, sz)
+        string nxt = "Fail 100 %: Close < SMA10 " + str.tostring(sma10, format.mintick)
+        if tr.r1 and not tr.tp1
+            nxt := "TP1 40 %: Close < SMA10 " + str.tostring(sma10, format.mintick)
+        else if tr.r1 and tr.tp1
+            nxt := "TP2: Close < SMA20 " + str.tostring(sma20, format.mintick)
+        r := f_row(r, "Naechste Regel", nxt, neu, sz)
+        float nowPct = 100 * (close / tr.entry - 1)
+        float nowR = (close - tr.entry) / tr.risk
+        r := f_row(r, "Aktuell", f_sgn(nowPct, "0.0") + " % | " + f_sgn(nowR, "0.0") + " R",
+             close >= tr.entry ? ok : bad, sz)
+
     if showStats
-        table.cell(tb, 0, r, "Statistik (geschlossen)", text_color = neu, text_size = sz, text_halign = text.align_left)
-        table.merge_cells(tb, 0, r, 1, r)
-        r += 1
-        r := f_row(r, "Trades / Gewinnquote", str.tostring(nT) + " / " + (nT > 0 ? str.tostring(100.0 * nW / nT, "0") + " %" : "–"), neu, sz)
-        r := f_row(r, "Ø R / Σ R", nT > 0 ? f_sgn(sumR / nT, "0.00") + " / " + f_sgn(sumR, "0.0") : "–", sumR >= 0 ? ok : bad, sz)
-        r := f_row(r, "PF (R) / Ø %", nT > 0 ? (grossL > 0 ? str.tostring(grossW / grossL, "0.00") : "∞") + " / " + f_sgn(sumP / nT, "0.0") + " %" : "–", neu, sz)
-        r := f_row(r, "P&L (Stück wie berechnet)", f_sgn(sumUsd, "#"), sumUsd >= 0 ? ok : bad, sz)
+        r := f_head(r, "Statistik (geschlossene Trades)", neu, sz)
+        string wq = nT > 0 ? str.tostring(100.0 * nW / nT, "0") + " %" : "-"
+        r := f_row(r, "Trades / Gewinnquote", str.tostring(nT) + " / " + wq, neu, sz)
+        string rTxt = nT > 0 ? f_sgn(sumR / nT, "0.00") + " / " + f_sgn(sumR, "0.0") : "-"
+        r := f_row(r, "Avg R / Summe R", rTxt, sumR >= 0 ? ok : bad, sz)
+        string pf = grossL > 0 ? str.tostring(grossW / grossL, "0.00") : "-"
+        string avgP = nT > 0 ? f_sgn(sumP / nT, "0.0") + " %" : "-"
+        r := f_row(r, "PF (R) / Avg %", pf + " / " + avgP, neu, sz)
+        r := f_row(r, "P&L USD", f_sgn(sumUsd, "#"), sumUsd >= 0 ? ok : bad, sz)
+
     float eDays = na(earnings.future_time) ? na : (earnings.future_time - timenow) / 86400000.0
-    r := f_row(r, "Earnings", na(eDays) ? "–" : "in " + str.tostring(math.max(math.ceil(eDays), 0), "#") + " T" + (eDays < 5 ? " ⚠" : ""), not na(eDays) and eDays < 5 ? bad : neu, sz)
+    string eTxt = na(eDays) ? "-" : "in " + str.tostring(math.max(math.ceil(eDays), 0), "#") + " T"
+    r := f_row(r, "Earnings", eTxt, not na(eDays) and eDays < 5 ? bad : neu, sz)
 
 // ---------- Alarme ----------
 if msgs.size() > 0
     alert(msgs.join("\n"), alert.freq_once_per_bar_close)
 bool touch = boxValid and close[1] <= pTop and high >= pTop
 if touch and not entryNow
-    alert(syminfo.ticker + " berührt Box-Oberkante " + str.tostring(pTop, format.mintick) + (why != "" ? " · gesperrt: " + why : " · Gates ok"), alert.freq_once_per_bar)
-alertcondition(entryNow, "V4 Entry", "System+ V4 Entry: {{ticker}} {{close}}")
-alertcondition(exitNow, "V4 Exit (komplett)", "System+ V4 Exit: {{ticker}} {{close}}")
-alertcondition(touch, "V4 Oberkante intraday berührt", "{{ticker}} berührt die Box-Oberkante – EOD prüfen")
+    string tTxt = syminfo.ticker + " beruehrt Oberkante " + str.tostring(pTop, format.mintick)
+    alert(tTxt + (why != "" ? " | gesperrt: " + why : " | Gates ok"), alert.freq_once_per_bar)
+alertcondition(entryNow, "V4 Entry", "System+ V4 Entry {{ticker}} {{close}}")
+alertcondition(exitNow, "V4 Exit komplett", "System+ V4 Exit {{ticker}} {{close}}")
+alertcondition(touch, "V4 Oberkante beruehrt", "{{ticker}} beruehrt die Box-Oberkante")
