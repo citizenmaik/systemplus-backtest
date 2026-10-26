@@ -289,13 +289,15 @@ plot(showMAs ? sma20 : na, "SMA20", color.blue)
 // ---------- Tabelle ----------
 var table tb = na
 f_row(int r, string k, string v, color c, string sz) =>
-    table.cell(tb, 0, r, k, text_color = color.gray, text_size = sz,
+    table.cell(tb, 0, r, k, text_color = color.gray, text_size = sz, bgcolor = color(na),
          text_halign = text.align_left)
-    table.cell(tb, 1, r, v, text_color = c, text_size = sz, text_halign = text.align_right)
+    table.cell(tb, 1, r, v, text_color = c, text_size = sz, text_halign = text.align_right,
+         bgcolor = color(na))
     r + 1
 
 f_head(int r, string txt, color c, string sz) =>
-    table.cell(tb, 0, r, txt, text_color = c, text_size = sz, text_halign = text.align_left)
+    table.cell(tb, 0, r, txt, text_color = c, text_size = sz, text_halign = text.align_left,
+         bgcolor = color(na))
     table.merge_cells(tb, 0, r, 1, r)
     r + 1
 
@@ -307,7 +309,7 @@ if showTable and barstate.islast
         "Oben links" => position.top_left
         => position.bottom_right
     table.delete(tb)
-    tb := table.new(ps, 2, 24, bgcolor = color.new(color.black, 100))
+    tb := table.new(ps, 2, 24, bgcolor = color(na), frame_width = 0, border_width = 0)
     color ok = color.lime
     color bad = color.red
     color neu = color.orange
