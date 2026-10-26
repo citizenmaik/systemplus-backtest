@@ -50,7 +50,6 @@ string tblPos = input.string("Unten rechts", "Tabellen-Position",
      options = ["Unten rechts", "Oben rechts", "Unten links", "Oben links"], group = GD)
 string tblSize = input.string("Klein", "Schrift",
      options = ["Winzig", "Klein", "Normal"], group = GD)
-bool showStats = input.bool(true, "Statistik dieses Charts", group = GD)
 bool showFails = input.bool(true, "Gesperrte Breakouts markieren", group = GD)
 
 // ---------- Grundgroessen ----------
@@ -303,7 +302,7 @@ if showTable and barstate.islast
         "Oben links" => position.top_left
         => position.bottom_right
     table.delete(tb)
-    tb := table.new(ps, 2, 24, bgcolor = color.new(color.black, 85))
+    tb := table.new(ps, 2, 24, bgcolor = color.new(color.black, 100))
     color ok = color.lime
     color bad = color.red
     color neu = color.orange
@@ -378,17 +377,6 @@ if showTable and barstate.islast
         float nowR = (close - tr.entry) / tr.risk
         r := f_row(r, "Aktuell", f_sgn(nowPct, "0.0") + " % | " + f_sgn(nowR, "0.0") + " R",
              close >= tr.entry ? ok : bad, sz)
-
-    if showStats
-        r := f_head(r, "Statistik (geschlossene Trades)", neu, sz)
-        string wq = nT > 0 ? str.tostring(100.0 * nW / nT, "0") + " %" : "-"
-        r := f_row(r, "Trades / Gewinnquote", str.tostring(nT) + " / " + wq, neu, sz)
-        string rTxt = nT > 0 ? f_sgn(sumR / nT, "0.00") + " / " + f_sgn(sumR, "0.0") : "-"
-        r := f_row(r, "Avg R / Summe R", rTxt, sumR >= 0 ? ok : bad, sz)
-        string pf = grossL > 0 ? str.tostring(grossW / grossL, "0.00") : "-"
-        string avgP = nT > 0 ? f_sgn(sumP / nT, "0.0") + " %" : "-"
-        r := f_row(r, "PF (R) / Avg %", pf + " / " + avgP, neu, sz)
-        r := f_row(r, "P&L USD", f_sgn(sumUsd, "#"), sumUsd >= 0 ? ok : bad, sz)
 
     float eDays = na(earnings.future_time) ? na : (earnings.future_time - timenow) / 86400000.0
     string eTxt = na(sinceEarn) ? "vor ? T" : "vor " + str.tostring(sinceEarn) + " T"
