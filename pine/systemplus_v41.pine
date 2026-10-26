@@ -258,6 +258,13 @@ if evalBar
         else if why != ""
             blocked := true
             msgs.push(syminfo.ticker + " BREAKOUT gesperrt: " + why)
+            if showFails
+                string tip = "gesperrt: " + why + "\nATR % " + str.tostring(atrPct, "0.0")
+                tip += " | 52W " + str.tostring(off52, "0.0") + " %"
+                tip += "\nUmsatz YoY " + (revKnown ? str.tostring(yoy0, "0") + " % vs. "
+                     + str.tostring(yoy1, "0") + " %" : "keine Daten (" + str.tostring(nq) + " Q)")
+                label.new(bar_index, low, "", style = label.style_circle, yloc = yloc.belowbar,
+                     color = color.new(color.gray, 30), size = size.tiny, tooltip = tip)
 
 // ---------- Zeichnen ----------
 var line bTop = na
@@ -276,8 +283,6 @@ plotshape(entryNow and not postEarn, "Entry", shape.triangleup, location.belowba
 plotshape(entryNow and postEarn, "Entry nach Earnings", shape.triangleup, location.belowbar,
      color.orange, size = size.tiny)
 plotshape(exitNow, "Exit", shape.triangledown, location.abovebar, color.red, size = size.tiny)
-plotshape(showFails and blocked, "Gesperrt", shape.circle, location.belowbar,
-     color.new(color.gray, 30), size = size.tiny)
 plot(showMAs ? sma10 : na, "SMA10", color.orange)
 plot(showMAs ? sma20 : na, "SMA20", color.blue)
 
