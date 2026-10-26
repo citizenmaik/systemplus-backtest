@@ -33,9 +33,9 @@ string revMiss = input.string("kein Entry", "Ohne Umsatzdaten",
 bool onePos = input.bool(true, "Nur eine Position je Titel", group = GG)
 
 const string GT = "Trade-Management"
-float acct = input.float(20000, "Kontogroesse", step = 1000, group = GT)
+float acct = input.float(10000, "Kontogroesse", step = 1000, group = GT)
 float riskPct = input.float(1.0, "Risiko % pro Trade", step = 0.25, group = GT)
-float capPct = input.float(20.0, "Max. Position % Konto", options = [10.0, 20.0], group = GT)
+float capPct = input.float(15.0, "Max. Position % Konto", options = [10.0, 15.0, 20.0], group = GT)
 string stopMode = input.string("Intraday", "Stop-Ausloesung",
      options = ["Intraday", "EOD"], group = GT)
 int fastLen = input.int(10, "Fast MA (SL/TP1)", group = GT)
