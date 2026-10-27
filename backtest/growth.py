@@ -32,7 +32,10 @@ def _merge_concepts(g: pd.DataFrame, k: str) -> pd.DataFrame:
     order = list((q if len(q) else g)["konzept"].value_counts().index)
     main = order[0]
     if k == "revenue":
-        allowed = [c for c in order if c == main or (main in TOTAL_REVENUE and c in TOTAL_REVENUE)]
+        # Gesamtumsatz hat Vorrang vor Teilumsätzen (Zinsen, Mieten, nur Waren …), auch wenn ein
+        # Teilumsatz mehr Quartalswerte hat. Teilumsätze nur, wenn kein Gesamtumsatz gemeldet wird.
+        tot = [c for c in g["konzept"].value_counts().index if c in TOTAL_REVENUE]
+        allowed = tot if tot else [main]
     elif k == "eps":
         allowed = [c for c in order if c == main or {c, main} <= {"EarningsPerShareDiluted", "DilutedEarningsLossPerShare"}]
     else:
