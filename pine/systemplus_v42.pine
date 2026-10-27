@@ -102,10 +102,14 @@ var float revSeen = na
 var float revPend = na
 var int pendBar = na
 var int repBar = na
+var int repT = na
+var int revChgT = na
 if not na(revRep)
     repBar := bar_index
+    repT := time
 if not na(rev) and (na(revSeen) or rev != revSeen)
     revSeen := rev
+    revChgT := time
     bool justRep = not na(repBar) and bar_index - repBar <= 10
     if rq.size() == 0 or justRep
         rq.push(rev)
@@ -283,6 +287,11 @@ if evalBar
                 tip += " | 52W " + str.tostring(off52, "0.0") + " %"
                 tip += "\nUmsatz YoY " + (revKnown ? str.tostring(yoy0, "0") + " % vs. "
                      + str.tostring(yoy1, "0") + " %" : "keine Daten (" + str.tostring(nq) + " Q)")
+                string fT = "dd.MM.yy"
+                string chgTxt = na(revChgT) ? "-" : str.format_time(revChgT, fT, syminfo.timezone)
+                string repTxt = na(repT) ? "-" : str.format_time(repT, fT, syminfo.timezone)
+                tip += "\nPruef: Q-Wert neu " + chgTxt + " | Earnings " + repTxt
+                tip += " | wartet " + (na(revPend) ? "nein" : "ja")
                 label.new(bar_index, low, "", style = label.style_circle, yloc = yloc.belowbar,
                      color = color.new(color.gray, 30), size = size.tiny, tooltip = tip)
 
