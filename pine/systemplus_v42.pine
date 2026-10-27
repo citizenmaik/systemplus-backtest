@@ -53,7 +53,7 @@ string tblSize = input.string("Klein", "Schrift",
      options = ["Winzig", "Klein", "Normal"], group = GD)
 bool showFails = input.bool(true, "Gesperrte Breakouts markieren", group = GD)
 bool showMaWarn = input.bool(true, "Warnung: intraday unter Exit-MA", group = GD,
-     tooltip = "Rotes Dreieck (hell) ueber der Kerze, wenn das Tief einer offenen Position unter die Exit-MA faellt: SMA10 bis TP1, danach SMA20. Exit gilt erst beim Close.")
+     tooltip = "Rotes Dreieck (hell) ueber der Kerze, solange der aktuelle Kurs einer offenen Position unter der Exit-MA liegt: SMA10 bis TP1, danach SMA20. Schliesst die Kerze wieder darueber, verschwindet es.")
 
 // ---------- Grundgroessen ----------
 float atr = ta.atr(atrLen)
@@ -233,7 +233,7 @@ if not na(tr) and bar_index > tr.bar
     maLvl := tr.tp1 ? sma20 : sma10
     maName := tr.tp1 ? "SMA20" : "SMA10"
     maRule := not tr.r1 ? "Fail 100 %" : not tr.tp1 ? "TP1 40 %" : "TP2 Rest"
-    maWarn := showMaWarn and not na(maLvl) and low < maLvl
+    maWarn := showMaWarn and not na(maLvl) and close < maLvl
 
 if evalBar
     // offene Position ab dem Tag nach dem Entry
@@ -425,8 +425,8 @@ if showTable and barstate.islast
             nxt := "TP2: Close < SMA20 " + str.tostring(sma20, format.mintick)
         r := f_row(r, "Naechste Regel", nxt, neu, sz)
         if maWarn
-            string wTxt = "Tief unter " + maName + " " + str.tostring(maLvl, format.mintick)
-            wTxt += " | am Close: " + (close < maLvl ? maRule : "noch drueber")
+            string wTxt = "Kurs unter " + maName + " " + str.tostring(maLvl, format.mintick)
+            wTxt += " | Close drunter: " + maRule
             r := f_row(r, "Warnung intraday", wTxt, bad, sz)
         float nowPct = 100 * (close / tr.entry - 1)
         float nowR = (close - tr.entry) / tr.risk
