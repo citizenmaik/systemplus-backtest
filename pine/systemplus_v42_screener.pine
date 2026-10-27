@@ -82,16 +82,35 @@ float qDD = 100 * (qC / qHi60 - 1)
 bool cbOn = useCB and (qC < qE200 or qDD <= -10 or qS200 < qS200p)
 
 // ---------- Umsatz beschleunigt ----------
+// TradingView ordnet Quartalswerte in der Historie dem Quartalsende zu. Ein neuer Wert
+// zaehlt deshalb erst ab dem naechsten Earnings-Termin (spaetestens nach 70 Kerzen).
 float rev = request.financial(syminfo.tickerid, "TOTAL_REVENUE", "FQ",
      barmerge.gaps_off, ignore_invalid_symbol = true)
+float revRep = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_on,
+     ignore_invalid_symbol = true)
 var array<float> rq = array.new<float>()
-if not na(rev)
-    if rq.size() == 0
+var float revSeen = na
+var float revPend = na
+var int pendBar = na
+var int repBar = na
+if not na(revRep)
+    repBar := bar_index
+if not na(rev) and (na(revSeen) or rev != revSeen)
+    revSeen := rev
+    bool justRep = not na(repBar) and bar_index - repBar <= 10
+    if rq.size() == 0 or justRep
         rq.push(rev)
-    else if rev != rq.last()
-        rq.push(rev)
-    if rq.size() > 8
-        rq.shift()
+        revPend := na
+    else
+        revPend := rev
+        pendBar := bar_index
+if not na(revPend)
+    bool repAfter = not na(revRep) and bar_index > pendBar
+    if repAfter or bar_index - pendBar >= 70
+        rq.push(revPend)
+        revPend := na
+if rq.size() > 8
+    rq.shift()
 int nq = rq.size()
 float yoy0 = na
 float yoy1 = na
