@@ -52,6 +52,8 @@ string tblPos = input.string("Unten rechts", "Tabellen-Position",
 string tblSize = input.string("Klein", "Schrift",
      options = ["Winzig", "Klein", "Normal"], group = GD)
 bool showFails = input.bool(true, "Gesperrte Breakouts markieren", group = GD)
+bool showMaWarn = input.bool(true, "Warnung: intraday unter Exit-MA", group = GD,
+     tooltip = "Rotes Dreieck (hell) ueber der Kerze, wenn das Tief einer offenen Position unter die Exit-MA faellt: SMA10 bis TP1, danach SMA20. Exit gilt erst beim Close.")
 
 // ---------- Grundgroessen ----------
 float atr = ta.atr(atrLen)
@@ -222,6 +224,17 @@ f_fill(Trade t, float frac, float px, string tag) =>
         msgs.push(syminfo.ticker + " " + tag + " " + pctTxt + " @ " + str.tostring(px, format.mintick))
     f
 
+// ---------- Warnung: intraday unter Exit-MA (Stand vor den Fills dieser Kerze) ----------
+bool maWarn = false
+float maLvl = na
+string maName = ""
+string maRule = ""
+if not na(tr) and bar_index > tr.bar
+    maLvl := tr.tp1 ? sma20 : sma10
+    maName := tr.tp1 ? "SMA20" : "SMA10"
+    maRule := not tr.r1 ? "Fail 100 %" : not tr.tp1 ? "TP1 40 %" : "TP2 Rest"
+    maWarn := showMaWarn and not na(maLvl) and low < maLvl
+
 if evalBar
     // offene Position ab dem Tag nach dem Entry
     if not na(tr) and bar_index > tr.bar
@@ -312,6 +325,8 @@ plotshape(entryNow and not postEarn, "Entry", shape.triangleup, location.belowba
 plotshape(entryNow and postEarn, "Entry nach Earnings", shape.triangleup, location.belowbar,
      color.orange, size = size.tiny)
 plotshape(exitNow, "Exit", shape.triangledown, location.abovebar, color.red, size = size.tiny)
+plotshape(maWarn and not exitNow, "Warnung intraday unter Exit-MA", shape.triangledown,
+     location.abovebar, color.new(color.red, 55), size = size.tiny)
 plot(showMAs ? sma10 : na, "SMA10", color.orange)
 plot(showMAs ? sma20 : na, "SMA20", color.blue)
 
@@ -409,6 +424,10 @@ if showTable and barstate.islast
         else if tr.r1 and tr.tp1
             nxt := "TP2: Close < SMA20 " + str.tostring(sma20, format.mintick)
         r := f_row(r, "Naechste Regel", nxt, neu, sz)
+        if maWarn
+            string wTxt = "Tief unter " + maName + " " + str.tostring(maLvl, format.mintick)
+            wTxt += " | am Close: " + (close < maLvl ? maRule : "noch drueber")
+            r := f_row(r, "Warnung intraday", wTxt, bad, sz)
         float nowPct = 100 * (close / tr.entry - 1)
         float nowR = (close - tr.entry) / tr.risk
         r := f_row(r, "Aktuell", f_sgn(nowPct, "0.0") + " % | " + f_sgn(nowR, "0.0") + " R",
@@ -431,6 +450,11 @@ bool touch = boxValid and close[1] <= pTop and high >= pTop
 if touch and not entryNow
     string tTxt = syminfo.ticker + " beruehrt Oberkante " + str.tostring(pTop, format.mintick)
     alert(tTxt + (why != "" ? " | gesperrt: " + why : " | Gates ok"), alert.freq_once_per_bar)
+if maWarn and not exitNow
+    string mTxt = syminfo.ticker + " intraday unter " + maName + " " + str.tostring(maLvl, format.mintick)
+    alert(mTxt + " | moeglicher Exit am Close: " + maRule, alert.freq_once_per_bar)
+alertcondition(maWarn and not exitNow, "V4.2 Warnung Exit-MA intraday",
+     "{{ticker}} intraday unter der Exit-MA (SMA10/SMA20) – Close pruefen")
 alertcondition(entryNow, "V4.2 Entry", "System+ V4.2 Entry {{ticker}} {{close}}")
 alertcondition(exitNow, "V4.2 Exit komplett", "System+ V4.2 Exit {{ticker}} {{close}}")
 alertcondition(touch, "V4.2 Oberkante beruehrt", "{{ticker}} beruehrt die Box-Oberkante")
