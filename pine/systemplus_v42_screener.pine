@@ -1,0 +1,186 @@
+//@version=6
+indicator("System+ V4.2 Screener", overlay = false, max_bars_back = 500)
+
+// Pine Screener fuer System+ V4.2, Stand 27.10.2026
+// Ablauf: TradingView-Screener (Universum) -> Watchlist -> dieser Pine Screener
+// -> Chart-Indikator "System+ V4.2" (verbindlich).
+// Signal 2 = Breakout heute: erster Close ueber Pivot-Oberkante, Close > SMA10.
+// Signal 1 = In Box: gueltige Pivot-Box, Kurs zwischen Unter- und Oberkante.
+// V4.2-Gates: ATR % 4.5-10 (10 = Grenze aus dem TV-Screener),
+// 52W 10-30 % unter Hoch, Umsatz-YoY letztes Quartal > Umsatz-YoY Quartal davor.
+// Notbremse QQQE sperrt nicht: bei aktiver Notbremse 0.5 % statt 1 % Risiko (Spalte Risiko %).
+// In Box: ATR % und 52W werden auf Hoehe der Oberkante geprueft (Kurs beim Breakout).
+// Prioritaet bei max. 3 Kaeufen pro Tag: niedrigstes ATR-Multiple zuerst.
+// Pine Screener rechnet nur mit den letzten 500 Tageskerzen. Zeitrahmen: 1D.
+
+// ---------- Eingaben ----------
+const string GF = "Filter"
+string scanMode = input.string("beides", "Signal",
+     options = ["beides", "In Box", "Breakout heute"], group = GF)
+bool gateFilter = input.bool(true, "Nur Titel mit erfuellten Gates", group = GF)
+
+const string GB = "Pivot-Box (= Chart-Indikator)"
+int pivLen = input.int(3, "Pivot-Laenge", minval = 1, group = GB)
+float maxBoxAtr = input.float(3.0, "Max. Box-Hoehe (x ATR)", step = 0.1, group = GB)
+int atrLen = input.int(14, "ATR-Laenge", group = GB)
+int fastLen = input.int(10, "Fast MA (SL)", group = GB)
+
+const string GG = "V4.2-Gates (= Chart-Indikator)"
+float atrPctMin = input.float(4.5, "Min. ATR %", step = 0.1, group = GG)
+float atrPctMax = input.float(10.0, "Max. ATR % (TV-Screener)", step = 0.5, group = GG)
+float w52Min = input.float(10.0, "52W min. % unter Hoch", step = 0.5, group = GG)
+float w52Max = input.float(30.0, "52W max. % unter Hoch", step = 1, group = GG)
+bool useCB = input.bool(true, "Notbremse", group = GG)
+string cbSym = input.string("NASDAQ:QQQE", "Notbremse-Index", group = GG)
+string cbMode = input.string("Risiko reduzieren", "Bei aktiver Notbremse",
+     options = ["Risiko reduzieren", "kein Entry"], group = GG)
+float riskPct = input.float(1.0, "Risiko % normal", step = 0.25, group = GG)
+float cbRiskPct = input.float(0.5, "Risiko % bei Notbremse", step = 0.25, group = GG)
+bool useRev = input.bool(true, "Umsatz beschleunigt", group = GG)
+int postEarnMax = input.int(5, "Hinweis: Breakout bis x Tage nach Earnings", minval = 0, group = GG)
+string revMiss = input.string("kein Entry", "Ohne Umsatzdaten",
+     options = ["kein Entry", "zulassen"], group = GG)
+
+// ---------- Grundgroessen ----------
+float atr = ta.atr(atrLen)
+float sma10 = ta.sma(close, fastLen)
+float hi252 = ta.highest(high, 252)
+float off52 = 100 * (close / hi252 - 1)
+float atrPct = 100 * atr / close
+
+// ---------- Pivot-Box (wie System+ v3.8 / V4) ----------
+float pvH = ta.pivothigh(high, pivLen, pivLen)
+float pvL = ta.pivotlow(low, pivLen, pivLen)
+var float pTop = na
+var float pBot = na
+var int pTopBar = na
+var int pUsedBar = na
+if not na(pvH)
+    pTop := pvH
+    pTopBar := bar_index - pivLen
+if not na(pvL)
+    pBot := pvL
+float boxH = (pTop - pBot) / atr[1]
+bool hasBox = not na(pTop) and not na(pBot) and pBot < pTop
+bool boxUsed = pTopBar == pUsedBar
+bool boxValid = hasBox and boxH <= maxBoxAtr and not boxUsed
+bool brk = boxValid and close > pTop and close[1] <= pTop
+bool aboveMa = close > sma10
+bool brkToday = brk and aboveMa
+float topNow = pTop
+float botNow = pBot
+bool inBox = boxValid and close <= topNow and close >= botNow
+// Oberkante verbraucht, sobald Close > Oberkante und Close > SMA10
+if brkToday
+    pUsedBar := pTopBar
+
+// ---------- Notbremse ----------
+[qC, qE200, qHi60, qS200, qS200p] = request.security(cbSym, "1D",
+     [close, ta.ema(close, 200), ta.highest(close, 60), ta.sma(close, 200),
+     ta.sma(close, 200)[20]], lookahead = barmerge.lookahead_off)
+float qDD = 100 * (qC / qHi60 - 1)
+bool cbOn = useCB and (qC < qE200 or qDD <= -10 or qS200 < qS200p)
+
+// ---------- Umsatz beschleunigt ----------
+float rev = request.financial(syminfo.tickerid, "TOTAL_REVENUE", "FQ",
+     barmerge.gaps_off, ignore_invalid_symbol = true)
+var array<float> rq = array.new<float>()
+if not na(rev)
+    if rq.size() == 0
+        rq.push(rev)
+    else if rev != rq.last()
+        rq.push(rev)
+    if rq.size() > 8
+        rq.shift()
+int nq = rq.size()
+float yoy0 = na
+float yoy1 = na
+if nq >= 5
+    float b0 = rq.get(nq - 5)
+    yoy0 := b0 > 0 ? 100 * (rq.get(nq - 1) / b0 - 1) : na
+if nq >= 6
+    float b1 = rq.get(nq - 6)
+    yoy1 := b1 > 0 ? 100 * (rq.get(nq - 2) / b1 - 1) : na
+bool revKnown = not na(yoy0) and not na(yoy1)
+bool revAccel = revKnown and yoy0 > yoy1
+bool revOk = not useRev or revAccel or (not revKnown and revMiss == "zulassen")
+
+// ---------- Gates ----------
+// Breakout heute: Werte zum Close. In Box: Werte bei Kurs = Oberkante.
+float refPx = brkToday ? close : inBox ? topNow : close
+float atrPctRef = 100 * atr / refPx
+float off52Ref = 100 * (refPx / hi252 - 1)
+bool atrOk = atrPctRef >= atrPctMin and atrPctRef <= atrPctMax
+bool w52Ok = not na(off52Ref) and off52Ref <= -w52Min and off52Ref >= -w52Max
+bool cbBlock = cbOn and cbMode == "kein Entry"
+bool cbOk = not cbBlock
+float riskNow = cbOn and not cbBlock ? cbRiskPct : riskPct
+bool gatesOk = atrOk and w52Ok and cbOk and revOk
+
+// Sperrgrund als Zahl (Pine Screener kann keine Texte als Spalte zeigen)
+// 0 = alle Gates ok, 1 = ATR % ausserhalb, 2 = zu nah am 52W-Hoch,
+// 3 = zu weit unter 52W-Hoch, 4 = Notbremse (nur Modus kein Entry),
+// 5 = Umsatz nicht beschleunigt,
+// 6 = keine Umsatzdaten
+int why = 0
+if not atrOk
+    why := 1
+else if not w52Ok
+    why := na(off52Ref) or off52Ref > -w52Min ? 2 : 3
+else if not cbOk
+    why := 4
+else if not revOk
+    why := revKnown ? 5 : 6
+
+// ---------- Treffer ----------
+bool boxHit = switch scanMode
+    "In Box" => inBox
+    "Breakout heute" => brkToday
+    => inBox or brkToday
+bool hit = boxHit and (not gateFilter or gatesOk)
+int signal = brkToday ? 2 : inBox ? 1 : 0
+
+// Sortierung / Sizing
+float atrMult = (close - sma10) / atr
+float slPct = 100 * (close - sma10) / close
+float distTop = inBox ? 100 * (topNow / close - 1) : na
+float accel = revKnown ? yoy0 - yoy1 : na
+float eDays = na(earnings.future_time) ? na : (earnings.future_time - timenow) / 86400000.0
+float eAct = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_on,
+     ignore_invalid_symbol = true)
+var int lastEarnBar = na
+if not na(eAct)
+    lastEarnBar := bar_index
+int sinceEarn = na(lastEarnBar) ? na : bar_index - lastEarnBar
+bool postEarn = not na(sinceEarn) and sinceEarn <= postEarnMax
+
+// ---------- Alarme ----------
+bool touch = boxValid and close[1] <= topNow and high >= topNow and gatesOk
+alertcondition(hit, "V4.2 Treffer", "System+ V4.2 Screener {{ticker}} {{close}}")
+alertcondition(brkToday and gatesOk, "V4.2 Breakout heute (Gates ok)",
+     "System+ V4.2 Breakout {{ticker}} {{close}}")
+alertcondition(touch, "V4.2 Oberkante intraday beruehrt (Gates ok)",
+     "{{ticker}} beruehrt die Box-Oberkante")
+
+// ---------- Spalten ----------
+plot(hit ? 1 : 0, "Treffer (1/0)", display = display.data_window)
+plot(signal, "Signal (2 = Breakout, 1 = In Box)", display = display.data_window)
+plot(gatesOk ? 1 : 0, "Gates ok (1/0)", display = display.data_window)
+plot(why, "Sperrgrund (0 ok, 1 ATR, 2/3 52W, 4 NB, 5/6 Umsatz)", display = display.data_window)
+plot(atrMult, "ATR-Multiple (Prioritaet)", display = display.data_window)
+plot(slPct, "SL-Abstand %", display = display.data_window)
+plot(atrPctRef, "ATR %", display = display.data_window)
+plot(off52Ref, "52W-Hoch %", display = display.data_window)
+plot(yoy0, "Umsatz YoY akt. %", display = display.data_window)
+plot(yoy1, "Umsatz YoY vorher %", display = display.data_window)
+plot(accel, "Beschleunigung Pp", display = display.data_window)
+plot(cbOn ? 1 : 0, "Notbremse aktiv (1/0)", display = display.data_window)
+plot(riskNow, "Risiko %", display = display.data_window)
+plot(brkToday ? topNow : na, "Breakout-Level", display = display.data_window)
+plot(inBox ? topNow : na, "Box-Oberkante", display = display.data_window)
+plot(inBox ? botNow : na, "Box-Unterkante", display = display.data_window)
+plot(distTop, "Abstand Oberkante %", display = display.data_window)
+plot(boxH, "Box-Hoehe ATR", display = display.data_window)
+plot(eDays, "Earnings in Tagen", display = display.data_window)
+plot(sinceEarn, "Tage seit Earnings", display = display.data_window)
+plot(postEarn ? 1 : 0, "Nach Earnings (1/0)", display = display.data_window)
