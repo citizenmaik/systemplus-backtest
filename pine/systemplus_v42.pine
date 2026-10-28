@@ -62,6 +62,7 @@ float sma20 = ta.sma(close, slowLen)
 float hi252 = ta.highest(high, 252)
 float off52 = 100 * (close / hi252 - 1)
 float atrPct = 100 * atr / close
+float atrMult = (close - sma10) / atr   // Rangfolge bei mehreren Entries: niedrigster Wert zuerst
 
 // ---------- Pivot-Box (wie System+ v3.8) ----------
 float pvH = ta.pivothigh(high, pivLen, pivLen)
@@ -291,6 +292,7 @@ if evalBar
             string eTxt = " ENTRY " + str.tostring(close, format.mintick)
             string sTxt = " | SL " + str.tostring(sma10, format.mintick)
             string kTxt = " | Stueck " + str.tostring(tr.shares, "0.0") + " | Risiko " + riskTxt
+            kTxt += " | ATR-Mult " + str.tostring(atrMult, "0.00")
             msgs.push(syminfo.ticker + eTxt + sTxt + kTxt + postTxt)
         else if why != ""
             blocked := true
@@ -369,6 +371,10 @@ if showTable and barstate.islast
         boxTxt := tops + " | " + str.tostring(boxH, "0.0") + " ATR" + flag
     r := f_row(r, "Pivot-Box", boxTxt, boxValid ? ok : neu, sz)
     r := f_row(r, "Ueber SMA10", aboveMa ? "ja" : "nein", aboveMa ? ok : bad, sz)
+    string amTxt = "-"
+    if aboveMa and not na(atrMult)
+        amTxt := str.tostring(atrMult, "0.00") + " | SL " + str.tostring(100 * (close - sma10) / close, "0.0") + " %"
+    r := f_row(r, "ATR-Multiple (niedrig = zuerst)", amTxt, neu, sz)
 
     string atrTxt = str.tostring(atrPct, "0.0") + " % (" + str.tostring(atrPctMin, "0.0")
     atrTxt += "-" + str.tostring(atrPctMax, "0.#") + ")"
