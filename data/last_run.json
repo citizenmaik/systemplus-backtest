@@ -1,12 +1,17 @@
 {
-  "files_written": 1,
-  "files_unchanged": 105,
+  "files_written": 106,
+  "files_unchanged": 0,
   "files_removed": 0,
-  "rows": 5383728,
+  "rows": 5382724,
   "tickers": 2858,
   "mode": "incremental",
-  "refetched": [],
+  "refetched": [
+    "ENLV",
+    "GP",
+    "NUWE",
+    "WPRT"
+  ],
   "no_data": 0,
-  "last_date": "2026-10-26",
-  "run_utc": "2026-10-27T01:34:03+00:00"
+  "last_date": "2026-10-27",
+  "run_utc": "2026-10-28T01:30:31+00:00"
 }
