@@ -209,6 +209,10 @@ var float grossL = 0.0
 var float sumUsd = 0.0
 
 bool evalBar = barstate.ishistory or barstate.isconfirmed
+bool liveBar = barstate.isrealtime and not barstate.isconfirmed
+bool freeNow = not onePos or na(tr)
+// Vorschau auf offener Kerze: zaehlt erst beim Close (dann entryNow)
+bool entryPre = liveBar and brk and aboveMa and why == "" and freeNow
 bool entryNow = false
 bool exitNow = false
 bool blocked = false
@@ -254,9 +258,9 @@ if evalBar
                     tr.tp1 := true
                 if close < sma20
                     f_fill(tr, tr.rem, close, "TP2")
-        line.set_x2(tr.slLn, bar_index)
-        line.set_x2(tr.enLn, bar_index)
-        line.set_x2(tr.r1Ln, bar_index)
+        line.set_x2(tr.slLn, bar_index + 3)
+        line.set_x2(tr.enLn, bar_index + 3)
+        line.set_x2(tr.r1Ln, bar_index + 3)
         if tr.rem <= 0.000001
             exitNow := true
             nT += 1
@@ -283,11 +287,12 @@ if evalBar
             entryNow := true
             float risk = close - sma10
             tr := Trade.new(bar_index, time, close, sma10, risk, f_shares(close, sma10))
-            tr.slLn := line.new(bar_index, sma10, bar_index, sma10, color = color.red,
+            // x2 = bar_index + 3: Linien schon am Entry-Tag sichtbar (vorher Laenge 0)
+            tr.slLn := line.new(bar_index, sma10, bar_index + 3, sma10, color = color.red,
                  style = line.style_dashed)
-            tr.enLn := line.new(bar_index, close, bar_index, close, color = color.gray,
+            tr.enLn := line.new(bar_index, close, bar_index + 3, close, color = color.gray,
                  style = line.style_dashed)
-            tr.r1Ln := line.new(bar_index, close + risk, bar_index, close + risk,
+            tr.r1Ln := line.new(bar_index, close + risk, bar_index + 3, close + risk,
                  color = color.green, style = line.style_dotted)
             string eTxt = " ENTRY " + str.tostring(close, format.mintick)
             string sTxt = " | SL " + str.tostring(sma10, format.mintick)
@@ -326,6 +331,17 @@ plotshape(entryNow and not postEarn, "Entry", shape.triangleup, location.belowba
      size = size.tiny)
 plotshape(entryNow and postEarn, "Entry nach Earnings", shape.triangleup, location.belowbar,
      color.orange, size = size.tiny)
+plotshape(entryPre, "Entry vorlaeufig (Kerze offen)", shape.triangleup, location.belowbar,
+     color.new(color.green, 55), size = size.tiny)
+// Vorschau-Linien auf offener Kerze; Pine verwirft sie bei jedem Tick (Rollback) und beim Close
+if entryPre
+    float pRisk = close - sma10
+    line.new(bar_index, sma10, bar_index + 3, sma10, color = color.new(color.red, 40),
+         style = line.style_dashed)
+    line.new(bar_index, close, bar_index + 3, close, color = color.new(color.gray, 40),
+         style = line.style_dashed)
+    line.new(bar_index, close + pRisk, bar_index + 3, close + pRisk,
+         color = color.new(color.green, 40), style = line.style_dotted)
 plotshape(exitNow, "Exit", shape.triangledown, location.abovebar, color.red, size = size.tiny)
 plotshape(maWarn and not exitNow, "Warnung intraday unter Exit-MA", shape.triangledown,
      location.abovebar, color.new(color.red, 55), size = size.tiny)
@@ -399,7 +415,12 @@ if showTable and barstate.islast
 
     string st = "Box aktiv, kein Breakout"
     if brk and aboveMa
-        st := why == "" ? "ENTRY" : "gesperrt: " + why
+        if why != ""
+            st := "gesperrt: " + why
+        else if not freeNow and not entryNow
+            st := "Breakout, Position schon offen"
+        else
+            st := liveBar ? "ENTRY vorlaeufig (Close abwarten)" : "ENTRY"
     else if brk
         st := "Breakout unter SMA10"
     else if not hasBox
@@ -408,7 +429,7 @@ if showTable and barstate.islast
         st := "Box verbraucht"
     else if boxH > maxBoxAtr
         st := "Box zu hoch"
-    r := f_row(r, "Status", st, brk and aboveMa and why == "" ? ok : neu, sz)
+    r := f_row(r, "Status", st, str.startswith(st, "ENTRY") ? ok : neu, sz)
 
     float shNow = f_shares(close, sma10)
     string posTxt = "-"
