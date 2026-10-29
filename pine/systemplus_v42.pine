@@ -484,15 +484,17 @@ if showTable and barstate.islast
             r := f_row(r, "52W", w52Txt, w52Ok ? ok : bad, sz)
             r := f_row(r, "Umsatz", revTxt, revAccel ? ok : revKnown ? bad : neu, sz)
 
+        // ATR-Multiple: Rangfolge bei mehreren Entries am selben Tag (niedrigster zuerst)
+        string amTxt = aboveMa and not na(atrMult) ? str.tostring(atrMult, "0.00") : "- (unter SMA10)"
+        r := f_row(r, "ATR-Multiple", amTxt, neu, sz, "(Close - SMA10) / ATR. Mehrere Entries am selben Tag: niedrigster Wert zuerst, max. 3")
         float shNow = f_shares(close, sma10)
         if shNow > 0
             string posTxt = str.tostring(shNow, "0.0") + " St | " + str.tostring(shNow * close, "#") + " $"
             string posTip = "Risiko " + str.tostring(shNow * (close - sma10), "#") + " $ (" + riskTxt + ")"
             posTip += " | Deckel " + str.tostring(capPct, "#") + " %"
             r := f_row(r, "Groesse", posTxt, neu, sz, posTip)
-            string slTxt = str.tostring(sma10, mt) + " | " + str.tostring(100 * (close - sma10) / close, "0.0")
-            slTxt += " % | AM " + str.tostring(atrMult, "0.00")
-            r := f_row(r, "SL", slTxt, neu, sz, "AM = ATR-Multiple, bei mehreren Entries niedrigster zuerst")
+            string slTxt = str.tostring(sma10, mt) + " | " + str.tostring(100 * (close - sma10) / close, "0.0") + " %"
+            r := f_row(r, "SL", slTxt, neu, sz)
 
     // Earnings nur bei Bedarf: kurz nach Earnings oder naechste in <= 14 Tagen
     float eDays = na(earnings.future_time) ? na : (earnings.future_time - timenow) / 86400000.0
