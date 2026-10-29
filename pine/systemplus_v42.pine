@@ -1,5 +1,6 @@
 //@version=6
-indicator("System+ V4.2", overlay = true, max_bars_back = 600,
+// scale.right: Linien und Labels auf der Preisskala des Charts (sonst eigene Skala, laeuft beim Zoomen weg)
+indicator("System+ V4.2", overlay = true, scale = scale.right, max_bars_back = 600,
      max_lines_count = 500, max_labels_count = 500)
 
 // System+ V4.2, Stand 27.10.2026
