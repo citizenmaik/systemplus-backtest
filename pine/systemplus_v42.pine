@@ -166,26 +166,30 @@ bool cbOk = not cbBlock
 float riskNow = cbOn and not cbBlock ? cbRiskPct : riskPct
 string riskTxt = str.tostring(riskNow, "0.0#") + " %"
 
+f_sgn(float v, string fmt) =>
+    (v >= 0 ? "+" : "") + str.tostring(v, fmt)
+
+// Sperrgruende mit Zahlen, alle verletzten Gates (Soll in Klammern)
 f_why() =>
-    string w = ""
+    array<string> a = array.new<string>()
     if not atrOk
-        w := atrPct < atrPctMin ? "ATR % zu klein" : "ATR % zu gross"
-    else if not w52Ok
-        w := na(off52) ? "52W Historie" : off52 > -w52Min ? "zu nah am 52W-Hoch" : "zu weit unter 52W-Hoch"
-    else if not cbOk
-        w := "Notbremse"
-    else if not revOk
-        w := revKnown ? "Umsatz nicht beschleunigt" : "keine Umsatzdaten"
-    w
+        a.push("ATR " + str.tostring(atrPct, "0.0") + " % (" + str.tostring(atrPctMin, "0.0#") + "-" +
+             str.tostring(atrPctMax, "0.#") + ")")
+    if not w52Ok
+        a.push(na(off52) ? "52W: < 1 Jahr Kursdaten" : "52W " + str.tostring(off52, "0") + " % (-" +
+             str.tostring(w52Min, "0.#") + " bis -" + str.tostring(w52Max, "#") + ")")
+    if not cbOk
+        a.push("Notbremse")
+    if not revOk
+        a.push(revKnown ? "Umsatz " + f_sgn(yoy0, "0") + " vs. " + f_sgn(yoy1, "0") + " %" :
+             "Umsatz: keine Daten (" + str.tostring(nq) + " Q)")
+    a.join(" | ")
 
 f_shares(float entry, float stop) =>
     float r = entry - stop
     float byRisk = acct * riskNow / 100 / r
     float byCap = acct * capPct / 100 / entry
     r > 0 ? math.floor(math.min(byRisk, byCap) * 10) / 10 : 0.0
-
-f_sgn(float v, string fmt) =>
-    (v >= 0 ? "+" : "") + str.tostring(v, fmt)
 
 // ---------- Trade (M2) ----------
 type Trade
@@ -444,7 +448,7 @@ if showTable and barstate.islast
             st := entryPre ? "ENTRY? Close abwarten" : "ENTRY"
             stC := ok
         else if brk and aboveMa and why != ""
-            st := "gesperrt: " + why
+            st := "gesperrt"
             stC := bad
         else if brk and aboveMa
             st := "Breakout, kein Entry"
@@ -485,8 +489,8 @@ if showTable and barstate.islast
             r := f_row(r, "Umsatz", revTxt, revAccel ? ok : revKnown ? bad : neu, sz)
 
         // ATR-Multiple: Rangfolge bei mehreren Entries am selben Tag (niedrigster zuerst)
-        string amTxt = aboveMa and not na(atrMult) ? str.tostring(atrMult, "0.00") : "- (unter SMA10)"
-        r := f_row(r, "ATR-Multiple", amTxt, neu, sz, "(Close - SMA10) / ATR. Mehrere Entries am selben Tag: niedrigster Wert zuerst, max. 3")
+        string amTxt = na(atrMult) ? "-" : str.tostring(atrMult, "0.00")
+        r := f_row(r, "ATR-Multiple", amTxt, atrMult < 0 ? bad : neu, sz, "(Close - SMA10) / ATR. Mehrere Entries am selben Tag: niedrigster Wert zuerst, max. 3")
         float shNow = f_shares(close, sma10)
         if shNow > 0
             string posTxt = str.tostring(shNow, "0.0") + " St | " + str.tostring(shNow * close, "#") + " $"
