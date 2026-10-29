@@ -220,12 +220,12 @@ var string lastExitTag = ""
 bool evalBar = barstate.ishistory or barstate.isconfirmed
 bool liveBar = barstate.isrealtime and not barstate.isconfirmed
 bool freeNow = not onePos or na(tr)
+string why = f_why()
 // Vorschau auf offener Kerze: zaehlt erst beim Close (dann entryNow)
 bool entryPre = liveBar and brk and aboveMa and why == "" and freeNow
 bool entryNow = false
 bool exitNow = false
 bool blocked = false
-string why = f_why()
 array<string> msgs = array.new<string>()
 
 f_fill(Trade t, float frac, float px, string tag) =>
