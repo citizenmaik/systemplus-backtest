@@ -10,6 +10,8 @@ indicator("System+ V4.2", overlay = true, max_bars_back = 600,
 // Universum (TV-Screener): Kurs > 5, Market Cap > 300 Mio, Volumen 30T > 1 Mio, Float > 70 %.
 // Exits M2: SL = SMA10 Entry-Tag, vor 1R Close < SMA10 alles raus,
 // ab 1R Close < SMA10 40 %, Close < SMA20 Rest.
+// Close < SMA20 gilt auch vor 1R (liegt die SMA20 ueber der SMA10, geht dort alles raus).
+// Backtest 29.10.2026: besser als SMA20 erst ab 1R/TP1 oder kein Entry unter SMA20.
 // Max. 3 Neukaeufe pro Tag ist eine Konto-Regel (nicht im Chart pruefbar).
 
 // ---------- Eingaben ----------
@@ -53,7 +55,8 @@ string tblSize = input.string("Klein", "Schrift",
      options = ["Winzig", "Klein", "Normal"], group = GD)
 bool showFails = input.bool(true, "Gesperrte Breakouts markieren", group = GD)
 bool showMaWarn = input.bool(true, "Warnung: intraday unter Exit-MA", group = GD,
-     tooltip = "Rotes Dreieck (hell) ueber der Kerze, solange der aktuelle Kurs einer offenen Position unter der Exit-MA liegt: SMA10 bis TP1, danach SMA20. Schliesst die Kerze wieder darueber, verschwindet es.")
+     tooltip = "Rotes Dreieck (hell) ueber der Kerze, solange der aktuelle Kurs einer offenen Position unter der Exit-MA liegt: bis TP1 die hoehere von SMA10/SMA20, danach SMA20. Schliesst die Kerze wieder darueber, verschwindet es.")
+int showClosed = input.int(5, "Geschlossenen Trade im Status zeigen (Kerzen)", minval = 0, group = GD)
 
 // ---------- Grundgroessen ----------
 float atr = ta.atr(atrLen)
@@ -195,6 +198,7 @@ type Trade
     float pSum = 0.0
     bool r1 = false
     bool tp1 = false
+    string lastTag = ""
     line slLn
     line enLn
     line r1Ln
@@ -207,6 +211,11 @@ var float sumP = 0.0
 var float grossW = 0.0
 var float grossL = 0.0
 var float sumUsd = 0.0
+var int lastExitBar = na
+var int lastExitT = na
+var float lastExitR = na
+var float lastExitP = na
+var string lastExitTag = ""
 
 bool evalBar = barstate.ishistory or barstate.isconfirmed
 bool liveBar = barstate.isrealtime and not barstate.isconfirmed
@@ -225,6 +234,7 @@ f_fill(Trade t, float frac, float px, string tag) =>
         t.rem := t.rem - f
         t.rSum := t.rSum + f * (px - t.entry) / t.risk
         t.pSum := t.pSum + f * 100 * (px - t.entry) / t.entry
+        t.lastTag := tag
         string pctTxt = str.tostring(math.round(f * 100)) + " %"
         msgs.push(syminfo.ticker + " " + tag + " " + pctTxt + " @ " + str.tostring(px, format.mintick))
     f
@@ -235,9 +245,11 @@ float maLvl = na
 string maName = ""
 string maRule = ""
 if not na(tr) and bar_index > tr.bar
-    maLvl := tr.tp1 ? sma20 : sma10
-    maName := tr.tp1 ? "SMA20" : "SMA10"
-    maRule := not tr.r1 ? "Fail 100 %" : not tr.tp1 ? "TP1 40 %" : "TP2 Rest"
+    // bis TP1 zaehlt die hoehere MA: SMA20 ueber SMA10 -> dort geht alles raus
+    bool use20 = tr.tp1 or sma20 > sma10
+    maLvl := use20 ? sma20 : sma10
+    maName := use20 ? "SMA20" : "SMA10"
+    maRule := tr.tp1 ? "TP2 Rest" : use20 ? "Exit 100 %" : not tr.r1 ? "Fail 100 %" : "TP1 40 %"
     maWarn := showMaWarn and not na(maLvl) and close < maLvl
 
 if evalBar
@@ -270,6 +282,11 @@ if evalBar
             grossW += math.max(tr.rSum, 0)
             grossL += math.max(-tr.rSum, 0)
             sumUsd += tr.shares * tr.entry * tr.pSum / 100
+            lastExitBar := bar_index
+            lastExitT := time
+            lastExitR := tr.rSum
+            lastExitP := tr.pSum
+            lastExitTag := tr.lastTag
             line.delete(tr.slLn)
             line.delete(tr.enLn)
             line.delete(tr.r1Ln)
@@ -414,13 +431,22 @@ if showTable and barstate.islast
     r := f_row(r, "Umsatz YoY akt./vorher", revTxt, revAccel ? ok : revKnown ? bad : neu, sz)
 
     string st = "Box aktiv, kein Breakout"
-    if brk and aboveMa
-        if why != ""
-            st := "gesperrt: " + why
-        else if not freeNow and not entryNow
-            st := "Breakout, Position schon offen"
-        else
-            st := liveBar ? "ENTRY vorlaeufig (Close abwarten)" : "ENTRY"
+    color stC = neu
+    bool recentExit = na(tr) and not na(lastExitBar) and bar_index - lastExitBar <= showClosed
+    if entryNow or entryPre
+        st := entryPre ? "ENTRY vorlaeufig (Close abwarten)" : "ENTRY"
+        stC := ok
+    else if not na(tr)
+        st := "Aktiver Trade" + (brk and aboveMa ? " | neuer Breakout ignoriert" : "")
+        stC := ok
+    else if brk and aboveMa and why != ""
+        st := "gesperrt: " + why
+    else if brk and aboveMa
+        st := "Breakout, kein Entry"
+    else if recentExit
+        st := "Trade geschlossen " + str.format_time(lastExitT, "dd.MM.", syminfo.timezone)
+        st += " | " + lastExitTag + " " + f_sgn(lastExitR, "0.0") + " R / " + f_sgn(lastExitP, "0.0") + " %"
+        stC := lastExitR >= 0 ? ok : bad
     else if brk
         st := "Breakout unter SMA10"
     else if not hasBox
@@ -429,7 +455,7 @@ if showTable and barstate.islast
         st := "Box verbraucht"
     else if boxH > maxBoxAtr
         st := "Box zu hoch"
-    r := f_row(r, "Status", st, str.startswith(st, "ENTRY") ? ok : neu, sz)
+    r := f_row(r, "Status", st, stC, sz)
 
     float shNow = f_shares(close, sma10)
     string posTxt = "-"
@@ -445,11 +471,17 @@ if showTable and barstate.islast
         r := f_row(r, "Aktiver Trade", trTxt, neu, sz)
         string r1Txt = tr.r1 ? "ja" : "nein (" + str.tostring(tr.entry + tr.risk, format.mintick) + ")"
         r := f_row(r, "1R erreicht", r1Txt, tr.r1 ? ok : neu, sz)
-        string nxt = "Fail 100 %: Close < SMA10 " + str.tostring(sma10, format.mintick)
-        if tr.r1 and not tr.tp1
-            nxt := "TP1 40 %: Close < SMA10 " + str.tostring(sma10, format.mintick)
-        else if tr.r1 and tr.tp1
-            nxt := "TP2: Close < SMA20 " + str.tostring(sma20, format.mintick)
+        string s10Txt = str.tostring(sma10, format.mintick)
+        string s20Txt = str.tostring(sma20, format.mintick)
+        string nxt = ""
+        if tr.tp1
+            nxt := "TP2 Rest: Close < SMA20 " + s20Txt
+        else if sma20 > sma10
+            nxt := "Exit 100 %: Close < SMA20 " + s20Txt + " (SMA20 ueber SMA10)"
+        else if tr.r1
+            nxt := "TP1 40 %: Close < SMA10 " + s10Txt + " | Rest: Close < SMA20 " + s20Txt
+        else
+            nxt := "Fail 100 %: Close < SMA10 " + s10Txt
         r := f_row(r, "Naechste Regel", nxt, neu, sz)
         if maWarn
             string wTxt = "Kurs unter " + maName + " " + str.tostring(maLvl, format.mintick)

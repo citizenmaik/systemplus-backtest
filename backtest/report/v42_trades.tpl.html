@@ -71,7 +71,7 @@ tr.sel td{background:color-mix(in srgb,var(--accent) 8%,transparent)}
 <div class="scroll" style="margin-top:8px;max-height:60vh"><table id="st"></table></div>
 <p class="note" style="margin-top:6px">Signale, die alle V4.2-Gates erfüllten, aber nicht oder nicht in voller Größe gekauft wurden. „Ergebnis (hypoth.)“ zeigt, was der Trade nach M2 gebracht hätte. Folgt dem Jahresfilter oben.</p>
 </section>
-<p class="note">Ergebnis R und % enthalten Teilverkäufe (TP1 40 %, Rest TP2) und bei offenen Trades den Close vom __LAST_DE__. Ergebnis USD = Stück × Risiko je Aktie × R. Exits: SL = Stop (SMA10 vom Entry-Tag), Fail = Close unter SMA10 vor 1R, TP1 = erster Close unter SMA10 nach 1R (40 %), TP2 = Close unter SMA20 (Rest). Universum: heute gelistete Titel (ohne delistete), Kurse splitbereinigt, ohne Gebühren und Slippage.</p>
+<p class="note">Ergebnis R und % enthalten Teilverkäufe (TP1 40 %, Rest TP2) und bei offenen Trades den Close vom __LAST_DE__. Ergebnis USD = Stück × Risiko je Aktie × R. Exits: SL = Stop (SMA10 vom Entry-Tag), Fail = Close unter SMA10 vor 1R, TP1 = erster Close unter SMA10 nach 1R (40 %), TP2 = Close unter SMA20 (Rest; gilt auch vor 1R, wenn die SMA20 über der SMA10 liegt). Universum: heute gelistete Titel (ohne delistete), Kurse splitbereinigt, ohne Gebühren und Slippage.</p>
 </div>
 <script>
 const A=__DATA__, D=A.trades, Y=A.years;

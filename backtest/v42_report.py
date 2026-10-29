@@ -7,6 +7,7 @@ Regeln V4.2 (Stand 27.10.2026):
   Notbremse  QQQE aktiv → 0,5 % statt 1 % Risiko
   Konto      1 % Risiko, 15 % Deckel, max. 3 Käufe/Tag nach niedrigstem ATR-Multiple, eine Position je Titel, Start 10.000
   Exits M2   SL = SMA10 am Entry-Tag; vor 1R Close < SMA10 alles; ab 1R Close < SMA10 40 %, Close < SMA20 Rest
+             Close < SMA20 gilt auch vor 1R (SMA20 über SMA10 → dort alles raus), Varianten: out/v42_sma20_varianten.csv
 
 Ausgabe: backtest/out/v42_report.json (Trades, Jahre, Wochenkurve vs. QQQ/SPY, nicht gekaufte Signale, Kennzahlen).
 Aufruf:  python backtest/v42_report.py
