@@ -57,6 +57,8 @@ bool showFails = input.bool(true, "Gesperrte Breakouts markieren", group = GD)
 bool showMaWarn = input.bool(true, "Warnung: intraday unter Exit-MA", group = GD,
      tooltip = "Rotes Dreieck (hell) ueber der Kerze, solange der aktuelle Kurs einer offenen Position unter der Exit-MA liegt: bis TP1 die hoehere von SMA10/SMA20, danach SMA20. Schliesst die Kerze wieder darueber, verschwindet es.")
 int showClosed = input.int(5, "Geschlossenen Trade im Status zeigen (Kerzen)", minval = 0, group = GD)
+bool showGates = input.bool(false, "Gate-Werte als eigene Zeilen", group = GD,
+     tooltip = "Aus: eine Zeile Gates (ok oder Sperrgrund), Werte im Tooltip. An: ATR, 52W und Umsatz zusaetzlich als Zeilen.")
 
 // ---------- Grundgroessen ----------
 float atr = ta.atr(atrLen)
@@ -365,18 +367,18 @@ plotshape(maWarn and not exitNow, "Warnung intraday unter Exit-MA", shape.triang
 plot(showMAs ? sma10 : na, "SMA10", color.orange)
 plot(showMAs ? sma20 : na, "SMA20", color.blue)
 
-// ---------- Tabelle ----------
+// ---------- Tabelle (kompakt, Details im Tooltip) ----------
 var table tb = na
-f_row(int r, string k, string v, color c, string sz) =>
+f_row(int r, string k, string v, color c, string sz, string tip = "") =>
     table.cell(tb, 0, r, k, text_color = color.gray, text_size = sz, bgcolor = color(na),
          text_halign = text.align_left)
     table.cell(tb, 1, r, v, text_color = c, text_size = sz, text_halign = text.align_right,
-         bgcolor = color(na))
+         bgcolor = color(na), tooltip = tip)
     r + 1
 
-f_head(int r, string txt, color c, string sz) =>
+f_head(int r, string txt, color c, string sz, string tip = "") =>
     table.cell(tb, 0, r, txt, text_color = c, text_size = sz, text_halign = text.align_left,
-         bgcolor = color(na))
+         bgcolor = color(na), tooltip = tip)
     table.merge_cells(tb, 0, r, 1, r)
     r + 1
 
@@ -388,119 +390,118 @@ if showTable and barstate.islast
         "Oben links" => position.top_left
         => position.bottom_right
     table.delete(tb)
-    tb := table.new(ps, 2, 24, bgcolor = color(na), frame_width = 0, border_width = 0)
+    tb := table.new(ps, 2, 16, bgcolor = color(na), frame_width = 0, border_width = 0)
     color ok = color.lime
     color bad = color.red
     color neu = color.orange
+    string mt = format.mintick
     int r = 0
-    string hTxt = "System+ V4.2 | " + cbName + (cbOn ? " NOTBREMSE" : " frei")
-    hTxt += " | Risiko " + riskTxt
-    r := f_head(r, hTxt, cbOn ? bad : neu, sz)
 
-    string boxTxt = "-"
-    if hasBox
-        string tops = str.tostring(pTop, format.mintick) + " / " + str.tostring(pBot, format.mintick)
-        string flag = boxUsed ? " verbraucht" : boxH > maxBoxAtr ? " zu hoch" : " ok"
-        boxTxt := tops + " | " + str.tostring(boxH, "0.0") + " ATR" + flag
-    r := f_row(r, "Pivot-Box", boxTxt, boxValid ? ok : neu, sz)
-    r := f_row(r, "Ueber SMA10", aboveMa ? "ja" : "nein", aboveMa ? ok : bad, sz)
-    string amTxt = "-"
-    if aboveMa and not na(atrMult)
-        amTxt := str.tostring(atrMult, "0.00") + " | SL " + str.tostring(100 * (close - sma10) / close, "0.0") + " %"
-    r := f_row(r, "ATR-Multiple (niedrig = zuerst)", amTxt, neu, sz)
-
-    string atrTxt = str.tostring(atrPct, "0.0") + " % (" + str.tostring(atrPctMin, "0.0")
-    atrTxt += "-" + str.tostring(atrPctMax, "0.#") + ")"
-    r := f_row(r, "ATR %", atrTxt, atrOk ? ok : bad, sz)
-
-    string w52Txt = na(off52) ? "-" : str.tostring(off52, "0") + " %"
-    w52Txt += " (" + str.tostring(w52Min, "0.#") + "-" + str.tostring(w52Max, "#") + ")"
-    r := f_row(r, "52W-Hoch", w52Txt, w52Ok ? ok : bad, sz)
-
-    string cbState = "aus "
-    if cbOn
-        cbState := cbBlock ? "AKTIV, kein Entry " : "AKTIV, Risiko " + riskTxt + " "
-    string cbTxt = cbState + str.tostring(qDD, "0.0") + " %"
-    cbTxt += (qC >= qE200 ? " | > EMA" : " | < EMA") + (qSlopeDn ? " | SMA fallend" : " | SMA steigt")
-    r := f_row(r, "Notbremse", cbTxt, cbBlock ? bad : cbOn ? neu : ok, sz)
-
-    string revTxt = "keine Daten (" + str.tostring(nq) + " Q)"
-    if revKnown
-        revTxt := f_sgn(yoy0, "0") + " % vs. " + f_sgn(yoy1, "0") + " %"
-        revTxt += revAccel ? " ok" : " nein"
-    r := f_row(r, "Umsatz YoY akt./vorher", revTxt, revAccel ? ok : revKnown ? bad : neu, sz)
-
-    string st = "Box aktiv, kein Breakout"
-    color stC = neu
-    bool recentExit = na(tr) and not na(lastExitBar) and bar_index - lastExitBar <= showClosed
-    if entryNow or entryPre
-        st := entryPre ? "ENTRY vorlaeufig (Close abwarten)" : "ENTRY"
-        stC := ok
-    else if not na(tr)
-        st := "Aktiver Trade" + (brk and aboveMa ? " | neuer Breakout ignoriert" : "")
-        stC := ok
-    else if brk and aboveMa and why != ""
-        st := "gesperrt: " + why
-    else if brk and aboveMa
-        st := "Breakout, kein Entry"
-    else if recentExit
-        st := "Trade geschlossen " + str.format_time(lastExitT, "dd.MM.", syminfo.timezone)
-        st += " | " + lastExitTag + " " + f_sgn(lastExitR, "0.0") + " R / " + f_sgn(lastExitP, "0.0") + " %"
-        stC := lastExitR >= 0 ? ok : bad
-    else if brk
-        st := "Breakout unter SMA10"
-    else if not hasBox
-        st := "keine Box"
-    else if boxUsed
-        st := "Box verbraucht"
-    else if boxH > maxBoxAtr
-        st := "Box zu hoch"
-    r := f_row(r, "Status", st, stC, sz)
-
-    float shNow = f_shares(close, sma10)
-    string posTxt = "-"
-    if shNow > 0
-        posTxt := str.tostring(shNow, "0.0") + " / " + str.tostring(shNow * close, "#")
-        posTxt += " / " + str.tostring(shNow * (close - sma10), "#")
-    r := f_row(r, "Stueck / Wert / Risiko " + riskTxt, posTxt, neu, sz)
+    // Kopf: Notbremse + Risiko, Details im Tooltip
+    string cbTip = cbName + " " + str.tostring(qDD, "0.0") + " % vom 60T-Hoch"
+    cbTip += (qC >= qE200 ? " | ueber EMA200" : " | unter EMA200")
+    cbTip += (qSlopeDn ? " | SMA200 fallend" : " | SMA200 steigt")
+    string hTxt = "System+ 4.2 | " + (cbOn ? (cbBlock ? "NOTBREMSE, kein Entry" : "NOTBREMSE") : "frei")
+    hTxt += " | " + str.tostring(riskNow, "0.0#") + " %"
+    r := f_head(r, hTxt, cbOn ? bad : neu, sz, cbTip)
 
     if not na(tr)
-        string since = str.format_time(tr.t, "dd.MM.yy", syminfo.timezone)
-        string trTxt = since + " | " + str.tostring(bar_index - tr.bar) + " T"
-        trTxt += " | offen " + str.tostring(math.round(tr.rem * 100)) + " %"
-        r := f_row(r, "Aktiver Trade", trTxt, neu, sz)
-        string r1Txt = tr.r1 ? "ja" : "nein (" + str.tostring(tr.entry + tr.risk, format.mintick) + ")"
-        r := f_row(r, "1R erreicht", r1Txt, tr.r1 ? ok : neu, sz)
-        string s10Txt = str.tostring(sma10, format.mintick)
-        string s20Txt = str.tostring(sma20, format.mintick)
-        string nxt = ""
-        if tr.tp1
-            nxt := "TP2 Rest: Close < SMA20 " + s20Txt
-        else if sma20 > sma10
-            nxt := "Exit 100 %: Close < SMA20 " + s20Txt + " (SMA20 ueber SMA10)"
-        else if tr.r1
-            nxt := "TP1 40 %: Close < SMA10 " + s10Txt + " | Rest: Close < SMA20 " + s20Txt
-        else
-            nxt := "Fail 100 %: Close < SMA10 " + s10Txt
-        r := f_row(r, "Naechste Regel", nxt, neu, sz)
-        if maWarn
-            string wTxt = "Kurs unter " + maName + " " + str.tostring(maLvl, format.mintick)
-            wTxt += " | Close drunter: " + maRule
-            r := f_row(r, "Warnung intraday", wTxt, bad, sz)
+        // ----- offene Position -----
+        string since = str.format_time(tr.t, "dd.MM.", syminfo.timezone)
+        string trTxt = since + " | " + str.tostring(bar_index - tr.bar) + " T | "
+        trTxt += str.tostring(math.round(tr.rem * 100)) + " % offen"
+        string trTip = "Entry " + str.tostring(tr.entry, mt) + " | SL " + str.tostring(tr.stop, mt)
+        trTip += " | " + str.tostring(tr.shares, "0.0") + " Stueck"
+        trTip += brk and aboveMa ? "\nNeuer Breakout heute ignoriert (Position offen)" : ""
+        r := f_row(r, "Trade", trTxt, ok, sz, trTip)
         float nowPct = 100 * (close / tr.entry - 1)
         float nowR = (close - tr.entry) / tr.risk
-        r := f_row(r, "Aktuell", f_sgn(nowPct, "0.0") + " % | " + f_sgn(nowR, "0.0") + " R",
+        r := f_row(r, "Stand", f_sgn(nowPct, "0.0") + " % | " + f_sgn(nowR, "0.0") + " R",
              close >= tr.entry ? ok : bad, sz)
+        r := f_row(r, "1R", tr.r1 ? "erreicht" : str.tostring(tr.entry + tr.risk, mt), tr.r1 ? ok : neu, sz)
+        string s10Txt = str.tostring(sma10, mt)
+        string s20Txt = str.tostring(sma20, mt)
+        string nxt = ""
+        string nTip = "M2: SL intraday " + str.tostring(tr.stop, mt) + " | vor 1R Close < SMA10 alles"
+        nTip += " | ab 1R Close < SMA10 40 % | Close < SMA20 Rest (auch vor 1R)"
+        if tr.tp1
+            nxt := "C < SMA20 " + s20Txt + " → Rest"
+        else if sma20 > sma10
+            nxt := "C < SMA20 " + s20Txt + " → 100 %"
+        else if tr.r1
+            nxt := "C < SMA10 " + s10Txt + " → 40 %"
+        else
+            nxt := "C < SMA10 " + s10Txt + " → 100 %"
+        r := f_row(r, "Exit", nxt, neu, sz, nTip)
+        if maWarn
+            r := f_row(r, "Warnung", "Kurs < " + maName + " | " + maRule, bad, sz)
+    else
+        // ----- keine Position -----
+        string st = "warte auf Breakout"
+        color stC = neu
+        bool recentExit = not na(lastExitBar) and bar_index - lastExitBar <= showClosed
+        if entryNow or entryPre
+            st := entryPre ? "ENTRY? Close abwarten" : "ENTRY"
+            stC := ok
+        else if brk and aboveMa and why != ""
+            st := "gesperrt: " + why
+            stC := bad
+        else if brk and aboveMa
+            st := "Breakout, kein Entry"
+        else if recentExit
+            st := "geschl. " + str.format_time(lastExitT, "dd.MM.", syminfo.timezone)
+            st += " | " + lastExitTag + " " + f_sgn(lastExitR, "0.0") + " R"
+            stC := lastExitR >= 0 ? ok : bad
+        else if brk
+            st := "Breakout < SMA10"
+        else if not hasBox
+            st := "keine Box"
+        else if boxUsed
+            st := "Box verbraucht"
+        else if boxH > maxBoxAtr
+            st := "Box zu hoch"
+        string stTip = recentExit ? "Ergebnis " + f_sgn(lastExitP, "0.0") + " %" : ""
+        r := f_row(r, "Status", st, stC, sz, stTip)
 
+        string boxTxt = "-"
+        if hasBox
+            boxTxt := str.tostring(pTop, mt) + " / " + str.tostring(pBot, mt) + " | "
+            boxTxt += str.tostring(boxH, "0.0") + " ATR"
+        r := f_row(r, "Box", boxTxt, boxValid ? ok : neu, sz)
+
+        // Gates: eine Zeile, Werte im Tooltip (oder ausgeklappt)
+        string atrTxt = str.tostring(atrPct, "0.0") + " % (" + str.tostring(atrPctMin, "0.0")
+        atrTxt += "-" + str.tostring(atrPctMax, "0.#") + ")"
+        string w52Txt = (na(off52) ? "-" : str.tostring(off52, "0") + " %")
+        w52Txt += " (" + str.tostring(w52Min, "0.#") + "-" + str.tostring(w52Max, "#") + ")"
+        string revTxt = revKnown ? f_sgn(yoy0, "0") + " % vs. " + f_sgn(yoy1, "0") + " %" :
+             "keine Daten (" + str.tostring(nq) + " Q)"
+        string gTip = "ATR " + atrTxt + "\n52W " + w52Txt + "\nUmsatz YoY " + revTxt
+        gTip += "\nUeber SMA10: " + (aboveMa ? "ja" : "nein")
+        r := f_row(r, "Gates", why == "" ? "ok" : why, why == "" ? ok : bad, sz, gTip)
+        if showGates
+            r := f_row(r, "ATR", atrTxt, atrOk ? ok : bad, sz)
+            r := f_row(r, "52W", w52Txt, w52Ok ? ok : bad, sz)
+            r := f_row(r, "Umsatz", revTxt, revAccel ? ok : revKnown ? bad : neu, sz)
+
+        float shNow = f_shares(close, sma10)
+        if shNow > 0
+            string posTxt = str.tostring(shNow, "0.0") + " St | " + str.tostring(shNow * close, "#") + " $"
+            string posTip = "Risiko " + str.tostring(shNow * (close - sma10), "#") + " $ (" + riskTxt + ")"
+            posTip += " | Deckel " + str.tostring(capPct, "#") + " %"
+            r := f_row(r, "Groesse", posTxt, neu, sz, posTip)
+            string slTxt = str.tostring(sma10, mt) + " | " + str.tostring(100 * (close - sma10) / close, "0.0")
+            slTxt += " % | AM " + str.tostring(atrMult, "0.00")
+            r := f_row(r, "SL", slTxt, neu, sz, "AM = ATR-Multiple, bei mehreren Entries niedrigster zuerst")
+
+    // Earnings nur bei Bedarf: kurz nach Earnings oder naechste in <= 14 Tagen
     float eDays = na(earnings.future_time) ? na : (earnings.future_time - timenow) / 86400000.0
-    string eTxt = na(sinceEarn) ? "vor ? T" : "vor " + str.tostring(sinceEarn) + " T"
-    if not na(lastEarnTime)
-        eTxt += " (" + str.format_time(lastEarnTime, "dd.MM.", syminfo.timezone) + ")"
-    string nTxt = na(eDays) ? "?" : "in " + str.tostring(math.max(math.ceil(eDays), 0), "#") + " T"
-    eTxt += " | naechste " + nTxt
-    r := f_row(r, "Earnings", eTxt, postEarn ? neu : color.gray, sz)
-    if postEarn and (brk and aboveMa)
-        r := f_row(r, "Hinweis", "Breakout kurz nach Earnings (Backtest schwach)", neu, sz)
+    bool eSoon = not na(eDays) and eDays <= 14
+    if postEarn or eSoon
+        string eTxt = postEarn ? "vor " + str.tostring(sinceEarn) + " T" : ""
+        eTxt += eSoon ? (postEarn ? " | " : "") + "in " + str.tostring(math.max(math.ceil(eDays), 0), "#") + " T" : ""
+        string eTip = postEarn and (brk and aboveMa) ? "Breakout kurz nach Earnings: im Backtest schwach" : ""
+        r := f_row(r, "Earnings", eTxt, neu, sz, eTip)
 
 // ---------- Alarme ----------
 if msgs.size() > 0
