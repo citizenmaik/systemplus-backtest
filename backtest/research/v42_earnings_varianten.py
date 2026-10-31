@@ -11,22 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "backtest")); sys.path.insert(0, str(ROOT / "scripts"))
 import v42_report as R
 
-tr, closes = R.signals()
-cal = closes.index
-E = pd.read_csv(ROOT / "data" / "earnings.csv", keep_default_na=False, na_values=[""])
-E = E[E["date"].ne("")]
-E["d"] = pd.to_datetime(E["date"]); E["hh"] = E["time"].fillna("16:00").str.slice(0, 2).replace("", "16").astype(int)
-ri = cal.searchsorted(E["d"].to_numpy())
-same = (ri < len(cal)) & (cal[np.minimum(ri, len(cal) - 1)] == E["d"].to_numpy())
-E["ri"] = ri + (same & (E["hh"].to_numpy() >= 12))
-EV = {t: np.sort(g["ri"].unique()) for t, g in E.groupby("ticker")}
-pos = {d: i for i, d in enumerate(cal)}
-def since(r):
-    ev = EV.get(r.ticker)
-    if ev is None: return np.nan
-    i0 = pos[r.date]; pv = ev[ev <= i0]
-    return i0 - pv[-1] if len(pv) else np.nan
-tr["since"] = [since(r) for r in tr.itertuples()]
+tr, closes = R.signals(earn_block=None)  # Spalte since = Handelstage seit Earnings-Reaktionstag
 
 def met(c):
     r = c.pct_change().dropna(); yrs = (c.index[-1] - c.index[0]).days / 365.25

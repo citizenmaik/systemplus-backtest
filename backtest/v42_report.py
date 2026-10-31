@@ -3,7 +3,9 @@
 Regeln V4.2 (Stand 27.10.2026):
   Universum  Kurs > 5, Ø-Volumen 30 T > 1 Mio, Market Cap > 300 Mio (oder unbekannt), Float > 70 % (oder unbekannt)
   Setup      Pivot-Box 3/3, Höhe ≤ 3 ATR, erster Close > Oberkante und > SMA10 (entry_sig)
-  Gates      ATR % 4,5–10, 52W 10–30 % unter Hoch, Umsatz-YoY letztes gemeldetes Quartal > Quartal davor
+  Gates      ATR % 4,5–10, 52W 10–30 % unter Hoch, Umsatz-YoY letztes gemeldetes Quartal > Quartal davor,
+             kein Entry 0–5 Handelstage nach Earnings (Tag 0 = Reaktionstag, wie sinceEarn im Pine-Skript;
+             seit 31.10.2026, Varianten: out/v42_earnings_varianten.csv)
   Notbremse  QQQE aktiv → 0,5 % statt 1 % Risiko
   Konto      1 % Risiko, 15 % Deckel, max. 3 Käufe/Tag nach niedrigstem ATR-Multiple, eine Position je Titel, Start 10.000
   Exits M2   SL = SMA10 am Entry-Tag; vor 1R Close < SMA10 alles; ab 1R Close < SMA10 40 %, Close < SMA20 Rest
@@ -31,10 +33,31 @@ from growth import asof_features  # noqa: E402
 from common import read_store  # noqa: E402
 
 START_EQ, RISK, CAP, PER_DAY = 10_000, 1.0, 15.0, 3
+EARN_BLOCK = 5  # kein Entry an Handelstag 0..5 nach Earnings
 OUT = ROOT / "backtest" / "out" / "v42_report.json"
 
 
-def signals() -> tuple[pd.DataFrame, pd.DataFrame]:
+def earn_since(tr: pd.DataFrame, cal: pd.DatetimeIndex) -> pd.Series:
+    """Handelstage seit dem letzten Earnings-Reaktionstag (0 = Reaktionstag) je Trade, NaN ohne Daten.
+    Reaktionstag: Meldung vor 12 Uhr = selber Handelstag, sonst nächster Handelstag."""
+    E = pd.read_csv(ROOT / "data" / "earnings.csv", keep_default_na=False, na_values=[""])
+    E = E[E["date"].notna()].copy()
+    E["d"] = pd.to_datetime(E["date"])
+    E["hh"] = E["time"].fillna("16:00").str.slice(0, 2).replace("", "16").astype(int)
+    ri = cal.searchsorted(E["d"].to_numpy())
+    same = (ri < len(cal)) & (cal[np.minimum(ri, len(cal) - 1)] == E["d"].to_numpy())
+    E["ri"] = ri + (same & (E["hh"].to_numpy() >= 12))
+    ev = {t: np.sort(g["ri"].unique()) for t, g in E.groupby("ticker")}
+    pos = {d: i for i, d in enumerate(cal)}
+    out = []
+    for t, d in zip(tr["ticker"], tr["date"]):
+        e, i0 = ev.get(t), pos[d]
+        pv = e[e <= i0] if e is not None else []
+        out.append(i0 - pv[-1] if len(pv) else np.nan)
+    return pd.Series(out, index=tr.index)
+
+
+def signals(earn_block: int | None = EARN_BLOCK) -> tuple[pd.DataFrame, pd.DataFrame]:
     x = build(start="2019-01-01", verbose=True)
     m = (x.entry_sig & (x.raw_close > 5) & (x.avgvol30 > 1e6) & x.atr_pct.between(4.5, 10)
          & (x.mcap.isna() | (x.mcap > 300e6)) & (x.float_pct.isna() | (x.float_pct > 70))
@@ -46,6 +69,9 @@ def signals() -> tuple[pd.DataFrame, pd.DataFrame]:
     tr = tr[tr.rev_accel > 0].copy()
     tr["rw"] = np.where(tr.notbremse, 0.5, 1.0)
     closes = x.pivot_table(index="date", columns="ticker", values="close")
+    tr["since"] = earn_since(tr, closes.index)
+    if earn_block is not None:
+        tr = tr[~tr["since"].between(0, earn_block)].copy()
     return tr, closes
 
 
