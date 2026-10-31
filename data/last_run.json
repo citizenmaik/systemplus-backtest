@@ -1,12 +1,15 @@
 {
-  "files_written": 1,
-  "files_unchanged": 105,
+  "files_written": 106,
+  "files_unchanged": 0,
   "files_removed": 0,
-  "rows": 5391277,
+  "rows": 5394132,
   "tickers": 2858,
   "mode": "incremental",
-  "refetched": [],
+  "refetched": [
+    "ATYR",
+    "MOD"
+  ],
   "no_data": 0,
-  "last_date": "2026-10-29",
-  "run_utc": "2026-10-30T02:03:42+00:00"
+  "last_date": "2026-10-30",
+  "run_utc": "2026-10-31T01:41:45+00:00"
 }
