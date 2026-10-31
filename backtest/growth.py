@@ -45,24 +45,41 @@ def _merge_concepts(g: pd.DataFrame, k: str) -> pd.DataFrame:
     return g.sort_values(["prio", "filed"]).drop_duplicates(["start", "end"], keep="first")
 
 
+def _rows(g: pd.DataFrame, k: str) -> dict:
+    """Quartalswerte {end: (wert, filed)} aus einer Reihe mit einem Wert je Zeitraum."""
+    near = lambda e, keys: any(abs((e - x).days) <= 10 for x in keys)  # noqa: E731
+    q = g[g["dur"].between(80, 100)].sort_values("filed").drop_duplicates("end", keep="first")
+    rows = {e: (v, fl) for e, v, fl in zip(q["end"], q["wert"], q["filed"])}
+    if k != "eps":  # EPS ist nicht additiv
+        # Quartal aus kumulierten Werten desselben Geschäftsjahresbeginns: 6M − 3M, 9M − 6M, 12M − 9M
+        cum = g[g["dur"].between(80, 380)].sort_values("filed").drop_duplicates(["start", "end"], keep="first")
+        for s, cg in cum.groupby("start"):
+            cg = cg.sort_values("end")
+            ends, vals, fls, durs = cg["end"].tolist(), cg["wert"].tolist(), cg["filed"].tolist(), cg["dur"].tolist()
+            for i in range(1, len(ends)):
+                if 80 <= durs[i] - durs[i - 1] <= 100 and not near(ends[i], rows):
+                    rows[ends[i]] = (vals[i] - vals[i - 1], fls[i])
+    return rows
+
+
 def quarterly(f: pd.DataFrame) -> pd.DataFrame:
     f = f.dropna(subset=["end", "filed"]).copy()
     f["dur"] = (f["end"] - f["start"]).dt.days
     out = []
-    near = lambda e, keys: any(abs((e - x).days) <= 10 for x in keys)  # noqa: E731
     for (t, k), g in f.groupby(["ticker", "kennzahl"], sort=False):
-        g = _merge_concepts(g, k)
-        q = g[g["dur"].between(80, 100)].sort_values("filed").drop_duplicates("end", keep="first")
-        rows = {e: (v, fl) for e, v, fl in zip(q["end"], q["wert"], q["filed"])}
-        if k != "eps":  # EPS ist nicht additiv
-            # Quartal aus kumulierten Werten desselben Geschäftsjahresbeginns: 6M − 3M, 9M − 6M, 12M − 9M
-            cum = g[g["dur"].between(80, 380)].sort_values("filed").drop_duplicates(["start", "end"], keep="first")
-            for s, cg in cum.groupby("start"):
-                cg = cg.sort_values("end")
-                ends, vals, fls, durs = cg["end"].tolist(), cg["wert"].tolist(), cg["filed"].tolist(), cg["dur"].tolist()
-                for i in range(1, len(ends)):
-                    if 80 <= durs[i] - durs[i - 1] <= 100 and not near(ends[i], rows):
-                        rows[ends[i]] = (vals[i] - vals[i - 1], fls[i])
+        rows = _rows(_merge_concepts(g, k), k)
+        if k == "revenue" and rows:
+            # RevenueFromContract… kann ein Teil des Gesamtumsatzes sein (z. B. SEI ohne Mieterlöse).
+            # Eigene Reihe nur aus „Revenues“; ist sie im Quartal > 1 % größer, ist sie der
+            # Gesamtumsatz wie TOTAL_REVENUE bei TradingView. Kleinere Revenues (Teilposten, 0,
+            # Rundung) bleiben unbeachtet. Nur wenn die Reihe auch das Vorjahres- oder
+            # Folgejahresquartal hat, damit YoY nicht zwei Begriffe vergleicht.
+            r = g[g["konzept"] == "Revenues"].sort_values("filed").drop_duplicates(["start", "end"], keep="first")
+            rr = _rows(r, k) if len(r) else {}
+            yr = lambda e: any(abs(abs((x - e).days) - 365) <= 20 for x in rr)  # noqa: E731
+            for e, (v, fl) in rr.items():
+                if e in rows and rows[e][0] > 0 and v > 1.01 * rows[e][0] and yr(e):
+                    rows[e] = (v, fl)
         if not rows:
             continue
         d = pd.DataFrame([(t, k, e, v, fl) for e, (v, fl) in rows.items()],
