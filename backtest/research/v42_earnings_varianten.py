@@ -1,4 +1,4 @@
-"""V4.2 – Varianten: kein Entry 0..N Handelstage nach Earnings (N = 3, 4, 5).
+"""V4.2 – Varianten: kein Entry 0..N Handelstage nach Earnings (N = 0 … 5).
 
 Tag 0 = Reaktionstag (Meldung vor 12 Uhr: selber Tag, sonst nächster Handelstag) – wie
 sinceEarn im Pine-Skript V4.2. Signale werden vor der Kontosimulation entfernt, d. h. frei
@@ -34,7 +34,7 @@ def met(c):
 
 rows = []
 base_taken = None
-for N in [None, 3, 4, 5]:
+for N in [None, 0, 1, 2, 3, 4, 5]:
     t = tr if N is None else tr[~tr["since"].between(0, N)]
     c, taken, log, e = R.account(t.copy(), closes)
     k = [x[0] for x in taken]; tt = tr.loc[k]
