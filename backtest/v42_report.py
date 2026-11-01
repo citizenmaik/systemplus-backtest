@@ -76,11 +76,17 @@ def signals(earn_block: int | None = EARN_BLOCK) -> tuple[pd.DataFrame, pd.DataF
     return tr, closes
 
 
-def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None):
+def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None,
+            lev: float = 1.0, rate: pd.Series | None = None):
+    """lev: max. Positionswert / Konto (1.0 = ohne Margin). rate: Jahreszins % je Tag für negatives Cash."""
     tr = tr.sort_values(["date", "rw", "atr_mult"], ascending=[True, False, True])
     by_day = {d: g for d, g in tr.groupby("date")}
     cash = START_EQ; held, curve, taken, log, expo = {}, [], [], [], []
+    interest = 0.0
     for d in closes.index:
+        if cash < 0 and rate is not None:
+            z = cash * float(rate.get(d, 0.0)) / 100 / 252
+            cash += z; interest += z
         for k in list(held):
             p = held[k]
             while p["fills"] and pd.Timestamp(p["fills"][0][0]) == d:
@@ -101,7 +107,7 @@ def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None):
             if any(p["t"] == r.ticker for p in held.values()):
                 log.append((k, "schon im Depot", eq, cash, 0)); continue
             sh_t = np.floor(min(eq * RISK * r.rw / 100 / r.risk, eq * CAP / 100 / r.entry) * 10) / 10
-            sh = min(sh_t, np.floor(cash / r.entry * 10) / 10)
+            sh = min(sh_t, np.floor(max(cash + (lev - 1) * eq, 0) / r.entry * 10) / 10)
             if sh <= 0:
                 log.append((k, "kein Cash", eq, cash, sh_t)); continue
             if sh < sh_t:
@@ -119,7 +125,7 @@ def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None):
         expo.append((d, mv / (cash + mv)))
         curve.append((d, cash + mv))
     if state is not None:  # Depot am letzten Tag (für den Bericht)
-        state.update(cash=cash, held={k: dict(p) for k, p in held.items()})
+        state.update(cash=cash, held={k: dict(p) for k, p in held.items()}, interest=interest)
     c = pd.DataFrame(curve, columns=["date", "eq"]).set_index("date")["eq"]
     e = pd.DataFrame(expo, columns=["date", "exp"]).set_index("date")["exp"]
     return c, taken, log, e
