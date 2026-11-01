@@ -1,15 +1,19 @@
 {
-  "files_written": 106,
-  "files_unchanged": 0,
+  "files_written": 107,
+  "files_unchanged": 105,
   "files_removed": 0,
-  "rows": 5394132,
-  "tickers": 2858,
-  "mode": "incremental",
+  "rows": 5406115,
+  "tickers": 2866,
+  "mode": "full",
+  "candidates": 5128,
+  "universe": 2866,
+  "new_in_universe": 8,
+  "excluded": 0,
   "refetched": [
-    "ATYR",
-    "MOD"
+    "WPRT"
   ],
   "no_data": 0,
+  "splits": 1285,
   "last_date": "2026-10-30",
-  "run_utc": "2026-10-31T01:41:45+00:00"
+  "run_utc": "2026-11-01T13:54:09+00:00"
 }
