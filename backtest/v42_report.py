@@ -7,6 +7,7 @@ Regeln V4.2 (Stand 27.10.2026):
              kein Entry 0–5 Handelstage nach Earnings (Tag 0 = Reaktionstag, wie sinceEarn im Pine-Skript;
              seit 31.10.2026, Varianten: out/v42_earnings_varianten.csv)
   Notbremse  QQQE aktiv → 0,5 % statt 1 % Risiko
+  Depot      Bestand am letzten Tag (Stück, Kurs, Werte, offener G/V) unter portfolio im JSON
   Konto      1 % Risiko, 15 % Deckel, max. 3 Käufe/Tag nach niedrigstem ATR-Multiple, eine Position je Titel, Start 10.000
   Exits M2   SL = SMA10 am Entry-Tag; vor 1R Close < SMA10 alles; ab 1R Close < SMA10 40 %, Close < SMA20 Rest
              Close < SMA20 gilt auch vor 1R (SMA20 über SMA10 → dort alles raus), Varianten: out/v42_sma20_varianten.csv
@@ -75,7 +76,7 @@ def signals(earn_block: int | None = EARN_BLOCK) -> tuple[pd.DataFrame, pd.DataF
     return tr, closes
 
 
-def account(tr: pd.DataFrame, closes: pd.DataFrame):
+def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None):
     tr = tr.sort_values(["date", "rw", "atr_mult"], ascending=[True, False, True])
     by_day = {d: g for d, g in tr.groupby("date")}
     cash = START_EQ; held, curve, taken, log, expo = {}, [], [], [], []
@@ -117,6 +118,8 @@ def account(tr: pd.DataFrame, closes: pd.DataFrame):
         mv = sum(p["sh"] * p["last"] for p in held.values())
         expo.append((d, mv / (cash + mv)))
         curve.append((d, cash + mv))
+    if state is not None:  # Depot am letzten Tag (für den Bericht)
+        state.update(cash=cash, held={k: dict(p) for k, p in held.items()})
     c = pd.DataFrame(curve, columns=["date", "eq"]).set_index("date")["eq"]
     e = pd.DataFrame(expo, columns=["date", "exp"]).set_index("date")["exp"]
     return c, taken, log, e
@@ -124,7 +127,21 @@ def account(tr: pd.DataFrame, closes: pd.DataFrame):
 
 def main() -> None:
     tr, closes = signals()
-    c, taken, log, e = account(tr, closes)
+    st = {}
+    c, taken, log, e = account(tr, closes, st)
+    eq_last = float(c.iloc[-1])
+    pos = []
+    for k, p in st["held"].items():
+        q = tr.loc[k]
+        real = sum(f * p["sh0"] * (px - q.entry) for d, f, px, _ in q.fills if pd.Timestamp(d) <= c.index[-1])
+        pos.append({"Ticker": q.ticker, "Entry": str(q.date.date()), "Entry-Kurs": round(q.entry, 2), "SL": round(q.stop, 2),
+                    "Kurs": round(p["last"], 2), "Stueck": round(p["sh"], 1), "Stueck Start": round(p["sh0"], 1),
+                    "Einstand USD": round(p["sh"] * q.entry), "Wert USD": round(p["sh"] * p["last"]),
+                    "GV offen USD": round(p["sh"] * (p["last"] - q.entry)), "GV offen %": round(100 * (p["last"] / q.entry - 1), 1),
+                    "Realisiert USD": round(real), "Anteil %": round(100 * p["sh"] * p["last"] / eq_last, 1),
+                    "Bis SL USD": round(p["sh"] * (q.stop - p["last"]))})
+    pos.sort(key=lambda r: r["Entry"])
+    portfolio = dict(date=str(c.index[-1].date()), cash=round(st["cash"]), equity=round(eq_last), positions=pos)
     rows = []
     for k, sh, eq in taken:
         q = tr.loc[k]
@@ -167,7 +184,7 @@ def main() -> None:
                 cagr=round(100 * ((c.iloc[-1] / START_EQ) ** (1 / yrs) - 1), 1), maxdd=round(100 * (c / c.cummax() - 1).min(), 1),
                 sharpe=round(r.mean() / r.std() * np.sqrt(252), 2), end=round(c.iloc[-1]), trades=len(rows),
                 generated=pd.Timestamp.utcnow().strftime("%Y-%m-%d %H:%M UTC"))
-    OUT.write_text(json.dumps(dict(meta=meta, trades=rows, years=years, skips=skips,
+    OUT.write_text(json.dumps(dict(meta=meta, portfolio=portfolio, trades=rows, years=years, skips=skips,
                                    curve=dict(x=[d.strftime("%Y-%m-%d") for d in w.index], s=[round(v) for v in w.S],
                                               q=[round(v) for v in w.QQQ], p=[round(v) for v in w.SPY])),
                               ensure_ascii=False, default=lambda o: None if pd.isna(o) else str(o)))

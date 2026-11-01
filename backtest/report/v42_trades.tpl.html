@@ -15,6 +15,7 @@ h1{font-size:22px;font-weight:600;margin:0;text-wrap:balance}
 .kpi{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px}
 .kpi b{display:block;font-family:var(--mono);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums}
 .kpi span{color:var(--muted);font-size:12px;letter-spacing:.03em;text-transform:uppercase}
+.kpi b span{font-size:inherit;letter-spacing:0;text-transform:none}.kpi .pos{color:var(--pos)}.kpi .neg{color:var(--neg)}
 h2{font-size:15px;font-weight:600;margin:0 0 8px}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px}
 .scroll{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px}
@@ -43,6 +44,11 @@ tr.sel td{background:color-mix(in srgb,var(--accent) 8%,transparent)}
 <header><h1>System+ V4.2 Trades</h1>
 <p class="sub">Backtest 02.01.2019 bis __LAST_DE__ · ganzer Markt (Nasdaq + NYSE), Kurs &gt; 5, Market Cap &gt; 300 Mio., Volumen &gt; 1 Mio. · Gates: ATR 4,5–10 %, 52W 10–30 %, Box ≤ 3 ATR, Umsatz-Beschleunigung, kein Entry 0–5 Tage nach Earnings · 1 % Risiko, 0,5 % bei aktiver Notbremse · Deckel 15 % · max. 3 Käufe pro Tag · Start 10.000 USD</p></header>
 <section class="kpis" id="kpis"></section>
+<section><h2 id="ph">Depot</h2>
+<div class="kpis" id="pk" style="margin-bottom:8px"></div>
+<div class="scroll"><table id="pt"></table></div>
+<p class="note" style="margin-top:6px">Bestand laut Backtest zum Close vom __LAST_DE__. Stück = Rest nach Teilverkäufen; Einstand und G/V offen beziehen sich auf diesen Rest. Realisiert = bereits verkaufte Teile (TP1). Anteil = Wert / Konto. Bis SL = Verlust bis zum Stop vom aktuellen Kurs.</p>
+</section>
 <section class="panel"><h2>Konto gegen QQQ und SPY</h2>
 <div class="tools" style="margin-bottom:8px">
 <label class="note" for="from">Von</label><input id="from" type="month" min="2019-01" max="__LAST_YM__" value="2019-01">
@@ -87,6 +93,22 @@ let pk=0,mdd=0;cv.forEach(v=>{pk=Math.max(pk,v);mdd=Math.min(mdd,v/pk-1)});
 const K=[['Trades',fmt(D.length)],['Gewinnquote',fmt(100*win.length/closed.length)+' %'],['Ø R',sg(sum(closed,'Ergebnis R')/closed.length,2)],['Profitfaktor (R)',fmt(gw/gl,2)],
 ['CAGR',sg(100*(Math.pow(last/10000,1/yrsN)-1),1)+' %'],['Max. Drawdown',sg(A.meta.maxdd,1)+' %'],['Konto am Ende',fmt(last)+' $'],['QQQ / SPY Ende',fmt(A.curve.q.at(-1))+' / '+fmt(A.curve.p.at(-1))]];
 document.getElementById('kpis').innerHTML=K.map(([k,v])=>`<div class="kpi"><span>${k}</span><b>${v}</b></div>`).join('');
+// Depot
+(function(){const P=A.portfolio;if(!P)return;const ps=P.positions,de=d=>d.slice(8,10)+'.'+d.slice(5,7)+'.'+d.slice(0,4);
+ const S=k=>sum(ps,k),wert=S('Wert USD'),ein=S('Einstand USD'),gv=S('GV offen USD'),re=S('Realisiert USD'),sl=S('Bis SL USD');
+ document.getElementById('ph').textContent='Depot am '+de(P.date)+' · '+ps.length+' Positionen';
+ const kv=[['Konto',fmt(P.equity)+' $'],['Positionen',fmt(wert)+' $',fmt(100*wert/P.equity,1)+' %'],['Cash',fmt(P.cash)+' $',fmt(100*P.cash/P.equity,1)+' %'],
+  ['G/V offen',`<span class="${cls(gv)}">${sg(gv)} $</span>`,`<span class="${cls(gv)}">${ein?sg(100*gv/ein,1):''} %</span> auf Einstand`],
+  ['Realisiert (Teilverk.)',`<span class="${cls(re)}">${sg(re)} $</span>`,''],['Bis SL gesamt',`<span class="neg">${sg(sl)} $</span>`,`${sg(100*sl/P.equity,1)} % vom Konto`]];
+ document.getElementById('pk').innerHTML=kv.map(([k,v,x])=>`<div class="kpi"><span>${k}</span><b>${v}</b>${x?`<span style="text-transform:none;letter-spacing:0">${x}</span>`:''}</div>`).join('');
+ const H=[['Ticker','l'],['Entry','l'],['Entry-Kurs',''],['SL',''],['Kurs',''],['Stück',''],['Einstand $',''],['Wert $',''],['G/V offen $',''],['G/V offen %',''],['Realisiert $',''],['Anteil %',''],['Bis SL $','']];
+ const row=r=>[`<b>${r.Ticker}</b>${r.Stueck<r['Stueck Start']?' <span class="chip half">'+fmt(100*r.Stueck/r['Stueck Start'])+' % Rest</span>':''}`,de(r.Entry),fmt(r['Entry-Kurs'],2),fmt(r.SL,2),fmt(r.Kurs,2),fmt(r.Stueck,1),
+  fmt(r['Einstand USD']),fmt(r['Wert USD']),`<span class="${cls(r['GV offen USD'])}">${sg(r['GV offen USD'])}</span>`,`<span class="${cls(r['GV offen %'])}">${sg(r['GV offen %'],1)}</span>`,
+  r['Realisiert USD']?`<span class="${cls(r['Realisiert USD'])}">${sg(r['Realisiert USD'])}</span>`:'',fmt(r['Anteil %'],1),`<span class="neg">${sg(r['Bis SL USD'])}</span>`];
+ const tot=['<b>Summe</b>','','','','','',`<b>${fmt(ein)}</b>`,`<b>${fmt(wert)}</b>`,`<b class="${cls(gv)}">${sg(gv)}</b>`,`<b class="${cls(gv)}">${ein?sg(100*gv/ein,1):''}</b>`,`<b class="${cls(re)}">${re?sg(re):''}</b>`,`<b>${fmt(100*wert/P.equity,1)}</b>`,`<b class="neg">${sg(sl)}</b>`];
+ const cash=['Cash','','','','','','',fmt(P.cash),'','','',fmt(100*P.cash/P.equity,1),''];
+ const tr=(c,st='')=>`<tr${st}>`+c.map((v,i)=>`<td class="${H[i][1]}">${v}</td>`).join('')+'</tr>';
+ document.getElementById('pt').innerHTML='<tr>'+H.map(([h,l])=>`<th class="${l}">${h}</th>`).join('')+'</tr>'+ps.map(r=>tr(row(r))).join('')+tr(cash)+tr(tot,' style="border-top:2px solid var(--line)"');})();
 // Chart
 const CX=A.curve.x.map(d=>new Date(d+'T12:00:00').getTime());
 const LD=A.meta.last, LY=+LD.slice(0,4), LM=LD.slice(0,7);
