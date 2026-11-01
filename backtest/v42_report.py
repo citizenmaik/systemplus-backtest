@@ -93,8 +93,9 @@ def signals(earn_block: int | None = EARN_BLOCK, float_days: int | None = None,
 
 
 def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None,
-            lev: float = 1.0, rate: pd.Series | None = None):
-    """lev: max. Positionswert / Konto (1.0 = ohne Margin). rate: Jahreszins % je Tag für negatives Cash."""
+            lev: float = 1.0, rate: pd.Series | None = None, cash_rate: pd.Series | None = None):
+    """lev: max. Positionswert / Konto (1.0 = ohne Margin). rate: Jahreszins % je Tag für negatives Cash.
+    cash_rate: Jahreszins % je Tag auf positives Cash (None = kein Zins, Standard)."""
     tr = tr.sort_values(["date", "rw", "atr_mult"], ascending=[True, False, True])
     by_day = {d: g for d, g in tr.groupby("date")}
     cash = START_EQ; held, curve, taken, log, expo = {}, [], [], [], []
@@ -102,6 +103,9 @@ def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None,
     for d in closes.index:
         if cash < 0 and rate is not None:
             z = cash * float(rate.get(d, 0.0)) / 100 / 252
+            cash += z; interest += z
+        elif cash > 0 and cash_rate is not None:
+            z = cash * float(cash_rate.get(d, 0.0)) / 100 / 252
             cash += z; interest += z
         for k in list(held):
             p = held[k]
