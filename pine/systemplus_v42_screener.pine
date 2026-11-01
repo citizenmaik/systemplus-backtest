@@ -8,6 +8,7 @@ indicator("System+ V4.2 Screener", overlay = false, max_bars_back = 500)
 // Signal 1 = In Box: gueltige Pivot-Box, Kurs zwischen Unter- und Oberkante.
 // V4.2-Gates: ATR % 4.5-10 (10 = Grenze aus dem TV-Screener),
 // 52W 10-30 % unter Hoch, Umsatz-YoY letztes Quartal > Umsatz-YoY Quartal davor.
+// Umsatz: eigene Rechnung aus 6 Quartalen; fehlen sie (z. B. nach IPO), TV-Wachstumsrate (seit 01.11.2026).
 // Notbremse QQQE sperrt nicht: bei aktiver Notbremse 0.5 % statt 1 % Risiko (Spalte Risiko %).
 // In Box: ATR % und 52W werden auf Hoehe der Oberkante geprueft (Kurs beim Breakout).
 // Prioritaet bei max. 3 Kaeufen pro Tag: niedrigstes ATR-Multiple zuerst.
@@ -88,7 +89,13 @@ float rev = request.financial(syminfo.tickerid, "TOTAL_REVENUE", "FQ",
      barmerge.gaps_off, ignore_invalid_symbol = true)
 float revRep = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_on,
      ignore_invalid_symbol = true)
+// Rueckfall fuer junge Titel (z. B. IPOs): TradingView rechnet die YoY-Rate serverseitig mit der
+// vollen Historie (inkl. Prospekt-Quartalen vor der ersten Kerze). Dann reichen 2 Quartale statt 6.
+float revG = request.financial(syminfo.tickerid, "REVENUE_ONE_YEAR_GROWTH", "FQ",
+     barmerge.gaps_off, ignore_invalid_symbol = true)
 var array<float> rq = array.new<float>()
+var array<float> gq = array.new<float>()
+var float gPend = na
 var float revSeen = na
 var float revPend = na
 var int pendBar = na
@@ -100,17 +107,24 @@ if not na(rev) and (na(revSeen) or rev != revSeen)
     bool justRep = not na(repBar) and bar_index - repBar <= 10
     if rq.size() == 0 or justRep
         rq.push(rev)
+        gq.push(revG)
         revPend := na
+        gPend := na
     else
         revPend := rev
+        gPend := revG
         pendBar := bar_index
 if not na(revPend)
     bool repAfter = not na(revRep) and bar_index > pendBar
     if repAfter or bar_index - pendBar >= 70
         rq.push(revPend)
+        gq.push(gPend)
         revPend := na
+        gPend := na
 if rq.size() > 8
     rq.shift()
+if gq.size() > 8
+    gq.shift()
 int nq = rq.size()
 float yoy0 = na
 float yoy1 = na
@@ -120,6 +134,15 @@ if nq >= 5
 if nq >= 6
     float b1 = rq.get(nq - 6)
     yoy1 := b1 > 0 ? 100 * (rq.get(nq - 2) / b1 - 1) : na
+bool revTV = false   // true = Werte aus REVENUE_ONE_YEAR_GROWTH (Rueckfall)
+int ng = gq.size()
+if (na(yoy0) or na(yoy1)) and ng >= 2
+    float g0 = gq.get(ng - 1)
+    float g1 = gq.get(ng - 2)
+    if not na(g0) and not na(g1)
+        yoy0 := g0
+        yoy1 := g1
+        revTV := true
 bool revKnown = not na(yoy0) and not na(yoy1)
 bool revAccel = revKnown and yoy0 > yoy1
 bool revOk = not useRev or revAccel or (not revKnown and revMiss == "zulassen")
@@ -192,6 +215,7 @@ plot(atrPctRef, "ATR %", display = display.data_window)
 plot(off52Ref, "52W-Hoch %", display = display.data_window)
 plot(yoy0, "Umsatz YoY akt. %", display = display.data_window)
 plot(yoy1, "Umsatz YoY vorher %", display = display.data_window)
+plot(revKnown ? (revTV ? 2 : 1) : 0, "Umsatz-Quelle (1 eigen, 2 TV)", display = display.data_window)
 plot(accel, "Beschleunigung Pp", display = display.data_window)
 plot(cbOn ? 1 : 0, "Notbremse aktiv (1/0)", display = display.data_window)
 plot(riskNow, "Risiko %", display = display.data_window)

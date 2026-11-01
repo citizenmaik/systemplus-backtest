@@ -6,7 +6,8 @@ indicator("System+ V4.2", overlay = true, max_bars_back = 600,
 // System+ V4.2, Stand 31.10.2026
 // Gates: Pivot-Box 3/3 (Hoehe max 3 ATR), erster Close ueber Oberkante,
 // Close > SMA10, ATR % 4.5-10, 52W 10-30 % unter Hoch,
-// Umsatz-YoY letztes Quartal > Umsatz-YoY Quartal davor,
+// Umsatz-YoY letztes Quartal > Umsatz-YoY Quartal davor
+// (eigene Rechnung aus 6 Quartalen; fehlen sie, z. B. nach IPO: TV-Wachstumsrate, Anzeige "(TV)"; seit 01.11.2026),
 // kein Entry 0-5 Handelstage nach Earnings (Tag 0 = erste Kerze mit den Zahlen; seit 31.10.2026).
 // Notbremse QQQE sperrt nicht mehr: bei aktiver Notbremse 0.5 % statt 1 % Risiko.
 // Universum (TV-Screener): Kurs > 5, Market Cap > 300 Mio, Volumen 30T > 1 Mio, Float > 70 %.
@@ -109,7 +110,13 @@ float rev = request.financial(syminfo.tickerid, "TOTAL_REVENUE", "FQ",
      barmerge.gaps_off, ignore_invalid_symbol = true)
 float revRep = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_on,
      ignore_invalid_symbol = true)
+// Rueckfall fuer junge Titel (z. B. IPOs): TradingView rechnet die YoY-Rate serverseitig mit der
+// vollen Historie (inkl. Prospekt-Quartalen vor der ersten Kerze). Dann reichen 2 Quartale statt 6.
+float revG = request.financial(syminfo.tickerid, "REVENUE_ONE_YEAR_GROWTH", "FQ",
+     barmerge.gaps_off, ignore_invalid_symbol = true)
 var array<float> rq = array.new<float>()
+var array<float> gq = array.new<float>()
+var float gPend = na
 var float revSeen = na
 var float revPend = na
 var int pendBar = na
@@ -125,17 +132,24 @@ if not na(rev) and (na(revSeen) or rev != revSeen)
     bool justRep = not na(repBar) and bar_index - repBar <= 10
     if rq.size() == 0 or justRep
         rq.push(rev)
+        gq.push(revG)
         revPend := na
+        gPend := na
     else
         revPend := rev
+        gPend := revG
         pendBar := bar_index
 if not na(revPend)
     bool repAfter = not na(revRep) and bar_index > pendBar
     if repAfter or bar_index - pendBar >= 70
         rq.push(revPend)
+        gq.push(gPend)
         revPend := na
+        gPend := na
 if rq.size() > 8
     rq.shift()
+if gq.size() > 8
+    gq.shift()
 int nq = rq.size()
 float yoy0 = na
 float yoy1 = na
@@ -145,8 +159,18 @@ if nq >= 5
 if nq >= 6
     float b1 = rq.get(nq - 6)
     yoy1 := b1 > 0 ? 100 * (rq.get(nq - 2) / b1 - 1) : na
+bool revTV = false   // true = Werte aus REVENUE_ONE_YEAR_GROWTH (Rueckfall)
+int ng = gq.size()
+if (na(yoy0) or na(yoy1)) and ng >= 2
+    float g0 = gq.get(ng - 1)
+    float g1 = gq.get(ng - 2)
+    if not na(g0) and not na(g1)
+        yoy0 := g0
+        yoy1 := g1
+        revTV := true
 bool revKnown = not na(yoy0) and not na(yoy1)
 bool revAccel = revKnown and yoy0 > yoy1
+string revTag = revTV ? " (TV)" : ""
 bool revOk = not useRev or revAccel or (not revKnown and revMiss == "zulassen")
 
 // ---------- Letzte Earnings (Meldetag) ----------
@@ -186,7 +210,7 @@ f_why() =>
     if not cbOk
         a.push("Notbremse")
     if not revOk
-        a.push(revKnown ? "Umsatz " + f_sgn(yoy0, "0") + " vs. " + f_sgn(yoy1, "0") + " %" :
+        a.push(revKnown ? "Umsatz " + f_sgn(yoy0, "0") + " vs. " + f_sgn(yoy1, "0") + " %" + revTag :
              "Umsatz: keine Daten (" + str.tostring(nq) + " Q)")
     if not earnOk
         a.push("Earnings vor " + str.tostring(sinceEarn) + " T (0-" + str.tostring(postEarnMax) + ")")
@@ -336,7 +360,7 @@ if evalBar
                 string tip = "gesperrt: " + why + "\nATR % " + str.tostring(atrPct, "0.0")
                 tip += " | 52W " + str.tostring(off52, "0.0") + " %"
                 tip += "\nUmsatz YoY " + (revKnown ? str.tostring(yoy0, "0") + " % vs. "
-                     + str.tostring(yoy1, "0") + " %" : "keine Daten (" + str.tostring(nq) + " Q)")
+                     + str.tostring(yoy1, "0") + " %" + revTag : "keine Daten (" + str.tostring(nq) + " Q)")
                 string fT = "dd.MM.yy"
                 string chgTxt = na(revChgT) ? "-" : str.format_time(revChgT, fT, syminfo.timezone)
                 string repTxt = na(repT) ? "-" : str.format_time(repT, fT, syminfo.timezone)
@@ -485,7 +509,7 @@ if showTable and barstate.islast
         atrTxt += "-" + str.tostring(atrPctMax, "0.#") + ")"
         string w52Txt = (na(off52) ? "-" : str.tostring(off52, "0") + " %")
         w52Txt += " (" + str.tostring(w52Min, "0.#") + "-" + str.tostring(w52Max, "#") + ")"
-        string revTxt = revKnown ? f_sgn(yoy0, "0") + " % vs. " + f_sgn(yoy1, "0") + " %" :
+        string revTxt = revKnown ? f_sgn(yoy0, "0") + " % vs. " + f_sgn(yoy1, "0") + " %" + revTag :
              "keine Daten (" + str.tostring(nq) + " Q)"
         string gTip = "ATR " + atrTxt + "\n52W " + w52Txt + "\nUmsatz YoY " + revTxt
         gTip += "\nUeber SMA10: " + (aboveMa ? "ja" : "nein")
