@@ -1,7 +1,8 @@
 """System+ V4.2 – Backtest-Bericht für die Seite „System+ V4.2 Trades“.
 
 Regeln V4.2 (Stand 27.10.2026):
-  Universum  Kurs > 5, Ø-Volumen 30 T > 1 Mio, Market Cap > 300 Mio (oder unbekannt), Float > 70 % (oder unbekannt)
+  Universum  Kurs > 5, Ø-Volumen 30 T > 1 Mio, Market Cap > 300 Mio (oder unbekannt), Float > 70 % (oder unbekannt);
+             Market Cap zum damaligen Stand (SEC-Aktienzahl, pit_meta.py), ohne SEC-Wert heutiger Stand; Float heutiger Stand (meta.csv)
   Setup      Pivot-Box 3/3, Höhe ≤ 3 ATR, erster Close > Oberkante und > SMA10 (entry_sig)
   Gates      ATR % 4,5–10, 52W 10–30 % unter Hoch, Umsatz-YoY letztes gemeldetes Quartal > Quartal davor,
              kein Entry 0–5 Handelstage nach Earnings (Tag 0 = Reaktionstag, wie sinceEarn im Pine-Skript;
@@ -31,10 +32,13 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from signals import build  # noqa: E402
 from simulate import simulate_trades  # noqa: E402
 from growth import asof_features  # noqa: E402
+from pit_meta import add_pit  # noqa: E402
 from common import read_store  # noqa: E402
 
 START_EQ, RISK, CAP, PER_DAY = 10_000, 1.0, 15.0, 3
 EARN_BLOCK = 5  # kein Entry an Handelstag 0..5 nach Earnings
+PIT_MCAP = True    # Market Cap zum damaligen Stand (SEC-Aktienzahl), Rückfall auf heutigen Stand
+PIT_FLOAT = False  # SEC-Public-Float zählt Großaktionäre ab 5 % oft heraus -> nicht mit 70 % vergleichbar
 OUT = ROOT / "backtest" / "out" / "v42_report.json"
 
 
@@ -59,16 +63,21 @@ def earn_since(tr: pd.DataFrame, cal: pd.DatetimeIndex) -> pd.Series:
 
 
 def signals(earn_block: int | None = EARN_BLOCK, float_days: int | None = None,
-            x: pd.DataFrame | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """float_days: Float-Filter (heutiger Stand aus meta.csv) nur in den letzten x Kalendertagen;
-    None = ganze Historie, 0 = aus. x: bereits gebautes build()-Ergebnis (spart Zeit in Varianten)."""
+            x: pd.DataFrame | None = None, pit: bool = PIT_MCAP, pit_float: bool = PIT_FLOAT) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """float_days: Float-Filter nur in den letzten x Kalendertagen; None = ganze Historie, 0 = aus.
+    pit / pit_float: Market Cap bzw. Float zum damaligen Stand (SEC), sonst heutiger Stand (meta.csv).
+    x: bereits gebautes build()-Ergebnis (spart Zeit in Varianten)."""
     if x is None:
         x = build(start="2019-01-01", verbose=True)
-    flt_ok = x.float_pct.isna() | (x.float_pct > 70)
+    if (pit or pit_float) and "mcap_pit" not in x:
+        x = add_pit(x)
+    mcap = x.mcap_pit.fillna(x.mcap) if pit else x.mcap
+    flt = x.float_pit.fillna(x.float_pct) if pit_float else x.float_pct
+    flt_ok = flt.isna() | (flt > 70)
     if float_days is not None:
         flt_ok = flt_ok | (x.date < x.date.max() - pd.Timedelta(days=float_days))
     m = (x.entry_sig & (x.raw_close > 5) & (x.avgvol30 > 1e6) & x.atr_pct.between(4.5, 10)
-         & (x.mcap.isna() | (x.mcap > 300e6)) & flt_ok
+         & (mcap.isna() | (mcap > 300e6)) & flt_ok
          & x.off52.between(-30, -10) & (x.ticker != "NXH"))
     sig = x[m]
     tr = simulate_trades(x, sig)
