@@ -9,7 +9,7 @@ Regeln V4.2 (Stand 27.10.2026):
              seit 31.10.2026, Varianten: out/v42_earnings_varianten.csv)
   Notbremse  QQQE aktiv → 0,5 % statt 1 % Risiko
   Depot      Bestand am letzten Tag (Stück, Kurs, Werte, offener G/V) unter portfolio im JSON
-  Konto      1 % Risiko, 15 % Deckel, max. 3 Käufe/Tag nach niedrigstem ATR-Multiple, eine Position je Titel, Start 10.000
+  Konto      1 % Risiko, 15 % Deckel, kein Tageslimit (bis 01.11.2026 max. 3 Käufe/Tag), Reihenfolge am Tag nach niedrigstem ATR-Multiple, eine Position je Titel, Start 10.000
   Exits M2   SL = SMA10 am Entry-Tag; vor 1R Close < SMA10 alles; ab 1R Close < SMA10 40 %, Close < SMA20 Rest
              Close < SMA20 gilt auch vor 1R (SMA20 über SMA10 → dort alles raus), Varianten: out/v42_sma20_varianten.csv
 
@@ -35,7 +35,7 @@ from growth import asof_features  # noqa: E402
 from pit_meta import add_pit  # noqa: E402
 from common import read_store  # noqa: E402
 
-START_EQ, RISK, CAP, PER_DAY = 10_000, 1.0, 15.0, 3
+START_EQ, RISK, CAP, PER_DAY = 10_000, 1.0, 15.0, None  # PER_DAY: max. Käufe je Tag, None = unbegrenzt
 EARN_BLOCK = 5  # kein Entry an Handelstag 0..5 nach Earnings
 PIT_MCAP = True    # Market Cap zum damaligen Stand (SEC-Aktienzahl), Rückfall auf heutigen Stand
 PIT_FLOAT = False  # SEC-Public-Float zählt Großaktionäre ab 5 % oft heraus -> nicht mit 70 % vergleichbar
@@ -118,8 +118,8 @@ def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None,
         eq = cash + sum(p["sh"] * p["last"] for p in held.values())
         n = 0
         for k, r in (by_day[d].iterrows() if d in by_day else []):
-            if n >= PER_DAY:
-                log.append((k, "max. 3 pro Tag", eq, cash, 0)); continue
+            if PER_DAY is not None and n >= PER_DAY:
+                log.append((k, f"max. {PER_DAY} pro Tag", eq, cash, 0)); continue
             if any(p["t"] == r.ticker for p in held.values()):
                 log.append((k, "schon im Depot", eq, cash, 0)); continue
             sh_t = np.floor(min(eq * RISK * r.rw / 100 / r.risk, eq * CAP / 100 / r.entry) * 10) / 10
