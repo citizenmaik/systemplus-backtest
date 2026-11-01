@@ -1,0 +1,4 @@
+Variante,CAGR,MaxDD,Sharpe,CAGR 19–22,CAGR 23–26,Ende,Trades,Ø R,Trades Float ≤ 70,Ø R Float ≤ 70,Rendite 2019,Rendite 2020,Rendite 2021,Rendite 2022,Rendite 2023,Rendite 2024,Rendite 2025,Rendite 2026
+Float-Filter ganze Historie,27.8,-19.7,1.21,20.7,35.9,68015,691,0.46,0,,7.1,67.3,18.3,-0.2,21.0,56.3,44.9,17.2
+Float-Filter nur letzte 12 Monate,27.1,-19.7,1.16,21.2,34.0,65209,754,0.42,77,-0.09,7.0,66.5,26.0,-4.1,17.9,53.5,43.0,17.2
+ohne Float-Filter,26.7,-21.6,1.14,21.2,33.1,63559,758,0.42,96,-0.1,7.0,66.5,26.0,-4.1,17.9,53.5,41.0,15.8

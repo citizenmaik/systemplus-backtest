@@ -58,10 +58,17 @@ def earn_since(tr: pd.DataFrame, cal: pd.DatetimeIndex) -> pd.Series:
     return pd.Series(out, index=tr.index)
 
 
-def signals(earn_block: int | None = EARN_BLOCK) -> tuple[pd.DataFrame, pd.DataFrame]:
-    x = build(start="2019-01-01", verbose=True)
+def signals(earn_block: int | None = EARN_BLOCK, float_days: int | None = None,
+            x: pd.DataFrame | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """float_days: Float-Filter (heutiger Stand aus meta.csv) nur in den letzten x Kalendertagen;
+    None = ganze Historie, 0 = aus. x: bereits gebautes build()-Ergebnis (spart Zeit in Varianten)."""
+    if x is None:
+        x = build(start="2019-01-01", verbose=True)
+    flt_ok = x.float_pct.isna() | (x.float_pct > 70)
+    if float_days is not None:
+        flt_ok = flt_ok | (x.date < x.date.max() - pd.Timedelta(days=float_days))
     m = (x.entry_sig & (x.raw_close > 5) & (x.avgvol30 > 1e6) & x.atr_pct.between(4.5, 10)
-         & (x.mcap.isna() | (x.mcap > 300e6)) & (x.float_pct.isna() | (x.float_pct > 70))
+         & (x.mcap.isna() | (x.mcap > 300e6)) & flt_ok
          & x.off52.between(-30, -10) & (x.ticker != "NXH"))
     sig = x[m]
     tr = simulate_trades(x, sig)
