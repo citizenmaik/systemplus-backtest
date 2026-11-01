@@ -108,6 +108,7 @@ def yoy(q: pd.DataFrame) -> pd.DataFrame:
 def asof_features(trades: pd.DataFrame, fund_path: Path | None = None) -> pd.DataFrame:
     """trades: Index = Trade-ID, Spalten date, ticker. Gibt die Merkmale je Trade zurück."""
     f = pd.read_parquet(fund_path or ROOT / "data" / "fundamentals.parquet")
+    f = f[f["kennzahl"].isin(["revenue", "eps", "net_income"])]  # Aktienzahl/Float: siehe pit_meta.py
     Y = yoy(quarterly(f))
     Y["known"] = Y["filed"] + pd.Timedelta(days=1)
     out = pd.DataFrame(index=trades.index)

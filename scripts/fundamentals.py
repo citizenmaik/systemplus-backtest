@@ -4,7 +4,9 @@ Je Titel und Kennzahl alle Werte mit Zeitraum (start, end), Meldedatum (filed) u
 Point-in-time: Ein Wert darf im Backtest erst ab `filed` verwendet werden.
 
 Kennzahlen: Umsatz (mehrere us-gaap-Bezeichnungen bzw. ifrs Revenue), EPS verwässert,
-Nettogewinn. Ausländische Emittenten ohne XBRL-Quartalszahlen (20-F) liefern meist nur Jahreswerte.
+Nettogewinn, Aktienzahl (Deckblatt dei bzw. Bilanz, Stichtag = end) und Public Float
+(dei:EntityPublicFloat, USD-Wert der Aktien außerhalb von Insidern, Stichtag Ende Q2, im 10-K).
+Ausländische Emittenten ohne XBRL-Quartalszahlen (20-F) liefern meist nur Jahreswerte.
 """
 from __future__ import annotations
 
@@ -32,6 +34,8 @@ CONCEPTS = {
     "eps": [("us-gaap", "EarningsPerShareDiluted"), ("us-gaap", "EarningsPerShareBasic"),
             ("ifrs-full", "DilutedEarningsLossPerShare")],
     "net_income": [("us-gaap", "NetIncomeLoss"), ("ifrs-full", "ProfitLoss")],
+    "shares": [("dei", "EntityCommonStockSharesOutstanding"), ("us-gaap", "CommonStockSharesOutstanding")],
+    "public_float": [("dei", "EntityPublicFloat")],
 }
 
 
@@ -69,7 +73,7 @@ def main() -> None:
             for ns, name in cands:
                 units = f.get(ns, {}).get(name, {}).get("units", {})
                 for unit, vals in units.items():
-                    if key != "eps" and not unit.startswith("USD") and ns == "us-gaap":
+                    if key not in ("eps", "shares") and not unit.startswith("USD") and ns == "us-gaap":
                         continue
                     for v in vals:
                         if v.get("form") not in ("10-Q", "10-K", "10-Q/A", "10-K/A", "20-F", "40-F", "6-K"):
@@ -87,7 +91,9 @@ def main() -> None:
     (DATA / "fundamentals_info.json").write_text(json.dumps(
         {"titel_mit_cik": len(todo), "ohne_daten": len(miss), "zeilen": len(df),
          "titel_mit_umsatz": int(df.loc[df.kennzahl == "revenue", "ticker"].nunique()),
-         "titel_mit_eps": int(df.loc[df.kennzahl == "eps", "ticker"].nunique())}, indent=2))
+         "titel_mit_eps": int(df.loc[df.kennzahl == "eps", "ticker"].nunique()),
+         "titel_mit_aktienzahl": int(df.loc[df.kennzahl == "shares", "ticker"].nunique()),
+         "titel_mit_public_float": int(df.loc[df.kennzahl == "public_float", "ticker"].nunique())}, indent=2))
     print(open(DATA / "fundamentals_info.json").read())
 
 
