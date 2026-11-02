@@ -11,11 +11,16 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
+# SL am Entry-Tag: "sma10" = SMA10 (Standard), "low" = Tief der Entry-Kerze (Rückfall SMA10, wenn Tief ≥ Close)
+STOP_MODE = "sma10"
+
 
 def m2_exit(bars: dict, i0: int) -> dict:
     """bars: Arrays eines Tickers (open, high, low, close, sma10, sma20, date). i0 = Entry-Index."""
     o, h, l, c, s10, s20, d = (bars[k] for k in ("open", "high", "low", "close", "sma10", "sma20", "date"))
     entry, stop = c[i0], s10[i0]
+    if STOP_MODE == "low" and l[i0] < entry:
+        stop = l[i0]
     risk = entry - stop
     rem, r_sum, pct_sum = 1.0, 0.0, 0.0
     r1, tp1 = False, False
