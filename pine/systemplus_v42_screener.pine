@@ -11,7 +11,7 @@ indicator("System+ V4.2 Screener", overlay = false, max_bars_back = 500)
 // Umsatz: eigene Rechnung aus 6 Quartalen; fehlen sie (z. B. nach IPO), TV-Wachstumsrate (seit 01.11.2026).
 // Notbremse QQQE sperrt nicht: bei aktiver Notbremse 0.5 % statt 1 % Risiko (Spalte Risiko %).
 // In Box: ATR % und 52W werden auf Hoehe der Oberkante geprueft (Kurs beim Breakout).
-// Kein Tageslimit (bis 01.11.2026 max. 3 Kaeufe pro Tag); Prioritaet bei Cash-Knappheit: niedrigstes ATR-Multiple zuerst.
+// Prioritaet bei max. 3 Kaeufen pro Tag: niedrigstes ATR-Multiple zuerst.
 // Pine Screener rechnet nur mit den letzten 500 Tageskerzen. Zeitrahmen: 1D.
 
 // ---------- Eingaben ----------

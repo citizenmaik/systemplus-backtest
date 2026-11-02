@@ -9,7 +9,8 @@ Regeln V4.2 (Stand 27.10.2026):
              seit 31.10.2026, Varianten: out/v42_earnings_varianten.csv)
   Notbremse  QQQE aktiv → 0,5 % statt 1 % Risiko
   Depot      Bestand am letzten Tag (Stück, Kurs, Werte, offener G/V) unter portfolio im JSON
-  Konto      1 % Risiko, 15 % Deckel, kein Tageslimit (bis 01.11.2026 max. 3 Käufe/Tag), Reihenfolge am Tag nach niedrigstem ATR-Multiple, eine Position je Titel, Start 10.000
+  Zins       Cash verzinst mit 13-Wochen-T-Bill − 0,5 % (wie Broker-Guthabenzins), seit 02.11.2026
+  Konto      1 % Risiko, 15 % Deckel, max. 3 Käufe/Tag nach niedrigstem ATR-Multiple, eine Position je Titel, Start 10.000
   Exits M2   SL = SMA10 am Entry-Tag; vor 1R Close < SMA10 alles; ab 1R Close < SMA10 40 %, Close < SMA20 Rest
              Close < SMA20 gilt auch vor 1R (SMA20 über SMA10 → dort alles raus), Varianten: out/v42_sma20_varianten.csv
 
@@ -35,7 +36,8 @@ from growth import asof_features  # noqa: E402
 from pit_meta import add_pit  # noqa: E402
 from common import read_store  # noqa: E402
 
-START_EQ, RISK, CAP, PER_DAY = 10_000, 1.0, 15.0, None  # PER_DAY: max. Käufe je Tag, None = unbegrenzt
+START_EQ, RISK, CAP, PER_DAY = 10_000, 1.0, 15.0, 3  # PER_DAY: max. Käufe je Tag, None = unbegrenzt
+CASH_SPREAD = -0.5  # Guthabenzins = 13-Wochen-T-Bill (data/irx.csv) + CASH_SPREAD, mind. 0; None = kein Zins
 EARN_BLOCK = 5  # kein Entry an Handelstag 0..5 nach Earnings
 PIT_MCAP = True    # Market Cap zum damaligen Stand (SEC-Aktienzahl), Rückfall auf heutigen Stand
 PIT_FLOAT = False  # SEC-Public-Float zählt Großaktionäre ab 5 % oft heraus -> nicht mit 70 % vergleichbar
@@ -90,6 +92,14 @@ def signals(earn_block: int | None = EARN_BLOCK, float_days: int | None = None,
     if earn_block is not None:
         tr = tr[~tr["since"].between(0, earn_block)].copy()
     return tr, closes
+
+
+def cash_rate(idx: pd.DatetimeIndex) -> pd.Series | None:
+    """Jahreszins % je Handelstag auf positives Cash (T-Bill + CASH_SPREAD, nicht negativ)."""
+    if CASH_SPREAD is None:
+        return None
+    z = pd.read_csv(ROOT / "data" / "irx.csv", parse_dates=["date"]).set_index("date")["irx"]
+    return (z.reindex(idx.union(z.index)).ffill().reindex(idx).bfill() + CASH_SPREAD).clip(lower=0)
 
 
 def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None,
@@ -154,7 +164,7 @@ def account(tr: pd.DataFrame, closes: pd.DataFrame, state: dict | None = None,
 def main() -> None:
     tr, closes = signals()
     st = {}
-    c, taken, log, e = account(tr, closes, st)
+    c, taken, log, e = account(tr, closes, st, cash_rate=cash_rate(closes.index))
     eq_last = float(c.iloc[-1])
     pos = []
     for k, p in st["held"].items():
