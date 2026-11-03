@@ -1,19 +1,16 @@
 {
-  "files_written": 107,
-  "files_unchanged": 105,
+  "files_written": 108,
+  "files_unchanged": 106,
   "files_removed": 0,
-  "rows": 5406115,
+  "rows": 5408974,
   "tickers": 2866,
-  "mode": "full",
-  "candidates": 5128,
-  "universe": 2866,
-  "new_in_universe": 8,
-  "excluded": 0,
+  "mode": "incremental",
   "refetched": [
-    "WPRT"
+    "BJDX",
+    "SCCO",
+    "UFG"
   ],
   "no_data": 0,
-  "splits": 1285,
-  "last_date": "2026-10-30",
-  "run_utc": "2026-11-01T13:54:09+00:00"
+  "last_date": "2026-11-02",
+  "run_utc": "2026-11-03T03:34:40+00:00"
 }
