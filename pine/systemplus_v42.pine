@@ -543,13 +543,18 @@ if showTable and barstate.islast
         r := f_row(r, "Earnings", eTxt, postEarn and useEarn ? bad : neu, sz, eTip)
 
 // ---------- Alarme ----------
-if msgs.size() > 0
+// Fuer "Any alert() function call": nur die eingeschalteten Meldungen loesen aus
+const string GA = "Alarme (alert)"
+bool alTouch = input.bool(true, "Oberkante beruehrt (intraday, einmal pro Kerze)", group = GA)
+bool alTrade = input.bool(false, "Entry / Exit / gesperrt (zum Kerzenschluss)", group = GA)
+bool alMa = input.bool(false, "Intraday unter Exit-MA", group = GA)
+if alTrade and msgs.size() > 0
     alert(msgs.join("\n"), alert.freq_once_per_bar_close)
 bool touch = boxValid and close[1] <= pTop and high >= pTop
-if touch and not entryNow
+if alTouch and touch and not entryNow
     string tTxt = syminfo.ticker + " beruehrt Oberkante " + str.tostring(pTop, format.mintick)
     alert(tTxt + (why != "" ? " | gesperrt: " + why : " | Gates ok"), alert.freq_once_per_bar)
-if maWarn and not exitNow
+if alMa and maWarn and not exitNow
     string mTxt = syminfo.ticker + " intraday unter " + maName + " " + str.tostring(maLvl, format.mintick)
     alert(mTxt + " | moeglicher Exit am Close: " + maRule, alert.freq_once_per_bar)
 alertcondition(maWarn and not exitNow, "V4.2 Warnung Exit-MA intraday",
