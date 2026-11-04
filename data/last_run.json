@@ -1,16 +1,12 @@
 {
-  "files_written": 108,
-  "files_unchanged": 106,
+  "files_written": 214,
+  "files_unchanged": 0,
   "files_removed": 0,
-  "rows": 5408974,
+  "rows": 5411832,
   "tickers": 2866,
   "mode": "incremental",
-  "refetched": [
-    "BJDX",
-    "SCCO",
-    "UFG"
-  ],
+  "refetched": [],
   "no_data": 0,
-  "last_date": "2026-11-02",
-  "run_utc": "2026-11-03T03:34:40+00:00"
+  "last_date": "2026-11-03",
+  "run_utc": "2026-11-04T02:27:02+00:00"
 }
