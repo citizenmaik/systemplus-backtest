@@ -1,18 +1,15 @@
 {
-  "files_written": 108,
-  "files_unchanged": 106,
+  "files_written": 59,
+  "files_unchanged": 155,
   "files_removed": 0,
-  "rows": 5412620,
+  "rows": 5415477,
   "tickers": 2866,
   "mode": "incremental",
   "refetched": [
-    "ADIL",
-    "BJDX",
-    "INM",
-    "SCCO",
-    "UFG"
+    "LKNCY",
+    "ONCO"
   ],
   "no_data": 0,
-  "last_date": "2026-11-04",
-  "run_utc": "2026-11-05T02:34:10+00:00"
+  "last_date": "2026-11-05",
+  "run_utc": "2026-11-06T02:35:23+00:00"
 }
