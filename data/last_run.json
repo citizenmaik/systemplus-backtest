@@ -1,17 +1,16 @@
 {
-  "files_written": 108,
-  "files_unchanged": 106,
+  "files_written": 84,
+  "files_unchanged": 130,
   "files_removed": 0,
-  "rows": 5413432,
+  "rows": 5418335,
   "tickers": 2866,
   "mode": "incremental",
   "refetched": [
     "AIIO",
-    "INM",
     "JSPR",
-    "LKNCY"
+    "ONCO"
   ],
   "no_data": 0,
   "last_date": "2026-11-06",
-  "run_utc": "2026-11-07T02:02:19+00:00"
+  "run_utc": "2026-11-07T14:25:19+00:00"
 }
