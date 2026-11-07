@@ -2,7 +2,7 @@ name: v42-report
 
 on:
   schedule:
-    - cron: "13 9 * * 0"   # Sonntag 09:13 UTC, nach dem Vollaufbau (06:43 UTC)
+    - cron: "13 8 * * 6"   # Samstag 08:13 UTC, nach dem Freitags-Update, vor dem Claude-Lauf (12:00 Berlin)
   workflow_dispatch:
 
 permissions:
