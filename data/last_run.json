@@ -1,16 +1,14 @@
 {
-  "files_written": 84,
-  "files_unchanged": 130,
+  "files_written": 33,
+  "files_unchanged": 181,
   "files_removed": 0,
-  "rows": 5418335,
+  "rows": 5421190,
   "tickers": 2866,
   "mode": "incremental",
   "refetched": [
-    "AIIO",
-    "JSPR",
-    "ONCO"
+    "NCI"
   ],
   "no_data": 0,
-  "last_date": "2026-11-06",
-  "run_utc": "2026-11-07T14:25:19+00:00"
+  "last_date": "2026-11-09",
+  "run_utc": "2026-11-10T04:14:22+00:00"
 }

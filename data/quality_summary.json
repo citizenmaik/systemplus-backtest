@@ -1,7 +1,7 @@
 {
   "tickers": 2866,
-  "ok": 1819,
-  "warn": 1046,
+  "ok": 1815,
+  "warn": 1050,
   "bad": 1,
-  "stale": 1
+  "stale": 5
 }
