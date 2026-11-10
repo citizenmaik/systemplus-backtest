@@ -8,7 +8,8 @@ indicator("System+ V4.2", overlay = true, max_bars_back = 600,
 // Close > SMA10, ATR % 4.5-10, 52W 10-30 % unter Hoch,
 // Umsatz-YoY letztes Quartal > Umsatz-YoY Quartal davor
 // (eigene Rechnung aus 6 Quartalen; fehlen sie, z. B. nach IPO: TV-Wachstumsrate, Anzeige "(TV)"; seit 01.11.2026),
-// kein Entry 0-5 Handelstage nach Earnings (Tag 0 = erste Kerze mit den Zahlen; seit 31.10.2026).
+// kein Entry 0-5 Handelstage nach Earnings (Tag 0 = erste Kerze mit den Zahlen; seit 31.10.2026;
+// Erkennung auch ohne Ist-EPS ueber Schaetzung/Termin seit 10.11.2026).
 // Notbremse QQQE sperrt nicht mehr: bei aktiver Notbremse 0.5 % statt 1 % Risiko.
 // Universum (TV-Screener): Kurs > 5, Market Cap > 300 Mio, Volumen 30T > 1 Mio, Float > 70 %.
 // Exits M2: SL = SMA10 Entry-Tag, vor 1R Close < SMA10 alles raus,
@@ -174,11 +175,19 @@ string revTag = revTV ? " (TV)" : ""
 bool revOk = not useRev or revAccel or (not revKnown and revMiss == "zulassen")
 
 // ---------- Letzte Earnings (Meldetag) ----------
+// Erkennung ueber Ist-EPS, Schaetzung oder angekuendigten Termin: TradingView traegt das Ist-EPS
+// teils erst Tage spaeter nach (z. B. FLR 06.11.2026), dann griff die Sperre nicht (seit 10.11.2026).
 float eAct = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_on,
      ignore_invalid_symbol = true)
+float eEst = request.earnings(syminfo.tickerid, earnings.estimate, barmerge.gaps_on,
+     ignore_invalid_symbol = true)
+// Termin vor Handelsschluss dieser Kerze und nach Schluss der Vorkerze = Tag 0
+// (vorboerslich = selbe Kerze, nachboerslich = naechste Kerze)
+bool eFut = not na(earnings.future_time) and not na(time_close[1])
+     and earnings.future_time > time_close[1] and earnings.future_time <= time_close
 var int lastEarnBar = na
 var int lastEarnTime = na
-if not na(eAct)
+if (not na(eAct) or not na(eEst) or eFut)
     lastEarnBar := bar_index
     lastEarnTime := time
 int sinceEarn = na(lastEarnBar) ? na : bar_index - lastEarnBar

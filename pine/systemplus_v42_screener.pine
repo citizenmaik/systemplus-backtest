@@ -188,10 +188,15 @@ float slPct = 100 * (close - sma10) / close
 float distTop = inBox ? 100 * (topNow / close - 1) : na
 float accel = revKnown ? yoy0 - yoy1 : na
 float eDays = na(earnings.future_time) ? na : (earnings.future_time - timenow) / 86400000.0
+// Erkennung auch ohne Ist-EPS (TV traegt es teils spaeter nach): Schaetzung oder Termin (seit 10.11.2026)
 float eAct = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_on,
      ignore_invalid_symbol = true)
+float eEst = request.earnings(syminfo.tickerid, earnings.estimate, barmerge.gaps_on,
+     ignore_invalid_symbol = true)
+bool eFut = not na(earnings.future_time) and not na(time_close[1])
+     and earnings.future_time > time_close[1] and earnings.future_time <= time_close
 var int lastEarnBar = na
-if not na(eAct)
+if not na(eAct) or not na(eEst) or eFut
     lastEarnBar := bar_index
 int sinceEarn = na(lastEarnBar) ? na : bar_index - lastEarnBar
 bool postEarn = not na(sinceEarn) and sinceEarn <= postEarnMax
