@@ -1,14 +1,12 @@
 {
-  "files_written": 33,
-  "files_unchanged": 181,
+  "files_written": 2,
+  "files_unchanged": 212,
   "files_removed": 0,
-  "rows": 5421190,
+  "rows": 5422522,
   "tickers": 2866,
   "mode": "incremental",
-  "refetched": [
-    "NCI"
-  ],
+  "refetched": [],
   "no_data": 0,
-  "last_date": "2026-11-09",
-  "run_utc": "2026-11-10T04:14:22+00:00"
+  "last_date": "2026-11-10",
+  "run_utc": "2026-11-11T02:01:29+00:00"
 }
