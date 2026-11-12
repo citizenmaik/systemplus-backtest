@@ -8,7 +8,8 @@ indicator("System+ V4.2", overlay = true, max_bars_back = 600,
 // Close > SMA10, ATR % 4.5-10, 52W 10-30 % unter Hoch,
 // Umsatz-YoY letztes Quartal > Umsatz-YoY Quartal davor
 // (eigene Rechnung aus 6 Quartalen; fehlen sie, z. B. nach IPO: TV-Wachstumsrate, Anzeige "(TV)"; seit 01.11.2026),
-// kein Entry 0-5 Handelstage nach Earnings (Tag 0 = erste Kerze mit den Zahlen; seit 31.10.2026).
+// kein Entry 0-5 Handelstage nach Earnings (Tag 0 = erste Kerze mit den Zahlen; seit 31.10.2026;
+// Tag 0 vorboerslicher Melder eine Kerze frueher, erkannt ueber Volumen x True Range, seit 12.11.2026).
 // Notbremse QQQE sperrt nicht mehr: bei aktiver Notbremse 0.5 % statt 1 % Risiko.
 // Universum (TV-Screener): Kurs > 5, Market Cap > 300 Mio, Volumen 30T > 1 Mio, Float > 70 %.
 // Exits M2: SL = SMA10 Entry-Tag, vor 1R Close < SMA10 alles raus,
@@ -178,9 +179,15 @@ float eAct = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_o
      ignore_invalid_symbol = true)
 var int lastEarnBar = na
 var int lastEarnTime = na
+// TradingView liefert das Ist-EPS erst auf der Kerze nach dem Meldedatum. Bei vorboerslicher Meldung
+// (z. B. RRX/TLN 03.11.2026, 07:00) ist Tag 0 aber die Kerze davor. Uhrzeit fehlt in Pine, daher:
+// Tag 0 = Vorkerze, wenn ihre Reaktion (Volumen x True Range %) mind. 80 % der Kerze erreicht.
+// Abgleich mit Backtest-Terminen 2023-2026 (Yahoo inkl. Uhrzeit): ~91 % Treffer (seit 12.11.2026).
+float eReact = volume * ta.tr(true) / close[1]
 if not na(eAct)
-    lastEarnBar := bar_index
-    lastEarnTime := time
+    bool ePrev = not na(eReact[1]) and eReact[1] > 0.8 * eReact
+    lastEarnBar := ePrev ? bar_index - 1 : bar_index
+    lastEarnTime := ePrev ? time[1] : time
 int sinceEarn = na(lastEarnBar) ? na : bar_index - lastEarnBar
 bool postEarn = not na(sinceEarn) and sinceEarn <= postEarnMax
 string postTxt = postEarn ? " | NACH EARNINGS (" + str.tostring(sinceEarn) + " T)" : ""

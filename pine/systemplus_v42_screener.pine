@@ -191,8 +191,11 @@ float eDays = na(earnings.future_time) ? na : (earnings.future_time - timenow) /
 float eAct = request.earnings(syminfo.tickerid, earnings.actual, barmerge.gaps_on,
      ignore_invalid_symbol = true)
 var int lastEarnBar = na
+// Tag 0 bei vorboerslicher Meldung eine Kerze frueher (Reaktion Volumen x True Range % der Vorkerze mind. 80 % der Kerze),
+// TradingView liefert das Ist-EPS erst auf der Kerze nach dem Meldedatum (seit 12.11.2026)
+float eReact = volume * ta.tr(true) / close[1]
 if not na(eAct)
-    lastEarnBar := bar_index
+    lastEarnBar := not na(eReact[1]) and eReact[1] > 0.8 * eReact ? bar_index - 1 : bar_index
 int sinceEarn = na(lastEarnBar) ? na : bar_index - lastEarnBar
 bool postEarn = not na(sinceEarn) and sinceEarn <= postEarnMax
 
