@@ -1,16 +1,17 @@
 {
-  "files_written": 3,
-  "files_unchanged": 211,
+  "files_written": 108,
+  "files_unchanged": 213,
   "files_removed": 0,
-  "rows": 5428926,
-  "tickers": 2866,
-  "mode": "incremental",
-  "refetched": [
-    "COSM",
-    "EZRA",
-    "LKNCY"
-  ],
+  "rows": 5455199,
+  "tickers": 2886,
+  "mode": "full",
+  "candidates": 5117,
+  "universe": 2886,
+  "new_in_universe": 20,
+  "excluded": 0,
+  "refetched": [],
   "no_data": 0,
+  "splits": 1308,
   "last_date": "2026-11-13",
-  "run_utc": "2026-11-14T05:45:13+00:00"
+  "run_utc": "2026-11-14T12:37:11+00:00"
 }
