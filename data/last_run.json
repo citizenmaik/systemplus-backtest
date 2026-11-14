@@ -1,15 +1,16 @@
 {
-  "files_written": 108,
-  "files_unchanged": 106,
+  "files_written": 3,
+  "files_unchanged": 211,
   "files_removed": 0,
-  "rows": 5427407,
+  "rows": 5428926,
   "tickers": 2866,
   "mode": "incremental",
   "refetched": [
+    "COSM",
     "EZRA",
-    "KPTI"
+    "LKNCY"
   ],
   "no_data": 0,
   "last_date": "2026-11-13",
-  "run_utc": "2026-11-14T02:32:16+00:00"
+  "run_utc": "2026-11-14T05:45:13+00:00"
 }
