@@ -1,12 +1,15 @@
 {
-  "files_written": 2,
-  "files_unchanged": 212,
+  "files_written": 108,
+  "files_unchanged": 106,
   "files_removed": 0,
-  "rows": 5429750,
+  "rows": 5427407,
   "tickers": 2866,
   "mode": "incremental",
-  "refetched": [],
+  "refetched": [
+    "EZRA",
+    "KPTI"
+  ],
   "no_data": 0,
-  "last_date": "2026-11-12",
-  "run_utc": "2026-11-13T02:43:24+00:00"
+  "last_date": "2026-11-13",
+  "run_utc": "2026-11-14T02:32:16+00:00"
 }
