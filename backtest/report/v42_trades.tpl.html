@@ -91,7 +91,7 @@ const cv=A.curve.s, last=cv[cv.length-1];
 const yrsN=(new Date(A.curve.x.at(-1))-new Date(A.curve.x[0]))/31557600000;
 let pk=0,mdd=0;cv.forEach(v=>{pk=Math.max(pk,v);mdd=Math.min(mdd,v/pk-1)});
 const K=[['Trades',fmt(D.length)],['Gewinnquote',fmt(100*win.length/closed.length)+' %'],['Ø R',sg(sum(closed,'Ergebnis R')/closed.length,2)],['Profitfaktor (R)',fmt(gw/gl,2)],
-['CAGR',sg(100*(Math.pow(last/10000,1/yrsN)-1),1)+' %'],['Max. Drawdown',sg(A.meta.maxdd,1)+' %'],['Konto am Ende',fmt(last)+' $'],['QQQ / SPY Ende',fmt(A.curve.q.at(-1))+' / '+fmt(A.curve.p.at(-1))]];
+['CAGR',sg(100*(Math.pow(last/10000,1/yrsN)-1),1)+' %'],['YTD '+A.meta.last.slice(0,4),A.meta.ytd==null?'–':`<span class="${cls(A.meta.ytd)}">${sg(A.meta.ytd,1)} %</span>`],['Max. Drawdown',sg(A.meta.maxdd,1)+' %'],['Konto am Ende',fmt(last)+' $'],['QQQ / SPY Ende',fmt(A.curve.q.at(-1))+' / '+fmt(A.curve.p.at(-1))]];
 document.getElementById('kpis').innerHTML=K.map(([k,v])=>`<div class="kpi"><span>${k}</span><b>${v}</b></div>`).join('');
 // Depot
 (function(){const P=A.portfolio;if(!P)return;const ps=P.positions,de=d=>d.slice(8,10)+'.'+d.slice(5,7)+'.'+d.slice(0,4);

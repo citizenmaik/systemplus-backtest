@@ -19,4 +19,4 @@ html = (html.replace("__DATA__", json.dumps(data, ensure_ascii=False))
 html = html.replace("Universum: heute gelistete Titel", f"Berechnet {m['generated']}. Universum: heute gelistete Titel")
 out = HERE / "v42_trades.html"
 out.write_text(html)
-print(out, "| Stand", last_de, "| Trades", m["trades"], "| CAGR", m["cagr"], "| MaxDD", m["maxdd"], "| Ende", m["end"])
+print(out, "| Stand", last_de, "| Trades", m["trades"], "| CAGR", m["cagr"], "| YTD", m.get("ytd"), "| MaxDD", m["maxdd"], "| Ende", m["end"])

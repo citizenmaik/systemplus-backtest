@@ -219,7 +219,8 @@ def main() -> None:
     meta = dict(first=str(c.index[0].date()), last=str(c.index[-1].date()),
                 cagr=round(100 * ((c.iloc[-1] / START_EQ) ** (1 / yrs) - 1), 1), maxdd=round(100 * (c / c.cummax() - 1).min(), 1),
                 sharpe=round(r.mean() / r.std() * np.sqrt(252), 2), end=round(c.iloc[-1]), trades=len(rows),
-                generated=pd.Timestamp.utcnow().strftime("%Y-%m-%d %H:%M UTC"))
+                ytd=years[-1]["ret"], ytd_qqq=years[-1]["qqq"], ytd_spy=years[-1]["spy"],
+                generated=pd.Timestamp.now("UTC").strftime("%Y-%m-%d %H:%M UTC"))
     OUT.write_text(json.dumps(dict(meta=meta, portfolio=portfolio, trades=rows, years=years, skips=skips,
                                    curve=dict(x=[d.strftime("%Y-%m-%d") for d in w.index], s=[round(v) for v in w.S],
                                               q=[round(v) for v in w.QQQ], p=[round(v) for v in w.SPY])),

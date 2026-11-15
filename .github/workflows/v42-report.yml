@@ -1,8 +1,12 @@
 name: v42-report
 
 on:
-  schedule:
-    - cron: "13 8 * * 6"   # Samstag 08:13 UTC, nach dem Vollaufbau (05:43 UTC), vor dem Claude-Lauf (12:00 Berlin)
+  # Startet direkt nach jedem erfolgreichen update-data-Lauf am Samstag (UTC).
+  # Kein eigener Cron mehr: GitHub hat geplante Läufe hier um 4–7 h verzögert,
+  # der Bericht lag dadurch erst nach dem Claude-Lauf vor.
+  workflow_run:
+    workflows: [update-data]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -14,23 +18,40 @@ concurrency:
 
 jobs:
   report:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 120
     steps:
+      - name: Nur samstags (bei Start durch update-data)
+        id: gate
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_run" ] && [ "$(date -u +%u)" != "6" ]; then
+            echo "run=false" >> "$GITHUB_OUTPUT"; echo "Kein Samstag – übersprungen"
+          else echo "run=true" >> "$GITHUB_OUTPUT"; fi
       - uses: actions/checkout@v4
+        if: steps.gate.outputs.run == 'true'
+        with:
+          ref: main
       - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
         with:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+        if: steps.gate.outputs.run == 'true'
       - name: V4.2-Bericht rechnen
+        if: steps.gate.outputs.run == 'true'
         run: python backtest/v42_report.py
       - name: Seite rendern
+        if: steps.gate.outputs.run == 'true'
         run: python backtest/report/render_report.py
       - name: Commit
+        if: steps.gate.outputs.run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git add backtest/out/v42_report.json backtest/report/v42_trades.html
           if git diff --cached --quiet; then echo "Keine Änderungen"; else
-            git commit -m "report: V4.2 $(date -u +%F)"; git pull --rebase; git push; fi
+            git commit -m "report: V4.2 $(jq -r .meta.last backtest/out/v42_report.json)"; git pull --rebase; git push; fi
