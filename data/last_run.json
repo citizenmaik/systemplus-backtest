@@ -1,16 +1,15 @@
 {
-  "files_written": 81,
-  "files_unchanged": 240,
+  "files_written": 109,
+  "files_unchanged": 212,
   "files_removed": 0,
-  "rows": 5459513,
+  "rows": 5460156,
   "tickers": 2886,
   "mode": "incremental",
   "refetched": [
-    "EZRA",
-    "SLQT",
-    "VCIG"
+    "ACH",
+    "SLQT"
   ],
   "no_data": 0,
-  "last_date": "2026-11-16",
-  "run_utc": "2026-11-17T04:36:44+00:00"
+  "last_date": "2026-11-17",
+  "run_utc": "2026-11-18T03:47:04+00:00"
 }
