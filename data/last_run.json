@@ -2,14 +2,15 @@
   "files_written": 109,
   "files_unchanged": 212,
   "files_removed": 0,
-  "rows": 5460156,
+  "rows": 5460578,
   "tickers": 2886,
   "mode": "incremental",
   "refetched": [
-    "ACH",
-    "SLQT"
+    "NLST",
+    "PTLE",
+    "SOS"
   ],
   "no_data": 0,
-  "last_date": "2026-11-17",
-  "run_utc": "2026-11-18T03:47:04+00:00"
+  "last_date": "2026-11-18",
+  "run_utc": "2026-11-19T03:38:12+00:00"
 }
