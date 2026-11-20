@@ -1,16 +1,15 @@
 {
-  "files_written": 109,
-  "files_unchanged": 212,
+  "files_written": 24,
+  "files_unchanged": 297,
   "files_removed": 0,
-  "rows": 5460578,
+  "rows": 5461920,
   "tickers": 2886,
   "mode": "incremental",
   "refetched": [
-    "NLST",
     "PTLE",
-    "SOS"
+    "SNDK"
   ],
   "no_data": 0,
-  "last_date": "2026-11-18",
-  "run_utc": "2026-11-19T03:38:12+00:00"
+  "last_date": "2026-11-19",
+  "run_utc": "2026-11-20T03:28:23+00:00"
 }
