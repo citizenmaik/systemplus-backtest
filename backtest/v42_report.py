@@ -6,7 +6,8 @@ Regeln V4.2 (Stand 27.10.2026):
   Setup      Pivot-Box 3/3, Höhe ≤ 3 ATR, erster Close > Oberkante und > SMA10 (entry_sig)
   Gates      ATR % 4,5–10, 52W 10–30 % unter Hoch, Umsatz-YoY letztes gemeldetes Quartal > Quartal davor,
              kein Entry 0–5 Handelstage nach Earnings (Tag 0 = Reaktionstag, wie sinceEarn im Pine-Skript;
-             seit 31.10.2026, Varianten: out/v42_earnings_varianten.csv)
+             seit 31.10.2026, Varianten: out/v42_earnings_varianten.csv),
+             kein Entry 1–2 Handelstage vor dem nächsten Earnings-Reaktionstag (seit 22.11.2026)
   Notbremse  QQQE aktiv → 0,5 % statt 1 % Risiko
   Depot      Bestand am letzten Tag (Stück, Kurs, Werte, offener G/V) unter portfolio im JSON
   Zins       Cash verzinst mit 13-Wochen-T-Bill − 0,5 % (wie Broker-Guthabenzins), seit 02.11.2026
@@ -39,13 +40,15 @@ from common import read_store  # noqa: E402
 START_EQ, RISK, CAP, PER_DAY = 10_000, 1.0, 15.0, 3  # PER_DAY: max. Käufe je Tag, None = unbegrenzt
 CASH_SPREAD = -0.5  # Guthabenzins = 13-Wochen-T-Bill (data/irx.csv) + CASH_SPREAD, mind. 0; None = kein Zins
 EARN_BLOCK = 5  # kein Entry an Handelstag 0..5 nach Earnings
+PRE_EARN_BLOCK = 2  # kein Entry 1..2 Handelstage vor dem nächsten Earnings-Reaktionstag; None = aus
 PIT_MCAP = True    # Market Cap zum damaligen Stand (SEC-Aktienzahl), Rückfall auf heutigen Stand
 PIT_FLOAT = False  # SEC-Public-Float zählt Großaktionäre ab 5 % oft heraus -> nicht mit 70 % vergleichbar
 OUT = ROOT / "backtest" / "out" / "v42_report.json"
 
 
-def earn_since(tr: pd.DataFrame, cal: pd.DatetimeIndex) -> pd.Series:
+def earn_since(tr: pd.DataFrame, cal: pd.DatetimeIndex, until: bool = False) -> pd.Series:
     """Handelstage seit dem letzten Earnings-Reaktionstag (0 = Reaktionstag) je Trade, NaN ohne Daten.
+    until=True: Handelstage bis zum nächsten Reaktionstag (1 = Reaktionstag ist der nächste Handelstag).
     Reaktionstag: Meldung vor 12 Uhr = selber Handelstag, sonst nächster Handelstag."""
     E = pd.read_csv(ROOT / "data" / "earnings.csv", keep_default_na=False, na_values=[""])
     E = E[E["date"].notna()].copy()
@@ -59,14 +62,20 @@ def earn_since(tr: pd.DataFrame, cal: pd.DatetimeIndex) -> pd.Series:
     out = []
     for t, d in zip(tr["ticker"], tr["date"]):
         e, i0 = ev.get(t), pos[d]
+        if until:
+            nx = e[e > i0] if e is not None else []
+            out.append(nx[0] - i0 if len(nx) else np.nan)
+            continue
         pv = e[e <= i0] if e is not None else []
         out.append(i0 - pv[-1] if len(pv) else np.nan)
     return pd.Series(out, index=tr.index)
 
 
 def signals(earn_block: int | None = EARN_BLOCK, float_days: int | None = None,
-            x: pd.DataFrame | None = None, pit: bool = PIT_MCAP, pit_float: bool = PIT_FLOAT) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """float_days: Float-Filter nur in den letzten x Kalendertagen; None = ganze Historie, 0 = aus.
+            x: pd.DataFrame | None = None, pit: bool = PIT_MCAP, pit_float: bool = PIT_FLOAT,
+            pre_block: int | None = PRE_EARN_BLOCK) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """pre_block: kein Entry 1..pre_block Handelstage vor dem nächsten Earnings-Reaktionstag (None/0 = aus).
+    float_days: Float-Filter nur in den letzten x Kalendertagen; None = ganze Historie, 0 = aus.
     pit / pit_float: Market Cap bzw. Float zum damaligen Stand (SEC), sonst heutiger Stand (meta.csv).
     x: bereits gebautes build()-Ergebnis (spart Zeit in Varianten)."""
     if x is None:
@@ -91,6 +100,9 @@ def signals(earn_block: int | None = EARN_BLOCK, float_days: int | None = None,
     tr["since"] = earn_since(tr, closes.index)
     if earn_block is not None:
         tr = tr[~tr["since"].between(0, earn_block)].copy()
+    if pre_block:
+        tr["until"] = earn_since(tr, closes.index, until=True)
+        tr = tr[~tr["until"].between(1, pre_block)].copy()
     return tr, closes
 
 
