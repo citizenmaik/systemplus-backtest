@@ -3,12 +3,13 @@
 indicator("System+ V4.2", overlay = true, max_bars_back = 600,
      max_lines_count = 500, max_labels_count = 500)
 
-// System+ V4.2, Stand 31.10.2026
+// System+ V4.2, Stand 22.11.2026
 // Gates: Pivot-Box 3/3 (Hoehe max 3 ATR), erster Close ueber Oberkante,
 // Close > SMA10, ATR % 4.5-10, 52W 10-30 % unter Hoch,
 // Umsatz-YoY letztes Quartal > Umsatz-YoY Quartal davor
 // (eigene Rechnung aus 6 Quartalen; fehlen sie, z. B. nach IPO: TV-Wachstumsrate, Anzeige "(TV)"; seit 01.11.2026),
-// kein Entry 0-5 Handelstage nach Earnings (Tag 0 = erste Kerze mit den Zahlen; seit 31.10.2026).
+// kein Entry 0-5 Handelstage nach Earnings (Tag 0 = erste Kerze mit den Zahlen; seit 31.10.2026),
+// kein Entry 1-2 Handelstage vor dem naechsten Earnings-Reaktionstag (seit 22.11.2026).
 // Notbremse QQQE sperrt nicht mehr: bei aktiver Notbremse 0.5 % statt 1 % Risiko.
 // Universum (TV-Screener): Kurs > 5, Market Cap > 300 Mio, Volumen 30T > 1 Mio, Float > 70 %.
 // Exits M2: SL = SMA10 Entry-Tag, vor 1R Close < SMA10 alles raus,
@@ -41,6 +42,8 @@ bool useEarn = input.bool(true, "Earnings-Sperre", group = GG,
      tooltip = "Kein Entry bis x Handelstage nach Earnings (Tag 0 = erste Kerze mit den Zahlen). Aus: nur Markierung (oranges Dreieck).")
 int postEarnMax = input.int(5, "Kein Entry bis x Tage nach Earnings", minval = 0, group = GG,
      tooltip = "Backtest 2019-2026 (Stand 31.10.2026), Sperre 0-5 T: CAGR 29.0 % statt 28.7 %, Sharpe 1.24 statt 1.20")
+int preEarnMax = input.int(2, "Kein Entry x Tage vor Earnings", minval = 0, group = GG,
+     tooltip = "Handelstage bis zum Reaktionstag (Meldung ab 12 Uhr: naechster Handelstag). 0 = aus. Backtest 2019-2026 (Stand 22.11.2026), Sperre 1-2 T: MaxDD -17.0 % statt -19.6 %, Sharpe 1.19 statt 1.17, CAGR 25.8 % statt 26.3 %")
 
 const string GT = "Trade-Management"
 float acct = input.float(10000, "Kontogroesse", step = 1000, group = GT)
@@ -184,7 +187,34 @@ if not na(eAct)
 int sinceEarn = na(lastEarnBar) ? na : bar_index - lastEarnBar
 bool postEarn = not na(sinceEarn) and sinceEarn <= postEarnMax
 string postTxt = postEarn ? " | NACH EARNINGS (" + str.tostring(sinceEarn) + " T)" : ""
-bool earnOk = not useEarn or not postEarn
+
+// ---------- Naechste Earnings (Reaktionstag) ----------
+// Handelstage vom Kerzentag bis zum naechsten Reaktionstag (0 = heute), wie im Backtest:
+// Meldung ab 12 Uhr (Boersenzeit) -> naechster Handelstag. Uhrzeit unbekannt (00:00) -> Meldetag
+// (vorsichtig: sperrt bei Meldung nach Boersenschluss ggf. einen Tag frueher). Feiertage nicht beruecksichtigt.
+f_day(int t) =>
+    timestamp(syminfo.timezone, year(t, syminfo.timezone), month(t, syminfo.timezone), dayofmonth(t, syminfo.timezone))
+f_untilEarn() =>
+    int ft = na(earnings.future_time) ? na : int(earnings.future_time)
+    int res = na
+    if not na(ft)
+        int d0 = f_day(time)
+        int d1 = f_day(ft)
+        int nCal = math.round((d1 - d0) / 86400000.0)
+        if nCal >= 0 and nCal <= 14
+            int n = 0
+            if nCal > 0
+                for i = 1 to nCal
+                    int dw = dayofweek(d0 + i * 86400000 + 43200000, syminfo.timezone)
+                    if dw != dayofweek.saturday and dw != dayofweek.sunday
+                        n += 1
+            int hr = hour(ft, syminfo.timezone)
+            bool known = hr != 0 or minute(ft, syminfo.timezone) != 0
+            res := n + (known and hr >= 12 ? 1 : 0)
+    res
+int untilEarn = f_untilEarn()
+bool preEarn = preEarnMax > 0 and not na(untilEarn) and untilEarn <= preEarnMax and not postEarn
+bool earnOk = not useEarn or (not postEarn and not preEarn)
 
 // ---------- Gates ----------
 bool aboveMa = close > sma10
@@ -213,7 +243,8 @@ f_why() =>
         a.push(revKnown ? "Umsatz " + f_sgn(yoy0, "0") + " vs. " + f_sgn(yoy1, "0") + " %" + revTag :
              "Umsatz: keine Daten (" + str.tostring(nq) + " Q)")
     if not earnOk
-        a.push("Earnings vor " + str.tostring(sinceEarn) + " T (0-" + str.tostring(postEarnMax) + ")")
+        a.push(postEarn ? "Earnings vor " + str.tostring(sinceEarn) + " T (0-" + str.tostring(postEarnMax) + ")" :
+             "Earnings in " + str.tostring(untilEarn) + " HT (bis " + str.tostring(preEarnMax) + ")")
     a.join(" | ")
 
 f_shares(float entry, float stop) =>
@@ -381,9 +412,9 @@ if barstate.islast
         bTop := line.new(pTopBar, pTop, bar_index + 3, pTop, color = bc, style = bs)
         bBot := line.new(pBotBar, pBot, bar_index + 3, pBot, color = bc, style = bs)
 
-plotshape(entryNow and not postEarn, "Entry", shape.triangleup, location.belowbar, color.green,
+plotshape(entryNow and not postEarn and not preEarn, "Entry", shape.triangleup, location.belowbar, color.green,
      size = size.tiny)
-plotshape(entryNow and postEarn, "Entry nach Earnings", shape.triangleup, location.belowbar,
+plotshape(entryNow and (postEarn or preEarn), "Entry nahe Earnings", shape.triangleup, location.belowbar,
      color.orange, size = size.tiny)
 plotshape(entryPre, "Entry vorlaeufig (Kerze offen)", shape.triangleup, location.belowbar,
      color.new(color.green, 55), size = size.tiny)
@@ -513,7 +544,8 @@ if showTable and barstate.islast
              "keine Daten (" + str.tostring(nq) + " Q)"
         string gTip = "ATR " + atrTxt + "\n52W " + w52Txt + "\nUmsatz YoY " + revTxt
         gTip += "\nUeber SMA10: " + (aboveMa ? "ja" : "nein")
-        gTip += "\nEarnings-Sperre: " + (not useEarn ? "aus" : postEarn ? "aktiv (Tag " + str.tostring(sinceEarn) + ")" : "nein")
+        gTip += "\nEarnings-Sperre: " + (not useEarn ? "aus" : postEarn ? "aktiv (Tag " + str.tostring(sinceEarn) + " nach)" :
+             preEarn ? "aktiv (" + str.tostring(untilEarn) + " T vor Reaktionstag)" : "nein")
         r := f_row(r, "Gates", why == "" ? "ok" : why, why == "" ? ok : bad, sz, gTip)
         if showGates
             r := f_row(r, "ATR", atrTxt, atrOk ? ok : bad, sz)
@@ -537,10 +569,14 @@ if showTable and barstate.islast
     bool eSoon = not na(eDays) and eDays <= 14
     if postEarn or eSoon
         string eTxt = postEarn ? "vor " + str.tostring(sinceEarn) + " T" : ""
-        eTxt += eSoon ? (postEarn ? " | " : "") + "in " + str.tostring(math.max(math.ceil(eDays), 0), "#") + " T" : ""
+        string inTxt = na(untilEarn) ? str.tostring(math.max(math.ceil(eDays), 0), "#") + " T" : str.tostring(untilEarn) + " HT"
+        eTxt += eSoon ? (postEarn ? " | " : "") + "in " + inTxt : ""
         string eTip = postEarn ? (useEarn ? "Kein Entry bis Tag " + str.tostring(postEarnMax) + " nach Earnings" :
-             "Breakout kurz nach Earnings: im Backtest schwach (Sperre aus)") : ""
-        r := f_row(r, "Earnings", eTxt, postEarn and useEarn ? bad : neu, sz, eTip)
+             "Breakout kurz nach Earnings: im Backtest schwach (Sperre aus)") :
+             preEarn ? (useEarn ? "Kein Entry 1-" + str.tostring(preEarnMax) + " Handelstage vor dem Reaktionstag" :
+             "Breakout kurz vor Earnings: im Backtest schwach (Sperre aus)") : ""
+        eTip += (eTip == "" ? "" : "\n") + "HT = Handelstage bis zum Reaktionstag (Meldung ab 12 Uhr: naechster Tag)"
+        r := f_row(r, "Earnings", eTxt, (postEarn or preEarn) and useEarn ? bad : neu, sz, eTip)
 
 // ---------- Alarme ----------
 // Fuer "Any alert() function call": nur die eingeschalteten Meldungen loesen aus

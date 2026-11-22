@@ -1,7 +1,7 @@
 //@version=6
 indicator("System+ V4.2 Screener", overlay = false, max_bars_back = 500)
 
-// Pine Screener fuer System+ V4.2, Stand 27.10.2026
+// Pine Screener fuer System+ V4.2, Stand 22.11.2026
 // Ablauf: TradingView-Screener (Universum) -> Watchlist -> dieser Pine Screener
 // -> Chart-Indikator "System+ V4.2" (verbindlich).
 // Signal 2 = Breakout heute: erster Close ueber Pivot-Oberkante, Close > SMA10.
@@ -39,6 +39,7 @@ float riskPct = input.float(1.0, "Risiko % normal", step = 0.25, group = GG)
 float cbRiskPct = input.float(0.5, "Risiko % bei Notbremse", step = 0.25, group = GG)
 bool useRev = input.bool(true, "Umsatz beschleunigt", group = GG)
 int postEarnMax = input.int(5, "Hinweis: Breakout bis x Tage nach Earnings", minval = 0, group = GG)
+int preEarnMax = input.int(2, "Hinweis: Breakout x Tage vor Earnings", minval = 0, group = GG)
 string revMiss = input.string("kein Entry", "Ohne Umsatzdaten",
      options = ["kein Entry", "zulassen"], group = GG)
 
@@ -195,6 +196,30 @@ if not na(eAct)
     lastEarnBar := bar_index
 int sinceEarn = na(lastEarnBar) ? na : bar_index - lastEarnBar
 bool postEarn = not na(sinceEarn) and sinceEarn <= postEarnMax
+// Handelstage bis zum naechsten Reaktionstag (wie Chart-Indikator; Meldung ab 12 Uhr -> naechster Handelstag,
+// Uhrzeit unbekannt -> Meldetag; Feiertage nicht beruecksichtigt)
+f_day(int t) =>
+    timestamp(syminfo.timezone, year(t, syminfo.timezone), month(t, syminfo.timezone), dayofmonth(t, syminfo.timezone))
+f_untilEarn() =>
+    int ft = na(earnings.future_time) ? na : int(earnings.future_time)
+    int res = na
+    if not na(ft)
+        int d0 = f_day(time)
+        int d1 = f_day(ft)
+        int nCal = math.round((d1 - d0) / 86400000.0)
+        if nCal >= 0 and nCal <= 14
+            int n = 0
+            if nCal > 0
+                for i = 1 to nCal
+                    int dw = dayofweek(d0 + i * 86400000 + 43200000, syminfo.timezone)
+                    if dw != dayofweek.saturday and dw != dayofweek.sunday
+                        n += 1
+            int hr = hour(ft, syminfo.timezone)
+            bool known = hr != 0 or minute(ft, syminfo.timezone) != 0
+            res := n + (known and hr >= 12 ? 1 : 0)
+    res
+int untilEarn = f_untilEarn()
+bool preEarn = preEarnMax > 0 and not na(untilEarn) and untilEarn <= preEarnMax and not postEarn
 
 // ---------- Alarme ----------
 bool touch = boxValid and close[1] <= topNow and high >= topNow and gatesOk
@@ -227,3 +252,5 @@ plot(boxH, "Box-Hoehe ATR", display = display.data_window)
 plot(eDays, "Earnings in Tagen", display = display.data_window)
 plot(sinceEarn, "Tage seit Earnings", display = display.data_window)
 plot(postEarn ? 1 : 0, "Nach Earnings (1/0)", display = display.data_window)
+plot(untilEarn, "Handelstage bis Earnings-Reaktionstag", display = display.data_window)
+plot(preEarn ? 1 : 0, "Vor Earnings (1/0)", display = display.data_window)
