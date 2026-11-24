@@ -1,17 +1,12 @@
 {
-  "files_written": 109,
-  "files_unchanged": 319,
+  "files_written": 5,
+  "files_unchanged": 423,
   "files_removed": 0,
-  "rows": 5474579,
+  "rows": 5477446,
   "tickers": 2892,
-  "mode": "full",
-  "candidates": 5108,
-  "universe": 2892,
-  "new_in_universe": 6,
-  "excluded": 0,
+  "mode": "incremental",
   "refetched": [],
   "no_data": 0,
-  "splits": 1318,
-  "last_date": "2026-11-20",
-  "run_utc": "2026-11-21T13:50:38+00:00"
+  "last_date": "2026-11-23",
+  "run_utc": "2026-11-24T05:45:55+00:00"
 }
