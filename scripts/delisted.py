@@ -168,6 +168,13 @@ def _nice(r: float) -> float:
     return float(fr) if fr and abs(float(fr) / r - 1) < 0.0005 else round(r, 6)
 
 
+def is_spinoff(r: float) -> bool:
+    """Abspaltung statt Split? yfinance führt z. B. MMM/Solventum als Split 1,196. Splits, Reverse-Splits und
+    Aktiendividenden sind glatte Brüche (2, 3/2, 1/50, 21/20 ...). Sharadar rechnet Abspaltungen nicht heraus."""
+    r = float(r)
+    return r > 0 and all(abs(float(Fraction(x).limit_denominator(20)) / x - 1) >= 0.0005 for x in (r, 1 / r))
+
+
 def splits_from_factor(code: pd.Series, date: pd.Series, f: pd.Series, adj: pd.Series | None = None,
                        win: int = 5) -> pd.DataFrame:
     """f = Rohkurs / split-bereinigter Kurs = Produkt aller späteren Splits (bei Sharadar inkl.
@@ -545,13 +552,17 @@ def compare_with_store(raw: pd.DataFrame, splits: pd.DataFrame, check: pd.Series
         rel = {c: float((a[c] / b[c] - 1).abs().quantile(0.99)) for c in ("open", "high", "low", "close")}
         lo, hi = g.index.min(), g.index.max()
         mine = {(pd.Timestamp(d).date(), round(r, 4)) for d, r in splits.loc[splits["code"] == code, ["date", "ratio"]].values}
-        repo = {(pd.Timestamp(d).date(), round(r, 4)) for d, r in sp.loc[(sp["ticker"] == code) & sp["date"].between(
-            lo + pd.Timedelta(days=1), hi), ["date", "ratio"]].values}
+        # Abspaltungen führt yfinance als Split mit krummem Verhältnis, Sharadar rechnet sie nicht heraus
+        in_repo = sp.loc[(sp["ticker"] == code) & sp["date"].between(lo + pd.Timedelta(days=1), hi),
+                         ["date", "ratio"]].values
+        repo = {(pd.Timestamp(d).date(), round(r, 4)) for d, r in in_repo if not is_spinoff(r)}
+        spin = {(pd.Timestamp(d).date(), round(r, 4)) for d, r in in_repo if is_spinoff(r)}
         rows.append({"ticker": code, "tage": len(common),
                      **{f"{c}_abw_p99_%": round(100 * v, 3) for c, v in rel.items()},
                      "volumen_sharadar/yahoo": round(float((a["volume"] / b["volume"]).median()), 3),
                      "splits_sharadar": ";".join(f"{d}:{r:g}" for d, r in sorted(mine)),
                      "splits_repo": ";".join(f"{d}:{r:g}" for d, r in sorted(repo)),
+                     "abspaltungen_repo": ";".join(f"{d}:{r:g}" for d, r in sorted(spin)),
                      "splits_gleich": mine == repo, "rueckrechnung_max_%": round(100 * float(check.get(code, np.nan)), 3)})
     return pd.DataFrame(rows)
 
@@ -629,7 +640,8 @@ def main() -> None:
             f"Kurse für {n}/{len(SHARADAR_SAMPLE)} Dow-Titel": n >= len(SHARADAR_SAMPLE) - 2,
             f"Rohkurse = yfinance-Rohkurse (Close, {len(both)} Titel im Repo)":
                 len(both) >= 15 and bool((both["close_abw_p99_%"] < 1).all()),
-            "Splits aus Kursen = Splits im Repo": len(both) >= 15 and bool(both["splits_gleich"].astype(bool).all()),
+            "Splits aus Kursen = Splits im Repo (ohne Abspaltungen)":
+                len(both) >= 15 and bool(both["splits_gleich"].astype(bool).all()),
             "Splits aus Kursen = Sharadar actions": not mism,
             "Rückrechnung Rohkurs + Splits = Sharadar": bool(ok.reindex(raw["code"].unique()).fillna(False).all()),
             "Dublettenprüfung erkennt alle Titel im Repo":
