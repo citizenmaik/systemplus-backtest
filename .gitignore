@@ -4,3 +4,7 @@ __pycache__/
 .DS_Store
 backtest/out/trades.csv
 backtest/out/equity_*.csv
+# Rohdaten der Anbieter (private Lizenz, Repo ist öffentlich) und Arbeitskopie des Vergleichs
+data/delisted/
+data/delisted_sample/
+.delisted_work/
