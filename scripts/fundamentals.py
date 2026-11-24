@@ -50,6 +50,33 @@ def get(url: str, tries: int = 4):
     r.raise_for_status()
 
 
+def facts_rows(t: str, facts: dict) -> list[tuple]:
+    """companyfacts-JSON -> Zeilen (ticker, kennzahl, konzept, einheit, start, end, filed, form, fp, wert).
+    Auch von delisted_sec.py genutzt, damit delistete Titel nach denselben Regeln laufen."""
+    rows = []
+    f = facts.get("facts", {})
+    for key, cands in CONCEPTS.items():
+        for ns, name in cands:
+            units = f.get(ns, {}).get(name, {}).get("units", {})
+            for unit, vals in units.items():
+                if key not in ("eps", "shares") and not unit.startswith("USD") and ns == "us-gaap":
+                    continue
+                for v in vals:
+                    if v.get("form") not in ("10-Q", "10-K", "10-Q/A", "10-K/A", "20-F", "40-F", "6-K"):
+                        continue
+                    rows.append((t, key, name, unit, v.get("start"), v.get("end"), v.get("filed"),
+                                 v.get("form"), v.get("fp"), float(v["val"])))
+    return rows
+
+
+def to_frame(rows: list[tuple]) -> pd.DataFrame:
+    df = pd.DataFrame(rows, columns=["ticker", "kennzahl", "konzept", "einheit", "start", "end", "filed",
+                                     "form", "fp", "wert"])
+    for c in ("start", "end", "filed"):
+        df[c] = pd.to_datetime(df[c], errors="coerce")
+    return df.drop_duplicates(["ticker", "kennzahl", "konzept", "start", "end", "filed"])
+
+
 def main() -> None:
     m = get("https://www.sec.gov/files/company_tickers.json")
     cik = {v["ticker"].upper().replace(".", "-"): int(v["cik_str"]) for v in m.values()}
@@ -68,25 +95,10 @@ def main() -> None:
         if not facts:
             miss.append(t)
             continue
-        f = facts.get("facts", {})
-        for key, cands in CONCEPTS.items():
-            for ns, name in cands:
-                units = f.get(ns, {}).get(name, {}).get("units", {})
-                for unit, vals in units.items():
-                    if key not in ("eps", "shares") and not unit.startswith("USD") and ns == "us-gaap":
-                        continue
-                    for v in vals:
-                        if v.get("form") not in ("10-Q", "10-K", "10-Q/A", "10-K/A", "20-F", "40-F", "6-K"):
-                            continue
-                        rows.append((t, key, name, unit, v.get("start"), v.get("end"), v.get("filed"),
-                                     v.get("form"), v.get("fp"), float(v["val"])))
+        rows += facts_rows(t, facts)
         if i % 250 == 0:
             print(f"  {i}/{len(todo)}")
-    df = pd.DataFrame(rows, columns=["ticker", "kennzahl", "konzept", "einheit", "start", "end", "filed",
-                                     "form", "fp", "wert"])
-    for c in ("start", "end", "filed"):
-        df[c] = pd.to_datetime(df[c], errors="coerce")
-    df = df.drop_duplicates(["ticker", "kennzahl", "konzept", "start", "end", "filed"])
+    df = to_frame(rows)
     df.to_parquet(OUT, index=False, compression="zstd")
     (DATA / "fundamentals_info.json").write_text(json.dumps(
         {"titel_mit_cik": len(todo), "ohne_daten": len(miss), "zeilen": len(df),
