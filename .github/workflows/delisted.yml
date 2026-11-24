@@ -1,0 +1,102 @@
+name: delisted
+
+# Survivorship-Test: delistete Titel (2018 bis erster Lauf) von Sharadar oder EODHD laden,
+# SEC-Zahlen dazu, V4.2 mit und ohne rechnen. Nur manuell starten.
+#
+# Probelauf (Häkchen "probelauf"): ohne Abo mit Sharadars öffentlichem test-api-key (Dow 30,
+# 5 Jahre). Prüft Abruf, Rohkurse, Splits und Dublettenprüfung und gibt nur OK/FEHLER aus.
+#
+# Echter Lauf – Secrets (Settings → Secrets and variables → Actions):
+#   SHARADAR_API_KEY  für sharadar (sharadar.com, Plan "Prices", 10 Years)
+#   EODHD_API_KEY     für eodhd
+# Die Rohdaten der Anbieter landen NICHT im Repo (öffentlich, private Lizenz, Löschpflicht nach
+# Abo-Ende). Der Runner wird nach dem Lauf verworfen. Committet werden nur Ergebnis-CSVs.
+
+on:
+  workflow_dispatch:
+    inputs:
+      provider:
+        description: "Datenanbieter"
+        type: choice
+        options: [sharadar, eodhd]
+        default: sharadar
+      probelauf:
+        description: "Nur Probelauf mit Sharadar-Testdaten (kein Abo nötig)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  delisted:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Probelauf mit Sharadar-Testdaten
+        if: ${{ inputs.probelauf }}
+        working-directory: scripts
+        run: python delisted.py --provider sharadar --sample
+
+      # build() braucht für den vollen Datensatz rund 8 GB, mit den delisteten Titeln mehr.
+      # Der Runner hat 16 GB; zusätzlicher Swap fängt Spitzen ab.
+      - name: Swap vergrößern
+        if: ${{ !inputs.probelauf }}
+        continue-on-error: true
+        run: |
+          sudo swapoff -a || true
+          f=/mnt/swapfile; sudo fallocate -l 10G $f 2>/dev/null || { f=/swapfile2; sudo fallocate -l 10G $f; }
+          sudo chmod 600 $f && sudo mkswap $f >/dev/null && sudo swapon $f
+          free -h
+
+      - name: Delistete Titel laden
+        if: ${{ !inputs.probelauf }}
+        working-directory: scripts
+        env:
+          SHARADAR_API_KEY: ${{ secrets.SHARADAR_API_KEY }}
+          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+        run: python delisted.py --provider ${{ inputs.provider }}
+
+      - name: SEC-Quartalszahlen und Earnings-Termine
+        if: ${{ !inputs.probelauf }}
+        working-directory: scripts
+        run: python delisted_sec.py
+
+      - name: V4.2 mit und ohne delistete Titel
+        if: ${{ !inputs.probelauf }}
+        run: python backtest/research/v42_delisted.py
+
+      - name: Zusammenfassung
+        if: ${{ !inputs.probelauf }}
+        run: |
+          {
+            echo "## V4.2 mit und ohne delistete Titel (${{ inputs.provider }})"
+            echo '```'
+            column -s, -t < backtest/out/v42_delisted.csv
+            echo '```'
+            echo '```json'
+            cat data/delisted/info.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit (nur Ergebnisse)
+        if: ${{ !inputs.probelauf }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add backtest/out/v42_delisted.csv backtest/out/v42_delisted_jahre.csv backtest/out/v42_delisted_trades.csv
+          if git diff --cached --quiet; then echo "Keine Änderungen"; else
+            git commit -m "research: V4.2 mit delisteten Titeln (${{ inputs.provider }})"; git pull --rebase; git push; fi
