@@ -56,10 +56,48 @@ signals = df[df.base_ok & df.atr_ok]      # Grundfilter am jeweiligen Tag
 Spalten: bereinigtes OHLCV, `raw_close`, `raw_volume`, `bar_no`, `avgvol30`, `dollarvol30`,
 `atr_pct`, `base_ok`, `atr_ok`, `cohort`, `quality`, `sector`, `industry`, `float_pct`.
 
+## Delistete Titel nachladen (Survivorship-Test)
+
+Titel, die zwischen 2018 und dem ersten Lauf delistet wurden, liefert yfinance nicht mehr.
+Einmalig nachladen und V4.2 damit vergleichen:
+
+1. **Probelauf ohne Abo:** Actions → **delisted** → Run workflow, Häkchen „probelauf“ an.
+   Nutzt Sharadars öffentlichen `test-api-key` (Dow 30, 5 Jahre) und prüft Abruf, Rohkurse,
+   Splits und Dublettenprüfung gegen die yfinance-Daten. Ausgabe nur OK/FEHLER.
+2. Bei sharadar.com als Privatperson den Plan **Prices, 10 Years** buchen (monatlich kündbar).
+3. API-Key (sharadar.com/account) als Secret `SHARADAR_API_KEY` hinterlegen
+   (Settings → Secrets and variables → Actions). Für EODHD: `EODHD_API_KEY`.
+4. Workflow ohne Häkchen „probelauf“ starten.
+
+| Schritt | Skript | Ergebnis |
+|---|---|---|
+| Kurse | `scripts/delisted.py --provider sharadar\|eodhd` | `data/delisted/` (Rohkurse, Splits, Ticker, Delisting-Grund) |
+| SEC | `scripts/delisted_sec.py` | Quartalszahlen + Earnings-Termine (8-K Item 2.02) |
+| Vergleich | `backtest/research/v42_delisted.py` | `backtest/out/v42_delisted*.csv` |
+
+- Sharadar: Kurse per Bulk-ZIP (`years=10`, ≈ 325 MB, schont das Rate-Limit), sonst
+  Einzelabfragen à 4 Ticker. Delisting-Datum und -Grund (Übernahme, Fusion, Konkurs) aus `actions`.
+- Gleiche Aufnahmeregel wie das Universum. Ticker = Symbol + Monat des Delistings
+  (`TWTR-202210`), Kohorte `delistet`.
+- Pleiten, die nach dem Delisting außerbörslich weiterlaufen (Q-Suffix), bleiben mit ihren
+  OTC-Kursen drin – so trifft der Absturz eine offene Position wie in echt.
+- Lizenz (privat): Rohdaten nicht weitergeben, nach Abo-Ende binnen 30 Tagen löschen. Deshalb
+  ist `data/delisted/` nicht im Git, und der Actions-Runner wird nach dem Lauf verworfen.
+  Ergebnisse (Kennzahlen, Trade-Liste) dürfen bleiben. Datenqualitäts-Vergleiche nicht
+  veröffentlichen – der Probelauf schreibt Details nur nach `data/delisted_sample/`.
+- Der Vergleich rechnet in einer Arbeitskopie. Engine, Regeln und `data/` bleiben unverändert.
+  Einzige Ergänzung: Enden die Kurse eines delisteten Titels vor dem Datensatzende, wird eine
+  offene Position am letzten Kurstag zum Schlusskurs verkauft.
+- Sharadar liefert die CIK mit. Bei EODHD wird sie über den Firmennamen gesucht, dadurch
+  fehlen dort eher Quartalszahlen (Spalte `Umsatzdaten delistete %`).
+
+Lokal: `export SHARADAR_API_KEY=…`, dann die drei Skripte nacheinander. Danach
+`data/delisted/` löschen, spätestens 30 Tage nach Abo-Ende.
+
 ## Grenzen
 
-- Titel, die **vor dem ersten Lauf** delistet wurden, fehlen. Ganz sauber geht das nur mit
-  einer survivorship-freien Quelle (z. B. Norgate Data).
+- Titel, die **vor dem ersten Lauf** delistet wurden, fehlen im regulären Datensatz. Für den
+  Test siehe „Delistete Titel nachladen“.
 - Market Cap und Float gibt es nur mit heutigem Stand. Im Backtest dient `dollarvol30` als Ersatz.
 - yfinance ist inoffiziell. Bei Drosselung holt der nächste Lauf fehlende Titel nach.
 
