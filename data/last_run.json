@@ -1,12 +1,14 @@
 {
-  "files_written": 4,
-  "files_unchanged": 424,
+  "files_written": 109,
+  "files_unchanged": 319,
   "files_removed": 0,
-  "rows": 5485117,
+  "rows": 5485126,
   "tickers": 2892,
   "mode": "incremental",
-  "refetched": [],
+  "refetched": [
+    "SCNI"
+  ],
   "no_data": 1,
   "last_date": "2026-11-25",
-  "run_utc": "2026-11-27T04:21:50+00:00"
+  "run_utc": "2026-11-27T05:45:16+00:00"
 }
