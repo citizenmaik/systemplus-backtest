@@ -1,14 +1,19 @@
 {
-  "files_written": 111,
-  "files_unchanged": 317,
+  "files_written": 110,
+  "files_unchanged": 425,
   "files_removed": 0,
-  "rows": 5487990,
-  "tickers": 2892,
-  "mode": "incremental",
+  "rows": 5492468,
+  "tickers": 2894,
+  "mode": "full",
+  "candidates": 5107,
+  "universe": 2894,
+  "new_in_universe": 2,
+  "excluded": 0,
   "refetched": [
-    "SCNI"
+    "NLST"
   ],
   "no_data": 1,
+  "splits": 1331,
   "last_date": "2026-11-27",
-  "run_utc": "2026-11-28T04:00:22+00:00"
+  "run_utc": "2026-11-28T14:37:54+00:00"
 }
