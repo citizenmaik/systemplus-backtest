@@ -46,13 +46,35 @@ PIT_FLOAT = False  # SEC-Public-Float zählt Großaktionäre ab 5 % oft heraus -
 OUT = ROOT / "backtest" / "out" / "v42_report.json"
 
 
+def _nyse_days(start: pd.Timestamp, end: pd.Timestamp) -> pd.DatetimeIndex:
+    """US-Börsentage (Mo–Fr ohne NYSE-Feiertage) von start bis end, für Termine hinter dem Datenende."""
+    from pandas.tseries.holiday import (AbstractHolidayCalendar, GoodFriday, Holiday, USLaborDay,
+                                        USMartinLutherKingJr, USMemorialDay, USPresidentsDay,
+                                        USThanksgivingDay, nearest_workday)
+
+    class NYSE(AbstractHolidayCalendar):
+        rules = [Holiday("NewYear", month=1, day=1, observance=nearest_workday), USMartinLutherKingJr,
+                 USPresidentsDay, GoodFriday, USMemorialDay,
+                 Holiday("Juneteenth", month=6, day=19, start_date="2022-01-01", observance=nearest_workday),
+                 Holiday("July4", month=7, day=4, observance=nearest_workday), USLaborDay,
+                 USThanksgivingDay, Holiday("Christmas", month=12, day=25, observance=nearest_workday)]
+
+    days = pd.bdate_range(start, end)
+    return days[~days.isin(NYSE().holidays(start, end))]
+
+
 def earn_since(tr: pd.DataFrame, cal: pd.DatetimeIndex, until: bool = False) -> pd.Series:
     """Handelstage seit dem letzten Earnings-Reaktionstag (0 = Reaktionstag) je Trade, NaN ohne Daten.
     until=True: Handelstage bis zum nächsten Reaktionstag (1 = Reaktionstag ist der nächste Handelstag).
-    Reaktionstag: Meldung vor 12 Uhr = selber Handelstag, sonst nächster Handelstag."""
+    Reaktionstag: Meldung vor 12 Uhr = selber Handelstag, sonst nächster Handelstag.
+    Termine nach dem letzten Kurstag werden über US-Börsentage (NYSE-Feiertage) hinter dem Datenende
+    gezählt; sonst landeten alle künftigen Termine auf dem Index len(cal), also „morgen“, und die
+    Vor-Earnings-Sperre hätte jedes Signal der letzten zwei Kurstage verworfen (Fehler bis 28.11.2026)."""
     E = pd.read_csv(ROOT / "data" / "earnings.csv", keep_default_na=False, na_values=[""])
     E = E[E["date"].notna()].copy()
     E["d"] = pd.to_datetime(E["date"])
+    if len(cal) and E["d"].max() > cal[-1]:
+        cal = cal.append(_nyse_days(cal[-1] + pd.Timedelta(days=1), E["d"].max() + pd.Timedelta(days=10)))
     E["hh"] = E["time"].fillna("16:00").str.slice(0, 2).replace("", "16").astype(int)
     ri = cal.searchsorted(E["d"].to_numpy())
     same = (ri < len(cal)) & (cal[np.minimum(ri, len(cal) - 1)] == E["d"].to_numpy())

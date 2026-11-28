@@ -101,6 +101,18 @@ Lokal: `export SHARADAR_API_KEY=…`, dann die drei Skripte nacheinander. Danach
 - Market Cap und Float gibt es nur mit heutigem Stand. Im Backtest dient `dollarvol30` als Ersatz.
 - yfinance ist inoffiziell. Bei Drosselung holt der nächste Lauf fehlende Titel nach.
 
+## Merkpunkte V4.2-Bericht
+
+- **Earnings-Sperre am Datenende (behoben 28.11.2026):** `earn_since(..., until=True)` in
+  `backtest/v42_report.py` zählte jeden Earnings-Termin nach dem letzten Kurstag als „nächster
+  Handelstag“. Die Sperre „1–2 Tage vor Earnings“ hat dadurch jedes Signal der letzten zwei
+  Kurstage verworfen (z. B. PLTR, NWL, EAT am 27.11.2026). Künftige Termine werden jetzt über
+  NYSE-Börsentage hinter dem Datenende gezählt (`_nyse_days`).
+- **Prüfen bei jedem Bericht:** Neue Datumsregeln immer auch am **letzten Kurstag** testen.
+  Daten jenseits des Kurskalenders (künftige Earnings, Feiertage) nie per `searchsorted` auf den
+  Kalender legen, ohne das Ende abzufangen. Signale des letzten Tages gegen eine Rechnung ohne die
+  neue Regel vergleichen; fehlen dort plötzlich alle, ist es ein Randfehler, kein Marktbild.
+
 ## Lokal
 
 ```bash
